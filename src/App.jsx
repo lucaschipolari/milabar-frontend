@@ -1,5 +1,11 @@
+import Navbar from "./components/Common/navBar/navbar";
+
 function App() {
-  return <></>;
+  return (
+    <>
+      <Navbar></Navbar>
+    </>
+  );
 }
 
 export default App;
