@@ -10,16 +10,13 @@ import { router } from "./constants/routes";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.min.js";
 import "bootstrap-icons/font/bootstrap-icons.min.css";
-import App from "./App";
 
 const queryClient = new QueryClient();
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <QueryClientProvider client={queryClient}>
-      <App />
       <RouterProvider router={router} />
-      <App />
       <Toaster richColors position="top-center" />
     </QueryClientProvider>
   </React.StrictMode>
