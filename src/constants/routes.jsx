@@ -1,14 +1,17 @@
 import { createBrowserRouter } from "react-router-dom";
 
+import RootView from '../views/routing/Producto/RootView';
+import PrincipalProductoView from '../views/PrincipalProductoView';
+
 export const router = createBrowserRouter([
   {
     path: "/",
-    element: <div></div>,
+    element: <RootView/>,
     children: [
       // RUTAS PÚBLICAS
       {
         path: "",
-        element: <div></div>,
+        element: <PrincipalProductoView/>,
       },
       {
         path: "detail/:id",
