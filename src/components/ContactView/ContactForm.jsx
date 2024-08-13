@@ -44,7 +44,7 @@ const ContactForm = () => {
             message: "El campo asunto debe tener un maximo de 50 caracteres",
           },
           pattern: {
-            value: /^[A-Za-zñÑáéíóúÁÉÍÓÚ0-9\s.,!?()\-]+$/,
+            value: /^[A-Za-zñÑáéíóúÁÉÍÓÚ0-9\s.,!?()-]+$/,
             message:
               "El campo asunto solo puede contener letras, números, espacios y ciertos caracteres de puntuación (. , ! ? () -)",
           },
@@ -167,7 +167,7 @@ const ContactForm = () => {
             message: "El campo mensaje debe tener un máximo de 500 caracteres",
           },
           pattern: {
-            value: /^[A-Za-zñÑáéíóúÁÉÍÓÚ0-9\s.,!?()\-]+$/,
+            value: /^[A-Za-zñÑáéíóúÁÉÍÓÚ0-9\s.,!?()-]+$/,
             message:
               "El campo mensaje solo puede contener letras, números y ciertos caracteres de puntuación (. , ! ? () -)",
           },
