@@ -1,7 +1,14 @@
-import HomeView from "./views/HomeView";
+//import HomeView from "./views/HomeView";
+
+import ContactView from "./views/ContactView";
 
 function App() {
-  return <HomeView />;
+  return (
+    <>
+    {/* <HomeView /> */}
+      <ContactView />;
+    </>
+  );
 }
 
 export default App;
