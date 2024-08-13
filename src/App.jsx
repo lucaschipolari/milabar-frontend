@@ -1,5 +1,7 @@
+import HomeView from "./views/HomeView";
+
 function App() {
-  return <></>;
+  return <HomeView />;
 }
 
 export default App;
