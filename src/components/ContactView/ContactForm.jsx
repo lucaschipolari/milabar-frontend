@@ -1,5 +1,6 @@
 import { useForm } from "react-hook-form";
 import Input from "../ui/input/Input";
+import { useState } from "react";
 
 const ContactForm = () => {
   const {
@@ -9,9 +10,13 @@ const ContactForm = () => {
     reset,
   } = useForm();
 
+  const [resetCount, setResetCount] = useState(false);
+
   const handleSumbit = (data) => {
     console.log(data);
     reset();
+    setResetCount(true);
+    setTimeout(() => setResetCount(false), 0); 
   };
 
   return (
@@ -19,7 +24,7 @@ const ContactForm = () => {
       onSubmit={onSubmitRHF(handleSumbit)}
       className="bg-body-tertiary rounded shadow m-5 text-center"
     >
-        <h1>Contactanos!</h1>
+      <h1>Contactanos!</h1>
       <Input
         className="m-3"
         error={errors.issue}
@@ -177,6 +182,8 @@ const ContactForm = () => {
         }}
         register={register}
         textarea
+        maxLength={500}
+        resetCount={resetCount}
       />
       <div className="text-center mt-3">
         <button className="btn btn-primary mb-3" type="submit">
