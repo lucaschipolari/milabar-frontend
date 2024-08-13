@@ -17,8 +17,9 @@ const ContactForm = () => {
   return (
     <form
       onSubmit={onSubmitRHF(handleSumbit)}
-      className="bg-body-tertiary rounded shadow m-5"
+      className="bg-body-tertiary rounded shadow m-5 text-center"
     >
+        <h1>Contactanos!</h1>
       <Input
         className="m-3"
         error={errors.issue}
@@ -29,8 +30,27 @@ const ContactForm = () => {
             value: true,
             message: "El campo asunto es requerido",
           },
-          minLength: 5,
-          maxLength: 100,
+          minLength: {
+            value: 5,
+            message: "El campo asunto debe tener al menos 5 caracteres",
+          },
+          maxLength: {
+            value: 50,
+            message: "El campo asunto debe tener un maximo de 50 caracteres",
+          },
+          pattern: {
+            value: /^[A-Za-zñÑáéíóúÁÉÍÓÚ0-9\s.,!?()\-]+$/,
+            message:
+              "El campo asunto solo puede contener letras, números, espacios y ciertos caracteres de puntuación (. , ! ? () -)",
+          },
+          validate: {
+            noExtraSpace: (value) =>
+              !/\s{2,}/.test(value) ||
+              "El campo asunto no puede contener múltiples espacios consecutivos",
+            noOnlySpace: (value) =>
+              value.trim().length > 0 ||
+              "El campo asunto no puede estar compuesto solo de espacios en blanco",
+          },
         }}
         placeholder=""
         register={register}
@@ -45,8 +65,26 @@ const ContactForm = () => {
             value: true,
             message: "El nombre es requerido",
           },
-          minLength: 2,
-          maxLength: 50,
+          minLength: {
+            minLength: 2,
+            message: "El nombre debe tener al menos 2 caracteres",
+          },
+          maxLength: {
+            maxLength: 30,
+            message: "El nombre debe tener un maximo de 30 caracteres",
+          },
+          pattern: {
+            value: /^[A-Za-zñÑáéíóúÁÉÍÓÚ\s]+$/,
+            message: "El campo nombre solo puede contener letras",
+          },
+          validate: {
+            noExtraSpace: (value) =>
+              !/\s{2,}/.test(value) ||
+              "El campo nombre no puede contener múltiples espacios consecutivos",
+            noOnlySpace: (value) =>
+              value.trim().length > 0 ||
+              "El campo nombre no puede estar compuesto solo de espacios en blanco",
+          },
         }}
         register={register}
       />
@@ -60,8 +98,26 @@ const ContactForm = () => {
             value: true,
             message: "El apellido es requerido",
           },
-          minLength: 2,
-          maxLength: 50,
+          minLength: {
+            minLength: 2,
+            message: "El apellido debe tener al menos 2 caracteres",
+          },
+          maxLength: {
+            maxLength: 30,
+            message: "El apellido debe tener un maximo de 30 caracteres",
+          },
+          pattern: {
+            value: /^[A-Za-zñÑáéíóúÁÉÍÓÚ\s]+$/,
+            message: "El campo apellido solo puede contener letras",
+          },
+          validate: {
+            noExtraSpace: (value) =>
+              !/\s{2,}/.test(value) ||
+              "El campo apellido no puede contener múltiples espacios consecutivos",
+            noOnlySpace: (value) =>
+              value.trim().length > 0 ||
+              "El campo apellido no puede estar compuesto solo de espacios en blanco",
+          },
         }}
         register={register}
       />
@@ -75,8 +131,14 @@ const ContactForm = () => {
             value: true,
             message: "El email es requerido",
           },
-          minLength: 2,
-          maxLength: 50,
+          maxLength: {
+            value: 254,
+            message: "El campo email no puede exceder los 254 caracteres",
+          },
+          pattern: {
+            value: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
+            message: "El formato del correo electrónico no es válido",
+          },
         }}
         register={register}
         type="email"
@@ -89,14 +151,38 @@ const ContactForm = () => {
         options={{
           required: {
             value: true,
-            message: "El email es requerido",
+            message: "El mensaje es requerido",
           },
-          minLength: 2,
-          maxLength: 50,
+          minLength: {
+            value: 10,
+            message: "El campo mensaje debe tener al menos 10 caracteres",
+          },
+          maxLength: {
+            value: 500,
+            message: "El campo mensaje debe tener un máximo de 500 caracteres",
+          },
+          pattern: {
+            value: /^[A-Za-zñÑáéíóúÁÉÍÓÚ0-9\s.,!?()\-]+$/,
+            message:
+              "El campo mensaje solo puede contener letras, números y ciertos caracteres de puntuación (. , ! ? () -)",
+          },
+          validate: {
+            noExtraSpaces: (value) =>
+              !/\s{2,}/.test(value) ||
+              "El campo mensaje no puede contener múltiples espacios consecutivos",
+            noOnlySpaces: (value) =>
+              value.trim().length > 0 ||
+              "El campo mensaje no puede estar compuesto solo de espacios en blanco",
+          },
         }}
         register={register}
         textarea
       />
+      <div className="text-center mt-3">
+        <button className="btn btn-primary mb-3" type="submit">
+          Enviar
+        </button>
+      </div>
     </form>
   );
 };
