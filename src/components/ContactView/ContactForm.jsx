@@ -1,6 +1,8 @@
 import { useForm } from "react-hook-form";
 import Input from "../ui/input/Input";
 import { useState } from "react";
+import { sendEmail } from "../../utilities/sendEmail";
+
 
 const ContactForm = () => {
   const {
@@ -14,6 +16,7 @@ const ContactForm = () => {
 
   const handleSumbit = (data) => {
     console.log(data);
+    sendEmail(data);
     reset();
     setResetCount(true);
     setTimeout(() => setResetCount(false), 0); 
