@@ -1,11 +1,8 @@
-import Navbar from "./components/Common/navBar/navbar";
+
+import HomeView from "./views/HomeView";
 
 function App() {
-  return (
-    <>
-      <Navbar></Navbar>
-    </>
-  );
+  return <HomeView />;
 }
 
 export default App;
