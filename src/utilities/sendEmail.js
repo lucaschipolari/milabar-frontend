@@ -1,7 +1,7 @@
 import emailjs from "emailjs-com";
 
-export const sendEmail = (data) => {
-  emailjs
+export const sendEmailToClient = (data) => {
+  return emailjs
     .send(
       "service_8zberdz",
       "template_a0cdhz8",
@@ -23,8 +23,10 @@ export const sendEmail = (data) => {
         console.log("fallo al enviar el mail", error);
       }
     );
+};
 
-  emailjs
+export const sendEmailToRestaurant = (data) => {
+  return emailjs
     .send(
       "service_8zberdz",
       "template_q01xpm8",
@@ -47,5 +49,3 @@ export const sendEmail = (data) => {
       }
     );
 };
-
-

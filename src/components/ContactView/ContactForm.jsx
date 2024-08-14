@@ -1,8 +1,11 @@
 import { useForm } from "react-hook-form";
 import Input from "../ui/input/Input";
 import { useState } from "react";
-import { sendEmail } from "../../utilities/sendEmail";
-
+import {
+  sendEmailToClient,
+  sendEmailToRestaurant,
+} from "../../utilities/sendEmail";
+import Swal from "sweetalert2";
 
 const ContactForm = () => {
   const {
@@ -16,10 +19,39 @@ const ContactForm = () => {
 
   const handleSumbit = (data) => {
     console.log(data);
-    sendEmail(data);
-    reset();
-    setResetCount(true);
-    setTimeout(() => setResetCount(false), 0); 
+
+    Swal.fire({
+      title: "Estas a punto de enviar un email",
+      text: "¿Estás seguro de enviarlo?",
+      icon: "warning",
+      showCancelButton: true,
+      cancelButtonText: "Cancelar",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Si, enviar!",
+      confirmButtonColor: "#3085d6",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        Promise.all([sendEmailToClient(data), sendEmailToRestaurant(data)])
+
+          .then(() => {
+            Swal.fire({
+              title: "Enviado",
+              text: "Tu email fue enviado con exito!",
+              icon: "success",
+            });
+            reset();
+            setResetCount(true);
+            setTimeout(() => setResetCount(false), 0);
+          })
+          .catch(() => {
+            Swal.fire({
+              title: "Error",
+              text: "Hubo un error al enviar el email",
+              icon: "error",
+            });
+          });
+      }
+    });
   };
 
   return (
