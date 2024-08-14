@@ -9,20 +9,20 @@ import {
 
 import "./style.css";
 import { useState } from "react";
+import NavItem from "./NavItem";
 
 const Navbar = () => {
   const [activeIndex, setActiveIndex] = useState(0);
-  const [cartCount, setCartCount] = useState(0); // Estado para el contador del carrito
+  const [cartCount, setCartCount] = useState(0);
 
   const navItems = [
-    { icon: faHouse, text: "Home", href: "#" },
-    { icon: faAddressBook, text: "Contacto", href: "#" },
-    { icon: faCartShopping, text: "Carrito", href: "#" },
-    { icon: faUsersLine, text: "Nosotros", href: "#" },
-    { icon: faHeart, text: "Favoritos", href: "#" },
+    { icon: faHouse, text: "Home", to: "#" },
+    { icon: faAddressBook, text: "Contacto", to: "#" },
+    { icon: faCartShopping, text: "Carrito", to: "#" },
+    { icon: faUsersLine, text: "Nosotros", to: "#" },
+    { icon: faHeart, text: "Favoritos", to: "#" },
   ];
 
-  // Función para incrementar el contador del carrito (simulación)
   const incrementCartCount = () => {
     setCartCount((prevCount) => prevCount + 1);
   };
@@ -31,24 +31,15 @@ const Navbar = () => {
     <div className="div-body">
       <ul className="navigation">
         {navItems.map((item, index) => (
-          <li
+          <NavItem
             key={index}
-            className={`list ${index === activeIndex ? "active" : ""}`}
-            onClick={() => {
-              setActiveIndex(index);
-              if (index === 2) incrementCartCount(); // Incrementa el contador al hacer clic en el carrito
-            }}
-          >
-            <a href={item.href}>
-              <span className="icon-container">
-                <FontAwesomeIcon icon={item.icon} className="icon" />
-                {index === 2 && cartCount > 0 && (
-                  <span className="cart-count">{cartCount}</span>
-                )}
-              </span>
-              <span className="text">{item.text}</span>
-            </a>
-          </li>
+            item={item}
+            index={index}
+            activeIndex={activeIndex}
+            setActiveIndex={setActiveIndex}
+            cartCount={cartCount}
+            incrementCartCount={incrementCartCount}
+          />
         ))}
         <div className="indicator"></div>
       </ul>
