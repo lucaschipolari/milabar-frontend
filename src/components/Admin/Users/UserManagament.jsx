@@ -2,65 +2,28 @@ import { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch, faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 import UserList from "./UserList";
-import { useQuery } from "@tanstack/react-query";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import "./styles/userCard.css";
 import { Link } from "react-router-dom";
+import { toast } from "sonner";
+import { getUsersFn, putUserFn } from "../../../api/usersApi"; // Asegúrate de importar la función correctamente
 
 const UserManagement = () => {
   const [searchTerm, setSearchTerm] = useState("");
-  const [filter, setFilter] = useState("habilitados"); // puede ser 'habilitados' o 'deshabilitados'
+  const [filter, setFilter] = useState("enabled"); // puede ser 'habilitado' o 'deshabilitado'
 
-  const fetchUsersFromDB = async () => {
-    // Datos de ejemplo
-    const exampleUsers = [
-      {
-        id: 1,
-        name: "Juan Pérez",
-        ordersCount: 5,
-        status: "habilitados",
-        pic: "https://upload.wikimedia.org/wikipedia/commons/f/fb/Pruebas1.jpg",
-      },
-      {
-        id: 2,
-        name: "María López",
-        ordersCount: 2,
-        status: "habilitados",
-        pic: "https://upload.wikimedia.org/wikipedia/commons/f/fb/Pruebas1.jpg",
-      },
-      {
-        id: 3,
-        name: "Carlos García",
-        ordersCount: 8,
-        status: "deshabilitados",
-        pic: "https://upload.wikimedia.org/wikipedia/commons/f/fb/Pruebas1.jpg",
-      },
-      {
-        id: 4,
-        name: "Ana Fernández",
-        ordersCount: 4,
-        status: "habilitados",
-        pic: "https://upload.wikimedia.org/wikipedia/commons/f/fb/Pruebas1.jpg",
-      },
-      {
-        id: 5,
-        name: "Lucía Martínez",
-        ordersCount: 7,
-        status: "deshabilitados",
-        pic: "https://upload.wikimedia.org/wikipedia/commons/f/fb/Pruebas1.jpg",
-      },
-    ];
-
-    // Simula una llamada a la base de datos con los datos de ejemplo
-    return exampleUsers;
-  };
+  const queryClient = useQueryClient();
 
   const {
-    data: usersData = [], // default value to avoid undefined errors
+    data: dataUsers = { data: [] },
     isLoading,
     isError,
   } = useQuery({
-    queryKey: ["users"],
-    queryFn: fetchUsersFromDB,
+    queryKey: ["users", filter], // La clave de la consulta incluye el filtro
+    queryFn: () => getUsersFn(filter), // Pasar el filtro a la función `getUsersFn`
+    onError: (e) => {
+      toast.error(`Error fetching users: ${e.message}`);
+    },
   });
 
   if (isLoading) {
@@ -82,12 +45,6 @@ const UserManagement = () => {
   const handleSearchChange = (event) => {
     setSearchTerm(event.target.value);
   };
-
-  const filteredUsers = usersData.filter(
-    (user) =>
-      user.name.toLowerCase().includes(searchTerm.toLowerCase()) &&
-      user.status === filter
-  );
 
   return (
     <>
@@ -115,27 +72,23 @@ const UserManagement = () => {
         <div className="filter">
           <button
             className={
-              filter === "habilitados"
-                ? "filter-button active"
-                : "filter-button "
+              filter === "enabled" ? "filter-button active" : "filter-button "
             }
-            onClick={() => setFilter("habilitados")}
+            onClick={() => setFilter("enabled")} // Cambia el filtro
           >
-            Habilitados
+            Habilitado
           </button>
           <button
             className={
-              filter === "deshabilitados"
-                ? "filter-button active"
-                : "filter-button "
+              filter === "disabled" ? "filter-button active" : "filter-button "
             }
-            onClick={() => setFilter("deshabilitados")}
+            onClick={() => setFilter("disabled")} // Cambia el filtro
           >
-            Deshabilitados
+            Deshabilitado
           </button>
         </div>
 
-        <UserList filteredUsers={filteredUsers} />
+        <UserList filteredUsers={dataUsers.data} filter={filter} />
       </div>
     </>
   );
