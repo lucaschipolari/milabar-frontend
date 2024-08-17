@@ -1,4 +1,5 @@
 import { useQuery } from '@tanstack/react-query';
+import { useState } from 'react';
 
 import { getProductosFn } from '../../../api/productos';
 import TablaFilaProductos from './TablaFilaProductos';
@@ -12,6 +13,11 @@ const TablaProductos = () => {
     queryKey: ['productos'],
     queryFn: getProductosFn,
   });
+  const [searchTerm, setSearchTerm] = useState('');
+
+  const filteredProducts = productos?.data?.filter(producto =>
+    producto.nombre.toLowerCase().includes(searchTerm.toLowerCase())
+  ) || [];
 
   if (isLoading) {
     return <p className='mt-3 text-center'>Cargando datos...</p>;
@@ -32,10 +38,20 @@ const TablaProductos = () => {
       </div>
     );
   }
+
   return (
     <div className='table-responsive mt-4 shadow-sm rounded-4 p-3'>
       <h3 className='d-flex justify-content-center align-items-center'>Productos</h3>
-
+      <div className="mb-3">
+        <input
+          id="searchInput"
+          type="text"
+          className="form-control"
+          placeholder="Buscar en la tabla..."
+          value={searchTerm}
+          onChange={(e) => setSearchTerm(e.target.value)}
+        />
+      </div>
       <table className='table'>
         <thead>
           <tr>
@@ -46,12 +62,13 @@ const TablaProductos = () => {
           </tr>
         </thead>
         <tbody>
-          {productos.data.map((producto, index) => {
-            return <TablaFilaProductos producto={producto} index={index} key={producto.id} />;
-          })}
+          {filteredProducts.map((producto, index) => (
+            <TablaFilaProductos producto={producto} index={index} key={producto.id} />
+          ))}
         </tbody>
       </table>
     </div>
   );
 };
+
 export default TablaProductos;

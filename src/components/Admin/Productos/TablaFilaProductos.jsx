@@ -62,8 +62,8 @@ const TablaFilaProductos = (props) => {
 
   return (
     <>
-      <tr>
-        <td className='row-height'>{index + 1}</td>
+      <tr className='row-height'>
+        <td className='h-100'>{index + 1}</td>
         <td>
           <img
             alt={producto.nombre}
@@ -72,7 +72,7 @@ const TablaFilaProductos = (props) => {
           />
         </td>
         <td>{producto.nombre}</td>
-        <td className='text-end row row-size gap-2'>
+        <td className='row-height text-end row row-size gap-2'>
           <Link
               className='btn btn-primary col-auto'
               to="#"
@@ -81,7 +81,7 @@ const TablaFilaProductos = (props) => {
                 handleMoreInfo();
               }}
             >
-              <i className="bi bi-eye tamaño-icono"></i>
+              <i className="bi bi-plus-circle tamaño-icono"></i>
             </Link>
           <Link className='btn btn-warning col-auto' to={`/detalle/${producto.id}`} onClick={handleEdit}>
             <i className="bi bi-pencil-square tamaño-icono"></i>

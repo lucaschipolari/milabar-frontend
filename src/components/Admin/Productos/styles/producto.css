@@ -1,9 +1,10 @@
 .row-height {
     vertical-align: middle;
+    min-height: 85px;
   }
   
   .productos-tabla-imagen {
-    width: 70px;
+    width: 65px;
     height: auto;
   }
   
