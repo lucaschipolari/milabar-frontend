@@ -1,18 +1,16 @@
 import { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch, faArrowLeft } from "@fortawesome/free-solid-svg-icons";
-import UserList from "./UserList";
-import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
+import UserList from "../components/Admin/Users/UserList";
+import { useQuery } from "@tanstack/react-query";
 import "./styles/userCard.css";
 import { Link } from "react-router-dom";
 import { toast } from "sonner";
-import { getUsersFn, putUserFn } from "../../../api/usersApi"; // Asegúrate de importar la función correctamente
+import { getUsersFn } from "../api/usersApi"; // Asegúrate de importar la función correctamente
 
 const UserManagement = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [filter, setFilter] = useState("enabled"); // puede ser 'habilitado' o 'deshabilitado'
-
-  const queryClient = useQueryClient();
 
   const {
     data: dataUsers = { data: [] },
@@ -74,7 +72,7 @@ const UserManagement = () => {
             className={
               filter === "enabled" ? "filter-button active" : "filter-button "
             }
-            onClick={() => setFilter("enabled")} // Cambia el filtro
+            onClick={() => setFilter("enabled")}
           >
             Habilitado
           </button>
@@ -82,7 +80,7 @@ const UserManagement = () => {
             className={
               filter === "disabled" ? "filter-button active" : "filter-button "
             }
-            onClick={() => setFilter("disabled")} // Cambia el filtro
+            onClick={() => setFilter("disabled")}
           >
             Deshabilitado
           </button>
