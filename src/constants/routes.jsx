@@ -1,4 +1,8 @@
 import { createBrowserRouter } from "react-router-dom";
+import RootView from "../views/routing/RootView";
+import UserDetailView from "../views/UserDetailView";
+import HomeView from "../views/HomeView";
+import UserManagement from "../views/UserManagament";
 
 import RootView from '../views/routing/Producto/RootView';
 import PrincipalProductoView from '../views/PrincipalProductoView';
@@ -7,21 +11,51 @@ import DetalleProductoView from '../views/DetalleProductoView';
 export const router = createBrowserRouter([
   {
     path: "/",
-    element: <RootView/>,
+    element: <RootView />,
     children: [
       // RUTAS PÚBLICAS
       {
-        path: "/productos",
-        element: <PrincipalProductoView/>,
-      },
-      
-      {
-        path:"/detalle/:id",
-        element: <DetalleProductoView/>,
+        path: "",
+        element: <HomeView />,
       },
       {
-        path:"/agregar-producto",
-        element: <DetalleProductoView/>,
+        path: "users/detail/:id",
+        element: <UserDetailView />,
+      },
+      {
+        path: "users",
+        element: <UserManagement />,
+      },
+      // RUTAS DE AUTENTICACION
+      // no deberían poder accederse estando logueados
+      {
+        path: "",
+        element: <div></div>,
+        children: [
+          {
+            path: "login",
+            element: <div></div>,
+          },
+          {
+            path: "register",
+            element: <div></div>,
+          },
+        ],
+      },
+      // RUTAS PRIVADAS
+      {
+        path: "",
+        element: <div></div>,
+        children: [
+          {
+            path: "admin",
+            element: <div></div>,
+          },
+        ],
+      },
+      {
+        path: "*",
+        element: <div></div>,
       },
     ],
   },

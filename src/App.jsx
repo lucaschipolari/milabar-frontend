@@ -1,5 +1,12 @@
+
+import ContactView from "./views/ContactView";
 function App() {
-  return <></>;
+  return (
+    <>
+    {/* <HomeView /> */}
+      <ContactView />
+    </>
+  );
 }
 
 export default App;
