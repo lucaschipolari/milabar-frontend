@@ -1,50 +1,7 @@
 import { Link, useParams } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
-
-// Simulación de una función para obtener datos de usuario
-const getUserFn = async (id) => {
-  // Datos de ejemplo
-  const exampleUsers = [
-    {
-      id: 1,
-      name: "Juan Pérez",
-      ordersCount: 5,
-      status: "habilitados",
-      pic: "https://upload.wikimedia.org/wikipedia/commons/f/fb/Pruebas1.jpg",
-    },
-    {
-      id: 2,
-      name: "María López",
-      ordersCount: 2,
-      status: "habilitados",
-      pic: "https://upload.wikimedia.org/wikipedia/commons/f/fb/Pruebas1.jpg",
-    },
-    {
-      id: 3,
-      name: "Carlos García",
-      ordersCount: 8,
-      status: "deshabilitados",
-      pic: "https://upload.wikimedia.org/wikipedia/commons/f/fb/Pruebas1.jpg",
-    },
-    {
-      id: 4,
-      name: "Ana Fernández",
-      ordersCount: 4,
-      status: "habilitados",
-      pic: "https://upload.wikimedia.org/wikipedia/commons/f/fb/Pruebas1.jpg",
-    },
-    {
-      id: 5,
-      name: "Lucía Martínez",
-      ordersCount: 7,
-      status: "deshabilitados",
-      pic: "https://upload.wikimedia.org/wikipedia/commons/f/fb/Pruebas1.jpg",
-    },
-  ];
-
-  // Simula la búsqueda del usuario por id
-  return exampleUsers.find((user) => user.id === parseInt(id));
-};
+import { getDetailUserFn } from "../api/usersApi";
+import "../components/Admin/Users/styles/userDetail.css";
 
 const UserDetailView = () => {
   const { id } = useParams();
@@ -55,7 +12,7 @@ const UserDetailView = () => {
     isError,
   } = useQuery({
     queryKey: [`user-${id}`],
-    queryFn: () => getUserFn(id),
+    queryFn: () => getDetailUserFn(id),
   });
 
   if (isLoading) {
@@ -75,14 +32,37 @@ const UserDetailView = () => {
       <Link className="btn btn-secondary mb-3" to={-1}>
         Volver
       </Link>
-      <div className="card">
+      <div className="card text-center">
         <div className="card-body">
-          <div className="d-flex align-items-center">
-            <img src={user.pic} alt={user.name} className="user-pic me-3" />
-            <div>
-              <h5 className="card-title">{user.name}</h5>
-              <p className="card-text">Nro de pedidos: {user.ordersCount}</p>
-              <p className="card-text">Estado: {user.status}</p>
+          <div className="d-flex flex-column align-items-center">
+            <div className="user-pic-container mb-3">
+              <img
+                src={user.data.avatar}
+                alt={user.data.username}
+                className="user-pic rounded-circle img-fluid"
+                style={{ width: "150px", height: "150px", objectFit: "cover" }}
+              />
+            </div>
+            <h5 className="card-title mb-1">{user.data.username}</h5>
+            <p className="card-text text-muted mb-4">
+              Email: {user.data.email}
+            </p>
+
+            <div className="container">
+              <div className="row g-3">
+                <div className="col-6">
+                  <div className="p-3 border rounded bg-light h-100">
+                    <p className="mb-1 fw-bold">Pedidos realizados:</p>
+                    <p className="display-6">{user.data.orderCount}</p>
+                  </div>
+                </div>
+                <div className="col-6">
+                  <div className="p-3 border rounded bg-light h-100">
+                    <p className="mb-1 fw-bold">Rol:</p>
+                    <p className="display-6">{user.data.role}</p>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
