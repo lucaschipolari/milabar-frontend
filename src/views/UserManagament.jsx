@@ -3,14 +3,15 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch, faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 import UserList from "../components/Admin/Users/UserList";
 import { useQuery } from "@tanstack/react-query";
-import "./styles/userCard.css";
+import "../components/Admin/Users/styles/userCard.css";
 import { Link } from "react-router-dom";
 import { toast } from "sonner";
 import { getUsersFn } from "../api/usersApi"; // Asegúrate de importar la función correctamente
 
 const UserManagement = () => {
   const [searchTerm, setSearchTerm] = useState("");
-  const [filter, setFilter] = useState("enabled"); // puede ser 'habilitado' o 'deshabilitado'
+  const [filter, setFilter] = useState("enabled"); // puede ser 'enabled' o 'disabled'
+  const [isAscending, setIsAscending] = useState(true);
 
   const {
     data: dataUsers = { data: [] },
@@ -22,6 +23,18 @@ const UserManagement = () => {
     onError: (e) => {
       toast.error(`Error fetching users: ${e.message}`);
     },
+  });
+
+  const handleSort = () => {
+    setIsAscending(!isAscending); // Cambiar la dirección del orden
+  };
+
+  const sortedUsers = [...dataUsers.data].sort((a, b) => {
+    if (isAscending) {
+      return a.username.localeCompare(b.username);
+    } else {
+      return b.username.localeCompare(a.username);
+    }
   });
 
   if (isLoading) {
@@ -44,6 +57,10 @@ const UserManagement = () => {
     setSearchTerm(event.target.value);
   };
 
+  const filteredUsers = sortedUsers.filter((user) =>
+    user.username.toLowerCase().includes(searchTerm.toLowerCase())
+  );
+
   return (
     <>
       <Link className="btn btn-secondary mb-3" to={-1}>
@@ -64,13 +81,15 @@ const UserManagement = () => {
           <button>
             <FontAwesomeIcon icon={faSearch} />
           </button>
-          <button>Ordenar por...</button>
+          <button onClick={handleSort}>
+            {isAscending ? "Ordenar Descendente" : "Ordenar Ascendente"}
+          </button>
         </div>
 
         <div className="filter">
           <button
             className={
-              filter === "enabled" ? "filter-button active" : "filter-button "
+              filter === "enabled" ? "filter-button active" : "filter-button"
             }
             onClick={() => setFilter("enabled")}
           >
@@ -78,7 +97,7 @@ const UserManagement = () => {
           </button>
           <button
             className={
-              filter === "disabled" ? "filter-button active" : "filter-button "
+              filter === "disabled" ? "filter-button active" : "filter-button"
             }
             onClick={() => setFilter("disabled")}
           >
@@ -86,7 +105,7 @@ const UserManagement = () => {
           </button>
         </div>
 
-        <UserList filteredUsers={dataUsers.data} filter={filter} />
+        <UserList filteredUsers={filteredUsers} filter={filter} />
       </div>
     </>
   );
