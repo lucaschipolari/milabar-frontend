@@ -3,8 +3,6 @@ import RootView from "../views/routing/RootView";
 import UserDetailView from "../views/UserDetailView";
 import HomeView from "../views/HomeView";
 import UserManagement from "../views/UserManagament";
-
-import RootView from '../views/routing/Producto/RootView';
 import PrincipalProductoView from '../views/PrincipalProductoView';
 import DetalleProductoView from '../views/DetalleProductoView';
 
