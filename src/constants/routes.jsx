@@ -2,7 +2,7 @@ import { createBrowserRouter } from "react-router-dom";
 import RootView from "../views/routing/RootView";
 import UserDetailView from "../views/UserDetailView";
 import HomeView from "../views/HomeView";
-import UserManagement from "../components/Admin/Users/UserManagament";
+import UserManagement from "../views/UserManagament";
 
 export const router = createBrowserRouter([
   {
