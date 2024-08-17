@@ -1,7 +1,7 @@
 import PropTypes from "prop-types";
 
 import "./styles/userCard.css";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { putUserFn } from "../../../api/usersApi";
 import { toast } from "sonner";
@@ -39,7 +39,9 @@ const UserCard = (props) => {
             <button className="btn btn-danger" onClick={handleToggleStatus}>
               {user.isEnabled ? "Deshabilitar" : "Habilitar"}
             </button>
-            <Link className="badge bg-primary">Más info</Link>
+            <NavLink className="badge bg-primary" to={`detail/${user.id}`}>
+              Más info
+            </NavLink>
           </div>
         </div>
       </div>

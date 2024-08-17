@@ -13,18 +13,8 @@ export const putUserFn = async ({ id, isEnabled }) => {
   }
 };
 
-export const getUsersFn2 = async (filter) => {
-  const res = await fetch(`${BACKEND_URL}/usersPrueba/users/${filter}`);
-  const users = res.json();
-
-  if (!res.ok || !Array.isArray(users)) {
-    throw new Error("Error fetching data");
-  }
-  return users;
-};
 export const getUsersFn = async (filter) => {
   const res = await fetch(`${BACKEND_URL}/api/v1/usersPrueba/users/${filter}`);
-  console.log(`${BACKEND_URL}/api/v1/usersPrueba/users/${filter}`);
 
   // Revisa el tipo de contenido de la respuesta
   const contentType = res.headers.get("content-type");
@@ -41,4 +31,16 @@ export const getUsersFn = async (filter) => {
     console.error("Respuesta no JSON recibida:", text);
     throw new Error("El servidor no devolvió un JSON válido");
   }
+};
+export const getDetailUserFn = async (id) => {
+  const res = await fetch(
+    `${BACKEND_URL}/api/v1/usersPrueba/users/detail/${id}`
+  );
+  const user = await res.json();
+
+  if (!res.ok) {
+    throw new Error("Error fetching data");
+  }
+  console.log(user);
+  return user;
 };
