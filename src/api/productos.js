@@ -1,13 +1,13 @@
 const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
 
 export const postProductoFn = async (data) => {
-  const token = sessionStorage.getItem('token');
-
-  const res = await fetch(`${BACKEND_URL}/productos`, {
+  //const token = sessionStorage.getItem('token');
+console.log(data)
+  const res = await fetch(`${BACKEND_URL}/api/v1/productos/agregar-producto`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
-      Authorization: `Bearer ${token}`,
+      //Authorization: `Bearer ${token}`,
     },
     body: JSON.stringify(data),
   });
@@ -18,7 +18,7 @@ export const postProductoFn = async (data) => {
 };
 
 export const getProductosFn = async () => {
-  const res = await fetch(`${BACKEND_URL}/productos`);
+  const res = await fetch(`${BACKEND_URL}/api/v1/productos`);
   const data = await res.json();
 
   if (!res.ok) {
@@ -29,7 +29,7 @@ export const getProductosFn = async () => {
 };
 
 export const getProductoFn = async (productoId) => {
-  const res = await fetch(`${BACKEND_URL}/productos/${productoId}`);
+  const res = await fetch(`${BACKEND_URL}/api/v1/productos/detalle/${productoId}`);
   const data = await res.json();
 
   if (!res.ok) {
@@ -42,12 +42,12 @@ export const getProductoFn = async (productoId) => {
 };
 
 export const deleteProductoFn = async (productoId) => {
-  const token = sessionStorage.getItem('token');
+  //const token = sessionStorage.getItem('token');
 
-  const res = await fetch(`${BACKEND_URL}/productos/${productoId}`, {
+  const res = await fetch(`${BACKEND_URL}/api/v1/productos/${productoId}`, {
     method: 'DELETE',
     headers: {
-      Authorization: `Bearer ${token}`,
+      //Authorization: `Bearer ${token}`,
     },
   });
 
@@ -59,13 +59,13 @@ export const deleteProductoFn = async (productoId) => {
 };
 
 export const putProductoFn = async ({ productoId, data }) => {
-  const token = sessionStorage.getItem('token');
+  //const token = sessionStorage.getItem('token');
 
-  const res = await fetch(`${BACKEND_URL}/productos/${productoId}`, {
+  const res = await fetch(`${BACKEND_URL}/api/v1/productos/detalle/${productoId}`, {
     method: 'PUT',
     headers: {
       'Content-Type': 'application/json',
-      Authorization: `Bearer ${token}`,
+      //Authorization: `Bearer ${token}`,
     },
     body: JSON.stringify(data),
   });

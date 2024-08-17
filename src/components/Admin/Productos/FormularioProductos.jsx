@@ -1,6 +1,8 @@
 import { useForm } from 'react-hook-form';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { toast } from 'sonner';
+import { useNavigate } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 
 import InputProducto from '../../ui/InputProducto';
 import SelectProducto from '../../ui/SelectProducto';
@@ -9,6 +11,7 @@ import { postProductoFn, putProductoFn } from '../../../api/productos.js';
 import { useProducto } from '../../../stores/useProducto.js';
 
 const FormularioProductos = () => {
+    const navigate = useNavigate();
     const {
         register,
         handleSubmit: onSubmitRHF,
@@ -57,7 +60,18 @@ const FormularioProductos = () => {
       });
       const { productoToEdit, clearProductoToEdit } = useProducto();
 
+      if (location.pathname === '/agregar-producto' && productoToEdit) {
+        clearProductoToEdit();
+      }
+
       if (productoToEdit) {
+        setValue('nombre', productoToEdit.nombre);
+        setValue('descripcion', productoToEdit.descripcion);
+        setValue('categoria', productoToEdit.categoria);
+        setValue('unidadmedida', productoToEdit.unidadmedida);
+        setValue('preciounitario', productoToEdit.preciounitario);
+        setValue('imagen', productoToEdit.imagen);
+        setValue('habilitado', productoToEdit.habilitado);
       }
 
       const handleSubmit = (data) => {
@@ -65,9 +79,11 @@ const FormularioProductos = () => {
     
         if (productoToEdit) putProducto({ productoId: productoToEdit.id, data });
         else postProducto(data);
+        reset();
       };
     
       const handleCancelEdit = () => {
+        navigate(-1);
         clearProductoToEdit();
         reset();
       };
@@ -76,19 +92,19 @@ const FormularioProductos = () => {
     <div className='p-3 bg-white rounded-4 border-light shadow-sm'>
         <h3 className='text-center'>Formulario de productos</h3>
         <form className='card p-3 bg-light' onSubmit={onSubmitRHF(handleSubmit)}>
-            <h1>Crear nueva entrada</h1>
+            <h1 className='text-center'>{productoToEdit ? 'Editar producto' : 'Crear producto'}</h1>
             <hr />
             {productoToEdit && (
                 <div className='alert alert-warning'>
-                Atención: Estás modificando la entrada con título{' '}
-                <b>{productoToEdit.title}</b>
+                Atención: Estás modificando la entrada con nombre{' '}
+                <b>{productoToEdit.nombre}</b>
                 </div>
             )}
             <InputProducto
                 className='mb-2'
-                error={errors.name}
+                error={errors.nombre}
                 label='Nombre'
-                name='name'
+                name='nombre'
                 options={{
                 required: 'Este campo es requerido',
                 minLength: {
@@ -106,9 +122,9 @@ const FormularioProductos = () => {
             <InputProducto
                 textarea
                 className='mb-3'
-                error={errors.description}
+                error={errors.descripcion}
                 label='Descripcion'
-                name='description'
+                name='descripcion'
                 options={{
                 required: 'Este campo es requerido',
                 minLength: {
@@ -125,8 +141,8 @@ const FormularioProductos = () => {
             />
             <SelectProducto 
               className='mb-3'
-              error={errors.category}
-              name='category'
+              error={errors.categoria}
+              name='categoria'
               label='Categoria del producto'
               categories= {["SANGUCHE", "GASEOSA", "ACOMPAÑAMIENTO", "ADEREZO"]}
               options={{
@@ -160,9 +176,9 @@ const FormularioProductos = () => {
             </div>
             <InputProducto
                 className='mb-2'
-                error={errors.imageUrl}
+                error={errors.imagen}
                 label='Imagen'
-                name='imageUrl'
+                name='imagen'
                 options={{
                 required: 'Este campo es requerido',
                 minLength: {
@@ -179,17 +195,51 @@ const FormularioProductos = () => {
                 placeholder='https://google.com'
                 register={register}
             />
-            <hr />
-            <div className='text-end'>
-                {productoToEdit && (
-                <button className='btn' type='button' onClick={handleCancelEdit}>
-                    Cancelar edición
-                </button>
-                )}
-                <button className='btn btn-danger' type='submit'>
-                Guardar
-                </button>
+            <div className="form-group">
+          <label>Está habilitado</label>
+          <div className="form-check">
+            <input
+              className={`form-check-input ${errors.habilitado ? 'is-invalid' : ''}`}
+              type="radio"
+              name="habilitado"
+              id="habilitado-si"
+              value="si"
+              {...register('habilitado', { required: 'Este campo es requerido' })}
+            />
+            <label className="form-check-label" htmlFor="habilitado-si">
+              Sí
+            </label>
+          </div>
+          <div className="form-check">
+            <input
+              className={`form-check-input ${errors.habilitado ? 'is-invalid' : ''}`}
+              type="radio"
+              name="habilitado"
+              id="habilitado-no"
+              value="no"
+              {...register('habilitado', { required: 'Este campo es requerido' })}
+            />
+            <label className="form-check-label" htmlFor="habilitado-no">
+              No
+            </label>
+          </div>
+          {errors.habilitado && (
+            <div className="invalid-feedback d-block">
+              <span className="badge text-bg-danger">{errors.habilitado.message}</span>
             </div>
+          )}
+        </div>
+                <hr />
+                <div className='text-end'>
+                    {productoToEdit && (
+                    <button className='btn' type='button' onClick={handleCancelEdit}>
+                        Cancelar edición
+                    </button>
+                    )}
+                    <button className='btn btn-danger' type='submit'>
+                    Guardar
+                    </button>
+                </div>
         </form>
     </div>
   )

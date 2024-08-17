@@ -11,12 +11,16 @@ export const router = createBrowserRouter([
     children: [
       // RUTAS PÚBLICAS
       {
-        path: "/",
+        path: "/productos",
         element: <PrincipalProductoView/>,
       },
       
       {
-        path:"/detalle",
+        path:"/detalle/:id",
+        element: <DetalleProductoView/>,
+      },
+      {
+        path:"/agregar-producto",
         element: <DetalleProductoView/>,
       },
     ],
