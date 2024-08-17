@@ -4,18 +4,29 @@ import './styles/producto.css';
 
 const ModalProductos = ({ values, onClose }) => {
   return (
-    <div className="modal fade show d-block shadow-lg" tabIndex="-1">
-      <div className="modal-dialog">
-        <div className="modal-content">
+    <div className="modal fade show d-block" tabIndex="-1">
+      <div className="modal-dialog modal-size">
+        <div className="modal-content container">
           <div className="modal-header d-flex justify-content-center align-items-center">
             <h5 className="modal-title">{values.nombre}</h5>
           </div>
           <div className="modal-body">
-            <p><strong>Descripción:</strong> {values.descripcion}</p>
-            <p><strong>Categoría:</strong> {values.categoria}</p>
-            <p><strong>Precio: </strong> ${values.preciounitario} por {values.unidadmedida}</p>
-            <p><strong>Imagen:</strong> <img src={values.imagen} alt={values.nombre} className='img-fluid' /></p>
-            <p><strong>Habilitado:</strong> {values.habilitado ? 'Sí' : 'No'}</p>
+            <img src={values.imagen} alt={values.nombre} className='img-fluid mb-2' />
+            <p>{values.descripcion}</p>
+            <div className="row justify-content-around">
+                <div className="bg-primary col-3 p-2 rounded-4 mx-1">
+                    <p className="text-center mb-0"><strong>Categoría</strong></p>
+                    <p className="text-center mb-0">{values.categoria}</p>
+                </div>
+                <div className="bg-secondary col-3 p-2 rounded-4 mx-1">
+                    <p className="text-center mb-0"><strong>Precio</strong></p>
+                    <p className="text-center mb-0">${values.preciounitario} {values.unidadmedida}</p>
+                </div>
+                <div className="bg-danger col-3 p-2 rounded-4 mx-1">
+                    <p className="text-center mb-0"><strong>Habilitado</strong></p>
+                    <p className="text-center mb-0">{values.habilitado ? 'Sí' : 'No'}</p>
+                </div>
+            </div>
           </div>
           <div className="modal-footer">
             <button type="button" className="btn btn-secondary" onClick={onClose}>Cerrar</button>
