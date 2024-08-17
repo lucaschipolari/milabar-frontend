@@ -3,6 +3,7 @@ import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { toast } from 'sonner';
 import { useNavigate } from 'react-router-dom';
 import { useLocation } from 'react-router-dom';
+import Swal from 'sweetalert2';
 
 import InputProducto from '../../ui/InputProducto';
 import SelectProducto from '../../ui/SelectProducto';
@@ -74,11 +75,59 @@ const FormularioProductos = () => {
         setValue('habilitado', productoToEdit.habilitado);
       }
 
-      const handleSubmit = (data) => {
-        toast.loading('Guardando... Aguarde');
-    
-        if (productoToEdit) putProducto({ productoId: productoToEdit.id, data });
-        else postProducto(data);
+      const handleSubmit = async (data) => {
+        if (productoToEdit){
+          const action = await Swal.fire({
+            title: 'Atención',
+            icon: 'info',
+            html: `¿Estás seguro que deseas editar el producto <b>"${data.nombre}"</b>?`,
+            confirmButtonText: 'Si, editar',
+            cancelButtonText: 'No, cancelar',
+            showCancelButton: true,
+          });
+      
+          if (action.isConfirmed) {
+            toast.loading('Actualizando entrada...');
+            putProducto({ productoId: productoToEdit.id, data });
+            Swal.fire({
+              title: 'Éxito',
+              text: 'Entrada actualizada. Será redirigido a la tabla de productos',
+              icon: 'success',
+              timer: 4000,
+              timerProgressBar: true,
+              showConfirmButton: false,
+              willClose: () => {
+                navigate(-1);
+              }
+            });
+          }
+        } 
+        else{
+          const action = await Swal.fire({
+            title: 'Atención',
+            icon: 'info',
+            html: `¿Estás seguro que deseas guardar el nuevo producto <b>"${data.nombre}"</b>?`,
+            confirmButtonText: 'Si, guardar',
+            cancelButtonText: 'No, cancelar',
+            showCancelButton: true,
+          });
+      
+          if (action.isConfirmed) {
+            toast.loading('Guardando entrada...');
+            postProducto(data);
+            Swal.fire({
+              title: 'Éxito',
+              text: 'Entrada guardada. Será redirigido a la tabla de productos',
+              icon: 'success',
+              timer: 4000,
+              timerProgressBar: true,
+              showConfirmButton: false,
+              willClose: () => {
+                navigate(-1);
+              }
+            });
+          }
+        }
         reset();
       };
     
@@ -229,7 +278,7 @@ const FormularioProductos = () => {
             </div>
           )}
         </div>
-                <hr />
+        <hr />
                 <div className='text-end'>
                     {productoToEdit && (
                     <button className='btn' type='button' onClick={handleCancelEdit}>
