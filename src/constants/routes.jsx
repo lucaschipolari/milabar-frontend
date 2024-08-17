@@ -3,8 +3,9 @@ import RootView from "../views/routing/RootView";
 import UserDetailView from "../views/UserDetailView";
 import HomeView from "../views/HomeView";
 import UserManagement from "../views/UserManagament";
-import PrincipalProductoView from '../views/PrincipalProductoView';
-import DetalleProductoView from '../views/DetalleProductoView';
+import PrincipalProductoView from "../views/PrincipalProductoView";
+import DetalleProductoView from "../views/DetalleProductoView";
+import ContactView from "../views/ContactView";
 
 export const router = createBrowserRouter([
   {
@@ -23,6 +24,26 @@ export const router = createBrowserRouter([
       {
         path: "users",
         element: <UserManagement />,
+      },
+      {
+        path: "/productos",
+        element: <PrincipalProductoView />,
+      },
+      {
+        path: "/productos/:id",
+        element: <PrincipalProductoView />,
+      },
+      {
+        path: "/detalle/:id",
+        element: <DetalleProductoView />,
+      },
+      {
+        path: "/agregar-producto",
+        element: <DetalleProductoView />,
+      },
+      {
+        path: "/contact",
+        element: <ContactView />,
       },
       // RUTAS DE AUTENTICACION
       // no deberían poder accederse estando logueados

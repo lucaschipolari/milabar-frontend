@@ -16,4 +16,7 @@
   .tamaño-icono {
     font-size: 1.1rem; /* Ajusta el tamaño del ícono */
   }
+  .modal-backdrop-blur {
+    backdrop-filter: blur(5px);
+  }
   

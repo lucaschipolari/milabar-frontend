@@ -1,4 +1,5 @@
 import PropTypes from 'prop-types';
+import { useState } from 'react';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { Link } from 'react-router-dom';
 import { toast } from 'sonner';
@@ -6,6 +7,7 @@ import Swal from 'sweetalert2';
 
 import { deleteProductoFn } from '../../../api/productos.js';
 import { useProducto } from '../../../stores/useProducto.js';
+import  ModalProductos  from './ModalProductos.jsx';
 
 import './styles/producto.css';
 
@@ -13,6 +15,8 @@ const TablaFilaProductos = (props) => {
   const { producto, index } = props;
 
   const { setProductoToEdit } = useProducto();
+
+  const [modalData, setModalData] = useState(null);
 
   const queryClient = useQueryClient();
 
@@ -31,6 +35,10 @@ const TablaFilaProductos = (props) => {
       toast.error(e.message);
     },
   });
+
+  const handleMoreInfo = () => {
+    setModalData(producto);
+  };
 
   const handleEdit = () => {
     setProductoToEdit(producto);
@@ -53,26 +61,43 @@ const TablaFilaProductos = (props) => {
   };
 
   return (
-    <tr>
-      <td className='row-height'>{index + 1}</td>
-      <td>
-        <img
-          alt={producto.nombre}
-          className='productos-tabla-imagen img-fluid'
-          src={producto.imagen}
-        />
-      </td>
-      <td>{producto.nombre}</td>
-      <td className='text-end row row-size gap-2'>
-        <Link className='btn btn-warning col-auto' to={`/detalle/${producto.id}`} onClick={handleEdit}>
+    <>
+      <tr>
+        <td className='row-height'>{index + 1}</td>
+        <td>
+          <img
+            alt={producto.nombre}
+            className='productos-tabla-imagen img-fluid'
+            src={producto.imagen}
+          />
+        </td>
+        <td>{producto.nombre}</td>
+        <td className='text-end row row-size gap-2'>
+          <Link
+              className='btn btn-primary col-auto'
+              to="#"
+              onClick={(e) => {
+                e.preventDefault();
+                handleMoreInfo();
+              }}
+            >
+              <i className="bi bi-eye tamaño-icono"></i>
+            </Link>
+          <Link className='btn btn-warning col-auto' to={`/detalle/${producto.id}`} onClick={handleEdit}>
             <i className="bi bi-pencil-square tamaño-icono"></i>
-        </Link>
-        <button className='btn btn-danger col-auto' onClick={handleDelete}>
+          </Link>
+          <button className='btn btn-danger col-auto' onClick={handleDelete}>
             <i className="bi bi-trash3-fill tamaño-icono"></i>
-        </button>
-      </td>
-
-    </tr>
+          </button>
+        </td>
+      </tr>
+      {modalData && (
+        <ModalProductos
+          values={modalData}
+          onClose={() => setModalData(null)} 
+        />
+      )}
+    </>
   );
 };
 
