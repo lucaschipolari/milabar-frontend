@@ -1,0 +1,19 @@
+.row-height {
+    vertical-align: middle;
+  }
+  
+  .productos-tabla-imagen {
+    width: 70px;
+    height: auto;
+  }
+  
+  .row-size {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+  }
+  
+  .tamaño-icono {
+    font-size: 1.1rem; /* Ajusta el tamaño del ícono */
+  }
+  
