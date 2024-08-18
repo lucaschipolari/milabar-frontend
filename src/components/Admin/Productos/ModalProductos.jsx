@@ -1,6 +1,6 @@
-import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
 
-import './styles/producto.css';
+import "./styles/producto.css";
 
 const ModalProductos = ({ values, onClose }) => {
   return (
@@ -11,25 +11,51 @@ const ModalProductos = ({ values, onClose }) => {
             <h5 className="modal-title">{values.nombre}</h5>
           </div>
           <div className="modal-body">
-            <img src={values.imagen} alt={values.nombre} className='img-fluid mb-2' />
+            <img
+              src={values.imagen}
+              alt={values.nombre}
+              className="img-fluid mb-2"
+            />
             <p>{values.descripcion}</p>
             <div className="row justify-content-around">
-                <div className="bg-primary col-3 p-2 rounded-4 mx-1">
-                    <p className="text-center mb-0"><strong>Categoría</strong></p>
-                    <p className="text-center mb-0">{values.categoria}</p>
+              <div className="col-12 mb-2">
+                <div className="bg-primary p-2 rounded-4 mx-1">
+                  <p className="text-center mb-0">
+                    <strong>Categoría</strong>
+                  </p>
+                  <p className="text-center mb-0">{values.categoria}</p>
                 </div>
-                <div className="bg-secondary col-3 p-2 rounded-4 mx-1">
-                    <p className="text-center mb-0"><strong>Precio</strong></p>
-                    <p className="text-center mb-0">${values.preciounitario} {values.unidadmedida}</p>
+              </div>
+              <div className="col-12">
+                <div className="row mx-1">
+                  <div className="bg-secondary col-6 p-2 rounded-4">
+                    <p className="text-center mb-0">
+                      <strong>Precio</strong>
+                    </p>
+                    <p className="text-center mb-0">
+                      ${values.preciounitario} {values.unidadmedida}
+                    </p>
+                  </div>
+                  <div className="bg-danger col-6 p-2 rounded-4">
+                    <p className="text-center mb-0">
+                      <strong>Habilitado</strong>
+                    </p>
+                    <p className="text-center mb-0">
+                      {values.habilitado ? "Sí" : "No"}
+                    </p>
+                  </div>
                 </div>
-                <div className="bg-danger col-3 p-2 rounded-4 mx-1">
-                    <p className="text-center mb-0"><strong>Habilitado</strong></p>
-                    <p className="text-center mb-0">{values.habilitado ? 'Sí' : 'No'}</p>
-                </div>
+              </div>
             </div>
           </div>
           <div className="modal-footer">
-            <button type="button" className="btn btn-secondary" onClick={onClose}>Cerrar</button>
+            <button
+              type="button"
+              className="btn btn-secondary"
+              onClick={onClose}
+            >
+              Cerrar
+            </button>
           </div>
         </div>
       </div>

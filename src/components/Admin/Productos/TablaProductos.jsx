@@ -58,6 +58,7 @@ const TablaProductos = () => {
             <th>#</th>
             <th>Imagen</th>
             <th>Nombre</th>
+            <th>Habilitado</th>
             <th className='text-end'>Acciones</th>
           </tr>
         </thead>
