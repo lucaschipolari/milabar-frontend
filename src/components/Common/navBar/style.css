@@ -2,13 +2,6 @@
     --clr: #222327;
 }
 
-.div-body {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    background-color: var(--clr);
-}
 
 .navigation {
     position: fixed;
@@ -244,3 +237,5 @@
       right: -12px;
     }
   }
+
+  
