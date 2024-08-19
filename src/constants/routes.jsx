@@ -6,9 +6,12 @@ import UserManagement from "../views/UserManagament";
 import PrincipalProductoView from "../views/PrincipalProductoView";
 import DetalleProductoView from "../views/DetalleProductoView";
 import ContactView from "../views/ContactView";
+import MenuView from "../views/MenuView";
+import CarritoView from "../views/CarritoView";
+import AcercaDeNosotrosView from "../views/AcercaDeNosotrosView";
 import LoginPage from "../components/Auth/LoginPage";
 import RegisterPage from "../components/Auth/RegisterPage";
-import AuthLayout from '../components/Auth/AuthLayout';
+import AuthLayout from "../components/Auth/AuthLayout";
 
 export const router = createBrowserRouter([
   {
@@ -27,6 +30,18 @@ export const router = createBrowserRouter([
       {
         path: "users",
         element: <UserManagement />,
+      },
+      {
+        path: "/menu",
+        element: <MenuView />,
+      },
+      {
+        path: "/carrito",
+        element: <CarritoView />,
+      },
+      {
+        path: "/acerca-de-nosotros",
+        element: <AcercaDeNosotrosView />,
       },
       {
         path: "/productos",
