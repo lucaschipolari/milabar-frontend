@@ -9,6 +9,9 @@ import ContactView from "../views/ContactView";
 import MenuView from "../views/MenuView";
 import CarritoView from "../views/CarritoView";
 import AcercaDeNosotrosView from "../views/AcercaDeNosotrosView";
+import LoginPage from "../components/Auth/LoginPage";
+import RegisterPage from "../components/Auth/RegisterPage";
+import AuthLayout from "../components/Auth/AuthLayout";
 
 export const router = createBrowserRouter([
   {
@@ -59,16 +62,16 @@ export const router = createBrowserRouter([
       // RUTAS DE AUTENTICACION
       // no deberían poder accederse estando logueados
       {
-        path: "",
-        element: <div></div>,
+        path: "auth",
+        element: <AuthLayout />,
         children: [
           {
             path: "login",
-            element: <div></div>,
+            element: <LoginPage />,
           },
           {
             path: "register",
-            element: <div></div>,
+            element: <RegisterPage />,
           },
         ],
       },
