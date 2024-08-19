@@ -1,7 +1,6 @@
 import { useForm } from "react-hook-form";
 import { useMutation } from "@tanstack/react-query";
 import { toast } from "sonner";
-import { postRegisterFn } from "../../api/auth";
 import useSession from "../../stores/useSession";
 import { useNavigate } from "react-router-dom";
 import SocialIcons from "./SocialIcons";
@@ -28,7 +27,7 @@ const RegisterPage = () => {
   const navigate = useNavigate();
 
   const { mutate: postRegister } = useMutation({
-    mutationFn: postRegisterFn,
+    mutationFn: () =>{},
     onSuccess: (userData) => {
       toast.dismiss(); // Cerrar cualquier toast de carga
       toast.success(`¡Registro exitoso, ${userData.username}!`);

@@ -2,7 +2,6 @@ import { Link, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { useMutation } from "@tanstack/react-query";
 import { toast } from "sonner";
-import { postLoginFn } from "../../api/auth";
 import useSession from "../../stores/useSession";
 import SocialIcons from "./SocialIcons";
 
@@ -13,7 +12,7 @@ const LoginPage = () => {
   const { register, handleSubmit, formState: { errors }, reset } = useForm();
 
   const { mutate: postLogin } = useMutation({
-    mutationFn: postLoginFn,
+    mutationFn: () =>{},
     onSuccess: (userData) => {
       toast.dismiss(); // Cerramos el toast de carga
       toast.success(`¡Inicio de sesión exitoso, ${userData.username}!`);
