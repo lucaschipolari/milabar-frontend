@@ -10,6 +10,10 @@ import { router } from "./constants/routes";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.min.js";
 import "bootstrap-icons/font/bootstrap-icons.min.css";
+import "primereact/resources/themes/saga-blue/theme.css"; // Tema de PrimeReact
+import "primereact/resources/primereact.min.css"; // Estilos base de PrimeReact
+import "primeicons/primeicons.css"; // Iconos de PrimeIcons
+import "primeflex/primeflex.css"; // Utilidades de PrimeFlex (opcional)
 
 const queryClient = new QueryClient();
 
