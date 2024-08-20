@@ -1,7 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import { useState } from "react";
 import { getProductosFn } from "../../../api/productos";
-import ProductCard from "./ProductCard";
+import ProductCard from "./CardProducto/ProductCard";
 
 const ContenedorProductCard = () => {
   const {

@@ -4,7 +4,7 @@ import { useState } from "react";
 import { Carousel } from "primereact/carousel";
 
 import { getProductosFn } from "../../../api/productos";
-import ProductCard from "./ProductCard";
+import ProductCard from "./CardProducto/ProductCard";
 
 const ListProduct = () => {
   const {
@@ -45,7 +45,7 @@ const ListProduct = () => {
 
   const productTemplate = (producto) => {
     return (
-      <div className="col-12">
+      <div className="col-12 p-3">
         <ProductCard producto={producto} key={producto.id} />
       </div>
     );

@@ -1,5 +1,5 @@
 .bg-productos{
-  background-color: #ff7b00;
+  background-color: #fff;
 }
 
 .row-height {
@@ -42,8 +42,8 @@
 
   .single__product{
     height: 200px;
-    box-shadow: 0 6px 10px 0 rgba(255, 2, 2, 0.349); /* Sombra con color #4D2700 */
-    border: 0.2px solid rgba(255, 0, 0, 0.534)!important;
+    box-shadow: 0 6px 10px 0 rgba(255, 124, 2, 0.61); /* Sombra con color #4D2700 */
+    border: 0.2px solid rgba(255, 124, 2, 0.61)!important;
     color: #ff7b00 !important;;
     transition: box-shadow 0.3s ease-in-out; 
     cursor: pointer;

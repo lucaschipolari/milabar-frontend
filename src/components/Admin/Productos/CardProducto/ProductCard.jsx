@@ -6,11 +6,11 @@ import { toast } from "sonner";
 import Swal from "sweetalert2";
 import { Button } from "primereact/button";
 
-import { deleteProductoFn } from "../../../api/productos.js";
-import { useProducto } from "../../../stores/useProducto.js";
-import ModalProductos from "./ModalProductos.jsx";
+import { deleteProductoFn } from "../../../../api/productos.js";
+import { useProducto } from "../../../../stores/useProducto.js";
+import ModalProductos from "../ModalProductos.jsx";
 
-import "./styles/producto.css";
+import "../styles/producto.css";
 
 const ProductCard = (props) => {
   const { producto } = props;
@@ -18,6 +18,7 @@ const ProductCard = (props) => {
   const { setProductoToEdit } = useProducto();
 
   const [modalData, setModalData] = useState(null);
+  const [visible, setVisible] = useState(false); // Estado para controlar la visibilidad del Dialog
 
   const queryClient = useQueryClient();
 
@@ -61,8 +62,9 @@ const ProductCard = (props) => {
       deleteProducto(producto.id);
     }
   };
+
   return (
-    <div className="card single__product p-3 mb-3 rounded-5">
+    <div className="card single__product p-3 mb-3 rounded-4">
       <div className="product__img mb-3 d-flex justify-content-center align-items-center">
         <img
           src={producto.imagen}
@@ -80,16 +82,12 @@ const ProductCard = (props) => {
             Precio: <span className="ml-1">${producto.preciounitario}</span>
           </span>
         </div>
-        <hr/>
+        <hr />
         <div className="d-flex justify-content-between align-items-center">
           <Button
             icon="pi pi-external-link"
             className="btn btn-primary col-auto"
-            to="#"
-            onClick={(e) => {
-              e.preventDefault();
-              handleMoreInfo();
-            }}
+            onClick={handleMoreInfo}
           >
             <i className="bi bi-plus-circle tamaño-icono"></i>
           </Button>
@@ -106,7 +104,11 @@ const ProductCard = (props) => {
         </div>
       </div>
       {modalData && (
-        <ModalProductos values={modalData} onClose={() => setModalData(null)} />
+        <ModalProductos
+          values={modalData}
+          visible={visible}
+          onHide={() => setVisible(false)}
+        />
       )}
     </div>
   );
