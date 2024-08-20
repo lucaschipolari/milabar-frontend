@@ -1,11 +1,5 @@
-import CardProduct from "../components/CardProduct/ListProduct";
-
 const MenuView = () => {
-  return (
-    <div>
-      <CardProduct />
-    </div>
-  );
+  return <div></div>;
 };
 
 export default MenuView;

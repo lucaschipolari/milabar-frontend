@@ -10,6 +10,7 @@ const ProductCard = (props) => {
   const { producto, index } = props;
 
   const { setProductoToEdit } = useProducto();
+  console.log(producto);
 
   const queryClient = useQueryClient();
 
