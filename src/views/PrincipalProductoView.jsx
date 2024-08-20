@@ -1,12 +1,21 @@
-import TablaProductos from "../components/Admin/Productos/TablaProductos"
-import BtnNuevoProducto from "../components/Admin/Productos/BtnNuevoProducto"
+import TablaProductos from "../components/Admin/Productos/TablaProductos";
+import BtnNuevoProducto from "../components/Admin/Productos/BtnNuevoProducto";
+import ListProduct from "../components/Admin/Productos/ListProduct";
+import ContenedorProductCard from "../components/Admin/Productos/ContenedorCardProduct";
+
+import '../components/Admin/Productos/styles/producto.css';
 
 const PrincipalProductoView = () => {
   return (
-    <div className="container">
-        <BtnNuevoProducto/>
-        <TablaProductos/>
+    <div className="container bg-productos">
+      <BtnNuevoProducto />
+      <div className="d-block d-md-none">
+        <ListProduct />
+      </div>
+      <div className="d-none d-md-block">
+        <ContenedorProductCard />
+      </div>
     </div>
-  )
-}
-export default PrincipalProductoView
+  );
+};
+export default PrincipalProductoView;

@@ -258,8 +258,8 @@ const FormularioProductos = () => {
             required: "Este campo es requerido",
           }}
           radioOptions={[
-            { value: 'true', label: "Sí" },
-            { value: 'false', label: "No" },
+            { value: "true", label: "Sí" },
+            { value: "false", label: "No" },
           ]}
           register={register}
         />

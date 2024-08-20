@@ -1,3 +1,7 @@
+.bg-productos{
+  background-color: #ff7b00;
+}
+
 .row-height {
     vertical-align: middle;
     min-height: 85px;
@@ -15,12 +19,43 @@
   }
   
   .tamaño-icono {
-    font-size: 1.1rem; /* Ajusta el tamaño del ícono */
-  }
-  .modal-size {
-    height: 100px;
+    font-size: 0.9rem; 
   }
   .img-size {
     height: 10px;
   }
+  .custom-modal .p-dialog-mask {
+    background-color: rgba(0, 0, 0, 0.8); /* Fondo oscuro con opacidad */
+  }
+  
+  /* Estilo para el contenido del modal */
+  .custom-modal .p-dialog-content {
+    background-color: white; /* Fondo blanco para el modal */
+    padding: 20px;
+    border-radius: 8px; /* Bordes redondeados opcionales */
+  }
+  
+  /* Opcional: Agrega sombra al modal */
+  .custom-modal .p-dialog {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+
+  .single__product{
+    height: 200px;
+    box-shadow: 0 6px 10px 0 rgba(255, 2, 2, 0.349); /* Sombra con color #4D2700 */
+    border: 0.2px solid rgba(255, 0, 0, 0.534)!important;
+    color: #ff7b00 !important;;
+    transition: box-shadow 0.3s ease-in-out; 
+    cursor: pointer;
+    background-color: rgb(255, 255, 255)!important;
+  }
+  .single__product:hover {
+    box-shadow: 0 6px 10px 0 rgba(72, 254, 55, 0.418); /* Sombra más intensa al hacer hover */
+    border: 0.2px solid rgba(81, 255, 0, 0.452)!important;
+  }
+
+  .product__img{
+    height: 45px;
+  }
+  
   
