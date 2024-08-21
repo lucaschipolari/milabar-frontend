@@ -1,63 +1,48 @@
 import PropTypes from "prop-types";
-import { Dialog } from "primereact/dialog"; // Asegúrate de importar el componente correcto
+import { Dialog } from "primereact/dialog";
 import "./styles/producto.css";
 
 const ModalProductos = ({ values, visible, onHide }) => {
-  const footerContent = (
-    <div>
-      <button type="button" className="btn btn-secondary" onClick={onHide}>
-        Cerrar
-      </button>
-    </div>
-  );
-
   return (
     <Dialog
-      header={values.nombre}
       visible={visible}
-      position="center" // Puedes cambiar la posición según tus necesidades
-      style={{ width: "50vw" }}
+      position="top"
       onHide={onHide}
-      footer={footerContent}
-      draggable={false}
-      resizable={false}
+      closable={false}
+      className="modal-size w-auto bg-white"
     >
       <div className="modal-body">
-        <img
-          src={values.imagen}
-          alt={values.nombre}
-          className="img-fluid mb-2"
-        />
-        <p>{values.descripcion}</p>
-        <div className="row justify-content-around">
-          <div className="col-12 mb-2">
-            <div className="bg-primary p-2 rounded-4 mx-1">
-              <p className="text-center mb-0">
-                <strong>Categoría</strong>
-              </p>
-              <p className="text-center mb-0">{values.categoria}</p>
-            </div>
-          </div>
-          <div className="col-12">
-            <div className="row mx-1">
-              <div className="bg-secondary col-6 p-2 rounded-4">
-                <p className="text-center mb-0">
-                  <strong>Precio</strong>
-                </p>
-                <p className="text-center mb-0">
-                  ${values.preciounitario} {values.unidadmedida}
-                </p>
-              </div>
-              <div className="bg-danger col-6 p-2 rounded-4">
-                <p className="text-center mb-0">
-                  <strong>Habilitado</strong>
-                </p>
-                <p className="text-center mb-0">
-                  {values.habilitado ? "Sí" : "No"}
-                </p>
-              </div>
-            </div>
-          </div>
+        <div className="modal-contenedor-img-size d-flex justify-content-center">
+          <img
+            src={values.imagen}
+            alt={values.nombre}
+            className="img-fluid w-100 object-fit-cover"
+          />
+        </div>
+        <div>
+          <h5 className="text-center mb-2">{values.nombre}</h5>
+          <ul className="mt-2">
+            <li className="mb-0">
+              <strong>Descripción: </strong>
+              {values.descripcion}
+            </li>
+            <li className="mb-0">
+              <strong>Categoría: </strong> {values.categoria}
+            </li>
+            <li className="mb-0">
+              <strong>Precio: </strong> {values.preciounitario} por{" "}
+              {values.unidadmedida}
+            </li>
+            <li className="mb-0">
+              <strong>Habilitado: </strong> {values.habilitado ? "Sí" : "No"}
+            </li>
+          </ul>
+        </div>
+        <hr />
+        <div className="d-flex justify-content-end align-items-center m-2">
+          <button type="button" className="btn btn-warning" onClick={onHide}>
+            Cerrar
+          </button>
         </div>
       </div>
     </Dialog>
@@ -72,7 +57,7 @@ ModalProductos.propTypes = {
     unidadmedida: PropTypes.string.isRequired,
     preciounitario: PropTypes.number.isRequired,
     imagen: PropTypes.string.isRequired,
-    habilitado: PropTypes.bool.isRequired,
+    habilitado: PropTypes.string.isRequired,
   }).isRequired,
   visible: PropTypes.bool.isRequired,
   onHide: PropTypes.func.isRequired,

@@ -18,7 +18,7 @@ const ProductCard = (props) => {
   const { setProductoToEdit } = useProducto();
 
   const [modalData, setModalData] = useState(null);
-  const [visible, setVisible] = useState(false); // Estado para controlar la visibilidad del Dialog
+  const [visible, setVisible] = useState(false);
 
   const queryClient = useQueryClient();
 
@@ -64,29 +64,21 @@ const ProductCard = (props) => {
   };
 
   return (
-    <div className="card single__product p-3 mb-3 rounded-4">
-      <div className="product__img mb-3 d-flex justify-content-center align-items-center">
+    <div className="card single__product mb-4">
+      <div className="product__img">
         <img
           src={producto.imagen}
           alt={producto.nombre}
-          className="h-100 img-fluid"
+          className="h-100 w-100 img-fluid object-fit-cover"
         />
       </div>
       <div className="product__content">
-        <h6 className="text-center mb-2">{producto.nombre}</h6>
-        <span className="d-flex justify-content-between">
-          <p className="text-start">{producto.descripcion}</p>
-        </span>
-        <div className="d-flex align-items-center justify-content-between mb-1">
-          <span className="price d-flex align-items-center">
-            Precio: <span className="ml-1">${producto.preciounitario}</span>
-          </span>
-        </div>
+        <h6 className="text-center fs-3 my-2">{producto.nombre}</h6>
+          <p className="text-center">{producto.descripcion}</p>
         <hr />
-        <div className="d-flex justify-content-between align-items-center">
+        <div className="d-flex justify-content-around align-items-center m-2">
           <Button
-            icon="pi pi-external-link"
-            className="btn btn-primary col-auto"
+            className="btn btn-primary"
             onClick={handleMoreInfo}
           >
             <i className="bi bi-plus-circle tamaño-icono"></i>

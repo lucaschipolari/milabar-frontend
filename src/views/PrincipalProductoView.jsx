@@ -9,10 +9,10 @@ const PrincipalProductoView = () => {
   return (
     <div className="container bg-productos">
       <BtnNuevoProducto />
-      <div className="d-block d-md-none">
+      <div className="d-block d-sm-none">
         <ListProduct />
       </div>
-      <div className="d-none d-md-block">
+      <div className="d-none d-sm-block">
         <ContenedorProductCard />
       </div>
     </div>
