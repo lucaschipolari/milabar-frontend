@@ -7,15 +7,11 @@ const RootView = () => {
 
   // Mostrar el Header solo si no estamos en la página principal
   const showHeader = location.pathname !== "/";
-  const user = {
-    name: "John Doe",
-    avatar: "https://via.placeholder.com/150",
-    isAdmin: true,
-  };
+  const user = {};
   return (
     <>
       <HeaderUsuario user={user} />
-      <main className="container my-5">
+      <main className="container">
         <Outlet />
       </main>
       {showHeader && <Navbar />}
