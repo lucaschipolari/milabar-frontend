@@ -3,8 +3,8 @@ import { useState } from "react";
 
 import { Carousel } from "primereact/carousel";
 
-import { getProductosFn } from "../../../api/productos";
-import ProductCard from "./CardProducto/ProductCard";
+import { getProductosFn } from "../../../../api/productos";
+import ProductCard from "../CardProducto/ProductCard";
 
 const ListProduct = () => {
   const {
@@ -22,6 +22,12 @@ const ListProduct = () => {
     productos?.data?.filter((producto) =>
       producto.nombre.toLowerCase().includes(searchTerm.toLowerCase())
     ) || [];
+
+  
+    const handleMoreInfo = () => {
+      setModalData(producto);
+      setVisible(true);
+    };
 
   if (isLoading) {
     return <p className="mt-3 text-center">Cargando datos...</p>;

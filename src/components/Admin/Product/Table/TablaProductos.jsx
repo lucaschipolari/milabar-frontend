@@ -1,7 +1,7 @@
 import { useQuery } from '@tanstack/react-query';
 import { useState } from 'react';
 
-import { getProductosFn } from '../../../api/productos';
+import { getProductosFn } from '../../../../api/productos';
 import TablaFilaProductos from './TablaFilaProductos';
 
 const TablaProductos = () => {

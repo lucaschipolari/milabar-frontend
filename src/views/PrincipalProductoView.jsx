@@ -1,9 +1,9 @@
-import TablaProductos from "../components/Admin/Productos/TablaProductos";
-import BtnNuevoProducto from "../components/Admin/Productos/BtnNuevoProducto";
-import ListProduct from "../components/Admin/Productos/ListProduct";
-import ContenedorProductCard from "../components/Admin/Productos/ContenedorCardProduct";
+import TablaProductos from "../components/Admin/Product/Table/TablaProductos";
+import BtnNuevoProducto from "../components/Admin/Product/BtnNuevoProducto";
+import ListProduct from "../components/Admin/Product/List/ListProduct";
+import ContenedorProductCard from "../components/Admin/Product/List/ContenedorCardProduct";
 
-import '../components/Admin/Productos/styles/producto.css';
+import '../components/Admin/Product/styles/producto.css';
 
 const PrincipalProductoView = () => {
   return (
