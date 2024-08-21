@@ -1,4 +1,3 @@
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faAddressBook,
   faHouse,
@@ -16,10 +15,10 @@ const Navbar = () => {
   const [cartCount, setCartCount] = useState(0);
 
   const navItems = [
-    { icon: faHouse, text: "Home", to: "#" },
-    { icon: faAddressBook, text: "Contacto", to: "#" },
-    { icon: faCartShopping, text: "Carrito", to: "#" },
-    { icon: faUsersLine, text: "Nosotros", to: "#" },
+    { icon: faHouse, text: "Home", to: "menu" },
+    { icon: faAddressBook, text: "Contacto", to: "contact" },
+    { icon: faCartShopping, text: "Carrito", to: "carrito" },
+    { icon: faUsersLine, text: "Nosotros", to: "acerca-de-nosotros" },
     { icon: faHeart, text: "Favoritos", to: "#" },
   ];
 
@@ -28,22 +27,20 @@ const Navbar = () => {
   };
 
   return (
-    <div className="div-body">
-      <ul className="navigation">
-        {navItems.map((item, index) => (
-          <NavItem
-            key={index}
-            item={item}
-            index={index}
-            activeIndex={activeIndex}
-            setActiveIndex={setActiveIndex}
-            cartCount={cartCount}
-            incrementCartCount={incrementCartCount}
-          />
-        ))}
-        <div className="indicator"></div>
-      </ul>
-    </div>
+    <ul className="navigation">
+      {navItems.map((item, index) => (
+        <NavItem
+          key={index}
+          item={item}
+          index={index}
+          activeIndex={activeIndex}
+          setActiveIndex={setActiveIndex}
+          cartCount={cartCount}
+          incrementCartCount={incrementCartCount}
+        />
+      ))}
+      <div className="indicator"></div>
+    </ul>
   );
 };
 
