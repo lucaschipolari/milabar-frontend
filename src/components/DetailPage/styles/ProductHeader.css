@@ -1,0 +1,38 @@
+.product-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #f8f8f8;
+  padding: 10px 20px;
+  text-align: center;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.product-header h1 {
+  font-size: 24px;
+  margin: 0;
+}
+
+.back-button {
+  background-color: #ff5722;
+  border: none;
+  color: white;
+  font-size: 14px;
+  font-weight: bold;
+  padding: 10px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.3s ease;
+}
+
+.back-button:hover {
+  background-color: #e64a19;
+}
+
+.back-button::before {
+  content: "←";
+  margin-right: 8px;
+}
