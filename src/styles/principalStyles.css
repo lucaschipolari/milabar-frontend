@@ -1,0 +1,6 @@
+body {
+    padding-bottom: 60px; /* Ajusta este valor según la altura de tu navbar */
+}
+.main-content {
+    margin-bottom: 60px; /* Asegura que el contenido principal no quede cubierto */
+}
