@@ -10,7 +10,7 @@ const RootView = () => {
 
   return (
     <div className="bg-productos">
-      <main className="container my-5">
+      <main className="my-5 flex-grow-1">
         <Outlet />
       </main>
       {showHeader && <Navbar />}
