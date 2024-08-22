@@ -6,6 +6,7 @@ import {
   sendEmailToRestaurant,
 } from "../../utilities/sendEmail";
 import Swal from "sweetalert2";
+import { sendContactData } from "../../api/contact";
 
 const ContactForm = () => {
   const {
@@ -31,7 +32,13 @@ const ContactForm = () => {
       confirmButtonColor: "#3085d6",
     }).then((result) => {
       if (result.isConfirmed) {
-        Promise.all([sendEmailToClient(data), sendEmailToRestaurant(data)])
+        sendContactData(data)
+          .then(() => {
+            return Promise.all([
+              sendEmailToClient(data),
+              sendEmailToRestaurant(data),
+            ]);
+          })
 
           .then(() => {
             Swal.fire({
