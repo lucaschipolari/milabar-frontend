@@ -23,6 +23,7 @@ const ProductCard = (props) => {
 
   return (
     <div className="card single__product my-4 h-100 d-flex justify-content-between">
+
       <div className="product__img">
         <img
           src={imagen}
