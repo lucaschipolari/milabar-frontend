@@ -1,6 +1,6 @@
 import { Outlet, useLocation } from "react-router-dom";
 import Navbar from "../../components/Common/navBar/navbar";
-import HeaderUsuario from "../../components/Common/Header/HeaderUsuario";
+import Header from "../../components/Common/Header/Header";
 
 const RootView = () => {
   const location = useLocation();
@@ -10,7 +10,7 @@ const RootView = () => {
   const user = {};
   return (
     <>
-      <HeaderUsuario user={user} />
+      <Header />
       <main className="container">
         <Outlet />
       </main>
