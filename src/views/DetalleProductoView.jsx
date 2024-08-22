@@ -1,8 +1,6 @@
-import FormularioProductos from "../components/Admin/Productos/FormularioProductos"
+import FormularioProductos from "../components/Admin/Productos/FormularioProductos";
 
 const DetalleProductoView = () => {
-  return (
-    <FormularioProductos/>
-  )
-}
-export default DetalleProductoView
+  return <FormularioProductos />;
+};
+export default DetalleProductoView;

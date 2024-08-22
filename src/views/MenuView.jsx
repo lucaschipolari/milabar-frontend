@@ -1,5 +1,5 @@
 const MenuView = () => {
-  return <div>MenuView</div>;
+  return <div></div>;
 };
 
 export default MenuView;
