@@ -1,0 +1,76 @@
+.bg-productos{
+  background-color: #fff;
+}
+
+.row-height {
+    vertical-align: middle;
+    min-height: 85px;
+  }
+  
+  .productos-tabla-imagen {
+    width: 65px;
+    height: auto;
+  }
+  
+  .row-size {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+  }
+  
+  .tamaño-icono {
+    font-size: 0.9rem; 
+  }
+  .img-size {
+    height: 10px;
+  }
+
+  .single__product {
+    height: 300px;
+    box-shadow: 0px 9px 15px rgba(0, 0, 0, 0.5); 
+    color: #ff7b00 !important; 
+    cursor: pointer;
+    background-color: #ffffff !important; 
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border 0.3s ease; 
+  }
+  
+  .single__product:hover {
+    box-shadow: 0px 12px 20px rgba(0, 0, 0, 0.5); 
+    transform: scale(1.03); 
+  }
+
+  .product__img{
+    height: 150px;
+  }
+
+  .modal-size {
+    box-shadow: 0px 20px 30px rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(20px); 
+    overflow: hidden;
+    max-width: 80vh;
+  }
+
+  @media (min-width: 450px) {
+    .modal-size {
+      min-width: 70vh;
+    }
+  }
+  @media (max-width: 450px) {
+    .modal-size {
+      max-width: 50vh;
+    }
+  }
+  
+  .modal-body {
+    padding: 20px; 
+    box-sizing: border-box;
+  }
+  
+  .p-dialog-mask {
+    backdrop-filter: blur(20px); 
+  }
+
+  .modal-contenedor-img-size{
+    height: 180px;
+    overflow-x: hidden;
+  }
