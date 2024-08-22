@@ -2,18 +2,17 @@ const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
 
 export const postProductoFn = async (data) => {
   //const token = sessionStorage.getItem('token');
-console.log(data)
   const res = await fetch(`${BACKEND_URL}/api/v1/productos/agregar-producto`, {
-    method: 'POST',
+    method: "POST",
     headers: {
-      'Content-Type': 'application/json',
+      "Content-Type": "application/json",
       //Authorization: `Bearer ${token}`,
     },
     body: JSON.stringify(data),
   });
 
   if (!res.ok) {
-    throw new Error('Ocurrió un error guardando el producto');
+    throw new Error("Ocurrió un error guardando el producto");
   }
 };
 
@@ -22,19 +21,21 @@ export const getProductosFn = async () => {
   const data = await res.json();
 
   if (!res.ok) {
-    throw new Error('Ocurrió un error leyendo las entradas del producto');
+    throw new Error("Ocurrió un error leyendo las entradas del producto");
   }
 
   return data;
 };
 
 export const getProductoFn = async (productoId) => {
-  const res = await fetch(`${BACKEND_URL}/api/v1/productos/detalle/${productoId}`);
+  const res = await fetch(
+    `${BACKEND_URL}/api/v1/productos/detalle/${productoId}`
+  );
   const data = await res.json();
 
   if (!res.ok) {
     throw new Error(
-      'Ocurrió un error leyendo la entrada del producto seleccionado'
+      "Ocurrió un error leyendo la entrada del producto seleccionado"
     );
   }
 
@@ -45,7 +46,7 @@ export const deleteProductoFn = async (productoId) => {
   //const token = sessionStorage.getItem('token');
 
   const res = await fetch(`${BACKEND_URL}/api/v1/productos/${productoId}`, {
-    method: 'DELETE',
+    method: "DELETE",
     headers: {
       //Authorization: `Bearer ${token}`,
     },
@@ -53,7 +54,7 @@ export const deleteProductoFn = async (productoId) => {
 
   if (!res.ok) {
     throw new Error(
-      'Ocurrió un error intentando eliminar el producto seleccionado'
+      "Ocurrió un error intentando eliminar el producto seleccionado"
     );
   }
 };
@@ -61,16 +62,21 @@ export const deleteProductoFn = async (productoId) => {
 export const putProductoFn = async ({ productoId, data }) => {
   //const token = sessionStorage.getItem('token');
 
-  const res = await fetch(`${BACKEND_URL}/api/v1/productos/detalle/${productoId}`, {
-    method: 'PUT',
-    headers: {
-      'Content-Type': 'application/json',
-      //Authorization: `Bearer ${token}`,
-    },
-    body: JSON.stringify(data),
-  });
+  const res = await fetch(
+    `${BACKEND_URL}/api/v1/productos/detalle/${productoId}`,
+    {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+        //Authorization: `Bearer ${token}`,
+      },
+      body: JSON.stringify(data),
+    }
+  );
 
   if (!res.ok) {
-    throw new Error('Ocurrió un error intentando editar el producto seleccionado');
+    throw new Error(
+      "Ocurrió un error intentando editar el producto seleccionado"
+    );
   }
 };

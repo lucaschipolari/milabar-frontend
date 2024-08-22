@@ -1,6 +1,7 @@
 import { Outlet, useLocation } from "react-router-dom";
 import Navbar from "../../components/Common/navBar/navbar";
-import Header from "../../components/Common/Header/Header";
+import '../../components/Admin/Product/styles/producto.css';
+
 
 const RootView = () => {
   const location = useLocation();
@@ -9,13 +10,12 @@ const RootView = () => {
   const showHeader = location.pathname !== "/";
   const user = {};
   return (
-    <>
-      <Header />
-      <main className="container">
+    <div className="bg-productos">
+      <main className="my-5 flex-grow-1">
         <Outlet />
       </main>
       {showHeader && <Navbar />}
-    </>
+    </div>
   );
 };
 

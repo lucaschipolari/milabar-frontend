@@ -32,6 +32,10 @@ export const router = createBrowserRouter([
         element: <UserManagement />,
       },
       {
+        path: "/productos",
+        element: <PrincipalProductoView />,
+      },
+      {
         path: "/menu",
         element: <MenuView />,
       },
@@ -44,7 +48,7 @@ export const router = createBrowserRouter([
         element: <AcercaDeNosotrosView />,
       },
       {
-        path: "/productos",
+        path: "/productos/:id",
         element: <PrincipalProductoView />,
       },
       {
