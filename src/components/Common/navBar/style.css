@@ -1,9 +1,8 @@
 :root {
     --clr: #222327;
-}
-
-
-.navigation {
+  }
+  
+  .navigation {
     position: fixed;
     bottom: 0;
     left: 0;
@@ -16,16 +15,16 @@
     list-style: none;
     padding: 0;
     margin: 0;
-}
-
-.navigation .list {
+  }
+  
+  .navigation .list {
     position: relative;
     width: 70px;
     height: 70px;
     z-index: 2;
-}
-
-.navigation .list a {
+  }
+  
+  .navigation .list a {
     position: relative;
     display: flex;
     justify-content: center;
@@ -36,9 +35,9 @@
     font-weight: 500;
     color: white;
     text-decoration: none;
-}
-
-.navigation .list a .icon {
+  }
+  
+  .navigation .list a .icon {
     position: relative;
     display: block;
     line-height: 75px;
@@ -46,13 +45,13 @@
     text-align: center;
     transition: 0.5s;
     color: white;
-}
-
-.navigation .list.active a .icon {
+  }
+  
+  .navigation .list.active a .icon {
     transform: translateY(-12px);
-}
-
-.navigation .list a .text {
+  }
+  
+  .navigation .list a .text {
     position: absolute;
     color: white;
     font-weight: 400;
@@ -61,14 +60,14 @@
     transition: 0.5s;
     opacity: 0;
     transform: translateY(20px);
-}
-
-.navigation .list.active a .text {
+  }
+  
+  .navigation .list.active a .text {
     opacity: 1;
     transform: translateY(30px);
-}
-
-.indicator {
+  }
+  
+  .indicator {
     position: absolute;
     width: 70px;
     height: 70px;
@@ -78,125 +77,126 @@
     transition: 0.5s;
     top: -50%;
     z-index: 1;
-}
-
-.navigation .list:nth-child(1).active ~ .indicator {
+  }
+  
+  .navigation .list:nth-child(1).active ~ .indicator {
     transform: translateX(calc(70px * 0 - 140px));
-}
-
-.navigation .list:nth-child(2).active ~ .indicator {
+  }
+  
+  .navigation .list:nth-child(2).active ~ .indicator {
     transform: translateX(calc(70px * 1 - 140px));
-}
-
-.navigation .list:nth-child(3).active ~ .indicator {
+  }
+  
+  .navigation .list:nth-child(3).active ~ .indicator {
     transform: translateX(calc(70px * 2 - 140px));
-}
-
-.navigation .list:nth-child(4).active ~ .indicator {
+  }
+  
+  .navigation .list:nth-child(4).active ~ .indicator {
     transform: translateX(calc(70px * 3 - 140px));
-}
-
-.navigation .list:nth-child(5).active ~ .indicator {
+  }
+  
+  .navigation .list:nth-child(5).active ~ .indicator {
     transform: translateX(calc(70px * 4 - 140px));
-}
-
-/* Responsive para celulares */
-@media screen and (max-width: 600px) {
+  }
+  
+  /* Responsive para celulares */
+  @media screen and (max-width: 600px) {
     .navigation {
-        height: 60px;
+      height: 60px;
     }
-
+  
     .navigation .list {
-        width: 60px;
-        height: 60px;
+      width: 60px;
+      height: 60px;
     }
-
+  
     .navigation .list a .icon {
-        font-size: 1.2em;
-        line-height: 60px;
+      font-size: 1.2em;
+      line-height: 60px;
     }
-
+  
     .navigation .list a .text {
-        font-size: 0.6em;
+      font-size: 0.6em;
     }
-
+  
     .indicator {
-        width: 60px;
-        height: 60px;
+      width: 60px;
+      height: 60px;
     }
-
+  
     .navigation .list:nth-child(1).active ~ .indicator {
-        transform: translateX(calc(60px * 0 - 120px));
+      transform: translateX(calc(60px * 0 - 120px));
     }
-
+  
     .navigation .list:nth-child(2).active ~ .indicator {
-        transform: translateX(calc(60px * 1 - 120px));
+      transform: translateX(calc(60px * 1 - 120px));
     }
-
+  
     .navigation .list:nth-child(3).active ~ .indicator {
-        transform: translateX(calc(60px * 2 - 120px));
+      transform: translateX(calc(60px * 2 - 120px));
     }
-
+  
     .navigation .list:nth-child(4).active ~ .indicator {
-        transform: translateX(calc(60px * 3 - 120px));
+      transform: translateX(calc(60px * 3 - 120px));
     }
-
+  
     .navigation .list:nth-child(5).active ~ .indicator {
-        transform: translateX(calc(60px * 4 - 120px));
+      transform: translateX(calc(60px * 4 - 120px));
     }
-}
-
-/* Responsive para pantallas grandes */
-@media screen and (min-width: 1024px) {
+  }
+  
+  /* Responsive para pantallas grandes */
+  @media screen and (min-width: 1024px) {
     .navigation {
-        height: 100px;
+      height: 100px;
     }
-
+  
     .navigation .list {
-        width: 100px;
-        height: 100px;
+      width: 100px;
+      height: 100px;
     }
-
+  
     .navigation .list a .icon {
-        font-size: 2em;
-        line-height: 100px;
+      font-size: 2em;
+      line-height: 100px;
     }
-
+  
     .navigation .list a .text {
-        font-size: 0.9em;
+      font-size: 0.9em;
     }
+  
     .navigation .list.active a .text {
-        opacity: 1;
-        transform: translateY(45px);
+      opacity: 1;
+      transform: translateY(45px);
     }
-
+  
     .indicator {
-        width: 100px;
-        height: 100px;
+      width: 100px;
+      height: 100px;
     }
-
+  
     .navigation .list:nth-child(1).active ~ .indicator {
-        transform: translateX(calc(100px * 0 - 200px));
+      transform: translateX(calc(100px * 0 - 200px));
     }
-
+  
     .navigation .list:nth-child(2).active ~ .indicator {
-        transform: translateX(calc(100px * 1 - 200px));
+      transform: translateX(calc(100px * 1 - 200px));
     }
-
+  
     .navigation .list:nth-child(3).active ~ .indicator {
-        transform: translateX(calc(100px * 2 - 200px));
+      transform: translateX(calc(100px * 2 - 200px));
     }
-
+  
     .navigation .list:nth-child(4).active ~ .indicator {
-        transform: translateX(calc(100px * 3 - 200px));
+      transform: translateX(calc(100px * 3 - 200px));
     }
-
+  
     .navigation .list:nth-child(5).active ~ .indicator {
-        transform: translateX(calc(100px * 4 - 200px));
+      transform: translateX(calc(100px * 4 - 200px));
     }
-}
-
-.icon-container {
+  }
+  
+  .icon-container {
     position: relative;
     display: inline-block;
   }
@@ -237,5 +237,3 @@
       right: -12px;
     }
   }
-
-  
