@@ -21,21 +21,26 @@ const AuthLayout = () => {
       <div className={`form-container sign-up ${isActive ? 'active' : ''}`}>
         <RegisterPage />
       </div>
+
+      {/* Mostrar el panel de bienvenida solo en pantallas grandes */}
       <div className="toggle-container">
         <div className="toggle-panel toggle-left">
           <h1>¡Bienvenido a MilaBar!</h1>
           <p>Ingresa con tu cuenta.</p>
-          <button onClick={() => setIsActive(false)}>
-            Iniciar sesión
-          </button>
+          <button onClick={() => setIsActive(false)}>Iniciar sesión</button>
         </div>
         <div className="toggle-panel toggle-right">
           <h1>¡Bienvenido a MilaBar!</h1>
           <p>Regístrate para ver tus pedidos.</p>
-          <button onClick={() => setIsActive(true)}>
-            Crear cuenta
-          </button>
+          <button onClick={() => setIsActive(true)}>Crear cuenta</button>
         </div>
+      </div>
+
+      {/* Botón de alternancia para dispositivos móviles */}
+      <div className="toggle-button-mobile">
+        <button onClick={() => setIsActive(!isActive)}>
+          {isActive ? 'Iniciar sesión' : 'Crear cuenta'}
+        </button>
       </div>
     </div>
   );
