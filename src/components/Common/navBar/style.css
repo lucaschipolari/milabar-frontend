@@ -238,4 +238,28 @@
     }
   }
 
-  
+  .cart-dialog {
+    height: 600px;
+    width: 400px;
+    
+  }
+
+  @media screen and (width < 1024px) {
+    .cart-dialog {
+        height: 540px;
+        
+      }
+  }
+
+  @media screen and (width <= 960px) {
+    .cart-dialog {
+        height: 710px;
+      }
+  }
+
+  @media screen and (width <= 430px) {
+    .cart-dialog {
+        height: 520px;
+      }
+  }
+

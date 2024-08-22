@@ -1,0 +1,48 @@
+.product-list {
+    padding: 20px;
+  }
+  
+  .product-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    border-bottom: 1px solid #ffffff;
+    
+  }
+  
+  .product-item .name,
+  .product-item .price {
+    flex: 1;
+  }
+  
+  .product-item .quantity-controls {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+  
+  .small-input-number .p-inputnumber {
+    width: 50px; /* Ajusta el ancho según tus necesidades */
+    height: 30px; /* Ajusta la altura según tus necesidades */
+    font-size: 0.8rem; /* Ajusta el tamaño de la fuente si es necesario */
+  }
+  
+  .total-info {
+    text-align: right;
+    font-weight: bold;
+  }
+
+  .p-inputnumber {
+    width: 190px !important; /* Ajusta el ancho como prefieras */
+  }
+  
+  .p-inputnumber input {
+    width: 100% !important; /* Asegúrate de que el input ocupe todo el ancho del contenedor */
+  }
+
+  @media screen and (width < 460px) {
+    .p-inputnumber {
+      width: 80px !important; /* Ajusta el ancho como prefieras */
+    }
+  }
