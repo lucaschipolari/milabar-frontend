@@ -18,11 +18,12 @@ const ProductCard = (props) => {
     handleDelete,
     modalData,
     visible,
-    setVisible
+    setVisible,
   } = props;
 
   return (
-    <div className="card single__product mb-4">
+    <div className="card single__product my-4 h-100 d-flex justify-content-between">
+
       <div className="product__img">
         <img
           src={imagen}
@@ -31,10 +32,10 @@ const ProductCard = (props) => {
         />
       </div>
       <h6 className="text-center fs-3 my-2">{titulo}</h6>
-      <p className="text-center">{descripcion}</p>
-      <hr />
+      <p className="text-center m-0">{descripcion}</p>
       {esAdmin && (
-        <div className="product__content">
+        <div className="product__content mb-1">
+          <hr />
           <div className="d-flex justify-content-around align-items-center m-2">
             <Button className="btn btn-primary" onClick={handleMoreInfo}>
               <i className="bi bi-plus-circle tamaño-icono"></i>

@@ -104,7 +104,7 @@ const ContenedorProductCard = () => {
       />
       <div className="row">
         {filteredProducts.map((producto) => (
-          <div className="col-12 col-md-4 col-lg-3" key={producto.id}>
+          <div className="col-12 col-md-4 col-lg-3 my-2" key={producto.id}>
             <ProductCard
               producto={producto}
               id={producto.id}
