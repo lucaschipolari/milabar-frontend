@@ -263,6 +263,21 @@ const FormularioProductos = () => {
           ]}
           register={register}
         />
+        <InputProducto
+          className="mb-3"
+          type="radio"
+          error={errors.agregado}
+          label="¿Es un agregado?"
+          name="agregado"
+          options={{
+            required: "Este campo es requerido",
+          }}
+          radioOptions={[
+            { value: "true", label: "Sí" },
+            { value: "false", label: "No" },
+          ]}
+          register={register}
+        />
         <hr />
         <div className="text-end">
           {productoToEdit && (
