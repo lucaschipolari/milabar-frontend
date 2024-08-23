@@ -188,3 +188,23 @@
   font-size: 1rem; /* Tamaño de la fuente del texto */
   color: #ced4da; /* Color del texto, ajusta según tu diseño */
 }
+
+.input-table-number {
+  width: 100%; /* Ocupa el ancho completo del contenedor */
+  max-width: 150px; /* Ancho máximo para pantallas grandes */
+  font-size: 14px; /* Ajusta el tamaño del texto según sea necesario */
+  padding: 0.5rem;
+}
+
+@media (max-width: 600px) {
+  .small-input {
+    max-width: 120px; /* Ajusta el ancho máximo para pantallas pequeñas */
+  }
+}
+
+#tableNumber-input {
+  padding-top: 0;
+  padding-bottom: 0;
+  
+}
+
