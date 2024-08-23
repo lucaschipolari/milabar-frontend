@@ -14,6 +14,7 @@ import {
   faShoppingCart,
 } from "@fortawesome/free-solid-svg-icons";
 import { useForm } from "react-hook-form";
+import Swal from "sweetalert2";
 
 const CartModal = ({ visible, onHide }) => {
   const products = useCartStore((state) => state.products);
@@ -36,13 +37,36 @@ const CartModal = ({ visible, onHide }) => {
         total: totalPrice,
         tableNumber: tableNumber,
       };
-      console.log("Detalles de productos:", orderDetails.products);
-      await sendProduct(orderDetails);
 
-      clearCart();
-      onHide();
-    } catch (error) {
-      console.error("error al realizar el pedido", error);
+      const result = await Swal.fire({
+        title: "Estas a punto de realizar un pedido",
+        text: "¿Estás seguro de enviar el pedido?",
+        icon: "warning",
+        showCancelButton: true,
+        cancelButtonText: "Cancelar",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Sí, enviar!",
+        confirmButtonColor: "#3085d6",
+      });
+
+      if (result.isConfirmed) {
+        await sendProduct(orderDetails);
+
+        Swal.fire({
+          title: "Pedido realizado",
+          text: "Tu pedido fue enviado con éxito!",
+          icon: "success",
+        });
+
+        clearCart();
+        onHide();
+      }
+    } catch {
+      Swal.fire({
+        title: "Error",
+        text: "Hubo un error al realizar el pedido",
+        icon: "error",
+      });
     }
   };
 

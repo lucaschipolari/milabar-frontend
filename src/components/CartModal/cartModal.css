@@ -6,6 +6,7 @@
   color: #ced4da;
   border: 1px solid #2b2b2b;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  z-index: 1000;
 }
 
 .cart-dialog .p-dialog-header {
@@ -208,3 +209,6 @@
   
 }
 
+.swal2-container {
+  z-index: 9999 !important;
+}
