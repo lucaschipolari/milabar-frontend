@@ -1,13 +1,12 @@
 import { useQuery } from "@tanstack/react-query";
-import { useState } from "react";
 
 import { Carousel } from "primereact/carousel";
 
 import { getProductosFn } from "../../api/productos";
-import CardProductClient from "./CardProductClient";
+import ProductCardClient from "./CardProductClient";
 import "./style.css";
 
-const ListProductClient = (props) => {
+const ListProductClient = () => {
   const {
     data: productos,
     isLoading,
@@ -38,20 +37,6 @@ const ListProductClient = (props) => {
       numScroll: 1,
     },
   ];
-  const [cartCount, setCartCount] = useState(0);
-
-  const incrementCart = () => {
-    setCartCount(cartCount + 1);
-  };
-  
-  const handleLike = () => {
-    console.log("chau");
-  };
-
-  const handleAddCart = () => {
-    incrementCart();
-  };
-
   if (isLoading) {
     return <p className="mt-3 text-center">Cargando datos...</p>;
   }
@@ -74,8 +59,8 @@ const ListProductClient = (props) => {
 
   const productTemplate = (producto) => {
     return (
-      <div className="col-12 p-3">
-        <CardProductClient producto={producto} esAdmin={false} handleLike={() => handleLike(producto)} handleAddCart={() => handleAddCart()}/>
+      <div className="col-12  p-3">
+        <ProductCardClient producto={producto} key={producto.id} />
       </div>
     );
   };
@@ -85,7 +70,7 @@ const ListProductClient = (props) => {
       <Carousel
         value={productos.data}
         className="col-12"
-        numVisible={3} 
+        numVisible={3} // Establece el valor por defecto para pantallas grandes
         numScroll={1}
         orientation="horizontal"
         verticalViewPortHeight="550px"

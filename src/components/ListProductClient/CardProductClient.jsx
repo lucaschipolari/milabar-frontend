@@ -11,19 +11,14 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
+import "../../components/Admin/Product/styles/producto.css";
 
-const CardProductClient = (props) => {
+const ProductCardClient = (props) => {
   const {
     producto,
     esAdmin = false,
-    handleMoreInfo,
-    handleEdit,
-    handleDelete,
     handleLike,
     handleAddCart,
-    modalData,
-    visible,
-    setVisible,
   } = props;
 
   return (
@@ -37,26 +32,6 @@ const CardProductClient = (props) => {
       </div>
       <h6 className="text-center fs-3 my-2">{producto.nombre}</h6>
       <p className="text-center m-0">{producto.descripcion}</p>
-      <hr />
-      {esAdmin && (
-        <div className="product__content mb-1">
-          <div className="d-flex justify-content-around align-items-center m-2">
-            <Button className="btn btn-primary" onClick={handleMoreInfo}>
-            <FontAwesomeIcon icon={faPlus} />
-            </Button>
-            <Link
-              className="btn btn-warning col-auto"
-              to={`/detalle/${producto.id}`}
-              onClick={handleEdit}
-            >
-              <FontAwesomeIcon icon={faPencil} />
-            </Link>
-            <button className="btn btn-danger col-auto" onClick={handleDelete}>
-            <FontAwesomeIcon icon={faTrash} />
-            </button>
-          </div>
-        </div>
-      )}
       {!esAdmin && (
         <div className="product__content">
           <div className="d-flex justify-content-around align-items-center m-2">
@@ -69,20 +44,13 @@ const CardProductClient = (props) => {
           </div>
         </div>
       )}
-      {/*modalData && (
-        <ModalProductos
-          values={modalData}
-          visible={visible}
-          onHide={() => setVisible(false)}
-        />
-      )*/}
     </div>
   );
 };
 
-export default CardProductClient;
+export default ProductCardClient;
 
-CardProductClient.propTypes = {
+ProductCardClient.propTypes = {
   producto: PropTypes.shape({
     id: PropTypes.string.isRequired,
     nombre: PropTypes.string.isRequired,
@@ -90,8 +58,4 @@ CardProductClient.propTypes = {
     descripcion: PropTypes.string.isRequired,
     preciounitario: PropTypes.number.isRequired,
   }).isRequired,
-  esAdmin: PropTypes.bool,
-  handleMoreInfo: PropTypes.func,
-  handleEdit: PropTypes.func,
-  handleDelete: PropTypes.func,
 };
