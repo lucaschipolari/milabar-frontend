@@ -1,11 +1,7 @@
 import { useState } from "react";
 import "./Header.css"; // Importa el archivo CSS para estilos
-import {
-  faCartShopping,
-  faMagnifyingGlass,
-} from "@fortawesome/free-solid-svg-icons";
+import { faCartShopping } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import TabMenu from "../../TabMenu/TabMenu";
 
 const Header = () => {
   const [cartCount, setCartCount] = useState(0);
