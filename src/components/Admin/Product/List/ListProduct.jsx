@@ -97,10 +97,6 @@ const ListProduct = () => {
     return (
       <div className="col-12 p-3">
         <ProductCard producto={producto}
-              id={producto.id}
-              titulo={producto.nombre}
-              imagen={producto.imagen}
-              descripcion={producto.descripcion}
               esAdmin={true}
               handleMoreInfo={() => handleMoreInfo(producto)}
               handleEdit={() => handleEdit(producto)}

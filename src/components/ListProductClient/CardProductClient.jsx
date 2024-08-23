@@ -2,7 +2,6 @@ import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 import { Button } from "primereact/button";
 
-import ModalProductos from "../ModalProductos.jsx";
 import {
   faCartShopping,
   faHeart,
@@ -12,9 +11,8 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-import "../styles/producto.css";
 
-const ProductCard = (props) => {
+const CardProductClient = (props) => {
   const {
     producto,
     esAdmin = false,
@@ -71,20 +69,20 @@ const ProductCard = (props) => {
           </div>
         </div>
       )}
-      {modalData && (
+      {/*modalData && (
         <ModalProductos
           values={modalData}
           visible={visible}
           onHide={() => setVisible(false)}
         />
-      )}
+      )*/}
     </div>
   );
 };
 
-export default ProductCard;
+export default CardProductClient;
 
-ProductCard.propTypes = {
+CardProductClient.propTypes = {
   producto: PropTypes.shape({
     id: PropTypes.string.isRequired,
     nombre: PropTypes.string.isRequired,
