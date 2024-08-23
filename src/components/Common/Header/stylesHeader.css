@@ -1,0 +1,43 @@
+.img-logo{
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+}
+
+.logo-header{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+    object-fit: cover;
+}
+.navbar {
+    background-color: #ffffff;
+  }
+  
+  .img-logo {
+    max-width: 120px;
+  }
+  
+  .nav-link {
+    font-size: 1rem;
+    color: #333;
+  }
+  
+  .nav-link:hover {
+    color: #007bff;
+  }
+  
+  .dropdown-menu {
+    border-radius: 0.5rem;
+  }
+  
+  .dropdown-item {
+    padding: 0.75rem 1.25rem;
+  }
+  
+  .dropdown-item:hover {
+    background-color: #f8f9fa;
+  }
+  
+  
