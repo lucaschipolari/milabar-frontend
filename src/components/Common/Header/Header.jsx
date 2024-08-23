@@ -5,11 +5,21 @@ import {
   faMagnifyingGlass,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import CartModal from "../../CartModal/CartModal";
 const Header = () => {
   const [cartCount, setCartCount] = useState(0);
+  const [isCartModalVisible, setCartModalVisible] = useState(false);
 
   const incrementCart = () => {
     setCartCount(cartCount + 1);
+  };
+
+  const openCartModal = () => {
+    setCartModalVisible(true);
+  };
+
+  const closeCartModal = () => {
+    setCartModalVisible(false);
   };
 
   return (
@@ -19,7 +29,7 @@ const Header = () => {
           <img src="logo.png" alt="Logo" />
         </div>
         <div className="basket-icon">
-          <button type="button" className="btn btn-light position-relative">
+          <button type="button" className="btn btn-light position-relative" onClick={openCartModal}>
             <span className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
               {cartCount}
               <span className="visually-hidden">unread messages</span>
@@ -58,6 +68,7 @@ const Header = () => {
           </button>
         </div>
       </div>
+      <CartModal visible={isCartModalVisible} onHide={closeCartModal} />
     </header>
   );
 };
