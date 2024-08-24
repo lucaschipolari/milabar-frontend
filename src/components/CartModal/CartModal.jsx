@@ -55,6 +55,7 @@ const CartModal = ({ visible, onHide }) => {
         Swal.fire({
           title: "Pedido realizado",
           text: "Tu pedido fue enviado con éxito!",
+          footer: "Gracias por elegirnos",
           icon: "success",
         });
 
