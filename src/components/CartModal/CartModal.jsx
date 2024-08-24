@@ -152,9 +152,9 @@ const CartModal = ({ visible, onHide }) => {
                 "El número de mesa no puede ser mayor a 20",
             },
           }}
-          placeholder=""
           register={register}
           type="number"
+          isNumber={true}
         />
         {errors.tableNumber && (
           <p className="error-text">{errors.tableNumber.message}</p>
