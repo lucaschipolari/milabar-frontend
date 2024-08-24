@@ -130,9 +130,37 @@ const CartModal = ({ visible, onHide }) => {
             )
         )}
       </div>
-      <div className="cart-total d-flex justify-content-between m-3 price-text">
-        <h4>Total:</h4>${totalPrice.toFixed(2)}
-      </div>
+      <Input
+        className="m-3"
+        error={errors.details}
+        label="Detalles del pedido"
+        name="details"
+        options={{
+          minLength: {
+            value: 10,
+            message: "El campo detalle debe tener al menos 10 caracteres",
+          },
+          maxLength: {
+            value: 500,
+            message: "El campo detalle debe tener un máximo de 500 caracteres",
+          },
+          pattern: {
+            value: /^[A-Za-zñÑáéíóúÁÉÍÓÚ0-9\s.,!?()-]+$/,
+            message:
+              "El campo detalle solo puede contener letras, números y ciertos caracteres de puntuación (. , ! ? () -)",
+          },
+          validate: {
+            noExtraSpaces: (value) =>
+              !/\s{2,}/.test(value) ||
+              "El campo detalle no puede contener múltiples espacios consecutivos",
+            noOnlySpaces: (value) =>
+              value.trim().length > 0 ||
+              "El campo detalle no puede estar compuesto solo de espacios en blanco",
+          },
+        }}
+        register={register}
+        textarea
+      />
       <div className="d-flex align-items-center m-3 table-number-container">
         <p className="m-0">Ingrese su numero de mesa para hacer el pedido:</p>
         <Input
@@ -154,11 +182,15 @@ const CartModal = ({ visible, onHide }) => {
           }}
           register={register}
           type="number"
+          placeholder=""
           isNumber={true}
         />
         {errors.tableNumber && (
           <p className="error-text">{errors.tableNumber.message}</p>
         )}
+      </div>
+      <div className="cart-total d-flex justify-content-between m-3 price-text">
+        <h4>Total:</h4>${totalPrice.toFixed(2)}
       </div>
       <div className="cart-actions m-3 d-flex justify-content-between">
         <button className="btn btn-danger btn-sm p-1" onClick={clearCart}>
