@@ -1,9 +1,15 @@
 import { useState } from "react";
 import "./Header.css"; // Importa el archivo CSS para estilos
-import { faCartShopping } from "@fortawesome/free-solid-svg-icons";
+import {
+  faCartShopping,
+  faDoorOpen,
+  faSignOut,
+} from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import PropTypes from "prop-types";
 
-const Header = () => {
+const Header = (props) => {
+  const { user } = props; // Obtén el usuario desde los props
   const [cartCount, setCartCount] = useState(0);
 
   const incrementCart = () => {
@@ -14,8 +20,28 @@ const Header = () => {
     <header className="header">
       <div className="">
         <div className="icons">
-          <div className="avatar-icon">
-            <img src="logo.png" alt="Logo" />
+          <div className="">
+            {!user && (
+              <div>
+                <button className="btn btn-danger mx-1">Iniciar Sesion</button>
+                <button className="btn btn-light">Registrarse</button>
+              </div>
+            )}
+            {user && (
+              <div className="d-flex align-content-center justify-content-center">
+                {" "}
+                <div className="avatar-icon">
+                  <img
+                    src={user.avatar}
+                    alt={user.nombre}
+                    className="avatar-icon-user"
+                  />{" "}
+                </div>
+                <button className="btn btn-light mx-1 rounded">
+                  <FontAwesomeIcon icon={faSignOut} />
+                </button>
+              </div>
+            )}
           </div>
           <div className="basket-icon">
             <button type="button" className="btn btn-light cart-button">
@@ -45,3 +71,10 @@ const Header = () => {
 };
 
 export default Header;
+
+Header.propTypes = {
+  user: PropTypes.shape({
+    avatar: PropTypes.string.isRequired,
+    nombre: PropTypes.string.isRequired,
+  }),
+};

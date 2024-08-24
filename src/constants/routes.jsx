@@ -12,6 +12,7 @@ import AcercaDeNosotrosView from "../views/AcercaDeNosotrosView";
 import LoginPage from "../components/Auth/LoginPage";
 import RegisterPage from "../components/Auth/RegisterPage";
 import AuthLayout from "../components/Auth/AuthLayout";
+import PrivateView from "../views/routing/PrivateView";
 
 export const router = createBrowserRouter([
   {
@@ -82,7 +83,7 @@ export const router = createBrowserRouter([
       // RUTAS PRIVADAS
       {
         path: "",
-        element: <div></div>,
+        element: <PrivateView />,
         children: [
           {
             path: "admin",

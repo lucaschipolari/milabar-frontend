@@ -1,7 +1,8 @@
 const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
+import { decodeJWT } from "../utilities/decodeJWT";
 
 export const putUserFn = async ({ id, isEnabled }) => {
-  const res = await fetch(`${BACKEND_URL}/api/v1/usersPrueba/users/${id}`, {
+  const res = await fetch(`${BACKEND_URL}/usersPrueba/users/${id}`, {
     method: "PUT",
     headers: {
       "Content-Type": "application/json",
@@ -14,7 +15,7 @@ export const putUserFn = async ({ id, isEnabled }) => {
 };
 
 export const getUsersFn = async (filter) => {
-  const res = await fetch(`${BACKEND_URL}/api/v1/usersPrueba/users/${filter}`);
+  const res = await fetch(`${BACKEND_URL}/usersPrueba/users/${filter}`);
 
   // Revisa el tipo de contenido de la respuesta
   const contentType = res.headers.get("content-type");
@@ -33,9 +34,7 @@ export const getUsersFn = async (filter) => {
   }
 };
 export const getDetailUserFn = async (id) => {
-  const res = await fetch(
-    `${BACKEND_URL}/api/v1/usersPrueba/users/detail/${id}`
-  );
+  const res = await fetch(`${BACKEND_URL}/usersPrueba/users/detail/${id}`);
   const user = await res.json();
 
   if (!res.ok) {
@@ -43,4 +42,60 @@ export const getDetailUserFn = async (id) => {
   }
   console.log(user);
   return user;
+};
+
+export const postLoginFn = async (data) => {
+  // data: { username, password }
+
+  const res = await fetch(`${BACKEND_URL}/auth/login`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(data),
+  });
+  const resData = await res.json();
+
+  if (!res.ok) {
+    throw new Error(resData.message || "Ocurrió un error");
+  }
+
+  const token = resData.data;
+
+  if (!token) {
+    throw new Error(resData.message || "Ocurrió un error");
+  }
+
+  const userData = decodeJWT(token).user;
+
+  // Persistir el JWT
+  sessionStorage.setItem("token", token);
+
+  return userData;
+};
+
+export const postRegisterFn = async (data) => {
+  const res = await fetch(`${BACKEND_URL}/auth/register`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      username: data.username,
+      email: data.email,
+      password: data.password,
+    }),
+  });
+
+  if (!res.ok) {
+    throw new Error("Ocurrió un error guardando el usuario");
+  }
+
+  // Token en registro
+  const userData = await postLoginFn({
+    username: data.username,
+    password: data.password,
+  });
+
+  return userData;
 };

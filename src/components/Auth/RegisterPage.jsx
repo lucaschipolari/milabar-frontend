@@ -5,11 +5,13 @@ import useSession from "../../stores/useSession";
 import { useNavigate } from "react-router-dom";
 import SocialIcons from "./SocialIcons";
 import { validateName, validateEmail, validatePassword } from "./validators";
+import { postRegisterFn } from "../../api/usersApi";
+import Input from "../ui/input/Input";
 
 const RegisterPage = () => {
   const {
     register,
-    handleSubmit,
+    handleSubmit: onSubmitRHF,
     formState: { errors },
     reset,
   } = useForm({
@@ -27,7 +29,7 @@ const RegisterPage = () => {
   const navigate = useNavigate();
 
   const { mutate: postRegister } = useMutation({
-    mutationFn: () =>{},
+    mutationFn: postRegisterFn,
     onSuccess: (userData) => {
       toast.dismiss(); // Cerrar cualquier toast de carga
       toast.success(`¡Registro exitoso, ${userData.username}!`);
@@ -47,54 +49,48 @@ const RegisterPage = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit(handleSubmitForm)} className="form-user-auth">
+    <form onSubmit={onSubmitRHF(handleSubmitForm)} className="form-user-auth">
       <h1>Crear cuenta</h1>
       <div className="form-group">
-        <label htmlFor="username">Nombre</label>
-        <input
-          id="username"
+        <Input
+          name="username"
           type="text"
+          label="Nombre"
           placeholder="Nombre"
-          {...register("username", {
+          error={errors.username}
+          register={register}
+          options={{
             validate: validateName,
-          })}
-          className={`form-control ${errors.username ? "is-invalid" : ""}`}
+          }}
         />
-        {errors.username && (
-          <div className="invalid-feedback">{errors.username.message}</div>
-        )}
       </div>
       <div className="form-group">
-        <label htmlFor="email">Correo electrónico</label>
-        <input
-          id="email"
+        <Input
+          name="email"
           type="email"
+          label="Correo electrónico"
           placeholder="Correo electrónico"
-          {...register("email", {
+          error={errors.email}
+          register={register}
+          options={{
             required: "El correo electrónico es obligatorio",
             validate: validateEmail,
-          })}
-          className={`form-control ${errors.email ? "is-invalid" : ""}`}
+          }}
         />
-        {errors.email && (
-          <div className="invalid-feedback">{errors.email.message}</div>
-        )}
       </div>
       <div className="form-group">
-        <label htmlFor="password">Contraseña</label>
-        <input
-          id="password"
+        <Input
+          name="password"
           type="password"
+          label="Contraseña"
           placeholder="Contraseña"
-          {...register("password", {
+          error={errors.password}
+          register={register}
+          options={{
             required: "La contraseña es obligatoria",
             validate: validatePassword,
-          })}
-          className={`form-control ${errors.password ? "is-invalid" : ""}`}
+          }}
         />
-        {errors.password && (
-          <div className="invalid-feedback">{errors.password.message}</div>
-        )}
       </div>
       <button type="submit" className="btn btn-danger">
         Crear cuenta

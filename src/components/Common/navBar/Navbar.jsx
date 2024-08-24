@@ -4,6 +4,7 @@ import {
   faCartShopping,
   faUsersLine,
   faHeart,
+  faUser,
 } from "@fortawesome/free-solid-svg-icons";
 import { useState, useEffect, useMemo } from "react";
 import { useLocation } from "react-router-dom"; // Importa useLocation
@@ -22,9 +23,9 @@ const Navbar = () => {
     () => [
       { icon: faHouse, text: "Home", to: "menu" },
       { icon: faAddressBook, text: "Contacto", to: "contact" },
-      { icon: faCartShopping, text: "Carrito", to: "carrito" },
+      { icon: faUser, text: "Usuario", to: "usuario" },
       { icon: faUsersLine, text: "Nosotros", to: "acerca-de-nosotros" },
-      { icon: faHeart, text: "Favoritos", to: "#" },
+      { icon: faHeart, text: "Favoritos", to: "*" },
     ],
     []
   );
