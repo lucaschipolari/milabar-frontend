@@ -1,11 +1,17 @@
+#root {
+  background: #e8a7a7;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
 html, body {
     height: 100%;
     margin: 0;
-    padding-bottom: 60px; /* Ajusta este valor según la altura de tu navbar */
+    padding-bottom: 120px; /* Ajusta este valor según la altura de tu navbar */
 }
 .main-content {
     display: flex;
   flex-direction: column;
   height: 100%;
-    margin-bottom: 60px; /* Asegura que el contenido principal no quede cubierto */
+    margin-bottom: 120px; /* Asegura que el contenido principal no quede cubierto */
 }
