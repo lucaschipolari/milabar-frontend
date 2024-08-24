@@ -4,7 +4,7 @@ import Swal from "sweetalert2";
 import { toast } from "sonner";
 import { getProductosFn, deleteProductoFn } from "../../../../api/productos";
 import { useProducto } from "../../../../stores/useProducto.js";
-import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { useMutation, useQueryClient  } from "@tanstack/react-query";
 
 import ProductCard from "../CardProducto/ProductCard";
 
