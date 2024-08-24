@@ -29,6 +29,7 @@ const CartModal = ({ visible, onHide }) => {
   } = useForm();
 
   const tableNumber = watch("tableNumber", "");
+  const details = watch("details", "");
 
   const handleOrder = async () => {
     try {
@@ -36,6 +37,7 @@ const CartModal = ({ visible, onHide }) => {
         products: products.filter((product) => product.quantity > 0),
         total: totalPrice,
         tableNumber: tableNumber,
+        details: details,
       };
 
       const result = await Swal.fire({
