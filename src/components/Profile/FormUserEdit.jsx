@@ -25,22 +25,19 @@ const FormUserEdit = () => {
     onSuccess: () => {
       toast.dismiss();
       toast.success("Entrada actualizada");
-      Swal.fire({
-        title: "Éxito",
-        text: "Entrada actualizada",
-        icon: "success",
-        timer: 3000,
-        timerProgressBar: true,
-        showConfirmButton: false,
-        willClose: () => {
-          navigate(-1);
-        },
-      });
-
       clearUserToEdit();
       queryClient.invalidateQueries({
         queryKey: ["users"],
       });
+      Swal.fire({
+        title: "Éxito",
+        text: "Entrada actualizada",
+        icon: "success",
+        timer: 2000,
+        timerProgressBar: true,
+        showConfirmButton: false,
+      });
+
     },
     onError: (e) => {
       toast.dismiss();
@@ -60,7 +57,7 @@ const FormUserEdit = () => {
       const action = await Swal.fire({
         title: "Atención",
         icon: "info",
-        html: `¿Estás seguro que deseas editar el usuario <b>"${userToEdit.username}"</b>?`,
+        html: `¿Estás seguro que deseas editar el usuario <b>"${userToEdit.data.username}"</b>?`,
         confirmButtonText: "Si, editar",
         cancelButtonText: "No, cancelar",
         showCancelButton: true,
@@ -68,7 +65,8 @@ const FormUserEdit = () => {
 
       if (action.isConfirmed) {
         toast.loading("Actualizando entrada...");
-        putUsers({ userId: userToEdit.id, data });
+        const userId = userToEdit.data.id;
+        putUsers({ userId, data });
       }
       clearUserToEdit();
     }
@@ -76,26 +74,23 @@ const FormUserEdit = () => {
   };
 
   const handleCancelEdit = () => {
-    navigate(-1);
     clearUserToEdit();
     reset();
   };
 
   return (
     <form
-      className="container my-5 p-3 bg-light form-size"
+      className="container my-3 bg-light form-size"
       onSubmit={onSubmitRHF(handleSubmit)}
     >
       <h1 className="text-center">
-        {userToEdit ? "Editar usuario" : ""}
+        Editar usuario
       </h1>
       <hr />
-      {userToEdit && (
         <div className="alert alert-warning">
           Atención: Estás modificando la entrada con nombre{" "}
           <b>{userToEdit.data.username}</b>
         </div>
-      )}
       <InputProducto
         className="mb-2"
         error={errors.username}
@@ -169,11 +164,9 @@ const FormUserEdit = () => {
       />
       <hr />
       <div className="text-end">
-        {userToEdit && (
           <button className="btn" type="button" onClick={handleCancelEdit}>
             Cancelar edición
           </button>
-        )}
         <button className="btn btn-danger" type="submit">
           Guardar
         </button>

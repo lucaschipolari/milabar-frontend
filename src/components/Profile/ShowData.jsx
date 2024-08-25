@@ -14,14 +14,14 @@ const UserCard = (props) => {
   };
 
   return (
-    <div className="card container">
+    <div className="card container my-2">
       {userToEdit ? (
         <FormUserEdit /> 
       ) : (
         <>
           <div className="row">
             <div className="col-12 col-md-3 content-img-data">
-              <p className="text-center fs-5">
+              <p className="text-center">
                 <strong>Avatar</strong>
               </p>
               <img
@@ -30,14 +30,14 @@ const UserCard = (props) => {
                 className="w-100 h-auto object-fit-cover"
               />
             </div>
-            <div className="col-9 d-flex flex-column justify-content-center align-items-center">
-              <p className="text-center fs-5 my-2">
+            <div className="col-9">
+              <p className="text-start my-2">
                 <strong>Nombre de usuario:</strong> {user.data.username}
               </p>
-              <p className="text-center fs-5 my-2">
+              <p className="text-start my-2">
                 <strong>Email:</strong> {user.data.email}
               </p>
-              <p className="text-center fs-5 my-2">
+              <p className="text-start my-2">
                 <strong>Rol:</strong> {user.data.role}
               </p>
             </div>
