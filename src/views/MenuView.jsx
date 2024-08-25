@@ -1,10 +1,11 @@
-import Header from "../components/Common/Header/Header";
 
+import PrincipalPage from "../components/PrincipalPage/PrincipalPage";
+import "primereact/resources/themes/lara-light-cyan/theme.css";
 const MenuView = () => {
   return (
-    <div>
-      <Header />
-    </div>
+    <>
+      <PrincipalPage />
+    </>
   );
 };
 

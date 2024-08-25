@@ -1,5 +1,7 @@
-.bg-productos{
-  background-color: #fff;
+
+
+.form-size{
+  max-width: 500px;
 }
 
 .row-height {
@@ -74,3 +76,8 @@
     height: 180px;
     overflow-x: hidden;
   }
+
+  .p-carousel-indicators{
+    display: none;
+}
+  

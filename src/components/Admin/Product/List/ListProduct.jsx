@@ -1,9 +1,13 @@
 import { useQuery } from "@tanstack/react-query";
 import { useState } from "react";
+import Swal from "sweetalert2";
+import { toast } from "sonner";
+import { useMutation, useQueryClient  } from "@tanstack/react-query";
+import { useProducto } from "../../../../stores/useProducto.js";
 
 import { Carousel } from "primereact/carousel";
 
-import { getProductosFn } from "../../../../api/productos";
+import { getProductosFn, deleteProductoFn } from "../../../../api/productos";
 import ProductCard from "../CardProducto/ProductCard";
 
 const ListProduct = () => {
@@ -16,18 +20,33 @@ const ListProduct = () => {
     queryFn: getProductosFn,
   });
 
+  const { mutate: deleteProducto } = useMutation({
+    mutationFn: deleteProductoFn,
+    onSuccess: () => {
+      toast.dismiss();
+      toast.success("Entrada eliminada");
+
+      queryClient.invalidateQueries({
+        queryKey: ["productos"],
+      });
+    },
+    onError: (e) => {
+      toast.dismiss();
+      toast.error(e.message);
+    },
+  });
+
   const [searchTerm, setSearchTerm] = useState("");
+  const [modalData, setModalData] = useState(null);
+  const [visible, setVisible] = useState(false);
+
+  const queryClient = useQueryClient();
 
   const filteredProducts =
     productos?.data?.filter((producto) =>
       producto.nombre.toLowerCase().includes(searchTerm.toLowerCase())
     ) || [];
 
-  
-    const handleMoreInfo = () => {
-      setModalData(producto);
-      setVisible(true);
-    };
 
   if (isLoading) {
     return <p className="mt-3 text-center">Cargando datos...</p>;
@@ -49,10 +68,43 @@ const ListProduct = () => {
     );
   }
 
+  const handleMoreInfo = (producto) => {
+    setModalData(producto);
+    setVisible(true);
+  };
+
+  const handleEdit = (producto) => {
+    setProductoToEdit(producto);
+  };
+
+  const handleDelete = async (producto) => {
+    const action = await Swal.fire({
+      title: "Atención",
+      icon: "info",
+      html: `¿Estás seguro que deseas eliminar el producto <b>"${producto.nombre}"</b>?`,
+      confirmButtonText: "Si, eliminar",
+      cancelButtonText: "No, cancelar",
+      showCancelButton: true,
+    });
+
+    if (action.isConfirmed) {
+      toast.loading("Eliminando entrada...");
+      deleteProducto(producto.id);
+    }
+  };
+
   const productTemplate = (producto) => {
     return (
       <div className="col-12 p-3">
-        <ProductCard producto={producto} key={producto.id} />
+        <ProductCard producto={producto}
+              esAdmin={true}
+              handleMoreInfo={() => handleMoreInfo(producto)}
+              handleEdit={() => handleEdit(producto)}
+              handleDelete={() => handleDelete(producto)} 
+              modalData={modalData}
+              visible={visible}
+              setVisible={setVisible}
+              />
       </div>
     );
   };
