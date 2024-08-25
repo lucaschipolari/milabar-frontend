@@ -1,10 +1,4 @@
 
-#root {
-  background: #e8a7a7;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-}
 html, body {
     height: 100%;
     margin: 0;

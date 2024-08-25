@@ -1,6 +1,5 @@
-
 // src/stores/useSession.js
-import { create } from 'zustand';
+import { create } from "zustand";
 
 const useSession = create((set) => ({
   user: null,
@@ -9,4 +8,3 @@ const useSession = create((set) => ({
 }));
 
 export default useSession;
-
