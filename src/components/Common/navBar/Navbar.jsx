@@ -23,7 +23,11 @@ const Navbar = () => {
     () => [
       { icon: faHouse, text: "Home", to: "menu" },
       { icon: faAddressBook, text: "Contacto", to: "contact" },
+<<<<<<< HEAD
       { icon: faCartShopping, text: "Usuario", to: "profile" },
+=======
+      { icon: faUser, text: "Usuario", to: "profile" },
+>>>>>>> 3fbd841ab746f502dd05237d85298596950d8bfc
       { icon: faUsersLine, text: "Nosotros", to: "acerca-de-nosotros" },
       { icon: faHeart, text: "Favoritos", to: "*" },
     ],

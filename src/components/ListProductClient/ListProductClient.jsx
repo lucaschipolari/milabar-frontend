@@ -75,7 +75,6 @@ const ListProductClient = (props) => {
 
   return (
     <div className="col-12">
-      <h3>Sanguches</h3>
       <Carousel
         value={productosFiltrados}
         className="col-12"
