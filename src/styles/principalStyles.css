@@ -1,9 +1,8 @@
 
-#root {
-  background: #e8a7a7;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
+html, body {
+    height: 100%;
+    margin: 0;
+    padding-bottom: 120px; /* Ajusta este valor según la altura de tu navbar */
 }
 html, body {
     height: 100%;

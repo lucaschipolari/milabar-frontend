@@ -11,9 +11,11 @@ import { useLocation } from "react-router-dom"; // Importa useLocation
 import NavItem from "./NavItem";
 import "./style.css";
 
+
 const Navbar = () => {
   const [activeIndex, setActiveIndex] = useState(0);
   const [cartCount, setCartCount] = useState(0);
+
 
   const location = useLocation(); // Obtén la ruta actual
   const currentPath = location.pathname; // Ruta actual
@@ -23,7 +25,7 @@ const Navbar = () => {
     () => [
       { icon: faHouse, text: "Home", to: "menu" },
       { icon: faAddressBook, text: "Contacto", to: "contact" },
-      { icon: faCartShopping, text: "Usuario", to: "profile" },
+      { icon: faUser, text: "Usuario", to: "profile" },
       { icon: faUsersLine, text: "Nosotros", to: "acerca-de-nosotros" },
       { icon: faHeart, text: "Favoritos", to: "*" },
     ],
@@ -38,6 +40,7 @@ const Navbar = () => {
   const incrementCartCount = () => {
     setCartCount((prevCount) => prevCount + 1);
   };
+
 
   const isValidPage = navItems.some((item) => `/${item.to}` === currentPath);
 

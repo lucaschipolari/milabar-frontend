@@ -123,9 +123,11 @@ export const putUsersFn = async ({ userId, data }) => {
     body: JSON.stringify(data),
   });
 
+
   if (!res.ok) {
     throw new Error(
       "Ocurrió un error intentando editar el usuario seleccionado"
     );
   }
 };
+
