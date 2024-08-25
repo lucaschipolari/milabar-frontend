@@ -1,10 +1,8 @@
 import { useQuery } from "@tanstack/react-query";
-
 import { Carousel } from "primereact/carousel";
-
-import { getProductosFn } from "../../api/productos";
 import ProductCardClient from "./CardProductClient";
 import "./style.css";
+import { getProductosFn } from "../../api/productos";
 
 const ListProductClient = () => {
   const {
@@ -15,6 +13,7 @@ const ListProductClient = () => {
     queryKey: ["productos"],
     queryFn: getProductosFn,
   });
+
   const responsiveOptions = [
     {
       breakpoint: "2400px",
@@ -37,6 +36,7 @@ const ListProductClient = () => {
       numScroll: 1,
     },
   ];
+
   if (isLoading) {
     return <p className="mt-3 text-center">Cargando datos...</p>;
   }
@@ -57,9 +57,21 @@ const ListProductClient = () => {
     );
   }
 
+  // Filtrar productos para cada categoría
+  const productosSanguches = productos.data.filter(
+    (producto) =>
+      producto.categoria === "SANGUCHE" && producto.agregado === "false"
+  );
+
+  const productosPizzas = productos.data.filter(
+    (producto) =>
+      producto.categoria === "PIZZA" && producto.agregado === "false"
+  );
+
+  // Define la plantilla para los productos
   const productTemplate = (producto) => {
     return (
-      <div className="col-12  p-3">
+      <div className="col-12 p-3">
         <ProductCardClient producto={producto} key={producto.id} />
       </div>
     );
@@ -67,13 +79,26 @@ const ListProductClient = () => {
 
   return (
     <div className="col-12">
+      <h3>Sanguches</h3>
       <Carousel
-        value={productos.data}
+        value={productosSanguches}
         className="col-12"
-        numVisible={3} // Establece el valor por defecto para pantallas grandes
+        numVisible={3}
         numScroll={1}
         orientation="horizontal"
-        verticalViewPortHeight="550px"
+        verticalViewPortHeight="auto"
+        itemTemplate={productTemplate}
+        responsiveOptions={responsiveOptions}
+      />
+
+      <h3 className="mt-5">Pizzas</h3>
+      <Carousel
+        value={productosPizzas}
+        className="col-12"
+        numVisible={3}
+        numScroll={1}
+        orientation="horizontal"
+        verticalViewPortHeight="auto"
         itemTemplate={productTemplate}
         responsiveOptions={responsiveOptions}
       />
