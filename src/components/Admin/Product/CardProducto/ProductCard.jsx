@@ -39,9 +39,9 @@ const ProductCard = (props) => {
       </div>
       <h6 className="text-center fs-3 my-2">{producto.nombre}</h6>
       <p className="text-center m-0">{producto.descripcion}</p>
-      <hr />
       {esAdmin && (
         <div className="product__content mb-1">
+          <hr />
           <div className="d-flex justify-content-around align-items-center m-2">
             <Button className="btn btn-primary" onClick={handleMoreInfo}>
             <FontAwesomeIcon icon={faPlus} />
