@@ -2,9 +2,9 @@ import { create } from "zustand";
 
 export const useCartStore = create((set) => ({
   products: [
-    { id: 1, name: "nombre 1", price: 10.0, quantity: 1, image: '/path/to/image1.png' },
-    { id: 2, name: "nombre 2", price: 20.0, quantity: 2, image: '/path/to/image2.png' },
-    { id: 3, name: "nombre 3", price: 30.0, quantity: 3, image: '/path/to/image3.png' },
+    { id: "1", name: "nombre 1", price: 10.0, quantity: 1, image: '/path/to/image1.png' },
+    { id: "2", name: "nombre 2", price: 20.0, quantity: 2, image: '/path/to/image2.png' },
+    { id: "3", name: "nombre 3", price: 30.0, quantity: 3, image: '/path/to/image3.png' },
   ],
   updateQuantity: (id, increment) =>
     set((state) => ({

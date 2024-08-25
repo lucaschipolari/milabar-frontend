@@ -132,6 +132,7 @@ const CartModal = ({ visible, onHide }) => {
             )
         )}
       </div>
+      <div className="detail-container">
       <Input
         className="m-3"
         error={errors.details}
@@ -163,6 +164,9 @@ const CartModal = ({ visible, onHide }) => {
         register={register}
         textarea
       />
+      <div className="text-center mt-0"><p className="text-secondary small">*En caso de querer especificar algo, minimo 10 caracteres*</p></div>
+      
+      </div>
       <div className="d-flex align-items-center m-3 table-number-container">
         <p className="m-0">Ingrese su numero de mesa para hacer el pedido:</p>
         <Input
