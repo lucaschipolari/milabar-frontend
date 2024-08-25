@@ -15,6 +15,7 @@
   z-index: 999; /* Asegura que esté por encima de otros elementos */
   box-shadow: 0 2px 4px #0000001a; /* Añade sombra para diferenciarlo del contenido */
   padding: 10px; /* Añade algo de padding si es necesario */
+
 }
 
 .icons {
@@ -59,6 +60,7 @@ h1 {
   color: #111;
   text-align: center;
 }
+
 
 .title > span {
   animation: glow 2s ease-in-out infinite;
@@ -162,3 +164,4 @@ h1 {
     justify-content: center;
   }
 }
+

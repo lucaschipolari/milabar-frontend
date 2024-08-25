@@ -1,19 +1,26 @@
 import { useState } from "react";
 import "./Header.css"; // Importa el archivo CSS para estilos
-import {
-  faCartShopping,
-  faDoorOpen,
-  faSignOut,
-} from "@fortawesome/free-solid-svg-icons";
+import { faCartShopping, faSignOut } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import PropTypes from "prop-types";
 
+import CartModal from "../../CartModal/CartModal";
 const Header = (props) => {
   const { user } = props; // Obtén el usuario desde los props
+
   const [cartCount, setCartCount] = useState(0);
+  const [isCartModalVisible, setCartModalVisible] = useState(false);
 
   const incrementCart = () => {
     setCartCount(cartCount + 1);
+  };
+
+  const openCartModal = () => {
+    setCartModalVisible(true);
+  };
+
+  const closeCartModal = () => {
+    setCartModalVisible(false);
   };
 
   return (
@@ -53,19 +60,21 @@ const Header = (props) => {
             </button>
           </div>
         </div>
-        <h1>
-          <div className="title">
-            <span>M</span>
-            <span>I</span>
-            <span>L</span>
-            <span>A</span>
-            <span>B</span>
-            <span>A</span>
-            <span>R</span>
-          </div>{" "}
-          <br /> <span className="subtitle">Milanesas enserio.</span>
-        </h1>
       </div>
+      <h1>
+        <div className="title">
+          <span>M</span>
+          <span>I</span>
+          <span>L</span>
+          <span>A</span>
+          <span>B</span>
+          <span>A</span>
+          <span>R</span>
+        </div>{" "}
+        <br /> <span className="subtitle">Milanesas enserio.</span>
+      </h1>
+
+      <CartModal visible={isCartModalVisible} onHide={closeCartModal} />
     </header>
   );
 };

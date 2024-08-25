@@ -7,12 +7,12 @@ import PrincipalProductoView from "../views/PrincipalProductoView";
 import DetalleProductoView from "../views/DetalleProductoView";
 import ContactView from "../views/ContactView";
 import MenuView from "../views/MenuView";
-import CarritoView from "../views/CarritoView";
 import AcercaDeNosotrosView from "../views/AcercaDeNosotrosView";
 import LoginPage from "../components/Auth/LoginPage";
 import RegisterPage from "../components/Auth/RegisterPage";
 import AuthLayout from "../components/Auth/AuthLayout";
 import PrivateView from "../views/routing/PrivateView";
+import ProfileView from "../views/ProfileView";
 
 export const router = createBrowserRouter([
   {
@@ -41,8 +41,8 @@ export const router = createBrowserRouter([
         element: <MenuView />,
       },
       {
-        path: "/carrito",
-        element: <CarritoView />,
+        path: "/profile/:id",
+        element: <ProfileView />,
       },
       {
         path: "/acerca-de-nosotros",

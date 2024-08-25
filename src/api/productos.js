@@ -28,9 +28,7 @@ export const getProductosFn = async () => {
 };
 
 export const getProductoFn = async (productoId) => {
-  const res = await fetch(
-    `${BACKEND_URL}/productos/detalle/${productoId}`
-  );
+  const res = await fetch(`${BACKEND_URL}/productos/detalle/${productoId}`);
   const data = await res.json();
 
   if (!res.ok) {
@@ -62,17 +60,14 @@ export const deleteProductoFn = async (productoId) => {
 export const putProductoFn = async ({ productoId, data }) => {
   //const token = sessionStorage.getItem('token');
 
-  const res = await fetch(
-    `${BACKEND_URL}/productos/detalle/${productoId}`,
-    {
-      method: "PUT",
-      headers: {
-        "Content-Type": "application/json",
-        //Authorization: `Bearer ${token}`,
-      },
-      body: JSON.stringify(data),
-    }
-  );
+  const res = await fetch(`${BACKEND_URL}/productos/detalle/${productoId}`, {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+      //Authorization: `Bearer ${token}`,
+    },
+    body: JSON.stringify(data),
+  });
 
   if (!res.ok) {
     throw new Error(

@@ -10,6 +10,8 @@ import SelectProducto from "../../ui/SelectProducto";
 import { postProductoFn, putProductoFn } from "../../../api/productos.js";
 import { useProducto } from "../../../stores/useProducto.js";
 
+import './styles/producto.css';
+
 const FormularioProductos = () => {
   const navigate = useNavigate();
   const {
@@ -133,9 +135,7 @@ const FormularioProductos = () => {
   };
 
   return (
-    <div className="p-3 bg-white rounded-4 border-light shadow-sm">
-      <h3 className="text-center">Formulario de productos</h3>
-      <form className="card p-3 bg-light" onSubmit={onSubmitRHF(handleSubmit)}>
+      <form className="container my-5 p-3 bg-light form-size" onSubmit={onSubmitRHF(handleSubmit)}>
         <h1 className="text-center">
           {productoToEdit ? "Editar producto" : "Crear producto"}
         </h1>
@@ -190,7 +190,7 @@ const FormularioProductos = () => {
           error={errors.categoria}
           name="categoria"
           label="Categoria del producto"
-          categories={["SANGUCHE", "GASEOSA", "ADEREZO", "VERDURA"]}
+          categories={["SANGUCHE", "GASEOSA", "ADEREZO", "VERDURA", "PIZZA", "HAMBURGUESA"]}
           options={{
             required: "Este campo es requerido",
           }}
@@ -290,7 +290,6 @@ const FormularioProductos = () => {
           </button>
         </div>
       </form>
-    </div>
   );
 };
 export default FormularioProductos;

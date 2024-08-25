@@ -3,8 +3,10 @@ import { Carousel } from "primereact/carousel";
 import ProductCardClient from "./CardProductClient";
 import "./style.css";
 import { getProductosFn } from "../../api/productos";
+import PropTypes from "prop-types";
 
-const ListProductClient = () => {
+const ListProductClient = (props) => {
+  const { categoria } = props;
   const {
     data: productos,
     isLoading,
@@ -57,18 +59,12 @@ const ListProductClient = () => {
     );
   }
 
-  // Filtrar productos para cada categoría
-  const productosSanguches = productos.data.filter(
+  // Filtrar productos según la categoría pasada como prop
+  const productosFiltrados = productos.data.filter(
     (producto) =>
-      producto.categoria === "SANGUCHE" && producto.agregado === "false"
+      producto.categoria === categoria && producto.agregado === "false"
   );
 
-  const productosPizzas = productos.data.filter(
-    (producto) =>
-      producto.categoria === "PIZZA" && producto.agregado === "false"
-  );
-
-  // Define la plantilla para los productos
   const productTemplate = (producto) => {
     return (
       <div className="col-12 p-3">
@@ -81,19 +77,7 @@ const ListProductClient = () => {
     <div className="col-12">
       <h3>Sanguches</h3>
       <Carousel
-        value={productosSanguches}
-        className="col-12"
-        numVisible={3}
-        numScroll={1}
-        orientation="horizontal"
-        verticalViewPortHeight="auto"
-        itemTemplate={productTemplate}
-        responsiveOptions={responsiveOptions}
-      />
-
-      <h3 className="mt-5">Pizzas</h3>
-      <Carousel
-        value={productosPizzas}
+        value={productosFiltrados}
         className="col-12"
         numVisible={3}
         numScroll={1}
@@ -107,3 +91,7 @@ const ListProductClient = () => {
 };
 
 export default ListProductClient;
+
+ListProductClient.propTypes = {
+  categoria: PropTypes.string.isRequired,
+};

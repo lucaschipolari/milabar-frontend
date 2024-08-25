@@ -15,6 +15,7 @@ const Input = (props) => {
     maxLength,
     onChange,
     resetCount,
+    isNumber = false,
   } = props;
 
   const [internalCharCount, setInternalCharCount] = useState(0);
@@ -64,6 +65,22 @@ const Input = (props) => {
     );
   }
 
+  if (isNumber) {
+    return (
+      <div className={`${className}`}>
+        <input
+          className={`form-control ${error ? "is-invalid" : ""}`}
+          id={`${name}-input`}
+          type={type}
+          {...register(name, options)}
+          placeholder={placeholder}
+        />
+        <label htmlFor={`${name}-input`}>{label}</label>
+        <div className="invalid-feedback">{error?.message}</div>
+      </div>
+    );
+  }
+
   return (
     <fieldset className={`form-floating ${className}`}>
       <input
@@ -95,4 +112,5 @@ Input.propTypes = {
   maxLength: PropTypes.number,
   onChange: PropTypes.func,
   resetCount: PropTypes.bool,
+  isNumber: PropTypes.bool, 
 };

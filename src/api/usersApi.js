@@ -99,3 +99,33 @@ export const postRegisterFn = async (data) => {
 
   return userData;
 };
+
+export const getUserFn = async (userId) => {
+  const res = await fetch(`${BACKEND_URL}/profile/${userId}`);
+  const data = await res.json();
+  if (!res.ok) {
+    throw new Error(
+      "Ocurrió un error leyendo la entrada del producto seleccionado"
+    );
+  }
+  return data;
+};
+
+export const putUsersFn = async ({ userId, data }) => {
+  //const token = sessionStorage.getItem('token');
+
+  const res = await fetch(`${BACKEND_URL}/profile/${userId}`, {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+      //Authorization: `Bearer ${token}`,
+    },
+    body: JSON.stringify(data),
+  });
+
+  if (!res.ok) {
+    throw new Error(
+      "Ocurrió un error intentando editar el usuario seleccionado"
+    );
+  }
+};
