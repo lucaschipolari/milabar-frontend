@@ -1,10 +1,25 @@
 import { create } from 'zustand';
+import { decodeJWT } from '../utilities/decodeJWT';
 
-const useSession = create((set) => ({
-  user: null,
-  login: (user) => set({ user }),
-  logout: () => set({ user: null }),
-}));
+let user = null;
+let isLoggedIn = false;
 
-export default useSession;
+const token = sessionStorage.getItem('token');
+if (token) {
+  user = decodeJWT(token).user;
+  isLoggedIn = true;
+}
 
+export const useSession = create((set) => {
+  return {
+    user,
+    isLoggedIn,
+    login: (newUser) => {
+      set({ user: newUser, isLoggedIn: true });
+    },
+    logout: () => {
+      sessionStorage.removeItem('token');
+      set({ user: null, isLoggedIn: false });
+    },
+  };
+});

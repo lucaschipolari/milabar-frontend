@@ -6,10 +6,10 @@ const NavigationButtons = () => {
       <Link className="btn btn-danger my-3" to="menu">
         Menu
       </Link>
-      <Link className="btn btn-danger mb-3" to="#">
+      <Link className="btn btn-danger mb-3" to="/users/login">
         Iniciar Sesión
       </Link>
-      <Link className="btn btn-danger mb-3" to="#">
+      <Link className="btn btn-danger mb-3" to="/users/register">
         Registrarse
       </Link>
     </div>
