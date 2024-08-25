@@ -1,5 +1,3 @@
-
-// src/stores/useSession.js
 import { create } from 'zustand';
 
 const useSession = create((set) => ({
