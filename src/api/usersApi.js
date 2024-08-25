@@ -45,9 +45,7 @@ export const getDetailUserFn = async (id) => {
 };
 
 export const postLoginFn = async (data) => {
-  // data: { username, password }
-
-  const res = await fetch(`${BACKEND_URL}/auth/login`, {
+  const res = await fetch(`${BACKEND_URL}/users/login`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -68,14 +66,13 @@ export const postLoginFn = async (data) => {
 
   const userData = decodeJWT(token).user;
 
-  // Persistir el JWT
   sessionStorage.setItem("token", token);
 
   return userData;
 };
 
 export const postRegisterFn = async (data) => {
-  const res = await fetch(`${BACKEND_URL}/auth/register`, {
+  const res = await fetch(`${BACKEND_URL}/users/register`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -91,9 +88,9 @@ export const postRegisterFn = async (data) => {
     throw new Error("Ocurrió un error guardando el usuario");
   }
 
-  // Token en registro
   const userData = await postLoginFn({
     username: data.username,
+    email:data.email,
     password: data.password,
   });
 

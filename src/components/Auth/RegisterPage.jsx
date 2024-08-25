@@ -1,7 +1,8 @@
 import { useForm } from "react-hook-form";
+import { useEffect } from "react";
 import { useMutation } from "@tanstack/react-query";
 import { toast } from "sonner";
-import useSession from "../../stores/useSession";
+import {useSession}  from "../../stores/useSession";
 import { useNavigate } from "react-router-dom";
 import SocialIcons from "./SocialIcons";
 import { validateName, validateEmail, validatePassword } from "./validators";
@@ -13,7 +14,6 @@ const RegisterPage = () => {
     register,
     handleSubmit: onSubmitRHF,
     formState: { errors },
-    reset,
   } = useForm({
     mode: "onBlur",
     reValidateMode: "onSubmit",
@@ -33,9 +33,8 @@ const RegisterPage = () => {
     onSuccess: (userData) => {
       toast.dismiss(); // Cerrar cualquier toast de carga
       toast.success(`¡Registro exitoso, ${userData.username}!`);
-      reset();
       login(userData);
-      setTimeout(() => navigate("/"), 1500);
+      setTimeout(() => navigate("/menu"), 1000);
     },
     onError: (e) => {
       toast.dismiss(); // Cerrar cualquier toast de carga
@@ -60,25 +59,22 @@ const RegisterPage = () => {
           error={errors.username}
           register={register}
           options={{
+            required: "El nombre es obligatorio",
             validate: validateName,
           }}
         />
-      </div>
-      <div className="form-group">
         <Input
           name="email"
           type="email"
-          label="Correo electrónico"
-          placeholder="Correo electrónico"
+          label="Eail"
+          placeholder="Email"
           error={errors.email}
           register={register}
           options={{
-            required: "El correo electrónico es obligatorio",
+            required: "El mail es obligatorio",
             validate: validateEmail,
           }}
         />
-      </div>
-      <div className="form-group">
         <Input
           name="password"
           type="password"
@@ -95,7 +91,6 @@ const RegisterPage = () => {
       <button type="submit" className="btn btn-danger">
         Crear cuenta
       </button>
-
       <SocialIcons />
     </form>
   );

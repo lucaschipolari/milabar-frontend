@@ -2,11 +2,13 @@ import { useState } from "react";
 import "./Header.css"; // Importa el archivo CSS para estilos
 import { faCartShopping, faSignOut } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import Swal from 'sweetalert2';
 import PropTypes from "prop-types";
 import CartModal from "../../CartModal/CartModal";
-import CartModal from "../../CartModal/CartModal";
+import { useSession } from "../../../stores/useSession";
 
 const Header = (props) => {
+  const { logout } = useSession();
   const { user } = props; // Obtén el usuario desde los props
   const [cartCount, setCartCount] = useState(0);
   const [isCartModalVisible, setCartModalVisible] = useState(false);
@@ -21,6 +23,21 @@ const Header = (props) => {
 
   const closeCartModal = () => {
     setCartModalVisible(false);
+  };
+
+  const handleLogout = async () => {
+    const action = await Swal.fire({
+      icon: 'question',
+      title: 'Atención',
+      text: '¿Está seguro que desea cerrar sesion?',
+      confirmButtonText: 'Si, salir',
+      cancelButtonText: 'No, cancelar',
+      showCancelButton: true,
+    });
+
+    if (action.isConfirmed) {
+      logout();
+    }
   };
 
   return (
@@ -44,7 +61,7 @@ const Header = (props) => {
                     className="avatar-icon-user"
                   />{" "}
                 </div>
-                <button className="btn btn-light mx-1 rounded">
+                <button className="btn btn-light mx-1 rounded " onClick={handleLogout}>
                   <FontAwesomeIcon icon={faSignOut} />
                 </button>
               </div>
