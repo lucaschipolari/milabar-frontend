@@ -4,7 +4,7 @@ import Swal from "sweetalert2";
 import { toast } from "sonner";
 import { getProductosFn, deleteProductoFn } from "../../../../api/productos";
 import { useProducto } from "../../../../stores/useProducto.js";
-import { useMutation, useQueryClient  } from "@tanstack/react-query";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 
 import ProductCard from "../CardProducto/ProductCard";
 
@@ -107,10 +107,6 @@ const ContenedorProductCard = () => {
           <div className="col-12 col-md-4 col-lg-3 my-2" key={producto.id}>
             <ProductCard
               producto={producto}
-              id={producto.id}
-              titulo={producto.nombre}
-              imagen={producto.imagen}
-              descripcion={producto.descripcion}
               esAdmin={true}
               handleMoreInfo={() => handleMoreInfo(producto)}
               handleEdit={() => handleEdit(producto)}

@@ -1,0 +1,9 @@
+.content-img { 
+    max-height: 240px;
+    width: auto;
+}
+
+.content-img-data{
+    max-height: 200px;
+    overflow: hidden;
+}

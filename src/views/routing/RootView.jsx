@@ -1,3 +1,4 @@
+
 import { Outlet, useLocation } from "react-router-dom";
 import Navbar from "../../components/Common/navBar/navbar";
 import Header from "../../components/Common/Header/Header";
