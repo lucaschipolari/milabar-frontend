@@ -19,11 +19,13 @@ const ProductCardClient = (props) => {
   const { addProduct } = useCartStore();
 
   const addToCart = () => {
-    addProduct(  {  id: producto.id,
+    addProduct({
+      id: producto.id,
       name: producto.nombre,
       image: producto.imagen,
-      price: producto.preciounitario,});
-    console.log('Producto añadido al carrito:', producto);
+      price: producto.preciounitario,
+    });
+    console.log("Producto añadido al carrito:", producto);
   };
 
   return (

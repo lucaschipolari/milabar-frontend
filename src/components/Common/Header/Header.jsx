@@ -4,16 +4,16 @@ import { faCartShopping, faSignOut } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import PropTypes from "prop-types";
 import CartModal from "../../CartModal/CartModal";
+import { useCartStore } from "../../../stores/useCartStore";
 
 const Header = (props) => {
   const { user } = props; // Obtén el usuario desde los props
-  const [cartCount, setCartCount] = useState(0);
+  // const [cartCount, setCartCount] = useState(0);
   const [isCartModalVisible, setCartModalVisible] = useState(false);
-  
 
-  const incrementCart = () => {
-    setCartCount(cartCount + 1);
-  };
+  const cartCount = useCartStore((state) =>
+    state.products.reduce((acc, product) => acc + product.quantity, 0)
+  );
 
   const openCartModal = () => {
     setCartModalVisible(true);
