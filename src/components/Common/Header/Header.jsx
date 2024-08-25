@@ -3,6 +3,7 @@ import "./Header.css"; // Importa el archivo CSS para estilos
 import { faCartShopping } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
+
 const Header = () => {
   const [cartCount, setCartCount] = useState(0);
 

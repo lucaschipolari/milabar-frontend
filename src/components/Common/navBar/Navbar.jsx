@@ -22,7 +22,7 @@ const Navbar = () => {
     () => [
       { icon: faHouse, text: "Home", to: "menu" },
       { icon: faAddressBook, text: "Contacto", to: "contact" },
-      { icon: faCartShopping, text: "Carrito", to: "carrito" },
+      { icon: faCartShopping, text: "Carrito", to: "profile" },
       { icon: faUsersLine, text: "Nosotros", to: "acerca-de-nosotros" },
       { icon: faHeart, text: "Favoritos", to: "#" },
     ],

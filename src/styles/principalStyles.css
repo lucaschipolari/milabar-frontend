@@ -1,3 +1,4 @@
+
 #root {
   background: #e8a7a7;
   min-height: 100vh;
@@ -7,7 +8,7 @@
 html, body {
     height: 100%;
     margin: 0;
-    padding-bottom: 60px; /* Ajusta este valor según la altura de tu navbar */
+    padding-bottom: 120px; /* Ajusta este valor según la altura de tu navbar */
 }
 .main-content {
     display: flex;
