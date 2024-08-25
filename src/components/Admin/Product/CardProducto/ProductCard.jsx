@@ -8,7 +8,7 @@ import {
   faHeart,
   faPencil,
   faTrash,
-  faPlus
+  faPlus,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
@@ -44,7 +44,7 @@ const ProductCard = (props) => {
           <hr />
           <div className="d-flex justify-content-around align-items-center m-2">
             <Button className="btn btn-primary" onClick={handleMoreInfo}>
-            <FontAwesomeIcon icon={faPlus} />
+              <FontAwesomeIcon icon={faPlus} />
             </Button>
             <Link
               className="btn btn-warning col-auto"
@@ -54,7 +54,7 @@ const ProductCard = (props) => {
               <FontAwesomeIcon icon={faPencil} />
             </Link>
             <button className="btn btn-danger col-auto" onClick={handleDelete}>
-            <FontAwesomeIcon icon={faTrash} />
+              <FontAwesomeIcon icon={faTrash} />
             </button>
           </div>
         </div>

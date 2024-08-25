@@ -2,7 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import { useState } from "react";
 import Swal from "sweetalert2";
 import { toast } from "sonner";
-import { useMutation, useQueryClient  } from "@tanstack/react-query";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { useProducto } from "../../../../stores/useProducto.js";
 
 import { Carousel } from "primereact/carousel";
@@ -46,7 +46,6 @@ const ListProduct = () => {
     productos?.data?.filter((producto) =>
       producto.nombre.toLowerCase().includes(searchTerm.toLowerCase())
     ) || [];
-
 
   if (isLoading) {
     return <p className="mt-3 text-center">Cargando datos...</p>;
@@ -96,15 +95,16 @@ const ListProduct = () => {
   const productTemplate = (producto) => {
     return (
       <div className="col-12 p-3">
-        <ProductCard producto={producto}
-              esAdmin={true}
-              handleMoreInfo={() => handleMoreInfo(producto)}
-              handleEdit={() => handleEdit(producto)}
-              handleDelete={() => handleDelete(producto)} 
-              modalData={modalData}
-              visible={visible}
-              setVisible={setVisible}
-              />
+        <ProductCard
+          producto={producto}
+          esAdmin={true}
+          handleMoreInfo={() => handleMoreInfo(producto)}
+          handleEdit={() => handleEdit(producto)}
+          handleDelete={() => handleDelete(producto)}
+          modalData={modalData}
+          visible={visible}
+          setVisible={setVisible}
+        />
       </div>
     );
   };

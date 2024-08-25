@@ -2,7 +2,6 @@ import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Header from "../Common/Header/Header";
 import ListProductClient from "../ListProductClient/ListProductClient";
-
 import "../Common/Header/Header.css";
 
 const PrincipalPage = () => {
@@ -17,8 +16,8 @@ const PrincipalPage = () => {
                 <input
                   type="text"
                   className="form-control"
-                  placeholder="Recipient's username"
-                  aria-label="Recipient's username"
+                  placeholder="Buscar..."
+                  aria-label="Buscar"
                   aria-describedby="button-addon2"
                 />
                 <button
@@ -33,17 +32,58 @@ const PrincipalPage = () => {
           </div>
 
           <div className="mt-4 d-flex flex-wrap gap-1 justify-content-center ">
-            <button className="btn btn-secondary">General</button>
-            <button className="btn btn-secondary">Milas</button>
-            <button className="btn btn-secondary">Hamburguesas</button>
-            <button className="btn btn-secondary">Pizzas</button>
-            <button className="btn btn-secondary">Papas</button>
+            <a className="btn btn-secondary" href="#SANGUCHES">
+              Sanguches
+            </a>
+            <a className="btn btn-secondary" href="#MILANESAS">
+              Milanesas
+            </a>
+            <a className="btn btn-secondary" href="#HAMBURGUESAS">
+              Hamburguesas
+            </a>
+            <a className="btn btn-secondary" href="#PIZZAS">
+              Pizzas
+            </a>
+            <a className="btn btn-secondary" href="#PAPAS">
+              Papas
+            </a>
+            <a className="btn btn-secondary" href="#BEBIDAS">
+              Bebidas
+            </a>
           </div>
         </div>
-        <ListProductClient></ListProductClient>
-        <ListProductClient></ListProductClient>
-        <ListProductClient></ListProductClient>
-        <ListProductClient></ListProductClient>
+
+        <div className="mt-5">
+          <div className="text-center">
+            <h2 id="SANGUCHES">Sanguches</h2>
+          </div>
+          <ListProductClient categoria="SANGUCHE" />
+
+          <div className="text-center mt-5">
+            <h2 id="MILANESAS">Milanesas</h2>
+          </div>
+          <ListProductClient categoria="MILANESA" />
+
+          <div className="text-center mt-5">
+            <h2 id="HAMBURGUESAS">Hamburguesas</h2>
+          </div>
+          <ListProductClient categoria="HAMBURGUESA" />
+
+          <div className="text-center mt-5">
+            <h2 id="PIZZAS">Pizzas</h2>
+          </div>
+          <ListProductClient categoria="PIZZA" />
+
+          <div className="text-center mt-5">
+            <h2 id="PAPAS">Papas</h2>
+          </div>
+          <ListProductClient categoria="PAPA" />
+
+          <div className="text-center mt-5">
+            <h2 id="BEBIDAS">Bebidas</h2>
+          </div>
+          <ListProductClient categoria="BEBIDA" />
+        </div>
       </div>
     </>
   );

@@ -1,12 +1,12 @@
 import { useQuery } from "@tanstack/react-query";
-
 import { Carousel } from "primereact/carousel";
-
-import { getProductosFn } from "../../api/productos";
 import ProductCardClient from "./CardProductClient";
 import "./style.css";
+import { getProductosFn } from "../../api/productos";
+import PropTypes from "prop-types";
 
-const ListProductClient = () => {
+const ListProductClient = (props) => {
+  const { categoria } = props;
   const {
     data: productos,
     isLoading,
@@ -15,6 +15,7 @@ const ListProductClient = () => {
     queryKey: ["productos"],
     queryFn: getProductosFn,
   });
+
   const responsiveOptions = [
     {
       breakpoint: "2400px",
@@ -37,6 +38,7 @@ const ListProductClient = () => {
       numScroll: 1,
     },
   ];
+
   if (isLoading) {
     return <p className="mt-3 text-center">Cargando datos...</p>;
   }
@@ -57,9 +59,15 @@ const ListProductClient = () => {
     );
   }
 
+  // Filtrar productos según la categoría pasada como prop
+  const productosFiltrados = productos.data.filter(
+    (producto) =>
+      producto.categoria === categoria && producto.agregado === "false"
+  );
+
   const productTemplate = (producto) => {
     return (
-      <div className="col-12  p-3">
+      <div className="col-12 p-3">
         <ProductCardClient producto={producto} key={producto.id} />
       </div>
     );
@@ -68,12 +76,12 @@ const ListProductClient = () => {
   return (
     <div className="col-12">
       <Carousel
-        value={productos.data}
+        value={productosFiltrados}
         className="col-12"
-        numVisible={3} // Establece el valor por defecto para pantallas grandes
+        numVisible={3}
         numScroll={1}
         orientation="horizontal"
-        verticalViewPortHeight="550px"
+        verticalViewPortHeight="auto"
         itemTemplate={productTemplate}
         responsiveOptions={responsiveOptions}
       />
@@ -82,3 +90,7 @@ const ListProductClient = () => {
 };
 
 export default ListProductClient;
+
+ListProductClient.propTypes = {
+  categoria: PropTypes.string.isRequired,
+};

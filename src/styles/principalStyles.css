@@ -14,5 +14,6 @@ html, body {
     display: flex;
   flex-direction: column;
   height: 100%;
-    margin-bottom: 120px; /* Asegura que el contenido principal no quede cubierto */
+  padding-bottom: 120px;
+    margin-bottom: 60px; /* Asegura que el contenido principal no quede cubierto */
 }
