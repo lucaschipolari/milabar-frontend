@@ -1,3 +1,9 @@
+#root {
+  background: #e8a7a7;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
 html, body {
     height: 100%;
     margin: 0;
@@ -7,5 +13,6 @@ html, body {
     display: flex;
   flex-direction: column;
   height: 100%;
+  padding-bottom: 120px;
     margin-bottom: 60px; /* Asegura que el contenido principal no quede cubierto */
 }
