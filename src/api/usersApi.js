@@ -2,7 +2,7 @@ const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
 import { decodeJWT } from "../utilities/decodeJWT";
 
 export const putUserFn = async ({ id, isEnabled }) => {
-  const res = await fetch(`${BACKEND_URL}/api/v1/usersPrueba/users/${id}`, {
+  const res = await fetch(`${BACKEND_URL}/usersPrueba/users/${id}`, {
     method: "PUT",
     headers: {
       "Content-Type": "application/json",
@@ -15,7 +15,7 @@ export const putUserFn = async ({ id, isEnabled }) => {
 };
 
 export const getUsersFn = async (filter) => {
-  const res = await fetch(`${BACKEND_URL}/api/v1/usersPrueba/users/${filter}`);
+  const res = await fetch(`${BACKEND_URL}/usersPrueba/users/${filter}`);
 
   // Revisa el tipo de contenido de la respuesta
   const contentType = res.headers.get("content-type");
@@ -34,9 +34,7 @@ export const getUsersFn = async (filter) => {
   }
 };
 export const getDetailUserFn = async (id) => {
-  const res = await fetch(
-    `${BACKEND_URL}/api/v1/usersPrueba/users/detail/${id}`
-  );
+  const res = await fetch(`${BACKEND_URL}/usersPrueba/users/detail/${id}`);
   const user = await res.json();
 
   if (!res.ok) {
@@ -103,7 +101,7 @@ export const postRegisterFn = async (data) => {
 };
 
 export const getUserFn = async (userId) => {
-  const res = await fetch(`${BACKEND_URL}/api/v1/profile/${userId}`);
+  const res = await fetch(`${BACKEND_URL}/profile/${userId}`);
   const data = await res.json();
   if (!res.ok) {
     throw new Error(
@@ -116,17 +114,15 @@ export const getUserFn = async (userId) => {
 export const putUsersFn = async ({ userId, data }) => {
   //const token = sessionStorage.getItem('token');
 
-  const res = await fetch(
-    `${BACKEND_URL}/api/v1/profile/${userId}`,
-    {
-      method: "PUT",
-      headers: {
-        "Content-Type": "application/json",
-        //Authorization: `Bearer ${token}`,
-      },
-      body: JSON.stringify(data),
-    }
-  );
+  const res = await fetch(`${BACKEND_URL}/profile/${userId}`, {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+      //Authorization: `Bearer ${token}`,
+    },
+    body: JSON.stringify(data),
+  });
+
 
   if (!res.ok) {
     throw new Error(

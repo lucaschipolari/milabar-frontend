@@ -14,10 +14,10 @@ export const sendContactData = async (data) => {
       throw new Error("error al enviar los datos");
     }
 
-    const result = await res.json()
-    return result
+    const result = await res.json();
+    return result;
   } catch (error) {
-    console.error("Hubo un problema con la solicitud",error)
+    console.error("Hubo un problema con la solicitud", error);
     throw error;
   }
 };

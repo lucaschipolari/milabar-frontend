@@ -5,9 +5,20 @@ import ListProductClient from "../ListProductClient/ListProductClient";
 import "../Common/Header/Header.css";
 
 const PrincipalPage = () => {
+  const user = {
+    name: "Administrador",
+    email: "admin@milabar.com",
+    avatar:
+      "https://th.bing.com/th/id/R.a2d06f861d7d0f6f10bc91045e75fc8a?rik=aqfHmkW5luq4Yg&riu=http%3a%2f%2f3.bp.blogspot.com%2f-SMOzOO7Zhow%2fUVxEIdcbVHI%2fAAAAAAAAAfQ%2f7b9udp6r5kI%2fs1600%2fanimales-leon-sentado-selva-amazonas-pelo-felinos.jpg&ehk=ahRNt9vNuW29v6SkemhFLJlljDdxFTIXi8yKimrSIjI%3d&risl=&pid=ImgRaw&r=0",
+    role: "ADMIN",
+    token: "admin-token",
+    isAuthenticated: true,
+    isAdmin: true,
+    permissions: ["PRODUCT_CREATE", "PRODUCT_UPDATE", "PRODUCT_DELETE"],
+  };
   return (
     <>
-      <Header />
+      <Header user={user} />
       <div className="mb-5">
         <div className="container-options">
           <div className="container-input-search mt-2">

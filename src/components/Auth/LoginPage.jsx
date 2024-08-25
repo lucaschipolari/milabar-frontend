@@ -4,15 +4,21 @@ import { useMutation } from "@tanstack/react-query";
 import { toast } from "sonner";
 import useSession from "../../stores/useSession";
 import SocialIcons from "./SocialIcons";
+import { postLoginFn } from "../../api/usersApi";
 
 const LoginPage = () => {
   const { login } = useSession();
   const navigate = useNavigate();
 
-  const { register, handleSubmit, formState: { errors }, reset } = useForm();
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+    reset,
+  } = useForm();
 
   const { mutate: postLogin } = useMutation({
-    mutationFn: () =>{},
+    mutationFn: postLoginFn,
     onSuccess: (userData) => {
       toast.dismiss(); // Cerramos el toast de carga
       toast.success(`¡Inicio de sesión exitoso, ${userData.username}!`);
@@ -53,7 +59,9 @@ const LoginPage = () => {
           })}
           className={`form-control ${errors.username ? "is-invalid" : ""}`}
         />
-        {errors.username && <div className="invalid-feedback">{errors.username.message}</div>}
+        {errors.username && (
+          <div className="invalid-feedback">{errors.username.message}</div>
+        )}
       </div>
       <div className="form-group">
         <label htmlFor="password">Contraseña</label>
@@ -70,10 +78,16 @@ const LoginPage = () => {
           })}
           className={`form-control ${errors.password ? "is-invalid" : ""}`}
         />
-        {errors.password && <div className="invalid-feedback">{errors.password.message}</div>}
+        {errors.password && (
+          <div className="invalid-feedback">{errors.password.message}</div>
+        )}
       </div>
-      <Link to="/forgot-password" className="container-auth-a">¿Olvidaste tu contraseña?</Link>
-      <button type="submit" className="btn btn-danger">Iniciar sesión</button>
+      <Link to="/forgot-password" className="container-auth-a">
+        ¿Olvidaste tu contraseña?
+      </Link>
+      <button type="submit" className="btn btn-danger">
+        Iniciar sesión
+      </button>
 
       <SocialIcons />
     </form>
