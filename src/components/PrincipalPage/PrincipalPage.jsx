@@ -1,8 +1,17 @@
-import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
+import {
+  faBurger,
+  faMagnifyingGlass,
+  faPizzaSlice,
+} from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Header from "../Common/Header/Header";
 import ListProductClient from "../ListProductClient/ListProductClient";
 import "../Common/Header/Header.css";
+import "./styles.css";
+// import sandwichImage from "../../assets/sandwich.svg";
+import papasImg from "../../assets/papasfritas.svg";
+import pizzaImg from "../../assets/pizza.svg";
+import sangucheImg from "../../assets/sandwichImg.png";
 
 const PrincipalPage = () => {
   const user = {
@@ -16,6 +25,7 @@ const PrincipalPage = () => {
     isAdmin: true,
     permissions: ["PRODUCT_CREATE", "PRODUCT_UPDATE", "PRODUCT_DELETE"],
   };
+
   return (
     <>
       <Header user={user} />
@@ -43,23 +53,23 @@ const PrincipalPage = () => {
           </div>
 
           <div className="mt-4 d-flex flex-wrap gap-1 justify-content-center ">
-            <a className="btn btn-secondary" href="#SANGUCHES">
-              Sanguches
+            <a className="btn-icon btn btn-light" href="#SANGUCHES">
+              <img src={sangucheImg} alt="sandwich" className="food-icon" />
             </a>
-            <a className="btn btn-secondary" href="#MILANESAS">
-              Milanesas
+            <a className="btn-icon btn btn-light" href="#MILANESAS">
+              <img src={pizzaImg} alt="papas" className="food-icon" />
             </a>
-            <a className="btn btn-secondary" href="#HAMBURGUESAS">
-              Hamburguesas
+            <a className="btn-icon btn btn-light" href="#HAMBURGUESAS">
+              <img src={pizzaImg} alt="papas" className="food-icon" />
             </a>
-            <a className="btn btn-secondary" href="#PIZZAS">
-              Pizzas
+            <a className="btn-icon btn btn-light" href="#PIZZAS">
+              <img src={pizzaImg} alt="papas" className="food-icon" />
             </a>
-            <a className="btn btn-secondary" href="#PAPAS">
-              Papas
+            <a className="btn-icon btn btn-light" href="#PAPAS">
+              <img src={papasImg} alt="papas" className="food-icon" />
             </a>
-            <a className="btn btn-secondary" href="#BEBIDAS">
-              Bebidas
+            <a className="btn-icon btn btn-light" href="#BEBIDAS">
+              <img src={papasImg} alt="papas" className="food-icon" />
             </a>
           </div>
         </div>

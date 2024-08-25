@@ -5,7 +5,6 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import PropTypes from "prop-types";
 import CartModal from "../../CartModal/CartModal";
 
-import CartModal from "../../CartModal/CartModal";
 const Header = (props) => {
   const { user } = props; // Obtén el usuario desde los props
 

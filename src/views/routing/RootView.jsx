@@ -1,4 +1,3 @@
-
 import { Outlet, useLocation } from "react-router-dom";
 import Navbar from "../../components/Common/navBar/navbar";
 import "../../components/Admin/Product/styles/producto.css";
@@ -12,9 +11,19 @@ const RootView = () => {
 
   return (
     <div className="bg-productos">
-      <main className="main-content flex-grow-1">
-        <Outlet />
-      </main>
+      {!showHeader ? (
+        <main className="flex-grow-1">
+          <Outlet />
+        </main>
+      ) : (
+        <main className="main-content flex-grow-1">
+          <Outlet />
+        </main>
+      )}{" "}
+      {/* <main className="main-content flex-grow-1">
+         <Outlet />
+        {" "}
+      </main> */}
       {showHeader && <Navbar />}
     </div>
   );

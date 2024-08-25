@@ -1,6 +1,6 @@
-
+@import url('https://fonts.googleapis.com/css2?family=New+Amsterdam&display=swap');
 .header {
-  background-color: #2b2b2b;
+  background-color: #fdfdfd;
   padding: 20px;
   text-align: center;
   box-shadow: 0 2px 4px #0000001a;
@@ -11,7 +11,7 @@
   top: 0;
   left: 0;
   right: 0;
-  background-color: #2b2b2b;
+  background-color: #b8b8b8;
   z-index: 999; /* Asegura que esté por encima de otros elementos */
   box-shadow: 0 2px 4px #0000001a; /* Añade sombra para diferenciarlo del contenido */
   padding: 10px; /* Añade algo de padding si es necesario */
@@ -55,10 +55,13 @@ h1 {
 }
 
 .title {
-  font-family: "Poetsen One", sans-serif;
+  font-family: "New Amsterdam", sans-serif;
+  font-weight: 400;
+  font-size: 52px;
   margin-top: 50px;
   color: #111;
   text-align: center;
+  background-color: #111;
 }
 
 
