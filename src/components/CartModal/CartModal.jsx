@@ -21,6 +21,7 @@ const CartModal = ({ visible, onHide }) => {
   const updateQuantity = useCartStore((state) => state.updateQuantity);
   const clearCart = useCartStore((state) => state.clearCart);
   const totalPrice = useTotalPrice();
+ 
 
   const {
     register,
@@ -99,7 +100,7 @@ const CartModal = ({ visible, onHide }) => {
             product.quantity > 0 && (
               <div
                 key={product.id}
-                className="cart-product dflex align-item-center m-3"
+                className="cart-product d-flex align-item-center m-3"
               >
                 <img
                   src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ6_VVHpq1t0kCF1wc6SreFBvWGKEYXAayevA&s"

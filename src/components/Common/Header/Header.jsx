@@ -4,12 +4,12 @@ import { faCartShopping, faSignOut } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import PropTypes from "prop-types";
 import CartModal from "../../CartModal/CartModal";
-import CartModal from "../../CartModal/CartModal";
 
 const Header = (props) => {
   const { user } = props; // Obtén el usuario desde los props
   const [cartCount, setCartCount] = useState(0);
   const [isCartModalVisible, setCartModalVisible] = useState(false);
+  
 
   const incrementCart = () => {
     setCartCount(cartCount + 1);
@@ -51,7 +51,11 @@ const Header = (props) => {
             )}
           </div>
           <div className="basket-icon">
-            <button type="button" className="btn btn-light cart-button">
+            <button
+              type="button"
+              className="btn btn-light cart-button"
+              onClick={openCartModal}
+            >
               <span className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
                 {cartCount}
                 <span className="visually-hidden">unread messages</span>

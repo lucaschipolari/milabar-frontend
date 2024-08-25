@@ -1,11 +1,27 @@
 import { create } from "zustand";
 
 export const useCartStore = create((set) => ({
-  products: [
-    { id: "1", name: "nombre 1", price: 10.0, quantity: 1, image: '/path/to/image1.png' },
-    { id: "2", name: "nombre 2", price: 20.0, quantity: 2, image: '/path/to/image2.png' },
-    { id: "3", name: "nombre 3", price: 30.0, quantity: 3, image: '/path/to/image3.png' },
-  ],
+  products: [],
+
+  addProduct: (product) =>
+    set((state) => {
+      const existingProductIndex = state.products.findIndex(
+        (p) => p.id === product.id
+      );
+      if (existingProductIndex >= 0) {
+        const updateProducts = [...state.products];
+        updateProducts[existingProductIndex] = {
+          ...updateProducts[existingProductIndex],
+          quantity: updateProducts[existingProductIndex].quantity + 1,
+        };
+        return { products: updateProducts };
+      } else {
+        return {
+          products: [...state.products, { ...product, quantity: 1 }],
+        };
+      }
+    }),
+
   updateQuantity: (id, increment) =>
     set((state) => ({
       products: state.products.map((product) =>
