@@ -10,9 +10,11 @@ const NavItem = (props) => {
     setActiveIndex,
     cartCount,
     incrementCartCount,
+    handleNavItemClick,
   } = props;
   const handleClick = () => {
     setActiveIndex(index);
+    handleNavItemClick(index, item.to);
     if (item.text === "Carrito") incrementCartCount();
   };
 
@@ -45,6 +47,7 @@ NavItem.propTypes = {
   setActiveIndex: PropTypes.func.isRequired,
   cartCount: PropTypes.number.isRequired,
   incrementCartCount: PropTypes.func.isRequired,
+  handleNavItemClick: PropTypes.func.isRequired,
 };
 
 export default NavItem;

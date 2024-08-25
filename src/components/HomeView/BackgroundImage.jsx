@@ -1,16 +1,22 @@
 import PropTypes from 'prop-types';
 
-import backgroundImage from "../../assets/sanguche.jpg";
+import backgroundImage from "../../assets/videomilanesa.mp4";
 import "./styles/backgroundImage.css";
 
 const BackgroundImage = ({ children }) => {
   return (
     <div className="background-container">
       <div className="background-image">
-        <img
+        <video
           src={backgroundImage}
           alt="Fondo de pantalla de la pagina de inicio"
-          className="bg-img"
+          autoPlay
+          muted
+          loop
+          className="bg-video"
+          onError={(error)=>{
+            console.log(error)
+          }}
         />
       </div>
       <div className="overlay">
