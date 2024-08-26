@@ -1,12 +1,16 @@
 import React from 'react';
 import TeamMember from '../components/TeamMember/TeamMember';
 import '../components/TeamMember/styles/TeamMember.css';
+import hernan from '../assets/hernan.jpg';
+import santi from '../assets/santi.jpg';
+import lucas from '../assets/lucas.jpg';
+import juli from '../assets/juli.jpg';
 
 const teamMembers = [
   {
     name: 'Lucas Chipolari',
     position: 'Scrum Master',
-    imageUrl: 'https://media.licdn.com/dms/image/v2/D4D03AQFNnTMkEfBozw/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1723471354877?e=1730332800&v=beta&t=dt0Mfk6hq9H9yTIIbcENSaxHR2NYejJiCyJ13qk0Y-w',
+    imageUrl: lucas,
     socialLinks: {
       facebook: 'https://facebook.com',
       github: 'https://github.com/johnathan',
@@ -17,7 +21,7 @@ const teamMembers = [
   {
     name: 'Julieta Vignoli',
     position: 'Especialista en Marketing',
-    imageUrl: 'https://via.placeholder.com/150',
+    imageUrl: juli,
     socialLinks: {
       facebook: 'https://facebook.com',
       github: 'https://github.com/johnathan',
@@ -28,7 +32,7 @@ const teamMembers = [
   {
     name: 'Hernan Alarcon',
     position: 'Gerente de Operaciones',
-    imageUrl: 'https://via.placeholder.com/150',
+    imageUrl: hernan,
     socialLinks: {
       facebook: 'https://facebook.com',
       github: 'https://github.com/johnathan',
@@ -39,7 +43,7 @@ const teamMembers = [
   {
     name: 'Altamiranda Santiago',
     position: 'Jefe de Bar',
-    imageUrl: 'https://via.placeholder.com/150',
+    imageUrl: santi,
     socialLinks: {
       facebook: 'https://facebook.com',
       github: 'https://github.com/johnathan',

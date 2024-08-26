@@ -1,5 +1,6 @@
 import React from 'react';
-import SocialIcons from '../Auth/SocialIcons';
+import TeamMemberSocialIcons from './TeamMemberSocialIcons';
+
 
 const TeamMember = ({ member }) => {
   return (
@@ -10,7 +11,7 @@ const TeamMember = ({ member }) => {
         </div>
         <h4>{member.name}</h4>
         <p>{member.position}</p>
-        <SocialIcons 
+        <TeamMemberSocialIcons 
           github={member.socialLinks.github} 
           instagram={member.socialLinks.instagram} 
           facebook={member.socialLinks.facebook} 
