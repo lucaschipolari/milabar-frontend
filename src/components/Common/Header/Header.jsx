@@ -57,13 +57,13 @@ const Header = (props) => {
                 </Link>
               </div>
             )}
-            {isLoggedIn && (
+            {isLoggedIn && user && (
               <div className="d-flex align-content-center justify-content-center">
                 {" "}
                 <div className="avatar-icon">
                   <img
-                    src={user.avatar}
-                    alt={user.nombre}
+                    src={user.data.avatar}
+                    alt={user.data.nombre}
                     className="avatar-icon-user"
                   />{" "}
                 </div>

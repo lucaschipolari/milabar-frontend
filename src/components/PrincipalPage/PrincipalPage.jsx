@@ -12,23 +12,30 @@ import "./styles.css";
 import papasImg from "../../assets/papasfritas.svg";
 import pizzaImg from "../../assets/pizza.svg";
 import sangucheImg from "../../assets/sandwichImg.png";
+import { useSession } from "../../stores/useSession";
+import { decodeJWT } from "../../utilities/decodeJWT";
+import { getUserFn } from "../../api/usersApi";
+import { useQuery } from "@tanstack/react-query";
 
 const PrincipalPage = () => {
-  const user = {
-    name: "Administrador",
-    email: "admin@milabar.com",
-    avatar:
-      "https://th.bing.com/th/id/R.a2d06f861d7d0f6f10bc91045e75fc8a?rik=aqfHmkW5luq4Yg&riu=http%3a%2f%2f3.bp.blogspot.com%2f-SMOzOO7Zhow%2fUVxEIdcbVHI%2fAAAAAAAAAfQ%2f7b9udp6r5kI%2fs1600%2fanimales-leon-sentado-selva-amazonas-pelo-felinos.jpg&ehk=ahRNt9vNuW29v6SkemhFLJlljDdxFTIXi8yKimrSIjI%3d&risl=&pid=ImgRaw&r=0",
-    role: "ADMIN",
-    token: "admin-token",
-    isAuthenticated: true,
-    isAdmin: true,
-    permissions: ["PRODUCT_CREATE", "PRODUCT_UPDATE", "PRODUCT_DELETE"],
-  };
+  const { isLoggedIn } = useSession();
+  const token = sessionStorage.getItem("token");
+  const userId = token ? decodeJWT(token).user.id : null;
 
+  const {
+    data: user,
+    isLoading,
+    isError,
+  } = useQuery({
+    queryKey: ["user", userId],
+    queryFn: () => getUserFn(userId),
+    enabled: !!userId,
+  });
+  console.log(user);
   return (
     <>
       <Header user={user} />
+
       <div className="mb-5">
         <div className="container-options">
           <div className="container-input-search mt-2">
