@@ -102,7 +102,7 @@ const CartModal = ({ visible, onHide }) => {
     <Dialog
       header="Milabar"
       visible={visible}
-      className="cart-dialog p-3"
+      className="cart-dialog"
       onHide={onHide}
       draggable={false}
       position="TopRight"

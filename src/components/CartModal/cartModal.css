@@ -7,12 +7,27 @@
   border: 1px solid #2b2b2b;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
   z-index: 1000;
+  overflow-x: hidden;
 }
 
 .cart-dialog .p-dialog-header {
   display: flex;
   justify-content: center;
   align-items: center;
+  background: linear-gradient(
+    145deg,
+    #d4d4d4,
+    #ffffff
+  ); /* Degradado gris más definido */
+}
+
+.cart-dialog .p-dialog-content {
+  background: linear-gradient(
+    145deg,
+    #d4d4d4,
+    #ffffff
+  ); /* Degradado gris más definido */
+  padding: 0;
 }
 
 .cart-dialog .p-dialog-header .p-dialog-title {
@@ -100,8 +115,8 @@
 .button-input-minus {
   border-radius: 50px;
   border: 1px;
-  width: 40px;
-  height: 40px;
+  width: 30px;
+  height: 30px;
   background-color: #f09c91;
 
   transition: background-color 0.25s ease-in-out, transform 0.1s ease-in-out;
@@ -120,8 +135,8 @@
 .button-input-plus {
   border-radius: 50px;
   border: 1px;
-  width: 40px;
-  height: 40px;
+  width: 30px;
+  height: 30px;
   background-color: #f09c91;
 
   transition: background-color 0.25s ease-in-out, transform 0.1s ease-in-out;
@@ -211,7 +226,6 @@
 #tableNumber-input {
   padding-top: 0;
   padding-bottom: 0;
-  
 }
 
 .swal2-container {
@@ -221,5 +235,4 @@
 .detail-input {
   border: 1px solid black;
   border-radius: 7px;
-  
 }
