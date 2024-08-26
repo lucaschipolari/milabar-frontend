@@ -7,7 +7,7 @@ import PrincipalProductoView from "../views/PrincipalProductoView";
 import DetalleProductoView from "../views/DetalleProductoView";
 import ContactView from "../views/ContactView";
 import MenuView from "../views/MenuView";
-import AcercaDeNosotrosView from "../views/AcercaDeNosotrosView";
+import AboutUsView from "../views/AboutUsView";
 import LoginPage from "../components/Auth/LoginPage";
 import RegisterPage from "../components/Auth/RegisterPage";
 import PrivateView from "../views/routing/PrivateView";
@@ -48,7 +48,7 @@ export const router = createBrowserRouter([
       },
       {
         path: "/acerca-de-nosotros",
-        element: <AcercaDeNosotrosView />,
+        element: <AboutUsView />,
       },
       {
         path: "/productos/:id",
