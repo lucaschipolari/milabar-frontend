@@ -1,19 +1,21 @@
 import React from 'react';
+import PropTypes from 'prop-types'; // Importamos PropTypes para la validación
 import './styles/ProductHeader.css';
-import { useNavigate } from 'react-router-dom';  // Para navegación
+import { useNavigate } from 'react-router-dom';
 
 const ProductHeader = () => {
-  const navigate = useNavigate();  // Hook para manejar la navegación
+  const navigate = useNavigate();
 
   return (
     <header className="product-header">
       <button className="back-button" onClick={() => navigate(-1)}>
         Volver
       </button>
-      <h1>Detalle del Producto</h1>
     </header>
   );
 };
 
-export default ProductHeader;
 
+ProductHeader.propTypes = {
+  title: PropTypes.string.isRequired,
+};

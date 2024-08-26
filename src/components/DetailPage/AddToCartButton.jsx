@@ -1,10 +1,13 @@
 import React from 'react';
-import './styles/AddToCartButton.css';
 
-const AddToCartButton = () => {
+const AddToCartButton = ({ product }) => {
+  const handleAddToCart = () => {
+    console.log(`Producto agregado al carrito: ${product.nombre}`);
+  };
+
   return (
-    <button className="add-to-cart-button">
-      Agregar al carrito
+    <button className="add-to-cart-button" onClick={handleAddToCart}>
+      Agregar a Carrito
     </button>
   );
 };
