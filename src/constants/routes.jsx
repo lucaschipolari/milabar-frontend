@@ -10,10 +10,6 @@ import MenuView from "../views/MenuView";
 import AcercaDeNosotrosView from "../views/AcercaDeNosotrosView";
 import LoginPage from "../components/Auth/LoginPage";
 import RegisterPage from "../components/Auth/RegisterPage";
-<<<<<<< HEAD
-import AuthLayout from "../components/Auth/AuthLayout";
-=======
->>>>>>> 3fbd841ab746f502dd05237d85298596950d8bfc
 import PrivateView from "../views/routing/PrivateView";
 import ProfileView from "../views/ProfileView";
 import LoginRegisterView from "../views/LoginRegisterView";
@@ -72,24 +68,24 @@ export const router = createBrowserRouter([
       // RUTAS DE AUTENTICACION
       // no deberían poder accederse estando logueados
       {
-      path:'',
-      element: <AuthView/>,
-      children:[
-        {
-          path: "users",
-          element: <LoginRegisterView />,
-          children: [
-            {
-              path: "login",
-              element: <LoginPage />,
-            },
-            {
-              path: "register",
-              element: <RegisterPage />,
-            },
-          ],
-        },
-      ]
+        path: "",
+        element: <AuthView />,
+        children: [
+          {
+            path: "users",
+            element: <LoginRegisterView />,
+            children: [
+              {
+                path: "login",
+                element: <LoginPage />,
+              },
+              {
+                path: "register",
+                element: <RegisterPage />,
+              },
+            ],
+          },
+        ],
       },
       // RUTAS PRIVADAS
       {

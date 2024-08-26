@@ -66,7 +66,7 @@ const ContactForm = () => {
       onSubmit={onSubmitRHF(handleSumbit)}
       className="bg-body-tertiary rounded shadow m-5 text-center"
     >
-      <h1>Contactanos!</h1>
+      <h1 className="my-2">Contactanos!</h1>
       <Input
         className="m-3"
         error={errors.issue}

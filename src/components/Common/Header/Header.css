@@ -11,7 +11,7 @@
   top: 0;
   left: 0;
   right: 0;
-  background-color: #b8b8b8;
+  background-color: #ff0000;
   z-index: 999; /* Asegura que esté por encima de otros elementos */
   box-shadow: 0 2px 4px #0000001a; /* Añade sombra para diferenciarlo del contenido */
   padding: 10px; /* Añade algo de padding si es necesario */
@@ -61,9 +61,9 @@ h1 {
   font-weight: 400;
   font-size: 52px;
   margin-top: 50px;
-  color: #111;
+  color: #000000;
   text-align: center;
-  background-color: #111;
+  background-color: #040404;
 }
 
 
@@ -73,7 +73,7 @@ h1 {
 
 @keyframes glow {
   0%, 100% {
-      color: rgb(255, 60, 0);
+      color: rgb(255, 0, 0);
       text-shadow: 0 0 12px rgb(255, 0, 0), 0 0 50px rgb(255, 0, 0), 0 0 100px rgb(255, 0, 0);
   }
   10%, 90% {
@@ -142,7 +142,31 @@ h1 {
   align-items: center;
   width: 50%;
 }
+.btn-red{
+  background-color: #ff0000 !important;
+  color: #ffffff !important;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.btn-gray{
+  background-color: #dbdbdb !important;
+  color: #000000 !important;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+}
 
+.btn-red:hover{
+  background-color: #cf0606 !important;
+
+}
+.btn-gray:hover{
+  background-color: #cccccc !important;
+
+}
 
 .input-group{
   display: flex;

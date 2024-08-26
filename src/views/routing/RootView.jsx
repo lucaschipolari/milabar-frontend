@@ -20,10 +20,6 @@ const RootView = () => {
           <Outlet />
         </main>
       )}{" "}
-      {/* <main className="main-content flex-grow-1">
-         <Outlet />
-        {" "}
-      </main> */}
       {showHeader && <Navbar />}
     </div>
   );
