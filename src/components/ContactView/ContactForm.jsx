@@ -64,7 +64,7 @@ const ContactForm = () => {
   return (
     <form
       onSubmit={onSubmitRHF(handleSumbit)}
-      className="bg-body-tertiary rounded shadow m-5 text-center"
+      className="bg-secondary-subtle rounded shadow m-5 text-center"
     >
       <h1 className="my-2">Contactanos!</h1>
       <Input
@@ -228,7 +228,7 @@ const ContactForm = () => {
         resetCount={resetCount}
       />
       <div className="text-center mt-3">
-        <button className="btn btn-primary mb-3" type="submit">
+        <button className="btn btn-danger mb-3" type="submit">
           Enviar
         </button>
       </div>

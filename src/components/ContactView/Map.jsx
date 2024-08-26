@@ -1,4 +1,11 @@
 import "../ContactView/map.css";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faLocationDot,
+  faPhone,
+  faClock,
+} from "@fortawesome/free-solid-svg-icons";
+import { faWhatsapp } from "@fortawesome/free-brands-svg-icons";
 
 const Map = () => {
   return (
@@ -11,10 +18,21 @@ const Map = () => {
         loading="lazy"
         referrerPolicy="no-referrer-when-downgrade"
       ></iframe>
-       <div className="contact-info mt-4">
-        <p>Dirección: 25 de Mayo 899, San Miguel de Tucumán, Argentina</p>
-        <p>Teléfono: +54 381 1234567</p>
-        <p>WhatsApp: +54 9 381 7654321</p>
+      <div className="contact-info mt-4">
+        <p>
+          <FontAwesomeIcon icon={faLocationDot} className="text-danger"/> Dirección: 25 de Mayo 899,
+          San Miguel de Tucumán, Argentina
+        </p>
+        <p>
+          <FontAwesomeIcon icon={faPhone} className="text-primary"/> Teléfono: +54 381 1234567
+        </p>
+        <p>
+          <FontAwesomeIcon icon={faWhatsapp} className="text-success"/> WhatsApp: +54 9 381 7654321
+        </p>
+        <p className="mb-4">
+          <FontAwesomeIcon icon={faClock} /> Horarios: Martes a Domingo de 20:30
+          a 01:00
+        </p>
       </div>
     </div>
   );
