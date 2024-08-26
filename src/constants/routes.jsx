@@ -69,24 +69,24 @@ export const router = createBrowserRouter([
       // RUTAS DE AUTENTICACION
       // no deberían poder accederse estando logueados
       {
-      path:'',
-      element: <AuthView/>,
-      children:[
-        {
-          path: "users",
-          element: <LoginRegisterView />,
-          children: [
-            {
-              path: "login",
-              element: <LoginPage />,
-            },
-            {
-              path: "register",
-              element: <RegisterPage />,
-            },
-          ],
-        },
-      ]
+        path: "",
+        element: <AuthView />,
+        children: [
+          {
+            path: "users",
+            element: <LoginRegisterView />,
+            children: [
+              {
+                path: "login",
+                element: <LoginPage />,
+              },
+              {
+                path: "register",
+                element: <RegisterPage />,
+              },
+            ],
+          },
+        ],
       },
       // RUTAS PRIVADAS
       {

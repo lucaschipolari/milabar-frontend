@@ -2,14 +2,15 @@ import { useState } from "react";
 import "./Header.css"; // Importa el archivo CSS para estilos
 import { faCartShopping, faSignOut } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import Swal from 'sweetalert2';
+import Swal from "sweetalert2";
 import PropTypes from "prop-types";
 import CartModal from "../../CartModal/CartModal";
 import { useCartStore } from "../../../stores/useCartStore";
 import { useSession } from "../../../stores/useSession";
+import { Link } from "react-router-dom";
 
 const Header = (props) => {
-  const { logout } = useSession();
+  const { logout, isLoggedIn } = useSession();
   const { user } = props; // Obtén el usuario desde los props
   // const [cartCount, setCartCount] = useState(0);
   const [isCartModalVisible, setCartModalVisible] = useState(false);
@@ -28,11 +29,11 @@ const Header = (props) => {
 
   const handleLogout = async () => {
     const action = await Swal.fire({
-      icon: 'question',
-      title: 'Atención',
-      text: '¿Está seguro que desea cerrar sesion?',
-      confirmButtonText: 'Si, salir',
-      cancelButtonText: 'No, cancelar',
+      icon: "question",
+      title: "Atención",
+      text: "¿Está seguro que desea cerrar sesion?",
+      confirmButtonText: "Si, salir",
+      cancelButtonText: "No, cancelar",
       showCancelButton: true,
     });
 
@@ -46,23 +47,30 @@ const Header = (props) => {
       <div className="">
         <div className="icons">
           <div className="">
-            {!user && (
+            {!isLoggedIn && (
               <div>
-                <button className="btn btn-danger mx-1">Iniciar Sesion</button>
-                <button className="btn btn-light">Registrarse</button>
+                <Link to="users/login" className="btn btn-red mx-1">
+                  Iniciar Sesion
+                </Link>
+                <Link to="users/register" className="btn btn-gray">
+                  Registrarse
+                </Link>
               </div>
             )}
-            {user && (
+            {isLoggedIn && user && (
               <div className="d-flex align-content-center justify-content-center">
                 {" "}
                 <div className="avatar-icon">
                   <img
-                    src={user.avatar}
-                    alt={user.nombre}
+                    src={user.data.avatar}
+                    alt={user.data.nombre}
                     className="avatar-icon-user"
                   />{" "}
                 </div>
-                <button className="btn btn-light mx-1 rounded " onClick={handleLogout}>
+                <button
+                  className="btn btn-light mx-1 rounded "
+                  onClick={handleLogout}
+                >
                   <FontAwesomeIcon icon={faSignOut} />
                 </button>
               </div>

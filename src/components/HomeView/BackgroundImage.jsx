@@ -1,4 +1,4 @@
-import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
 
 import backgroundImage from "../../assets/videomilanesa.mp4";
 import "./styles/backgroundImage.css";
@@ -7,20 +7,15 @@ const BackgroundImage = ({ children }) => {
   return (
     <div className="background-container">
       <div className="background-image">
-        <video
-          src={backgroundImage}
-          alt="Fondo de pantalla de la pagina de inicio"
-          autoPlay
-          muted
-          loop
-          className="bg-video"
-          onError={(error)=>{
-            console.log(error)
-          }}
+        <img
+          src="https://static.vecteezy.com/system/resources/previews/002/911/729/large_2x/weathered-grey-brick-wall-for-texture-and-background-photo.jpg"
+          alt="imagen-ladrillo-fondo"
         />
       </div>
       <div className="overlay">
-        {children}
+        <div className="d-flex align-items-center flex-column contenedor-opciones">
+          {children}
+        </div>
       </div>
     </div>
   );
@@ -28,5 +23,5 @@ const BackgroundImage = ({ children }) => {
 export default BackgroundImage;
 
 BackgroundImage.propTypes = {
-    children: PropTypes.node.isRequired, 
-  };
+  children: PropTypes.node.isRequired,
+};
