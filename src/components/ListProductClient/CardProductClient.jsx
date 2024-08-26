@@ -12,9 +12,21 @@ import {
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import "../../components/Admin/Product/styles/producto.css";
+import { useCartStore } from "../../stores/useCartStore";
 
 const ProductCardClient = (props) => {
   const { producto, esAdmin = false, handleLike, handleAddCart } = props;
+  const { addProduct } = useCartStore();
+
+  const addToCart = () => {
+    addProduct({
+      id: producto.id,
+      name: producto.nombre,
+      image: producto.imagen,
+      price: producto.preciounitario,
+    });
+    console.log("Producto añadido al carrito:", producto);
+  };
 
   return (
     <div className="card single__product my-4 h-100 d-flex flex-column">
@@ -35,7 +47,7 @@ const ProductCardClient = (props) => {
             <button className="btn btn-danger col-auto" onClick={handleLike}>
               <FontAwesomeIcon icon={faHeart} />
             </button>
-            <Button className="btn btn-primary" onClick={handleAddCart}>
+            <Button className="btn btn-primary" onClick={addToCart}>
               <FontAwesomeIcon icon={faCartShopping} />
             </Button>
           </div>
@@ -55,4 +67,7 @@ ProductCardClient.propTypes = {
     descripcion: PropTypes.string.isRequired,
     preciounitario: PropTypes.number.isRequired,
   }).isRequired,
+  esAdmin: PropTypes.bool,
+  handleLike: PropTypes.func.isRequired,
+  handleAddCart: PropTypes.func,
 };
