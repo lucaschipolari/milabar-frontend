@@ -4,13 +4,8 @@ html, body {
     margin: 0;
     padding-bottom: 120px; /* Ajusta este valor según la altura de tu navbar */
 }
-html, body {
-    height: 100%;
-    margin: 0;
-    padding-bottom: 120px; /* Ajusta este valor según la altura de tu navbar */
-}
 #root {
-    background: #e8a7a7;
+    background: #000000;
     min-height: 100vh;
     display: flex;
     flex-direction: column;
@@ -20,5 +15,12 @@ html, body {
   flex-direction: column;
   height: 100%;
   padding-bottom: 120px;
-    margin-bottom: 60px; /* Asegura que el contenido principal no quede cubierto */
+    /* margin-bottom: 60px; Asegura que el contenido principal no quede cubierto */
+}
+.bg-contacto {
+  overflow: hidden;
+  background-size: cover;
+  background-image: url("https://static.vecteezy.com/system/resources/previews/002/911/729/large_2x/weathered-grey-brick-wall-for-texture-and-background-photo.jpg");
+  background-color: rgba(0, 0, 0, 0.782); /* Negro semitransparente */
+  background-blend-mode: darken;
 }

@@ -90,7 +90,7 @@ export const postRegisterFn = async (data) => {
 
   const userData = await postLoginFn({
     username: data.username,
-    email:data.email,
+    email: data.email,
     password: data.password,
   });
 
@@ -139,4 +139,3 @@ export const putUsersFn = async ({ userId, data }) => {
 
   return await res.json(); // Asegúrate de retornar el JSON de la respuesta
 };
-

@@ -1,11 +1,18 @@
-import logo from "../../../assets/logo1.png";
 //import "./styles/logo.css"
 
 const Logo = () => {
   return (
-    <div className="logo-container">
-        <img src={logo} alt="Logo de la milabar sangucheria" className="logo-img" />
+    <div className="logo-container w-100">
+      <div className="title">
+        <span>M</span>
+        <span>I</span>
+        <span>L</span>
+        <span>A</span>
+        <span>B</span>
+        <span>A</span>
+        <span>R</span>
+      </div>
     </div>
-  )
-}
-export default Logo
+  );
+};
+export default Logo;

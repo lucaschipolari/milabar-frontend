@@ -1,24 +1,41 @@
-import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
+import {
+  faBurger,
+  faMagnifyingGlass,
+  faPizzaSlice,
+} from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Header from "../Common/Header/Header";
 import ListProductClient from "../ListProductClient/ListProductClient";
 import "../Common/Header/Header.css";
+import "./styles.css";
+// import sandwichImage from "../../assets/sandwich.svg";
+import papasImg from "../../assets/papasfritas.svg";
+import pizzaImg from "../../assets/pizza.svg";
+import sangucheImg from "../../assets/sandwichImg.png";
+import { useSession } from "../../stores/useSession";
+import { decodeJWT } from "../../utilities/decodeJWT";
+import { getUserFn } from "../../api/usersApi";
+import { useQuery } from "@tanstack/react-query";
 
 const PrincipalPage = () => {
-  const user = {
-    name: "Administrador",
-    email: "admin@milabar.com",
-    avatar:
-      "https://th.bing.com/th/id/R.a2d06f861d7d0f6f10bc91045e75fc8a?rik=aqfHmkW5luq4Yg&riu=http%3a%2f%2f3.bp.blogspot.com%2f-SMOzOO7Zhow%2fUVxEIdcbVHI%2fAAAAAAAAAfQ%2f7b9udp6r5kI%2fs1600%2fanimales-leon-sentado-selva-amazonas-pelo-felinos.jpg&ehk=ahRNt9vNuW29v6SkemhFLJlljDdxFTIXi8yKimrSIjI%3d&risl=&pid=ImgRaw&r=0",
-    role: "ADMIN",
-    token: "admin-token",
-    isAuthenticated: true,
-    isAdmin: true,
-    permissions: ["PRODUCT_CREATE", "PRODUCT_UPDATE", "PRODUCT_DELETE"],
-  };
+  const { isLoggedIn } = useSession();
+  const token = sessionStorage.getItem("token");
+  const userId = token ? decodeJWT(token).user.id : null;
+
+  const {
+    data: user,
+    isLoading,
+    isError,
+  } = useQuery({
+    queryKey: ["user", userId],
+    queryFn: () => getUserFn(userId),
+    enabled: !!userId,
+  });
+  console.log(user);
   return (
     <>
       <Header user={user} />
+
       <div className="mb-5">
         <div className="container-options">
           <div className="container-input-search mt-2">
@@ -43,23 +60,23 @@ const PrincipalPage = () => {
           </div>
 
           <div className="mt-4 d-flex flex-wrap gap-1 justify-content-center ">
-            <a className="btn btn-secondary" href="#SANGUCHES">
-              Sanguches
+            <a className="btn-icon btn btn-light" href="#SANGUCHES">
+              <img src={sangucheImg} alt="sandwich" className="food-icon" />
             </a>
-            <a className="btn btn-secondary" href="#MILANESAS">
-              Milanesas
+            <a className="btn-icon btn btn-light" href="#MILANESAS">
+              <img src={pizzaImg} alt="papas" className="food-icon" />
             </a>
-            <a className="btn btn-secondary" href="#HAMBURGUESAS">
-              Hamburguesas
+            <a className="btn-icon btn btn-light" href="#HAMBURGUESAS">
+              <img src={pizzaImg} alt="papas" className="food-icon" />
             </a>
-            <a className="btn btn-secondary" href="#PIZZAS">
-              Pizzas
+            <a className="btn-icon btn btn-light" href="#PIZZAS">
+              <img src={pizzaImg} alt="papas" className="food-icon" />
             </a>
-            <a className="btn btn-secondary" href="#PAPAS">
-              Papas
+            <a className="btn-icon btn btn-light" href="#PAPAS">
+              <img src={papasImg} alt="papas" className="food-icon" />
             </a>
-            <a className="btn btn-secondary" href="#BEBIDAS">
-              Bebidas
+            <a className="btn-icon btn btn-light" href="#BEBIDAS">
+              <img src={papasImg} alt="papas" className="food-icon" />
             </a>
           </div>
         </div>
