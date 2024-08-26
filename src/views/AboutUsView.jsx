@@ -12,10 +12,10 @@ const teamMembers = [
     position: 'Scrum Master',
     imageUrl: lucas,
     socialLinks: {
-      facebook: 'https://facebook.com',
-      github: 'https://github.com/johnathan',
+      facebook: '*',
+      github: 'https://github.com/lucaschipolari',
       instagram: 'https://instagram.com/johnathan',
-      google: 'https://google.com'
+      google: '*'
     },
   },
   {
@@ -23,10 +23,10 @@ const teamMembers = [
     position: 'Especialista en Marketing',
     imageUrl: juli,
     socialLinks: {
-      facebook: 'https://facebook.com',
-      github: 'https://github.com/johnathan',
+      facebook: '*',
+      github: 'https://github.com/mjulietavignoli',
       instagram: 'https://instagram.com/johnathan',
-      google: 'https://google.com'
+      google: '*'
     },
   },
   {
@@ -34,10 +34,10 @@ const teamMembers = [
     position: 'Gerente de Operaciones',
     imageUrl: hernan,
     socialLinks: {
-      facebook: 'https://facebook.com',
-      github: 'https://github.com/johnathan',
-      instagram: 'https://instagram.com/johnathan',
-      google: 'https://google.com'
+      facebook: '*',
+      github: 'https://github.com/HernanAlarconUtz',
+      instagram: 'https://www.instagram.com/hernan_au96',
+      google: '*'
     },
   },
   {
@@ -45,10 +45,10 @@ const teamMembers = [
     position: 'Jefe de Bar',
     imageUrl: santi,
     socialLinks: {
-      facebook: 'https://facebook.com',
-      github: 'https://github.com/johnathan',
-      instagram: 'https://instagram.com/johnathan',
-      google: 'https://google.com'
+      facebook: '*',
+      github: 'https://github.com/SantiagoAltamiranda',
+      instagram: 'https://www.instagram.com/santidecano1',
+      google: '*'
     },
   },
 ];
