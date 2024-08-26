@@ -43,7 +43,7 @@ export const router = createBrowserRouter([
         element: <MenuView />,
       },
       {
-        path: "/profile/:id",
+        path: "/profile",
         element: <ProfileView />,
       },
       {

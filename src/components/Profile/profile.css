@@ -7,3 +7,15 @@
     max-height: 200px;
     overflow: hidden;
 }
+
+.alert {
+    border-radius: 15px;
+    background-color: rgba(255, 255, 255, 0.8); /* Fondo blanco con opacidad */
+    padding: 20px;
+    backdrop-filter: blur(10px); /* Efecto de desenfoque */
+    -webkit-backdrop-filter: blur(10px); /* Prefijo para compatibilidad con Safari */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra sutil */
+    color: #333; /* Color del texto */
+  }
+  
+  

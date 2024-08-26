@@ -38,6 +38,8 @@ const FormUserEdit = () => {
         showConfirmButton: false,
       });
 
+      // Navega a otra página si es necesario
+      navigate("/profile"); // Ajusta el path según tu necesidad
     },
     onError: (e) => {
       toast.dismiss();
@@ -45,6 +47,7 @@ const FormUserEdit = () => {
     },
   });
 
+  // Prellenar los valores del formulario si hay un usuario para editar
   if (userToEdit) {
     setValue("username", userToEdit.data.username);
     setValue("email", userToEdit.data.email);
@@ -68,8 +71,8 @@ const FormUserEdit = () => {
         const userId = userToEdit.data.id;
         putUsers({ userId, data });
       }
-      clearUserToEdit();
     }
+    clearUserToEdit();
     reset();
   };
 
@@ -87,10 +90,10 @@ const FormUserEdit = () => {
         Editar usuario
       </h1>
       <hr />
-        <div className="alert alert-warning">
-          Atención: Estás modificando la entrada con nombre{" "}
-          <b>{userToEdit.data.username}</b>
-        </div>
+      <div className="alert alert-warning">
+        Atención: Estás modificando la entrada con nombre{" "}
+        <b>{userToEdit?.data.username}</b>
+      </div>
       <InputProducto
         className="mb-2"
         error={errors.username}
@@ -130,17 +133,6 @@ const FormUserEdit = () => {
         placeholder="example@mail.com"
         register={register}
       />
-      <SelectProducto
-        className="mb-3"
-        error={errors.role}
-        name="role"
-        label="Rol"
-        categories={["user", "admin"]}
-        options={{
-          required: "Este campo es requerido",
-        }}
-        register={register}
-      />
       <InputProducto
         className="mb-2"
         error={errors.avatar}
@@ -164,9 +156,9 @@ const FormUserEdit = () => {
       />
       <hr />
       <div className="text-end">
-          <button className="btn" type="button" onClick={handleCancelEdit}>
-            Cancelar edición
-          </button>
+        <button className="btn" type="button" onClick={handleCancelEdit}>
+          Cancelar edición
+        </button>
         <button className="btn btn-danger" type="submit">
           Guardar
         </button>
