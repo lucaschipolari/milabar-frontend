@@ -15,6 +15,10 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { useForm } from "react-hook-form";
 import Swal from "sweetalert2";
+import { useSession } from "../../stores/useSession";
+import { decodeJWT } from "../../utilities/decodeJWT";
+import { getUserFn } from "../../api/usersApi";
+import { useQuery } from "@tanstack/react-query";
 
 const CartModal = ({ visible, onHide }) => {
   const products = useCartStore((state) => state.products);
@@ -31,6 +35,20 @@ const CartModal = ({ visible, onHide }) => {
   const tableNumber = watch("tableNumber", "");
   const details = watch("details", "");
 
+  const { isLoggedIn } = useSession();
+  const token = sessionStorage.getItem("token");
+  const userId = token ? decodeJWT(token).user.id : null;
+
+  const {
+    data: userData,
+    isLoading,
+    isError,
+  } = useQuery({
+    queryKey: ["user", userId],
+    queryFn: () => getUserFn(userId),
+    enabled: !!userId,
+  });
+
   const handleOrder = async () => {
     try {
       const orderDetails = {
@@ -38,6 +56,7 @@ const CartModal = ({ visible, onHide }) => {
         total: totalPrice,
         tableNumber: tableNumber,
         details: details,
+        userId: userId,
       };
 
       const result = await Swal.fire({
@@ -99,7 +118,7 @@ const CartModal = ({ visible, onHide }) => {
             product.quantity > 0 && (
               <div
                 key={product.id}
-                className="cart-product dflex align-item-center m-3"
+                className="cart-product d-flex align-item-center m-3"
               >
                 <img
                   src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ6_VVHpq1t0kCF1wc6SreFBvWGKEYXAayevA&s"
@@ -133,39 +152,43 @@ const CartModal = ({ visible, onHide }) => {
         )}
       </div>
       <div className="detail-container">
-      <Input
-        className="m-3"
-        error={errors.details}
-        label="Detalles del pedido"
-        name="details"
-        options={{
-          minLength: {
-            value: 10,
-            message: "El campo detalle debe tener al menos 10 caracteres",
-          },
-          maxLength: {
-            value: 500,
-            message: "El campo detalle debe tener un máximo de 500 caracteres",
-          },
-          pattern: {
-            value: /^[A-Za-zñÑáéíóúÁÉÍÓÚ0-9\s.,!?()-]+$/,
-            message:
-              "El campo detalle solo puede contener letras, números y ciertos caracteres de puntuación (. , ! ? () -)",
-          },
-          validate: {
-            noExtraSpaces: (value) =>
-              !/\s{2,}/.test(value) ||
-              "El campo detalle no puede contener múltiples espacios consecutivos",
-            noOnlySpaces: (value) =>
-              value.trim().length > 0 ||
-              "El campo detalle no puede estar compuesto solo de espacios en blanco",
-          },
-        }}
-        register={register}
-        textarea
-      />
-      <div className="text-center mt-0"><p className="text-secondary small">*En caso de querer especificar algo, minimo 10 caracteres*</p></div>
-      
+        <Input
+          className="m-3"
+          error={errors.details}
+          label="Detalles del pedido"
+          name="details"
+          options={{
+            minLength: {
+              value: 10,
+              message: "El campo detalle debe tener al menos 10 caracteres",
+            },
+            maxLength: {
+              value: 500,
+              message:
+                "El campo detalle debe tener un máximo de 500 caracteres",
+            },
+            pattern: {
+              value: /^[A-Za-zñÑáéíóúÁÉÍÓÚ0-9\s.,!?()-]+$/,
+              message:
+                "El campo detalle solo puede contener letras, números y ciertos caracteres de puntuación (. , ! ? () -)",
+            },
+            validate: {
+              noExtraSpaces: (value) =>
+                !/\s{2,}/.test(value) ||
+                "El campo detalle no puede contener múltiples espacios consecutivos",
+              noOnlySpaces: (value) =>
+                value.trim().length > 0 ||
+                "El campo detalle no puede estar compuesto solo de espacios en blanco",
+            },
+          }}
+          register={register}
+          textarea
+        />
+        <div className="text-center mt-0">
+          <p className="text-secondary small">
+            *En caso de querer especificar algo, minimo 10 caracteres*
+          </p>
+        </div>
       </div>
       <div className="d-flex align-items-center m-3 table-number-container">
         <p className="m-0">Ingrese su numero de mesa para hacer el pedido:</p>

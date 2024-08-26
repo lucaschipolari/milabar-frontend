@@ -1,9 +1,30 @@
 import React, { useState } from 'react';
 import ShowData from './ShowData';
+import Swal from 'sweetalert2';
+import { useSession } from '../../stores/useSession.js'; 
+import { useNavigate } from 'react-router-dom';
 
 const Menu = ({ user, onSelectSection }) => {
+  const navigate = useNavigate();
+  const { logout } = useSession();
   const [activeSection, setActiveSection] = useState(null);
-
+  const handleLogout = () => {
+    Swal.fire({
+      title: '¿Estás seguro?',
+      text: "¡Cerrar sesión terminará tu sesión actual!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Sí, cerrar sesión',
+      cancelButtonText: 'Cancelar'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        logout();
+          navigate('/');
+      }
+    });
+  };
   const handleSelectSection = (section) => {
     setActiveSection((prev) => (prev === section ? null : section));
     onSelectSection(section);
@@ -11,9 +32,9 @@ const Menu = ({ user, onSelectSection }) => {
 
   return (
     <div className="container">
-      <div className="row g-2">
+      <div className="row">
         <button
-          className="p-2 col-12 col-md-3 rounded-2 "
+          className="p-2 col-12 col-md-2 rounded-2 "
           onClick={() => handleSelectSection('datos')}
         >
           <span className="pi pi-user mr-2"></span>
@@ -23,7 +44,7 @@ const Menu = ({ user, onSelectSection }) => {
             <ShowData section="datos" user={user}/>
         )}
         <button
-          className="p-2 col-12 col-md-3 rounded-2"
+          className="p-2 col-12 col-md-2 rounded-2"
           onClick={() => handleSelectSection('metodos')}
         >
           <span className="pi pi-credit-card mr-2"></span>
@@ -34,7 +55,7 @@ const Menu = ({ user, onSelectSection }) => {
           </div>
         )}
         <button
-          className="p-2 col-12 col-md-3 rounded-2"
+          className="p-2 col-12 col-md-2 rounded-2"
           onClick={() => handleSelectSection('pedidos')}
         >
           <span className="pi pi-shopping-cart mr-2"></span>
@@ -45,7 +66,7 @@ const Menu = ({ user, onSelectSection }) => {
           </div>
         )}
         <button
-          className="p-2 col-12 col-md-3 rounded-2"
+          className="p-2 col-12 col-md-2 rounded-2"
           onClick={() => handleSelectSection('favoritos')}
         >
           <span className="pi pi-star mr-2"></span>
@@ -55,6 +76,13 @@ const Menu = ({ user, onSelectSection }) => {
           <div className="p-4">
           </div>
         )}
+        <button
+          className="bg-danger p-2 col-12 col-md-4 rounded-2"
+          onClick={() => handleLogout()}
+        >
+          <span className="pi pi-star mr-2"></span>
+          Cerrar sesión
+        </button>
       </div>
     </div>
   );

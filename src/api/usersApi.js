@@ -98,31 +98,44 @@ export const postRegisterFn = async (data) => {
 };
 
 export const getUserFn = async (userId) => {
-  const res = await fetch(`${BACKEND_URL}/profile/${userId}`);
-  const data = await res.json();
-  if (!res.ok) {
-    throw new Error(
-      "Ocurrió un error leyendo la entrada del producto seleccionado"
-    );
+  const token = sessionStorage.getItem("token"); 
+  if (!token) {
+    throw new Error("No se encontró el token");
   }
-  return data;
+
+  const res = await fetch(`${BACKEND_URL}/profile/${userId}`, {
+    headers: {
+      "Content-Type": "application/json",
+      "Authorization": `Bearer ${token}`, // Agrega el token en la cabecera de autorización si es necesario
+    },
+  });
+
+  if (!res.ok) {
+    throw new Error("Ocurrió un error leyendo la entrada del usuario");
+  }
+
+  return await res.json(); // Retorna directamente el JSON
 };
 
 export const putUsersFn = async ({ userId, data }) => {
-  //const token = sessionStorage.getItem('token');
+  const token = sessionStorage.getItem('token');
+
+  if (!token) {
+    throw new Error("No se encontró el token");
+  }
 
   const res = await fetch(`${BACKEND_URL}/profile/${userId}`, {
     method: "PUT",
     headers: {
       "Content-Type": "application/json",
-      //Authorization: `Bearer ${token}`,
+      "Authorization": `Bearer ${token}`, // Agrega el token en la cabecera de autorización
     },
     body: JSON.stringify(data),
   });
 
   if (!res.ok) {
-    throw new Error(
-      "Ocurrió un error intentando editar el usuario seleccionado"
-    );
+    throw new Error("Ocurrió un error intentando editar el usuario seleccionado");
   }
+
+  return await res.json(); // Asegúrate de retornar el JSON de la respuesta
 };
