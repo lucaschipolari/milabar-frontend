@@ -1,8 +1,18 @@
 .logo-container {
  margin: 10px;
+ border-radius: 50%;
 }
 
 .logo-img {
-    width: 500px;
+    width: 200px;
     height: auto;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+@media (min-width:768px){
+    .logo-img {
+        width: 450px;
+        height: auto;
+    }
 }

@@ -14,6 +14,7 @@ import PrivateView from "../views/routing/PrivateView";
 import ProfileView from "../views/ProfileView";
 import LoginRegisterView from "../views/LoginRegisterView";
 import AuthView from "../views/routing/AuthView";
+import ProductDetailView from "../views/ProductDetailView";
 
 export const router = createBrowserRouter([
   {
@@ -55,7 +56,7 @@ export const router = createBrowserRouter([
       },
       {
         path: "/detalle/:id",
-        element: <DetalleProductoView />,
+        element: <ProductDetailView />,
       },
       {
         path: "/agregar-producto",
@@ -68,24 +69,24 @@ export const router = createBrowserRouter([
       // RUTAS DE AUTENTICACION
       // no deberían poder accederse estando logueados
       {
-      path:'',
-      element: <AuthView/>,
-      children:[
-        {
-          path: "users",
-          element: <LoginRegisterView />,
-          children: [
-            {
-              path: "login",
-              element: <LoginPage />,
-            },
-            {
-              path: "register",
-              element: <RegisterPage />,
-            },
-          ],
-        },
-      ]
+        path: "",
+        element: <AuthView />,
+        children: [
+          {
+            path: "users",
+            element: <LoginRegisterView />,
+            children: [
+              {
+                path: "login",
+                element: <LoginPage />,
+              },
+              {
+                path: "register",
+                element: <RegisterPage />,
+              },
+            ],
+          },
+        ],
       },
       // RUTAS PRIVADAS
       {

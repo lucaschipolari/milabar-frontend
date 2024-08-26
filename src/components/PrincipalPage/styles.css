@@ -1,0 +1,8 @@
+.food-icon{
+    height: 2rem;
+    width: 100%;
+    object-fit: cover;
+}
+.btn-icon{
+   border-radius:0 !important ;
+}
