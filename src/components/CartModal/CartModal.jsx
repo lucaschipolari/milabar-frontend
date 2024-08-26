@@ -102,7 +102,7 @@ const CartModal = ({ visible, onHide }) => {
     <Dialog
       header="Milabar"
       visible={visible}
-      className="cart-dialog p-3"
+      className="cart-dialog"
       onHide={onHide}
       draggable={false}
       position="TopRight"
@@ -218,7 +218,7 @@ const CartModal = ({ visible, onHide }) => {
           <p className="error-text">{errors.tableNumber.message}</p>
         )}
       </div>
-      <div className="cart-total d-flex justify-content-between m-3 price-text">
+      <div className="cart-total d-flex justify-content-between m-3 price-text fw-bold">
         <h4>Total:</h4>${totalPrice.toFixed(2)}
       </div>
       <div className="cart-actions m-3 d-flex justify-content-between">
