@@ -2,9 +2,11 @@ import { Link, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { useMutation } from "@tanstack/react-query";
 import { toast } from "sonner";
-import useSession from "../../stores/useSession";
+import {useSession}  from "../../stores/useSession";
 import SocialIcons from "./SocialIcons";
 import { postLoginFn } from "../../api/usersApi";
+import Input from "../ui/input/Input";
+import Swal from "sweetalert2";
 
 const LoginPage = () => {
   const { login } = useSession();
@@ -14,21 +16,31 @@ const LoginPage = () => {
     register,
     handleSubmit,
     formState: { errors },
-    reset,
+    reset
   } = useForm();
 
   const { mutate: postLogin } = useMutation({
     mutationFn: postLoginFn,
     onSuccess: (userData) => {
-      toast.dismiss(); // Cerramos el toast de carga
-      toast.success(`¡Inicio de sesión exitoso, ${userData.username}!`);
-      reset();
+      toast.dismiss(); 
+      toast.success(`¡Bienvenido, ${userData.username}!`);
+      reset(); 
       login(userData);
-      setTimeout(() => navigate("/"), 1500);
+      setTimeout(() => navigate("/menu"), 1000);
     },
     onError: (e) => {
       toast.dismiss(); // Cerramos el toast de carga
-      toast.warning(e.message || "Error en el inicio de sesión");
+
+      if (e.message === "El mail no está registrado") {
+        Swal.fire({
+          title: "Parece que no estás registrado",
+          text: "Dirigete a la opción: Crear cuenta",
+          icon: "warning"
+        });
+      } else {
+        toast.warning(e.message || "Error en el inicio de sesión");
+      }
+      reset(); // Limpia el formulario en caso de error
     },
   });
 
@@ -39,48 +51,43 @@ const LoginPage = () => {
 
   return (
     <form onSubmit={handleSubmit(handleSubmitForm)} className="form-user-auth">
-      <h1>Iniciar sesión</h1>
+      <h1 className="text-center mt-2">Iniciar sesión</h1>
       <div className="form-group">
-        <label htmlFor="username">Usuario</label>
-        <input
-          id="username"
-          name="username"
-          type="text"
-          {...register("username", {
-            required: "El nombre de usuario es obligatorio",
+        <Input
+          className="mb-2"
+          error={errors.email}
+          label="Email"
+          name="email"
+          options={{
+            required: "Este campo es requerido",
             minLength: {
-              value: 3,
-              message: "El nombre de usuario debe tener al menos 3 caracteres",
+              value: 5,
+              message: "El email debe tener al menos 5 caracteres",
             },
             maxLength: {
-              value: 50,
-              message: "El nombre de usuario debe tener menos de 50 caracteres",
+              value: 100,
+              message: "El email debe tener como mucho 100 caracteres",
             },
-          })}
-          className={`form-control ${errors.username ? "is-invalid" : ""}`}
+          }}
+          placeholder="Milanesa"
+          register={register}
         />
-        {errors.username && (
-          <div className="invalid-feedback">{errors.username.message}</div>
-        )}
-      </div>
-      <div className="form-group">
-        <label htmlFor="password">Contraseña</label>
-        <input
-          id="password"
+
+        <Input
+          error={errors.password}
+          label="Contraseña"
           name="password"
-          type="password"
-          {...register("password", {
-            required: "La contraseña es obligatoria",
-            minLength: {
-              value: 6,
-              message: "La contraseña debe tener al menos 6 caracteres",
+          options={{
+            required: {
+              value: true,
+              message: "Este campo es requerido",
             },
-          })}
-          className={`form-control ${errors.password ? "is-invalid" : ""}`}
+            minLength: 3,
+            maxLength: 20,
+          }}
+          register={register}
+          type="password"
         />
-        {errors.password && (
-          <div className="invalid-feedback">{errors.password.message}</div>
-        )}
       </div>
       <Link to="/forgot-password" className="container-auth-a">
         ¿Olvidaste tu contraseña?
@@ -88,7 +95,6 @@ const LoginPage = () => {
       <button type="submit" className="btn btn-danger">
         Iniciar sesión
       </button>
-
       <SocialIcons />
     </form>
   );
