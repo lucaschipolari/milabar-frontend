@@ -16,7 +16,7 @@ import { useSession } from "../../stores/useSession";
 import { decodeJWT } from "../../utilities/decodeJWT";
 import { getUserFn } from "../../api/usersApi";
 import { useQuery } from "@tanstack/react-query";
-import IsLoanding from "../Common/IsLoading/isLoading";
+import IsLoading from "../Common/IsLoading/IsLoading";
 
 const PrincipalPage = () => {
   const { isLoggedIn } = useSession();
@@ -32,11 +32,10 @@ const PrincipalPage = () => {
     queryFn: () => getUserFn(userId),
     enabled: !!userId,
   });
-  if (isLoading) return <IsLoanding />;
+  if (isLoading) return <IsLoading />;
   if (isError) return <p>Error al cargar los datos del usuario.</p>;
   return (
     <>
-    
       <Header user={user} />
 
       <div className="mb-5">

@@ -4,7 +4,7 @@ import { useSession } from "../stores/useSession";
 import { getUserFn } from "../api/usersApi";
 import { Link } from "react-router-dom";
 import PrincipalProductoView from "./PrincipalProductoView";
-import IsLoanding from "../components/Common/IsLoading/isLoading";
+import IsLoading from "../components/Common/IsLoading/IsLoading";
 
 const AdminOptions = () => {
   const { user } = useSession();
@@ -20,7 +20,7 @@ const AdminOptions = () => {
     enabled: !!userId,
   });
 
-  if (isLoading) return <IsLoanding />;
+  if (isLoading) return <IsLoading />;
   if (isError) return <p>Error al cargar los datos del usuario.</p>;
 
   console.log(userData);

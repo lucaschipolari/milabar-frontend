@@ -49,7 +49,7 @@ const ListProductClient = () => {
   ];
 
   if (isLoading) {
-    return <IsLoading />;
+    return <div>Cargando</div>;
   }
 
   if (isError) {

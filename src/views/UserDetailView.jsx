@@ -2,7 +2,7 @@ import { Link, useParams } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 import { getDetailUserFn } from "../api/usersApi";
 import "../components/Admin/Users/styles/userDetail.css";
-import IsLoanding from "../components/Common/IsLoading/isLoading";
+import IsLoading from "../components/Common/IsLoading/IsLoading";
 
 const UserDetailView = () => {
   const { id } = useParams();
@@ -17,7 +17,7 @@ const UserDetailView = () => {
   });
 
   if (isLoading) {
-    return <IsLoanding />;
+    return <IsLoading />;
   }
 
   if (isError || !user) {

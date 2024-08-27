@@ -6,7 +6,7 @@ import { getUserFn } from "../api/usersApi.js";
 import { decodeJWT } from "../utilities/decodeJWT";
 import { useSession } from "../stores/useSession.js";
 import NavigationProfile from "../components/Profile/NavigationProfile";
-import IsLoanding from "../components/Common/IsLoading/isLoading.jsx";
+import IsLoading from "../components/Common/IsLoading/IsLoading.jsx";
 import "../components/Profile/profile.css";
 
 const ProfileView = () => {
@@ -26,7 +26,7 @@ const ProfileView = () => {
     enabled: !!userId,
   });
 
-  if (isLoading) return <IsLoanding />;
+  if (isLoading) return <IsLoading />;
   if (isError) return <p>Error al cargar los datos del usuario.</p>;
 
   if (!isLoggedIn)

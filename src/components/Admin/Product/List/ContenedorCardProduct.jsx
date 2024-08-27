@@ -7,7 +7,7 @@ import { useProducto } from "../../../../stores/useProducto.js";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 
 import ProductCard from "../CardProducto/ProductCard.jsx";
-import IsLoanding from "../../../Common/IsLoading/isLoading.jsx";
+import IsLoading from "../../../Common/IsLoading/IsLoading.jsx";
 
 const ContenedorProductCard = () => {
   const {
@@ -49,7 +49,7 @@ const ContenedorProductCard = () => {
     ) || [];
 
   if (isLoading) {
-    return <IsLoanding />;
+    return <IsLoading />;
   }
 
   if (isError) {
