@@ -6,10 +6,11 @@ import { getUserFn } from "../api/usersApi.js";
 import { decodeJWT } from "../utilities/decodeJWT";
 import { useSession } from "../stores/useSession.js";
 import NavigationProfile from "../components/Profile/NavigationProfile";
+import "../components/Profile/profile.css";
 
 const ProfileView = () => {
   const { isLoggedIn } = useSession();
-  const token = sessionStorage.getItem("token"); 
+  const token = sessionStorage.getItem("token");
   const userId = token ? decodeJWT(token).user.id : null;
 
   const [selectedSection, setSelectedSection] = useState(null);
@@ -21,17 +22,22 @@ const ProfileView = () => {
   } = useQuery({
     queryKey: ["user", userId],
     queryFn: () => getUserFn(userId),
-    enabled: !!userId, 
+    enabled: !!userId,
   });
 
   if (isLoading) return <p>Cargando...</p>;
   if (isError) return <p>Error al cargar los datos del usuario.</p>;
 
-  if (!isLoggedIn) return (
-    <div className="container mb-5 pb-5">
-    <NavigationProfile />
-  </div>
-  );
+  if (!isLoggedIn)
+    return (
+      <div className="container d-flex flex-column mt-5 justify-content-center align-items-center">
+        <h1 className="color-red text-center">¡Oh no!</h1>
+        <h5 className="color-red text-center">
+          Parece que aún no has iniciado sesión
+        </h5>
+          <NavigationProfile />
+      </div>
+    );
   return (
     <div className="container mb-5 pb-5">
       {userData ? (

@@ -14,7 +14,7 @@ const UserCard = (props) => {
   };
 
   return (
-    <div className="card container my-2">
+    <div className=" container p-2 custom-card-edit">
       {userToEdit ? (
         <FormUserEdit /> 
       ) : (
@@ -44,7 +44,7 @@ const UserCard = (props) => {
           </div>
           <hr />
           <button
-            className="btn btn-warning col-auto mb-2"
+            className="btn btn-warning col-auto mb-2 w-100"
             onClick={() => handleEdit(user)}
           >
             <FontAwesomeIcon icon={faPencil} />

@@ -1,18 +1,24 @@
-import React from "react";
 import { Link } from "react-router-dom";
+import { useSession } from "../../stores/useSession";
 import "./profile.css";
 
 const NavigationButtons = () => {
+  const { isLoggedIn } = useSession();
   return (
-    <div className="mt-5 d-flex flex-column align-items-center">
-      <Link className="btn btn-danger mb-3" to="/users/login">
-        Iniciar Sesión
-      </Link>
-      <Link className="btn btn-danger mb-3" to="/users/register">
-        Registrarse
-      </Link>
+    <div className="d-flex flex-column align-items-center mt-4 container">
+      {!isLoggedIn && (
+        <>
+          <p className="color-red">Si ya tenes una cuenta</p>
+          <Link className="btn btn-color-red mb-3 w-100" to="/users/login">
+            Inicia Sesión
+          </Link>
+          <p className="color-red">O si no tenes una, </p>
+          <Link className="btn btn-color-red mb-3 w-100" to="/users/login">
+            Create una cuenta
+          </Link>
+        </>
+      )}
     </div>
   );
 };
-
 export default NavigationButtons;
