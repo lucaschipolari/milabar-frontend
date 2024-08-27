@@ -91,7 +91,7 @@ export const router = createBrowserRouter([
             element: <UserManagement />,
           },
           {
-            path: "agregar-producto/:id",
+            path: "modificar-producto/:id",
             element: <DetalleProductoView />,
           },
           {
