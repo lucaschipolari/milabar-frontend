@@ -14,7 +14,7 @@ const teamMembers = [
     socialLinks: {
       facebook: '*',
       github: 'https://github.com/lucaschipolari',
-      instagram: 'https://instagram.com/johnathan',
+      instagram: '*',
       google: '*'
     },
   },
@@ -25,7 +25,7 @@ const teamMembers = [
     socialLinks: {
       facebook: '*',
       github: 'https://github.com/mjulietavignoli',
-      instagram: 'https://instagram.com/johnathan',
+      instagram: '*',
       google: '*'
     },
   },

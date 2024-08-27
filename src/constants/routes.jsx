@@ -15,6 +15,7 @@ import ProfileView from "../views/ProfileView";
 import LoginRegisterView from "../views/LoginRegisterView";
 import AuthView from "../views/routing/AuthView";
 import ProductDetailView from "../views/ProductDetailView";
+import NotFoundView from "../views/NotFoundView";
 
 export const router = createBrowserRouter([
   {
@@ -101,7 +102,7 @@ export const router = createBrowserRouter([
       },
       {
         path: "*",
-        element: <div></div>,
+        element: <NotFoundView/>,
       },
     ],
   },
