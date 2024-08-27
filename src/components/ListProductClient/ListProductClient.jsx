@@ -74,7 +74,7 @@ const ListProductClient = () => {
       {categorias.map((categoria) => {
         const productosFiltrados = productos.data.filter(
           (producto) =>
-            producto.categoria === categoria.id && producto.agregado === "false"
+            producto.categoria === categoria.id && producto.agregado === "false" && producto.habilitado === "true"
         );
 
         // Solo renderizar el Carousel si hay productos filtrados
