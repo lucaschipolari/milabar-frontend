@@ -8,6 +8,7 @@ import {
   faPencil,
   faTrash,
   faPlus,
+  faInfo,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
@@ -26,7 +27,7 @@ const ProductCardClient = (props) => {
       image: producto.imagen,
       price: producto.preciounitario,
     });
-    toast.success(`${producto.nombre} añadido al carrito.`)
+    toast.success(`${producto.nombre} añadido al carrito.`);
   };
 
   return (
@@ -51,6 +52,9 @@ const ProductCardClient = (props) => {
             <Button className="btn btn-primary" onClick={addToCart}>
               <FontAwesomeIcon icon={faCartShopping} />
             </Button>
+            <Link className="btn-more-info" to={`/detalle/${producto.id}`}>
+              <FontAwesomeIcon icon={faInfo} />
+            </Link>
           </div>
         </div>
       )}

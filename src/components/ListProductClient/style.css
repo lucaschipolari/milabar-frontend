@@ -40,3 +40,13 @@
     margin-top: auto; /* Empuja el contenido al fondo */
   }
   
+.btn-more-info{
+    display: flex;
+    justify-content: center;
+    height: 40px;
+    width: 40px;
+    padding: 10px;
+    border:1px solid;
+    border-radius: 50%;
+
+}

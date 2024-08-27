@@ -6,6 +6,7 @@ import { getUserFn } from "../api/usersApi.js";
 import { decodeJWT } from "../utilities/decodeJWT";
 import { useSession } from "../stores/useSession.js";
 import NavigationProfile from "../components/Profile/NavigationProfile";
+import IsLoanding from "../components/Common/IsLoading/isLoading.jsx";
 import "../components/Profile/profile.css";
 
 const ProfileView = () => {
@@ -25,7 +26,7 @@ const ProfileView = () => {
     enabled: !!userId,
   });
 
-  if (isLoading) return <p>Cargando...</p>;
+  if (isLoading) return <IsLoanding />;
   if (isError) return <p>Error al cargar los datos del usuario.</p>;
 
   if (!isLoggedIn)
@@ -35,7 +36,7 @@ const ProfileView = () => {
         <h5 className="color-red text-center">
           Parece que aún no has iniciado sesión
         </h5>
-          <NavigationProfile />
+        <NavigationProfile />
       </div>
     );
   return (

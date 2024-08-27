@@ -1,12 +1,21 @@
 import { useQuery } from "@tanstack/react-query";
 import { Carousel } from "primereact/carousel";
-import ProductCardClient from "./CardProductClient";
 import "./style.css";
 import { getProductosFn } from "../../api/productos";
 import PropTypes from "prop-types";
+import ProductCardClient from "./CardProductClient";
+import IsLoading from "../Common/IsLoading/isLoading";
 
-const ListProductClient = (props) => {
-  const { categoria } = props;
+const categorias = [
+  { id: "SANGUCHE", title: "Sanguches" },
+  { id: "MILANESA", title: "Milanesas" },
+  { id: "HAMBURGUESA", title: "Hamburguesas" },
+  { id: "PIZZA", title: "Pizzas" },
+  { id: "PAPA", title: "Papas" },
+  { id: "BEBIDA", title: "Bebidas" },
+];
+
+const ListProductClient = () => {
   const {
     data: productos,
     isLoading,
@@ -40,7 +49,7 @@ const ListProductClient = (props) => {
   ];
 
   if (isLoading) {
-    return <p className="mt-3 text-center">Cargando datos...</p>;
+    return <IsLoading />;
   }
 
   if (isError) {
@@ -59,38 +68,42 @@ const ListProductClient = (props) => {
     );
   }
 
-  // Filtrar productos según la categoría pasada como prop
-  const productosFiltrados = productos.data.filter(
-    (producto) =>
-      producto.categoria === categoria && producto.agregado === "false"
-  );
-
-  const productTemplate = (producto) => {
-    return (
-      <div className="col-12 p-3">
-        <ProductCardClient producto={producto} key={producto.id} />
-      </div>
-    );
-  };
-
+  // Filtrar y renderizar productos según categoría
   return (
-    <div className="col-12">
-      <Carousel
-        value={productosFiltrados}
-        className="col-12"
-        numVisible={3}
-        numScroll={1}
-        orientation="horizontal"
-        verticalViewPortHeight="auto"
-        itemTemplate={productTemplate}
-        responsiveOptions={responsiveOptions}
-      />
+    <div className="mt-5">
+      {categorias.map((categoria) => {
+        const productosFiltrados = productos.data.filter(
+          (producto) =>
+            producto.categoria === categoria.id && producto.agregado === "false"
+        );
+
+        // Solo renderizar el Carousel si hay productos filtrados
+        return productosFiltrados.length > 0 ? (
+          <div key={categoria.id} className="text-center mt-5">
+            <h2 id={categoria.id} className="text-light">
+              {categoria.title}
+            </h2>
+            <div className="col-12">
+              <Carousel
+                value={productosFiltrados}
+                className="col-12"
+                numVisible={3}
+                numScroll={1}
+                orientation="horizontal"
+                verticalViewPortHeight="auto"
+                itemTemplate={(producto) => (
+                  <div className="col-12 p-3">
+                    <ProductCardClient producto={producto} key={producto.id} />
+                  </div>
+                )}
+                responsiveOptions={responsiveOptions}
+              />
+            </div>
+          </div>
+        ) : null;
+      })}
     </div>
   );
 };
 
 export default ListProductClient;
-
-ListProductClient.propTypes = {
-  categoria: PropTypes.string.isRequired,
-};

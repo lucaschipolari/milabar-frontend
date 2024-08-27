@@ -55,8 +55,9 @@
   }
   
   /* Estilo de la tarjeta con degradado */
-  .card {
-    background: linear-gradient(145deg, #ff0000, #b88787); /* Degradado gris más definido */
+  .card-member {
+    color: white;
+    background: linear-gradient(145deg, #ff000099, #f03d3d); /* Degradado gris más definido */
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra suave */
     padding: 2em 1em;
     border-radius: 10px; /* Bordes redondeados */
@@ -67,8 +68,8 @@
   }
   
   /* Efecto hover */
-  .card:hover {
-    background: linear-gradient(145deg, #ff0000, #8f8c8c);
+  .card-member:hover {
+    background: linear-gradient(145deg, #b81f1f, #a91f1f);
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
     transform: translateY(-10px); /* Movimiento más visible */
   }
@@ -100,11 +101,6 @@
     color: black;
   }
   /* Posición del miembro */
-  p {
-    font-size: 0.9em;
-    color: white;
-    margin-bottom: 1.5em;
-  }
   
   /* Contenedor de íconos sociales */
   .icons {
@@ -114,13 +110,13 @@
   }
   
   /* Estilo para los enlaces de íconos */
-  .icons a {
+  .social-icon  {
     font-size: 1.5em;
     color: black;
     transition: color 0.3s ease;
   }
   
-  .icons a:hover {
+  .social-icon:hover {
     color: #6045ea; /* Cambia de color en hover */
   }
 /* Estilos para pantallas a partir de 1400px */

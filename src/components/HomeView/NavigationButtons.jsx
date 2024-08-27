@@ -11,10 +11,10 @@ const NavigationButtons = () => {
       </Link>
       {!isLoggedIn && (
         <>
-          <Link className="btn btn-color-red mb-3 w-100" to="/users/login">
+          <Link className="btn btn-color-red mb-3 w-100" to="/user/login">
             Iniciar Sesión
           </Link>
-          <Link className="btn btn-color-red mb-3 w-100" to="/users/register">
+          <Link className="btn btn-color-red mb-3 w-100" to="/user/register">
             Registrarse
           </Link>
         </>

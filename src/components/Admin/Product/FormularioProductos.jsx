@@ -93,10 +93,10 @@ const FormularioProductos = () => {
     setValue("nombre", productoToEdit.nombre);
     setValue("descripcion", productoToEdit.descripcion);
     setValue("categoria", productoToEdit.categoria);
-    setValue("unidadmedida", productoToEdit.unidadmedida);
     setValue("preciounitario", productoToEdit.preciounitario);
     setValue("imagen", productoToEdit.imagen);
     setValue("habilitado", productoToEdit.habilitado);
+    setValue("agregado", productoToEdit.agregado);
   }
 
   const handleSubmit = async (data) => {
@@ -299,7 +299,11 @@ const FormularioProductos = () => {
       <hr />
       <div className="text-end">
         {productoToEdit && (
-          <button className="btn" type="button" onClick={handleCancelEdit}>
+          <button
+            className="btn btn-secondary mx-1"
+            type="button"
+            onClick={handleCancelEdit}
+          >
             Cancelar edición
           </button>
         )}

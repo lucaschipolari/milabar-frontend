@@ -2,10 +2,15 @@ const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
 import { decodeJWT } from "../utilities/decodeJWT";
 
 export const putUserFn = async ({ id, isEnabled }) => {
-  const res = await fetch(`${BACKEND_URL}/usersPrueba/users/${id}`, {
+  const token = sessionStorage.getItem("token");
+  if (!token) {
+    throw new Error("No se encontró el token");
+  }
+  const res = await fetch(`${BACKEND_URL}/user-info/status/${id}`, {
     method: "PUT",
     headers: {
       "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
     },
     body: JSON.stringify({ isEnabled }),
   });
@@ -15,26 +20,38 @@ export const putUserFn = async ({ id, isEnabled }) => {
 };
 
 export const getUsersFn = async (filter) => {
-  const res = await fetch(`${BACKEND_URL}/usersPrueba/users/${filter}`);
+  const token = sessionStorage.getItem("token");
+  if (!token) {
+    throw new Error("No se encontró el token");
+  }
+  const res = await fetch(`${BACKEND_URL}/user-info/status/${filter}`, {
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`, // Agrega el token en la cabecera de autorización si es necesario
+    },
+  });
 
   // Revisa el tipo de contenido de la respuesta
-  const contentType = res.headers.get("content-type");
+  const user = await res.json();
 
-  if (contentType && contentType.includes("application/json")) {
-    const users = await res.json(); // Asegúrate de esperar el resultado de `json()`
-
-    if (!res.ok) {
-      throw new Error("Error fetching data");
-    }
-    return users;
-  } else {
-    const text = await res.text(); // Intenta leer la respuesta como texto
-    console.error("Respuesta no JSON recibida:", text);
-    throw new Error("El servidor no devolvió un JSON válido");
+  if (!res.ok) {
+    throw new Error("Error fetching data");
   }
+  console.log(user);
+  return user;
 };
 export const getDetailUserFn = async (id) => {
-  const res = await fetch(`${BACKEND_URL}/usersPrueba/users/detail/${id}`);
+  const token = sessionStorage.getItem("token");
+  if (!token) {
+    throw new Error("No se encontró el token");
+  }
+
+  const res = await fetch(`${BACKEND_URL}/user-info/status/detail/${id}`, {
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    },
+  });
   const user = await res.json();
 
   if (!res.ok) {
@@ -85,7 +102,10 @@ export const postRegisterFn = async (data) => {
   });
 
   if (!res.ok) {
-    throw new Error(res.message || "Ocurrió un error");
+    if (res.status === 409) {
+      throw new Error("El correo ya está en uso");
+    }
+    throw new Error(res.message || "Ocurrió un error guardando el usuario");
   }
 
   const userData = await postLoginFn({
@@ -98,7 +118,7 @@ export const postRegisterFn = async (data) => {
 };
 
 export const getUserFn = async (userId) => {
-  const token = sessionStorage.getItem("token"); 
+  const token = sessionStorage.getItem("token");
   if (!token) {
     throw new Error("No se encontró el token");
   }
@@ -106,7 +126,7 @@ export const getUserFn = async (userId) => {
   const res = await fetch(`${BACKEND_URL}/profile/${userId}`, {
     headers: {
       "Content-Type": "application/json",
-      "Authorization": `Bearer ${token}`, // Agrega el token en la cabecera de autorización si es necesario
+      Authorization: `Bearer ${token}`, // Agrega el token en la cabecera de autorización si es necesario
     },
   });
 
@@ -118,7 +138,7 @@ export const getUserFn = async (userId) => {
 };
 
 export const putUsersFn = async ({ userId, data }) => {
-  const token = sessionStorage.getItem('token');
+  const token = sessionStorage.getItem("token");
 
   if (!token) {
     throw new Error("No se encontró el token");
@@ -128,13 +148,15 @@ export const putUsersFn = async ({ userId, data }) => {
     method: "PUT",
     headers: {
       "Content-Type": "application/json",
-      "Authorization": `Bearer ${token}`, // Agrega el token en la cabecera de autorización
+      Authorization: `Bearer ${token}`, // Agrega el token en la cabecera de autorización
     },
     body: JSON.stringify(data),
   });
 
   if (!res.ok) {
-    throw new Error("Ocurrió un error intentando editar el usuario seleccionado");
+    throw new Error(
+      "Ocurrió un error intentando editar el usuario seleccionado"
+    );
   }
 
   return await res.json(); // Asegúrate de retornar el JSON de la respuesta
