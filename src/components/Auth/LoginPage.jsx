@@ -7,6 +7,7 @@ import SocialIcons from "./SocialIcons";
 import { postLoginFn } from "../../api/usersApi";
 import Input from "../ui/input/Input";
 import Swal from "sweetalert2";
+import "./auth.css";
 
 const LoginPage = () => {
   const { login } = useSession();
@@ -50,8 +51,8 @@ const LoginPage = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit(handleSubmitForm)} className="form-user-auth">
-      <h1 className="text-center mt-2">Iniciar sesión</h1>
+    <form onSubmit={handleSubmit(handleSubmitForm)} className="form-user-auth bg-black">
+      <h1 className="text-center mt-3 color-red">Iniciar sesión</h1>
       <div className="form-group">
         <Input
           className="mb-2"
@@ -89,7 +90,7 @@ const LoginPage = () => {
           type="password"
         />
       </div>
-      <Link to="/forgot-password" className="container-auth-a">
+      <Link to="/forgot-password" className="container-auth-a color-red">
         ¿Olvidaste tu contraseña?
       </Link>
       <button type="submit" className="btn btn-danger">

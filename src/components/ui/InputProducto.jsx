@@ -12,7 +12,20 @@ const InputProducto = (props) => {
     placeholder = "Ingrese un texto",
     textarea = false,
     radioOptions,
+    onChange,
+    disabled = false,
+    maxLength,
+    minLength
   } = props;
+
+  const handleChange = (event) => {
+    const { value } = event.target;
+    if (type === "radio" && (value === "true" || value === "false")) {
+      onChange && onChange(name, value === "true"); // Convierte "true"/"false" a booleano
+    } else {
+      onChange && onChange(name, value);
+    }
+  };
 
   if (textarea) {
     return (
@@ -23,6 +36,9 @@ const InputProducto = (props) => {
           placeholder={placeholder}
           type={type}
           {...register(name, options)}
+          disabled={disabled}
+          onChange={handleChange}
+          maxLength={maxLength}
         />
         <label htmlFor={`${name}-input`}>{label}</label>
         <div className="invalid-feedback">
@@ -44,6 +60,8 @@ const InputProducto = (props) => {
               id={`${name}-${option.value}`}
               value={option.value}
               {...register(name, options)}
+              disabled={disabled}
+              onChange={handleChange} // Usa la función personalizada
             />
             <label
               className="form-check-label"
@@ -66,6 +84,10 @@ const InputProducto = (props) => {
         placeholder={placeholder}
         type={type}
         {...register(name, options)}
+        disabled={disabled}
+        onChange={handleChange}
+        maxLength={maxLength}
+        minLength={minLength}
       />
       <label htmlFor={`${name}-input`}>{label}</label>
       <div className="invalid-feedback">
@@ -93,6 +115,8 @@ InputProducto.propTypes = {
       label: PropTypes.string.isRequired,
     })
   ),
+  onChange: PropTypes.func,
+  disabled: PropTypes.bool,
 };
 
 export default InputProducto;

@@ -1,13 +1,11 @@
-import { useForm } from "react-hook-form";
-import { useEffect } from "react";
-import { useMutation } from "@tanstack/react-query";
-import { toast } from "sonner";
-import {useSession}  from "../../stores/useSession";
-import { useNavigate } from "react-router-dom";
-import SocialIcons from "./SocialIcons";
-import { validateName, validateEmail, validatePassword } from "./validators";
-import { postRegisterFn } from "../../api/usersApi";
-import Input from "../ui/input/Input";
+import React from 'react';
+import { useForm } from 'react-hook-form';
+import { toast } from 'sonner';
+import { OverlayTrigger, Popover } from 'react-bootstrap';
+import { useNavigate } from 'react-router-dom';
+import Input from '../ui/input/Input'; // Asegúrate de que la ruta sea correcta
+import SocialIcons from './SocialIcons';
+import { validateName, validateEmail, validatePassword } from './validators';
 
 const RegisterPage = () => {
   const {
@@ -15,41 +13,42 @@ const RegisterPage = () => {
     handleSubmit: onSubmitRHF,
     formState: { errors },
   } = useForm({
-    mode: "onBlur",
-    reValidateMode: "onSubmit",
-    criteriaMode: "all",
+    mode: 'onBlur',
+    reValidateMode: 'onSubmit',
+    criteriaMode: 'all',
     defaultValues: {
-      username: "",
-      email: "",
-      password: "",
+      username: '',
+      email: '',
+      password: '',
     },
   });
 
-  const { login } = useSession();
   const navigate = useNavigate();
 
-  const { mutate: postRegister } = useMutation({
-    mutationFn: postRegisterFn,
-    onSuccess: (userData) => {
-      toast.dismiss(); // Cerrar cualquier toast de carga
-      toast.success(`¡Registro exitoso, ${userData.username}!`);
-      login(userData);
-      setTimeout(() => navigate("/menu"), 1000);
-    },
-    onError: (e) => {
-      toast.dismiss(); // Cerrar cualquier toast de carga
-      toast.warning(e.message || "Error en el registro");
-    },
-  });
-
   const handleSubmitForm = (data) => {
-    toast.loading("Cargando...");
-    postRegister(data);
+    toast.loading('Cargando...');
+    // Lógica para enviar el formulario
   };
 
+  const passwordPopover = (
+    <Popover id="password-popover">
+      <Popover.Body>
+        La contraseña debe cumplir con los siguientes requisitos:
+        <ul>
+          <li>Entre 8 y 15 caracteres</li>
+          <li>Al menos una letra minúscula</li>
+          <li>Al menos una letra mayúscula</li>
+          <li>Al menos un número</li>
+          <li>Al menos un carácter especial ($@$!%*?&)</li>
+          <li>No debe contener espacios</li>
+        </ul>
+      </Popover.Body>
+    </Popover>
+  );
+
   return (
-    <form onSubmit={onSubmitRHF(handleSubmitForm)} className="form-user-auth">
-      <h1>Crear cuenta</h1>
+    <form onSubmit={onSubmitRHF(handleSubmitForm)} className="form-user-auth bg-black">
+      <h1 className='color-red mt-3'>Crear cuenta</h1>
       <div className="form-group">
         <Input
           name="username"
@@ -59,34 +58,44 @@ const RegisterPage = () => {
           error={errors.username}
           register={register}
           options={{
-            required: "El nombre es obligatorio",
+            required: 'El nombre es obligatorio',
             validate: validateName,
           }}
         />
         <Input
           name="email"
           type="email"
-          label="Eail"
+          label="Email"
           placeholder="Email"
           error={errors.email}
           register={register}
           options={{
-            required: "El mail es obligatorio",
+            required: 'El mail es obligatorio',
             validate: validateEmail,
           }}
         />
-        <Input
-          name="password"
-          type="password"
-          label="Contraseña"
-          placeholder="Contraseña"
-          error={errors.password}
-          register={register}
-          options={{
-            required: "La contraseña es obligatoria",
-            validate: validatePassword,
-          }}
-        />
+        <div className="password-container">
+          <OverlayTrigger
+            trigger="click"
+            placement="top"
+            overlay={passwordPopover}
+          >
+            <span className="d-inline-block">
+              <Input
+                name="password"
+                type="password"
+                label="Contraseña"
+                placeholder="Contraseña"
+                error={errors.password}
+                register={register}
+                options={{
+                  required: 'La contraseña es obligatoria',
+                  validate: validatePassword,
+                }}
+              />
+            </span>
+          </OverlayTrigger>
+        </div>
       </div>
       <button type="submit" className="btn btn-danger">
         Crear cuenta

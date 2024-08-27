@@ -4,22 +4,21 @@ import "./profile.css";
 
 const CardWelcome = ({ user }) => {
   return (
-    <div className="card my-4">
+    <div className="card my-4 custom-card">
       <div className="row">
-        <div className="col-12 col-md-3 content-img d-flex justify-content-center">
+        <div className="col-12 col-md-3 content-img">
           <img
             src={user.data.avatar}
             alt={user.data.username}
-            className="h-100 w-100 img-fluid object-fit-cover"
+            className="w-100 object-fit-cover p-1"
           />
         </div>
         <div className="col-12 col-md-9 d-flex flex-column align-items-center justify-content-center">
-  <h6 className="text-center fs-3">
-    ¡Bienvenido, {user.data.username}!
-  </h6>
-  <p className="text-center">¿Qué deseas realizar hoy?</p>
-</div>
-
+          <h6 className="text-center fs-3 mt-2 text-white">
+            ¡Bienvenido, {user.data.username}!
+          </h6>
+          <p className="text-center text-white">¿Qué deseas realizar hoy?</p>
+        </div>
       </div>
     </div>
   );
@@ -27,5 +26,4 @@ const CardWelcome = ({ user }) => {
 
 export default CardWelcome;
 
-CardWelcome.propTypes = {
-};
+CardWelcome.propTypes = {};

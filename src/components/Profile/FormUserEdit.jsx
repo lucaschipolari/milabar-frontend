@@ -6,7 +6,6 @@ import Swal from "sweetalert2";
 import { putUsersFn } from "../../api/usersApi";
 import { useUser } from "../../stores/useUser.js";
 import InputProducto from "../ui/InputProducto";
-import SelectProducto from "../ui/SelectProducto";
 
 const FormUserEdit = () => {
   const navigate = useNavigate();
