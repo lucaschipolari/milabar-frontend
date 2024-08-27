@@ -12,6 +12,7 @@ import ProductCard from "../CardProducto/ProductCard";
 import IsLoanding from "../../../Common/IsLoading/isLoading.jsx";
 
 const ListProduct = () => {
+  const {setProductoToEdit}=useProducto();
   const {
     data: productos,
     isLoading,

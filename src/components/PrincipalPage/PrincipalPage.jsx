@@ -36,6 +36,7 @@ const PrincipalPage = () => {
   if (isError) return <p>Error al cargar los datos del usuario.</p>;
   return (
     <>
+    
       <Header user={user} />
 
       <div className="mb-5">

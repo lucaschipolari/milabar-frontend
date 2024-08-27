@@ -62,6 +62,7 @@ export const getDetailUserFn = async (id) => {
 };
 
 export const postLoginFn = async (data) => {
+  console.log(data);
   const res = await fetch(`${BACKEND_URL}/users/login`, {
     method: "POST",
     headers: {
@@ -78,6 +79,7 @@ export const postLoginFn = async (data) => {
   const token = resData.data;
 
   if (!token) {
+    console.log("hola")
     throw new Error(resData.message || "Ocurrió un error");
   }
 
@@ -118,6 +120,7 @@ export const postRegisterFn = async (data) => {
 };
 
 export const getUserFn = async (userId) => {
+
   const token = sessionStorage.getItem("token");
   if (!token) {
     throw new Error("No se encontró el token");
@@ -134,7 +137,7 @@ export const getUserFn = async (userId) => {
     throw new Error("Ocurrió un error leyendo la entrada del usuario");
   }
 
-  return await res.json(); // Retorna directamente el JSON
+  return await res.json(); 
 };
 
 export const putUsersFn = async ({ userId, data }) => {
