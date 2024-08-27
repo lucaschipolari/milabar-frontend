@@ -7,6 +7,7 @@ import "../components/Admin/Users/styles/userCard.css";
 import { Link } from "react-router-dom";
 import { toast } from "sonner";
 import { getUsersFn } from "../api/usersApi"; // Asegúrate de importar la función correctamente
+import IsLoanding from "../components/Common/IsLoading/isLoading";
 
 const UserManagement = () => {
   const [searchTerm, setSearchTerm] = useState("");
@@ -38,11 +39,7 @@ const UserManagement = () => {
   });
 
   if (isLoading) {
-    return (
-      <div className="spinner-border text-primary" role="status">
-        <span className="visually-hidden">Loading...</span>
-      </div>
-    );
+    return <IsLoanding />;
   }
 
   if (isError) {
@@ -63,15 +60,17 @@ const UserManagement = () => {
 
   return (
     <>
-      <Link className="btn btn-secondary mb-3" to={-1}>
-        <FontAwesomeIcon icon={faArrowLeft} />
+      <Link to={-1}>
+        <button className="btn btn-danger m-3">
+          <i className="fas fa-arrow-left"></i> Regresar
+        </button>
       </Link>
       <div className="user-management">
         <header>
-          <h1>Alta y baja de usuarios</h1>
+          <h1 className="text-light">Alta y baja de usuarios</h1>
         </header>
 
-        <div className="search-bar">
+        <div className="search-bar text-center">
           <input
             type="text"
             placeholder="Buscar usuario..."
@@ -81,7 +80,7 @@ const UserManagement = () => {
           <button>
             <FontAwesomeIcon icon={faSearch} />
           </button>
-          <button onClick={handleSort}>
+          <button className="btn btn-danger mx-1" onClick={handleSort}>
             {isAscending ? "Ordenar Descendente" : "Ordenar Ascendente"}
           </button>
         </div>

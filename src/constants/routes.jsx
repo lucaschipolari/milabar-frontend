@@ -15,6 +15,7 @@ import ProfileView from "../views/ProfileView";
 import LoginRegisterView from "../views/LoginRegisterView";
 import AuthView from "../views/routing/AuthView";
 import ProductDetailView from "../views/ProductDetailView";
+import AdminOptions from "../views/AdminOptions";
 
 export const router = createBrowserRouter([
   {
@@ -23,57 +24,43 @@ export const router = createBrowserRouter([
     children: [
       // RUTAS PÚBLICAS
       {
-        path: "",
+        path: "/",
         element: <HomeView />,
       },
+
       {
-        path: "users/detail/:id",
-        element: <UserDetailView />,
-      },
-      {
-        path: "users",
-        element: <UserManagement />,
-      },
-      {
-        path: "/productos",
-        element: <PrincipalProductoView />,
-      },
-      {
-        path: "/menu",
+        path: "menu",
         element: <MenuView />,
       },
       {
-        path: "/profile",
+        path: "profile",
         element: <ProfileView />,
       },
       {
-        path: "/acerca-de-nosotros",
+        path: "acerca-de-nosotros",
         element: <AcercaDeNosotrosView />,
       },
       {
-        path: "/productos/:id",
+        path: "productos/:id",
         element: <PrincipalProductoView />,
       },
+
       {
-        path: "/detalle/:id",
+        path: "detalle/:id",
         element: <ProductDetailView />,
       },
+
       {
-        path: "/agregar-producto",
-        element: <DetalleProductoView />,
-      },
-      {
-        path: "/contact",
+        path: "contact",
         element: <ContactView />,
       },
-      // RUTAS DE AUTENTICACION
-      // no deberían poder accederse estando logueados
+
       {
-        path: "",
+        path: "/",
         element: <AuthView />,
         children: [
           {
-            path: "users",
+            path: "user",
             element: <LoginRegisterView />,
             children: [
               {
@@ -90,18 +77,34 @@ export const router = createBrowserRouter([
       },
       // RUTAS PRIVADAS
       {
-        path: "",
+        path: "/",
         element: <PrivateView />,
         children: [
           {
             path: "admin",
-            element: <div></div>,
+            element: <AdminOptions />,
+          },
+          {
+            path: "users",
+            element: <UserManagement />,
+          },
+          {
+            path: "agregar-producto",
+            element: <DetalleProductoView />,
+          },
+          {
+            path: "productos-admin",
+            element: <PrincipalProductoView />,
+          },
+          {
+            path: "users/detail/:id",
+            element: <UserDetailView />,
           },
         ],
       },
       {
         path: "*",
-        element: <div></div>,
+        element: <div>hola soy el error</div>,
       },
     ],
   },

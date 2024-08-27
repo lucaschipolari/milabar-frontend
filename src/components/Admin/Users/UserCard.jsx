@@ -1,7 +1,7 @@
 import PropTypes from "prop-types";
 
 import "./styles/userCard.css";
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { putUserFn } from "../../../api/usersApi";
 import { toast } from "sonner";
@@ -25,23 +25,33 @@ const UserCard = (props) => {
     putUser(!user.isEnabled);
   };
   return (
-    <div className="card mb-3 card-user">
-      <div className="d-flex">
-        <div className="col-md-4 col-4">
-          <img className="user-pic" src={user.avatar} alt={user.username} />
+    <div className="col-12 col-md-4 col-lg-3 my-2 card-user ">
+      <div className="card single__product my-4 h-100 d-flex flex-column justify-content-between">
+        <div className="product__img">
+          <img
+            src={user.avatar || "ruta/default-avatar.jpg"}
+            alt={user.username}
+            className="h-100 w-100 img-fluid object-fit-cover"
+          />
         </div>
-        <div className="col-md-8 col-8">
-          <div className="card-body">
-            <h5 className="card-title">{user.username}</h5>
-            <p className="card-text">Email: {user.email}</p>
-            <p className="card-text">Rol: {user.role}</p>
-            <p className="card-text">Nro de pedidos: {user.orderCount}</p>
-            <button className="btn btn-danger" onClick={handleToggleStatus}>
+        <h6 className="text-center fs-3 my-2">{user.username}</h6>
+        <p className="text-center m-0">Email: {user.email}</p>
+        <p className="text-center m-0">Rol: {user.role}</p>
+        <p className="text-center m-0">Nro de pedidos: {user.orderCount}</p>
+
+        <div className="product__content mt-auto">
+          <div className="d-flex flex-column gap-2 m-2">
+            <button
+              className={`btn ${
+                user.isEnabled ? "btn-danger" : "btn-success"
+              } w-100`}
+              onClick={handleToggleStatus}
+            >
               {user.isEnabled ? "Deshabilitar" : "Habilitar"}
             </button>
-            <NavLink className="badge bg-primary" to={`detail/${user.id}`}>
+            <Link className="btn btn-primary w-100" to={`detail/${user.id}`}>
               Más info
-            </NavLink>
+            </Link>
           </div>
         </div>
       </div>

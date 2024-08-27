@@ -1,5 +1,5 @@
 import { useForm } from "react-hook-form";
-import Input from "../ui/input/Input";
+// import Input from "../ui/input/Input";
 import { useState } from "react";
 import {
   sendEmailToClient,
@@ -7,6 +7,7 @@ import {
 } from "../../utilities/sendEmail";
 import Swal from "sweetalert2";
 import { sendContactData } from "../../api/contact";
+import Input from "../ui/input/InputReal";
 
 const ContactForm = () => {
   const {

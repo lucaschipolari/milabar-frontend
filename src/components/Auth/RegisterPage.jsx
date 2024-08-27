@@ -2,7 +2,7 @@ import { useForm } from "react-hook-form";
 import { useEffect } from "react";
 import { useMutation } from "@tanstack/react-query";
 import { toast } from "sonner";
-import {useSession}  from "../../stores/useSession";
+import { useSession } from "../../stores/useSession";
 import { useNavigate } from "react-router-dom";
 import SocialIcons from "./SocialIcons";
 import { validateName, validateEmail, validatePassword } from "./validators";

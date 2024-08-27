@@ -6,7 +6,8 @@ import { getProductosFn, deleteProductoFn } from "../../../../api/productos";
 import { useProducto } from "../../../../stores/useProducto.js";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 
-import ProductCard from "../CardProducto/ProductCard";
+import ProductCard from "../../../CardProduct/ProductCardFinal.jsx";
+import IsLoanding from "../../../Common/IsLoading/isLoading.jsx";
 
 const ContenedorProductCard = () => {
   const {
@@ -48,7 +49,7 @@ const ContenedorProductCard = () => {
     ) || [];
 
   if (isLoading) {
-    return <p className="mt-3 text-center">Cargando datos...</p>;
+    return <IsLoanding />;
   }
 
   if (isError) {

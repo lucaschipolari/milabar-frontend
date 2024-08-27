@@ -9,6 +9,7 @@ import { Carousel } from "primereact/carousel";
 
 import { getProductosFn, deleteProductoFn } from "../../../../api/productos";
 import ProductCard from "../CardProducto/ProductCard";
+import IsLoanding from "../../../Common/IsLoading/isLoading.jsx";
 
 const ListProduct = () => {
   const {
@@ -48,7 +49,7 @@ const ListProduct = () => {
     ) || [];
 
   if (isLoading) {
-    return <p className="mt-3 text-center">Cargando datos...</p>;
+    return <IsLoanding />;
   }
 
   if (isError) {
@@ -104,6 +105,7 @@ const ListProduct = () => {
           modalData={modalData}
           visible={visible}
           setVisible={setVisible}
+          isAdminPage={true}
         />
       </div>
     );
