@@ -12,7 +12,7 @@ const categorias = [
   { id: "HAMBURGUESA", title: "Hamburguesas" },
   { id: "PIZZA", title: "Pizzas" },
   { id: "PAPA", title: "Papas" },
-  { id: "BEBIDA", title: "Bebidas" },
+  { id: "GASEOSAS", title: "Gaseosas" },
 ];
 
 const ListProductClient = () => {
