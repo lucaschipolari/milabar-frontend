@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faSearch, faArrowLeft } from "@fortawesome/free-solid-svg-icons";
+import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import UserList from "../components/Admin/Users/UserList";
 import { useQuery } from "@tanstack/react-query";
 import "../components/Admin/Users/styles/userCard.css";

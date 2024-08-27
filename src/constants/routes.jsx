@@ -41,10 +41,11 @@ export const router = createBrowserRouter([
         path: "/acerca-de-nosotros",
         element: <AboutUsView />,
       },
-      {
-        path: "productos/:id",
-        element: <PrincipalProductoView />,
-      },
+
+      // {
+      //   path: "productos/:id",
+      //   element: <PrincipalProductoView />,
+      // },
 
       {
         path: "detalle/:id",
@@ -90,7 +91,7 @@ export const router = createBrowserRouter([
             element: <UserManagement />,
           },
           {
-            path: "agregar-producto",
+            path: "modificar-producto/:id",
             element: <DetalleProductoView />,
           },
           {

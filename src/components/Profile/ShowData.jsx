@@ -16,7 +16,7 @@ const UserCard = (props) => {
   return (
     <div className=" container p-2 custom-card-edit">
       {userToEdit ? (
-        <FormUserEdit /> 
+        <FormUserEdit />
       ) : (
         <>
           <div className="row">
@@ -36,9 +36,6 @@ const UserCard = (props) => {
               </p>
               <p className="text-start my-2">
                 <strong>Email:</strong> {user.data.email}
-              </p>
-              <p className="text-start my-2">
-                <strong>Rol:</strong> {user.data.role}
               </p>
             </div>
           </div>

@@ -3,7 +3,7 @@ import { Carousel } from "primereact/carousel";
 import "./style.css";
 import { getProductosFn } from "../../api/productos";
 import PropTypes from "prop-types";
-import ProductCard from "../CardProduct/ProductCardFinal";
+import ProductCardClient from "./CardProductClient";
 import IsLoading from "../Common/IsLoading/isLoading";
 
 const categorias = [
@@ -80,7 +80,9 @@ const ListProductClient = () => {
         // Solo renderizar el Carousel si hay productos filtrados
         return productosFiltrados.length > 0 ? (
           <div key={categoria.id} className="text-center mt-5">
-            <h2 id={categoria.id}>{categoria.title}</h2>
+            <h2 id={categoria.id} className="text-light">
+              {categoria.title}
+            </h2>
             <div className="col-12">
               <Carousel
                 value={productosFiltrados}
@@ -91,7 +93,7 @@ const ListProductClient = () => {
                 verticalViewPortHeight="auto"
                 itemTemplate={(producto) => (
                   <div className="col-12 p-3">
-                    <ProductCard producto={producto} key={producto.id} />
+                    <ProductCardClient producto={producto} key={producto.id} />
                   </div>
                 )}
                 responsiveOptions={responsiveOptions}

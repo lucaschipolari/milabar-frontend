@@ -6,7 +6,7 @@ import { getProductosFn, deleteProductoFn } from "../../../../api/productos";
 import { useProducto } from "../../../../stores/useProducto.js";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 
-import ProductCard from "../../../CardProduct/ProductCardFinal.jsx";
+import ProductCard from "../CardProducto/ProductCard.jsx";
 import IsLoanding from "../../../Common/IsLoading/isLoading.jsx";
 
 const ContenedorProductCard = () => {

@@ -48,7 +48,7 @@ const ProductCard = (props) => {
             </Button>
             <Link
               className="btn btn-warning col-auto"
-              to={`/detalle/${producto.id}`}
+              to={`/modificar-producto/${producto.id}`}
               onClick={handleEdit}
             >
               <FontAwesomeIcon icon={faPencil} />
@@ -96,4 +96,9 @@ ProductCard.propTypes = {
   handleMoreInfo: PropTypes.func,
   handleEdit: PropTypes.func,
   handleDelete: PropTypes.func,
+  handleLike: PropTypes.func,
+  handleAddCart: PropTypes.func,
+  modalData: PropTypes.object,
+  visible: PropTypes.bool,
+  setVisible: PropTypes.func,
 };

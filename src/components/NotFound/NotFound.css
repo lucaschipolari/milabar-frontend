@@ -1,6 +1,6 @@
 .link-container .volver-inicio {
-    background-color: #ff4757;
-    color: white;
+    background-color: #ff0015;
+    color: rgb(249, 249, 249);
     padding: 12px 24px;
     border: none;
     border-radius: 50px;
@@ -14,7 +14,7 @@
   }
   
   .link-container .volver-inicio:hover {
-    background-color: #ff6b6b;
+    background-color: #ffffff;
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
     transform: translateY(-3px);
   }
@@ -45,7 +45,7 @@
   
   /* Estilo de los títulos */
   .titulos {
-    color: #ff4757;
+    color: #ff0015;
     border-bottom: 2px solid #ff4757;
     transition: background-color 0.5s;
   }
@@ -63,7 +63,7 @@
     display: inline-block;
     line-height: 0.7;
     position: relative;
-    color: #ff6b6b; /* Rojo suave */
+    color: #ff0000; /* Rojo suave */
   }
   
   .error-container > span > span {
@@ -86,7 +86,7 @@
   .error-container > span:nth-of-type(3) {
     perspective: none;
     perspective-origin: 50% 50%;
-    color: #fbc531;
+    color: #ffffff;
   }
   
   .error-container > span:nth-of-type(3) > span {
@@ -154,11 +154,11 @@
   }
   
   .btn {
-    padding: 10px 20px;
+    /* padding: 10px 20px;
     text-transform: uppercase;
     font-size: 16px;
     letter-spacing: 1px;
-    cursor: pointer;
+    cursor: pointer; */
   }
   
   /* Ajustes responsivos para pantallas pequeñas */
