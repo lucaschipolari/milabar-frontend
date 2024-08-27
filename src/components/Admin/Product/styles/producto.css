@@ -1,7 +1,19 @@
+.form-size {
+  background-color: #000;
+  border: 2px solid red;  
+  border-radius: 8px;    
+  padding: 20px;         
+  color: black;    
+  width: 300px;   
+}
+.color-red{
+  color:red
 
-
-.form-size{
-  max-width: 500px;
+}
+.custom-select{
+  height: 60px;
+  font-size: 15px;
+  border-radius: 9px;
 }
 
 .row-height {

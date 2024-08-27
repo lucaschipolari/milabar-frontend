@@ -7,7 +7,7 @@ import PrincipalProductoView from "../views/PrincipalProductoView";
 import DetalleProductoView from "../views/DetalleProductoView";
 import ContactView from "../views/ContactView";
 import MenuView from "../views/MenuView";
-import AcercaDeNosotrosView from "../views/AcercaDeNosotrosView";
+import AboutUsView from "../views/AboutUsView";
 import LoginPage from "../components/Auth/LoginPage";
 import RegisterPage from "../components/Auth/RegisterPage";
 import PrivateView from "../views/routing/PrivateView";
@@ -16,6 +16,7 @@ import LoginRegisterView from "../views/LoginRegisterView";
 import AuthView from "../views/routing/AuthView";
 import ProductDetailView from "../views/ProductDetailView";
 import AdminOptions from "../views/AdminOptions";
+import NotFoundView from "../views/NotFoundView";
 
 export const router = createBrowserRouter([
   {
@@ -37,8 +38,8 @@ export const router = createBrowserRouter([
         element: <ProfileView />,
       },
       {
-        path: "acerca-de-nosotros",
-        element: <AcercaDeNosotrosView />,
+        path: "/acerca-de-nosotros",
+        element: <AboutUsView />,
       },
       {
         path: "productos/:id",
@@ -68,7 +69,7 @@ export const router = createBrowserRouter([
                 element: <LoginPage />,
               },
               {
-                path: "register",
+                path: "login",
                 element: <RegisterPage />,
               },
             ],
@@ -104,7 +105,7 @@ export const router = createBrowserRouter([
       },
       {
         path: "*",
-        element: <div>hola soy el error</div>,
+        element: <NotFoundView />,
       },
     ],
   },

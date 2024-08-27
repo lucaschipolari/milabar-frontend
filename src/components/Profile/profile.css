@@ -1,8 +1,57 @@
-.content-img { 
-    max-height: 240px;
-    width: auto;
+.custom-card{
+    background-color: red !important;
 }
 
+.custom-button{
+    min-height: 70px;
+    border: 2px solid red;
+    box-shadow: 0 4px 8px rgba(255, 0, 0, 0.6);
+}
+
+.custom-button-show-data{
+    background-color: black;
+    color:red;
+}
+.custom-button-show-data:hover{
+    background-color: red;
+    color:black;
+    box-shadow: none;
+    transition: all 0.2s ease-in-out;
+}
+.custom-button-logout{
+    background-color: red;
+    color:black;
+    box-shadow: 0 4px 8px rgba(255, 0, 0, 0.6);
+}
+.custom-button-logout:hover{
+    background-color: black;
+    color:red;
+    box-shadow: none;
+    transition: all 0.2s ease-in-out;
+}
+.custom-card-edit{
+    background-color: black;
+    color:red;
+    border: 2px solid red;
+}
+.content-img {
+    max-height: 240px;
+    width: 100%;
+    overflow: hidden; 
+  }
+  .btn-color-red{
+    color: white !important;
+    background-color: red !important;
+  }
+  
+  .btn-color-red:hover{
+    color: white !important;
+    background-color: rgb(157, 2, 2) !important;
+    transition: background-color 0.5s ease;
+  }
+  .color-red{
+    color:red;
+  }
 .content-img-data{
     max-height: 200px;
     overflow: hidden;
@@ -13,7 +62,6 @@
     background-color: rgba(255, 255, 255, 0.8); /* Fondo blanco con opacidad */
     padding: 20px;
     backdrop-filter: blur(10px); /* Efecto de desenfoque */
-    -webkit-backdrop-filter: blur(10px); /* Prefijo para compatibilidad con Safari */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra sutil */
     color: #333; /* Color del texto */
   }

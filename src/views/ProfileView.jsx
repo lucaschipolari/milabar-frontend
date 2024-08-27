@@ -7,6 +7,7 @@ import { decodeJWT } from "../utilities/decodeJWT";
 import { useSession } from "../stores/useSession.js";
 import NavigationProfile from "../components/Profile/NavigationProfile";
 import IsLoanding from "../components/Common/IsLoading/isLoading.jsx";
+import "../components/Profile/profile.css";
 
 const ProfileView = () => {
   const { isLoggedIn } = useSession();
@@ -30,13 +31,14 @@ const ProfileView = () => {
 
   if (!isLoggedIn)
     return (
-      <div className="container mb-5 pb-5">
+      <div className="container d-flex flex-column mt-5 justify-content-center align-items-center">
+        <h1 className="color-red text-center">¡Oh no!</h1>
+        <h5 className="color-red text-center">
+          Parece que aún no has iniciado sesión
+        </h5>
         <NavigationProfile />
       </div>
     );
-  if (userData) {
-    console.log(userData);
-  }
   return (
     <div className="container mb-5 pb-5">
       {userData ? (

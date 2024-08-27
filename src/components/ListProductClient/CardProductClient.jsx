@@ -13,6 +13,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import "../../components/Admin/Product/styles/producto.css";
 import { useCartStore } from "../../stores/useCartStore";
+import { toast } from "sonner";
 
 const ProductCardClient = (props) => {
   const { producto, esAdmin = false, handleLike, handleAddCart } = props;
@@ -25,7 +26,7 @@ const ProductCardClient = (props) => {
       image: producto.imagen,
       price: producto.preciounitario,
     });
-    console.log("Producto añadido al carrito:", producto);
+    toast.success(`${producto.nombre} añadido al carrito.`)
   };
 
   return (
