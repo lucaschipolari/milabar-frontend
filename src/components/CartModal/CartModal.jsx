@@ -94,7 +94,7 @@ const CartModal = ({ visible, onHide }) => {
 
   const isOrderButtonDisabled =
     !tableNumber ||
-    parseInt(tableNumber) === 0 ||
+    parseInt(tableNumber) <= 0 ||
     parseInt(tableNumber) > 20 ||
     !!errors.tableNumber;
 
@@ -121,7 +121,7 @@ const CartModal = ({ visible, onHide }) => {
                 className="cart-product d-flex align-item-center m-3"
               >
                 <img
-                  src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ6_VVHpq1t0kCF1wc6SreFBvWGKEYXAayevA&s"
+                  src={product.image}
                   alt={product.name}
                   className="product-image"
                 />
