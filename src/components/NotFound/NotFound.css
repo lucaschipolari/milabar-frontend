@@ -1,0 +1,176 @@
+.link-container .volver-inicio {
+    background-color: #ff0015;
+    color: rgb(249, 249, 249);
+    padding: 12px 24px;
+    border: none;
+    border-radius: 50px;
+    font-size: 18px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+  }
+  
+  .link-container .volver-inicio:hover {
+    background-color: #ffffff;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+    transform: translateY(-3px);
+  }
+  
+  .link-container .volver-inicio:active {
+    transform: translateY(0);
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
+  }
+  
+  
+  /* Contenedor que ocupa toda la pantalla y evita el scroll vertical */
+  .fullScreenContainer {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden; /* Evita cualquier desbordamiento */
+  }
+  
+  
+  .body-error {
+    background-image: url("../Images/fondo.jpg"); /* Cambia por tu imagen de fondo */
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    height: 100%; /* Asegura que cubra toda la pantalla */
+  }
+  
+  /* Estilo de los títulos */
+  .titulos {
+    color: #ff0015;
+    border-bottom: 2px solid #ff4757;
+    transition: background-color 0.5s;
+  }
+  
+  /* Estilo de los números grandes del error */
+  .error-container {
+    text-align: center;
+    font-size: 200px;
+    font-family: 'Catamaran', sans-serif;
+    font-weight: 900;
+    margin: 0; /* Elimina los márgenes */
+  }
+  
+  .error-container > span {
+    display: inline-block;
+    line-height: 0.7;
+    position: relative;
+    color: #ff0000; /* Rojo suave */
+  }
+  
+  .error-container > span > span {
+    display: inline-block;
+    position: relative;
+  }
+  
+  /* Animaciones restauradas */
+  .error-container > span:nth-of-type(1) {
+    perspective: 1000px;
+    perspective-origin: 500% 50%;
+  }
+  
+  .error-container > span:nth-of-type(1) > span {
+    transform-origin: 50% 100% 0px;
+    transform: rotateX(0);
+    animation: easyoutelastic 8s infinite;
+  }
+  
+  .error-container > span:nth-of-type(3) {
+    perspective: none;
+    perspective-origin: 50% 50%;
+    color: #ffffff;
+  }
+  
+  .error-container > span:nth-of-type(3) > span {
+    transform-origin: 100% 100% 0px;
+    transform: rotate(0deg);
+    animation: rotatedrop 8s infinite;
+  }
+  
+  @keyframes easyoutelastic {
+    0% {
+      transform: rotateX(0);
+    }
+    9% {
+      transform: rotateX(210deg);
+    }
+    13% {
+      transform: rotateX(150deg);
+    }
+    16% {
+      transform: rotateX(200deg);
+    }
+    18% {
+      transform: rotateX(170deg);
+    }
+    20% {
+      transform: rotateX(180deg);
+    }
+    60% {
+      transform: rotateX(180deg);
+    }
+    80% {
+      transform: rotateX(0);
+    }
+    100% {
+      transform: rotateX(0);
+    }
+  }
+  
+  @keyframes rotatedrop {
+    0% {
+      transform: rotate(0);
+    }
+    10% {
+      transform: rotate(30deg);
+    }
+    15% {
+      transform: rotate(90deg);
+    }
+    70% {
+      transform: rotate(90deg);
+    }
+    80% {
+      transform: rotate(0);
+    }
+    100% {
+      transform: rotateX(0);
+    }
+  }
+  
+  /* Contenedor de los enlaces */
+  .link-container {
+    text-align: center;
+    margin-top: 20px; /* Ajuste de espacio entre el enlace y el error */
+    ;
+  }
+  
+  .btn {
+    /* padding: 10px 20px;
+    text-transform: uppercase;
+    font-size: 16px;
+    letter-spacing: 1px;
+    cursor: pointer; */
+  }
+  
+  /* Ajustes responsivos para pantallas pequeñas */
+  @media (max-width: 768px) {
+    .error-container {
+      font-size: 125px; /* Tamaño de los números más pequeño en pantallas móviles */
+      margin-top: 50px; 
+  
+    }
+  
+    .volver-inicio {
+      font-size: 16px;
+      margin-top: 120px;
+    }
+  }
