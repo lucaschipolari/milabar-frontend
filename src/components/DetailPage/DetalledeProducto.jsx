@@ -1,10 +1,10 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { getProductoFn } from "../../api/productos";
 import ProductImage from "./ProductImage";
 import ProductDescription from "./ProductDescription";
 import AddToCartButton from "./AddToCartButton";
-import './styles/styles.css';
+import "./styles/styles.css";
 
 const DetalledeProducto = () => {
   const { id } = useParams();

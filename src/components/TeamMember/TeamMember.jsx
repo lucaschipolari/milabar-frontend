@@ -1,6 +1,5 @@
-import React from "react";
 import TeamMemberSocialIcons from "./TeamMemberSocialIcons";
-
+import PropTypes from "prop-types";
 const TeamMember = ({ member }) => {
   return (
     <div className="team-member">
@@ -22,3 +21,17 @@ const TeamMember = ({ member }) => {
 };
 
 export default TeamMember;
+
+TeamMember.propTypes = {
+  member: PropTypes.shape({
+    name: PropTypes.string.isRequired,
+    position: PropTypes.string.isRequired,
+    imageUrl: PropTypes.string.isRequired,
+    socialLinks: PropTypes.shape({
+      github: PropTypes.string,
+      instagram: PropTypes.string,
+      facebook: PropTypes.string,
+      google: PropTypes.string,
+    }),
+  }).isRequired,
+};

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import CardWelcome from "../components/Profile/CardWelcome";
 import Menu from "../components/Profile/Menu";

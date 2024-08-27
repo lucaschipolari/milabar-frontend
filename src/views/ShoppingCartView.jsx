@@ -1,6 +1,5 @@
 import CartActions from "../components/ShoppingCartView/CartActions";
 import ProductList from "../components/ShoppingCartView/ProductList";
-// import UserInfo from "../components/ShoppingCartView/UserInfo";
 
 import "../styles/shoppingCartView.css";
 

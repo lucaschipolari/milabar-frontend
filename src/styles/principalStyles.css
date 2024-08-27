@@ -2,7 +2,7 @@
 html, body {
     height: 100%;
     margin: 0;
-    padding-bottom: 120px; /* Ajusta este valor según la altura de tu navbar */
+    padding-bottom: 120px; 
 }
 #root {
     background: #1b1b1b;
@@ -15,7 +15,7 @@ html, body {
   flex-direction: column;
   height: 100%;
   padding-bottom: 120px;
-    /* margin-bottom: 60px; Asegura que el contenido principal no quede cubierto */
+   
 }
 .bg-contacto {
   overflow: hidden;

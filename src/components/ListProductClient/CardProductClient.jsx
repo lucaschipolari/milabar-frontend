@@ -5,9 +5,6 @@ import { Button } from "primereact/button";
 import {
   faCartShopping,
   faHeart,
-  faPencil,
-  faTrash,
-  faPlus,
   faInfo,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";

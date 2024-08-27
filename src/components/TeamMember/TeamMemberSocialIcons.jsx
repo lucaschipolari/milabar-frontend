@@ -5,9 +5,12 @@ import {
   faInstagram,
   faGoogle,
 } from "@fortawesome/free-brands-svg-icons";
-import "../Auth/auth.css"; // Reutiliza el CSS existente
+import "../Auth/auth.css";
 
-const TeamMemberSocialIcons = ({ github, instagram, facebook, google }) => {
+import PropTypes from "prop-types";
+
+const TeamMemberSocialIcons = (props) => {
+  const { facebook, google, github, instagram } = props;
   return (
     <div className="social-icons">
       <a
@@ -51,3 +54,10 @@ const TeamMemberSocialIcons = ({ github, instagram, facebook, google }) => {
 };
 
 export default TeamMemberSocialIcons;
+
+TeamMemberSocialIcons.propTypes = {
+  facebook: PropTypes.string.isRequired,
+  google: PropTypes.string.isRequired,
+  github: PropTypes.string.isRequired,
+  instagram: PropTypes.string.isRequired,
+};

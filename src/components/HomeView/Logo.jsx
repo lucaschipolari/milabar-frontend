@@ -1,4 +1,3 @@
-import logo from "../../assets/logo1.png";
 import "./styles/logo.css";
 import logoMilabar from "../../assets/logofinal.mp4";
 

@@ -41,7 +41,6 @@ const UserDetailView = () => {
                 src={user.data.avatar}
                 alt={user.data.username}
                 className="user-pic rounded-circle img-fluid"
-                style={{ width: "150px", height: "150px", objectFit: "cover" }}
               />
             </div>
             <h5 className="card-title mb-1">{user.data.username}</h5>
@@ -60,7 +59,9 @@ const UserDetailView = () => {
                 <div className="col-6">
                   <div className="p-3 border rounded bg-light h-100">
                     <p className="mb-1 fw-bold">Rol:</p>
-                    <p className="display-6">{user.data.isAdmin}</p>
+                    <p className="display-6">
+                      {user.data.isAdmin ? "Admin" : "User"}
+                    </p>
                   </div>
                 </div>
               </div>

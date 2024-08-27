@@ -1,4 +1,3 @@
-import React from 'react';
 import TeamMember from '../components/TeamMember/TeamMember';
 import '../components/TeamMember/styles/TeamMember.css';
 import hernan from '../assets/hernan.jpg';

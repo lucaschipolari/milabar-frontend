@@ -1,9 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
-import React from "react";
 import { useSession } from "../stores/useSession";
 import { getUserFn } from "../api/usersApi";
 import { Link } from "react-router-dom";
-import PrincipalProductoView from "./PrincipalProductoView";
 import IsLoanding from "../components/Common/IsLoading/isLoading";
 
 const AdminOptions = () => {

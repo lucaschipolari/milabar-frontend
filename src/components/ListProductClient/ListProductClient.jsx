@@ -2,7 +2,6 @@ import { useQuery } from "@tanstack/react-query";
 import { Carousel } from "primereact/carousel";
 import "./style.css";
 import { getProductosFn } from "../../api/productos";
-import PropTypes from "prop-types";
 import ProductCardClient from "./CardProductClient";
 import IsLoading from "../Common/IsLoading/isLoading";
 
@@ -68,7 +67,6 @@ const ListProductClient = () => {
     );
   }
 
-  // Filtrar y renderizar productos según categoría
   return (
     <div className="mt-5">
       {categorias.map((categoria) => {
