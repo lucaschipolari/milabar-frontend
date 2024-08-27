@@ -34,7 +34,10 @@ const ModalProductos = ({ values, visible, onHide }) => {
               {values.unidadmedida}
             </li>
             <li className="mb-0">
-              <strong>Habilitado: </strong> {values.habilitado ? "Sí" : "No"}
+              <strong>Habilitado: </strong>  {values.habilitado=== "true" ? "Sí" : "No"}
+            </li>
+            <li className="mb-0">
+              <strong>Agregado: </strong> {values.agregado=== "true" ? "Sí" : "No"}
             </li>
           </ul>
         </div>
