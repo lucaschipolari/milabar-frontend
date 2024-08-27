@@ -1,5 +1,5 @@
 import { Outlet, useLocation } from "react-router-dom";
-import Navbar from "../../components/Common/NavBar/Navbar";
+import NavBar from "../../components/Common/NavBar/Navbar";
 import "../../components/Admin/Product/styles/producto.css";
 import "../../styles/principalStyles.css";
 
@@ -20,7 +20,7 @@ const RootView = () => {
           <Outlet />
         </main>
       )}{" "}
-      {showHeader && <Navbar />}
+      {showHeader && <NavBar />}
     </div>
   );
 };
