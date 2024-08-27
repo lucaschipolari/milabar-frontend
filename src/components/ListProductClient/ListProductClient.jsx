@@ -12,7 +12,7 @@ const categorias = [
   { id: "HAMBURGUESA", title: "Hamburguesas" },
   { id: "PIZZA", title: "Pizzas" },
   { id: "PAPA", title: "Papas" },
-  { id: "BEBIDA", title: "Bebidas" },
+  { id: "GASEOSAS", title: "Gaseosas" },
 ];
 
 const ListProductClient = () => {
@@ -74,7 +74,7 @@ const ListProductClient = () => {
       {categorias.map((categoria) => {
         const productosFiltrados = productos.data.filter(
           (producto) =>
-            producto.categoria === categoria.id && producto.agregado === false
+            producto.categoria === categoria.id && producto.agregado === "false"
         );
 
         // Solo renderizar el Carousel si hay productos filtrados
