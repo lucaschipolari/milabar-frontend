@@ -36,9 +36,7 @@ const FormUserEdit = () => {
         timerProgressBar: true,
         showConfirmButton: false,
       });
-
-      // Navega a otra página si es necesario
-      navigate("/profile"); // Ajusta el path según tu necesidad
+      navigate("/profile"); 
     },
     onError: (e) => {
       toast.dismiss();
@@ -46,7 +44,6 @@ const FormUserEdit = () => {
     },
   });
 
-  // Prellenar los valores del formulario si hay un usuario para editar
   if (userToEdit) {
     setValue("username", userToEdit.data.username);
     setValue("email", userToEdit.data.email);
@@ -101,8 +98,8 @@ const FormUserEdit = () => {
         options={{
           required: "Este campo es requerido",
           minLength: {
-            value: 5,
-            message: "El username debe tener al menos 5 caracteres",
+            value: 3,
+            message: "El username debe tener al menos 3 caracteres",
           },
           maxLength: {
             value: 100,

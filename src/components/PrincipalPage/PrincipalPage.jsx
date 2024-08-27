@@ -37,7 +37,6 @@ const PrincipalPage = () => {
   return (
     <>
       <Header user={user} />
-
       <div className="mb-5">
         <div className="container-options">
           <div className="container-input-search mt-2">

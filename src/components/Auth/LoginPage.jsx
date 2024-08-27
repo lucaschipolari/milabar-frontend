@@ -10,7 +10,7 @@ import Swal from "sweetalert2";
 import "./auth.css";
 
 const LoginPage = () => {
-  const { login } = useSession();
+  const { login, isLoggedIn } = useSession();
   const navigate = useNavigate();
 
   const {
@@ -25,7 +25,7 @@ const LoginPage = () => {
     onSuccess: (userData) => {
       toast.dismiss(); 
       toast.success(`¡Bienvenido, ${userData.username}!`);
-      login(userData);
+      login(userData, userData.token);
       reset(); 
       setTimeout(() => navigate("/menu"), 0);
     },

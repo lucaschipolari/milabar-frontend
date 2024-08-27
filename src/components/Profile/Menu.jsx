@@ -48,21 +48,6 @@ const Menu = ({ user, onSelectSection }) => {
             </div>
           )}
         </div>
-
-        <div className="col-12">
-          <button
-            className="rounded-2 custom-button custom-button-show-data w-100"
-            onClick={() => handleSelectSection("pedidos")}
-          >
-            Ver mis pedidos
-          </button>
-          {activeSection === "pedidos" && (
-            <div className="mt-3 p-4">
-              {/* Aquí va el contenido de "pedidos" si lo tienes */}
-            </div>
-          )}
-        </div>
-
         <div className="col-12">
           <button
             className="rounded-2 py-3 custom-button custom-button-logout w-100"

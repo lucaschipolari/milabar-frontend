@@ -73,6 +73,6 @@ ProductCardClient.propTypes = {
     preciounitario: PropTypes.number.isRequired,
   }).isRequired,
   esAdmin: PropTypes.bool,
-  handleLike: PropTypes.func.isRequired,
+  handleLike: PropTypes.func,
   handleAddCart: PropTypes.func,
 };
