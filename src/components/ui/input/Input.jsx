@@ -100,7 +100,7 @@ export default Input;
 Input.propTypes = {
   name: PropTypes.string.isRequired,
   type: PropTypes.string,
-  label: PropTypes.string.isRequired,
+  label: PropTypes.string,
   error: PropTypes.shape({
     message: PropTypes.string,
   }),

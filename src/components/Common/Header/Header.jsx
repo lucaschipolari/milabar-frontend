@@ -11,8 +11,7 @@ import { Link } from "react-router-dom";
 
 const Header = (props) => {
   const { logout, isLoggedIn } = useSession();
-  const { user } = props; // Obtén el usuario desde los props
-  // const [cartCount, setCartCount] = useState(0);
+  const { user } = props; 
   const [isCartModalVisible, setCartModalVisible] = useState(false);
 
   const cartCount = useCartStore((state) =>
@@ -118,7 +117,7 @@ export default Header;
 
 Header.propTypes = {
   user: PropTypes.shape({
-    avatar: PropTypes.string.isRequired,
-    nombre: PropTypes.string.isRequired,
+    avatar: PropTypes.string,
+    nombre: PropTypes.string,
   }),
 };

@@ -62,7 +62,6 @@ export const getDetailUserFn = async (id) => {
 };
 
 export const postLoginFn = async (data) => {
-  console.log(data);
   const res = await fetch(`${BACKEND_URL}/users/login`, {
     method: "POST",
     headers: {
