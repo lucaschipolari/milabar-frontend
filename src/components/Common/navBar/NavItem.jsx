@@ -47,7 +47,6 @@ NavItem.propTypes = {
   setActiveIndex: PropTypes.func.isRequired,
   cartCount: PropTypes.number.isRequired,
   incrementCartCount: PropTypes.func.isRequired,
-  handleNavItemClick: PropTypes.func.isRequired,
 };
 
 export default NavItem;

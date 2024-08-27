@@ -1,5 +1,5 @@
 import { useForm } from "react-hook-form";
-import Input from "../ui/input/Input";
+// import Input from "../ui/input/Input";
 import { useState } from "react";
 import {
   sendEmailToClient,
@@ -7,6 +7,8 @@ import {
 } from "../../utilities/sendEmail";
 import Swal from "sweetalert2";
 import { sendContactData } from "../../api/contact";
+import Input from "../ui/input/InputReal";
+import "./map.css";
 
 const ContactForm = () => {
   const {
@@ -64,9 +66,9 @@ const ContactForm = () => {
   return (
     <form
       onSubmit={onSubmitRHF(handleSumbit)}
-      className="bg-body-tertiary rounded shadow m-5 text-center"
+      className="bg-contacto shadow m-5 text-center"
     >
-      <h1 className="my-2">Contactanos!</h1>
+      <h1 className="my-2 text-light">Contactanos!</h1>
       <Input
         className="m-3"
         error={errors.issue}
@@ -228,7 +230,7 @@ const ContactForm = () => {
         resetCount={resetCount}
       />
       <div className="text-center mt-3">
-        <button className="btn btn-primary mb-3" type="submit">
+        <button className="btn btn-red mb-3" type="submit">
           Enviar
         </button>
       </div>

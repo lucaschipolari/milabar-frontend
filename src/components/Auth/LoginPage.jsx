@@ -25,9 +25,9 @@ const LoginPage = () => {
     onSuccess: (userData) => {
       toast.dismiss(); 
       toast.success(`¡Bienvenido, ${userData.username}!`);
-      reset(); 
       login(userData);
-      setTimeout(() => navigate("/menu"), 1000);
+      reset(); 
+      setTimeout(() => navigate("/menu"), 0);
     },
     onError: (e) => {
       toast.dismiss(); // Cerramos el toast de carga

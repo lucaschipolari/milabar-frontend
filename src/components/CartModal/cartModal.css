@@ -13,6 +13,13 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  background-color: #2b2b2b;
+  color: #ced4da;
+}
+
+.cart-dialog .p-dialog-content {
+  background-color: #2b2b2b;
+  padding: 0;
 }
 
 .cart-dialog .p-dialog-header .p-dialog-title {
@@ -21,7 +28,7 @@
 }
 
 .cart-product {
-  border-bottom: 1px solid #f09c91;
+  border-bottom: 1px solid #ced4da;
   padding-bottom: 10px;
   display: flex;
   align-items: center;
@@ -42,13 +49,13 @@
 .product-info h5 {
   margin: 0;
   font-size: 1rem;
-  color: #050505;
+  color: #ced4da;
 }
 
 .product-info p {
   margin: 0;
   font-size: 0.9rem;
-  color: #050505;
+  color: #ced4da;
 }
 
 .product-quantity {
@@ -100,40 +107,36 @@
 .button-input-minus {
   border-radius: 50px;
   border: 1px;
-  width: 40px;
-  height: 40px;
-  background-color: #f09c91;
+  width: 30px;
+  height: 30px;
+  background-color: #f84f4f;
 
   transition: background-color 0.25s ease-in-out, transform 0.1s ease-in-out;
 
   &:hover {
-    background-color: #ec7c6d;
+    background-color: #fa3d3d;
   }
   &:active {
-    transform: scale(
-      0.95
-    ); /* Reduce el tamaño del botón para simular un hundimiento */
-    background-color: #e95c4a; /* Asegúrate de que el color se mantenga al hacer clic */
+    transform: scale(0.95);
+    background-color: #fc2c11;
   }
 }
 
 .button-input-plus {
   border-radius: 50px;
   border: 1px;
-  width: 40px;
-  height: 40px;
-  background-color: #f09c91;
+  width: 30px;
+  height: 30px;
+  background-color: #f84f4f;
 
   transition: background-color 0.25s ease-in-out, transform 0.1s ease-in-out;
 
   &:hover {
-    background-color: #ec7c6d;
+    background-color: #fa3d3d;
   }
   &:active {
-    transform: scale(
-      0.95
-    ); /* Reduce el tamaño del botón para simular un hundimiento */
-    background-color: #e95c4a; /* Asegúrate de que el color se mantenga al hacer clic */
+    transform: scale(0.95);
+    background-color: #fc2c11;
   }
 }
 
@@ -186,32 +189,32 @@
 .cart-dialog-header {
   display: flex;
   align-items: center;
-  justify-content: center; /* Centra el contenido si es necesario */
+  justify-content: center;
+  color: #f84f4f;
 }
 
 .cart-dialog-header .header-text {
-  margin-left: 10px; /* Espacio entre el ícono y el texto */
-  font-size: 1rem; /* Tamaño de la fuente del texto */
-  color: #000000; /* Color del texto, ajusta según tu diseño */
+  margin-left: 10px;
+  font-size: 1rem;
+  color: #f84f4f;
 }
 
 .input-table-number {
-  width: 100%; /* Ocupa el ancho completo del contenedor */
-  max-width: 150px; /* Ancho máximo para pantallas grandes */
-  font-size: 14px; /* Ajusta el tamaño del texto según sea necesario */
+  width: 100%;
+  max-width: 150px;
+  font-size: 14px;
   padding: 0.5rem;
 }
 
 @media (max-width: 600px) {
   .small-input {
-    max-width: 120px; /* Ajusta el ancho máximo para pantallas pequeñas */
+    max-width: 120px;
   }
 }
 
 #tableNumber-input {
   padding-top: 0;
   padding-bottom: 0;
-  
 }
 
 .swal2-container {
@@ -221,5 +224,8 @@
 .detail-input {
   border: 1px solid black;
   border-radius: 7px;
-  
+}
+
+.table-number-container {
+  color: #ced4da;
 }

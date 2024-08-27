@@ -2,11 +2,11 @@ import { Navigate, Outlet } from "react-router-dom";
 import { useSession } from "../../stores/useSession.js";
 
 const PrivateView = () => {
-  const { isLoggedIn } = useSession();
+  const { isLoggedIn, user } = useSession();
 
-  if (isLoggedIn) return <Outlet />;
+  if (isLoggedIn && user.isAdmin) return <Outlet />;
 
-  return <Navigate to="/login" />;
+  return <Navigate to="/" />;
 };
 
 export default PrivateView;

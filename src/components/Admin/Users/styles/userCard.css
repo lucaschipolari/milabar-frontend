@@ -1,7 +1,16 @@
 .card-user{
-
-    max-width: 300px;
-
+    background-color: white;
+    padding: 5px;
+    border: 6px solid black;
+    height: 100%;
+    min-height: 300px;
+}
+.pepito{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-grow: 1;
+    flex-direction: column;
 }
 .user-pic{
     width: 100%;

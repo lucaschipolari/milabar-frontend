@@ -1,7 +1,16 @@
+.bg-contacto{
+  background-color: black !important;;
+ 
+}
+
 .map-container {
     width: 100%;
     max-width: 600px;
     margin: 0 auto;
+
+    & h1 {
+      color: rgb(235, 69, 69);
+    }
   }
   
   .map-iframe {
@@ -11,8 +20,8 @@
   
   .contact-info {
     font-size: 1rem;
-    color: #333;
-  }
+    color:  #ced4da;
+    }
   
   @media (min-width: 768px) {
     .map-iframe {

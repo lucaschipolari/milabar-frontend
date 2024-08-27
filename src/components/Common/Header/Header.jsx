@@ -49,10 +49,10 @@ const Header = (props) => {
           <div className="">
             {!isLoggedIn && (
               <div>
-                <Link to="users/login" className="btn btn-red mx-1">
+                <Link to="/user/login" className="btn btn-red mx-1">
                   Iniciar Sesion
                 </Link>
-                <Link to="users/register" className="btn btn-gray">
+                <Link to="/user/register" className="btn btn-gray">
                   Registrarse
                 </Link>
               </div>
@@ -74,6 +74,11 @@ const Header = (props) => {
                   <FontAwesomeIcon icon={faSignOut} />
                 </button>
               </div>
+            )}
+            {user && user.data.isAdmin && (
+              <Link to="/admin" className="btn btn-secondary">
+                Administración
+              </Link>
             )}
           </div>
           <div className="basket-icon">

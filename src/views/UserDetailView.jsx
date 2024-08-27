@@ -2,6 +2,7 @@ import { Link, useParams } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 import { getDetailUserFn } from "../api/usersApi";
 import "../components/Admin/Users/styles/userDetail.css";
+import IsLoanding from "../components/Common/IsLoading/isLoading";
 
 const UserDetailView = () => {
   const { id } = useParams();
@@ -16,7 +17,7 @@ const UserDetailView = () => {
   });
 
   if (isLoading) {
-    return <p className="mt-3 text-center">Cargando datos del usuario...</p>;
+    return <IsLoanding />;
   }
 
   if (isError || !user) {
@@ -59,7 +60,7 @@ const UserDetailView = () => {
                 <div className="col-6">
                   <div className="p-3 border rounded bg-light h-100">
                     <p className="mb-1 fw-bold">Rol:</p>
-                    <p className="display-6">{user.data.role}</p>
+                    <p className="display-6">{user.data.isAdmin}</p>
                   </div>
                 </div>
               </div>

@@ -299,7 +299,11 @@ const FormularioProductos = () => {
       <hr />
       <div className="text-end">
         {productoToEdit && (
-          <button className="btn" type="button" onClick={handleCancelEdit}>
+          <button
+            className="btn btn-secondary mx-1"
+            type="button"
+            onClick={handleCancelEdit}
+          >
             Cancelar edición
           </button>
         )}

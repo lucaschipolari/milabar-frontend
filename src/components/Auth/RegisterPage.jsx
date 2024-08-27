@@ -1,11 +1,11 @@
-import React from 'react';
-import { useForm } from 'react-hook-form';
-import { toast } from 'sonner';
-import { OverlayTrigger, Popover } from 'react-bootstrap';
-import { useNavigate } from 'react-router-dom';
-import Input from '../ui/input/Input'; // Asegúrate de que la ruta sea correcta
-import SocialIcons from './SocialIcons';
-import { validateName, validateEmail, validatePassword } from './validators';
+import React from "react";
+import { useForm } from "react-hook-form";
+import { toast } from "sonner";
+import { OverlayTrigger, Popover } from "react-bootstrap";
+import { useNavigate } from "react-router-dom";
+import Input from "../ui/input/Input"; // Asegúrate de que la ruta sea correcta
+import SocialIcons from "./SocialIcons";
+import { validateName, validateEmail, validatePassword } from "./validators";
 
 const RegisterPage = () => {
   const {
@@ -13,20 +13,20 @@ const RegisterPage = () => {
     handleSubmit: onSubmitRHF,
     formState: { errors },
   } = useForm({
-    mode: 'onBlur',
-    reValidateMode: 'onSubmit',
-    criteriaMode: 'all',
+    mode: "onBlur",
+    reValidateMode: "onSubmit",
+    criteriaMode: "all",
     defaultValues: {
-      username: '',
-      email: '',
-      password: '',
+      username: "",
+      email: "",
+      password: "",
     },
   });
 
   const navigate = useNavigate();
 
   const handleSubmitForm = (data) => {
-    toast.loading('Cargando...');
+    toast.loading("Cargando...");
     // Lógica para enviar el formulario
   };
 
@@ -47,8 +47,11 @@ const RegisterPage = () => {
   );
 
   return (
-    <form onSubmit={onSubmitRHF(handleSubmitForm)} className="form-user-auth bg-black">
-      <h1 className='color-red mt-3'>Crear cuenta</h1>
+    <form
+      onSubmit={onSubmitRHF(handleSubmitForm)}
+      className="form-user-auth bg-black"
+    >
+      <h1 className="color-red mt-3">Crear cuenta</h1>
       <div className="form-group">
         <Input
           name="username"
@@ -58,7 +61,7 @@ const RegisterPage = () => {
           error={errors.username}
           register={register}
           options={{
-            required: 'El nombre es obligatorio',
+            required: "El nombre es obligatorio",
             validate: validateName,
           }}
         />
@@ -70,7 +73,7 @@ const RegisterPage = () => {
           error={errors.email}
           register={register}
           options={{
-            required: 'El mail es obligatorio',
+            required: "El mail es obligatorio",
             validate: validateEmail,
           }}
         />
@@ -89,7 +92,7 @@ const RegisterPage = () => {
                 error={errors.password}
                 register={register}
                 options={{
-                  required: 'La contraseña es obligatoria',
+                  required: "La contraseña es obligatoria",
                   validate: validatePassword,
                 }}
               />

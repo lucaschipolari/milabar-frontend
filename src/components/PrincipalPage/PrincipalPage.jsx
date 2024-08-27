@@ -16,6 +16,7 @@ import { useSession } from "../../stores/useSession";
 import { decodeJWT } from "../../utilities/decodeJWT";
 import { getUserFn } from "../../api/usersApi";
 import { useQuery } from "@tanstack/react-query";
+import IsLoanding from "../Common/IsLoading/isLoading";
 
 const PrincipalPage = () => {
   const { isLoggedIn } = useSession();
@@ -31,9 +32,11 @@ const PrincipalPage = () => {
     queryFn: () => getUserFn(userId),
     enabled: !!userId,
   });
-  console.log(user);
+  if (isLoading) return <IsLoanding />;
+  if (isError) return <p>Error al cargar los datos del usuario.</p>;
   return (
     <>
+    
       <Header user={user} />
 
       <div className="mb-5">
@@ -60,58 +63,28 @@ const PrincipalPage = () => {
           </div>
 
           <div className="mt-4 d-flex flex-wrap gap-1 justify-content-center ">
-            <a className="btn-icon btn btn-light" href="#SANGUCHES">
-              <img src={sangucheImg} alt="sandwich" className="food-icon" />
+            <a className=" btn btn-light" href="#SANGUCHES">
+              Sandwiches
             </a>
-            <a className="btn-icon btn btn-light" href="#MILANESAS">
-              <img src={pizzaImg} alt="papas" className="food-icon" />
+            <a className=" btn btn-light" href="#MILANESAS">
+              Milanesas
             </a>
-            <a className="btn-icon btn btn-light" href="#HAMBURGUESAS">
-              <img src={pizzaImg} alt="papas" className="food-icon" />
+            <a className=" btn btn-light" href="#HAMBURGUESAS">
+              Hamburguesas
             </a>
-            <a className="btn-icon btn btn-light" href="#PIZZAS">
-              <img src={pizzaImg} alt="papas" className="food-icon" />
+            <a className=" btn btn-light" href="#PIZZAS">
+              Pizzas
             </a>
-            <a className="btn-icon btn btn-light" href="#PAPAS">
-              <img src={papasImg} alt="papas" className="food-icon" />
+            <a className=" btn btn-light" href="#PAPAS">
+              Papas
             </a>
-            <a className="btn-icon btn btn-light" href="#BEBIDAS">
-              <img src={papasImg} alt="papas" className="food-icon" />
+            <a className=" btn btn-light" href="#BEBIDAS">
+              Bebidas
             </a>
           </div>
         </div>
 
-        <div className="mt-5">
-          <div className="text-center">
-            <h2 id="SANGUCHES">Sanguches</h2>
-          </div>
-          <ListProductClient categoria="SANGUCHE" />
-
-          <div className="text-center mt-5">
-            <h2 id="MILANESAS">Milanesas</h2>
-          </div>
-          <ListProductClient categoria="MILANESA" />
-
-          <div className="text-center mt-5">
-            <h2 id="HAMBURGUESAS">Hamburguesas</h2>
-          </div>
-          <ListProductClient categoria="HAMBURGUESA" />
-
-          <div className="text-center mt-5">
-            <h2 id="PIZZAS">Pizzas</h2>
-          </div>
-          <ListProductClient categoria="PIZZA" />
-
-          <div className="text-center mt-5">
-            <h2 id="PAPAS">Papas</h2>
-          </div>
-          <ListProductClient categoria="PAPA" />
-
-          <div className="text-center mt-5">
-            <h2 id="BEBIDAS">Bebidas</h2>
-          </div>
-          <ListProductClient categoria="BEBIDA" />
-        </div>
+        <ListProductClient />
       </div>
     </>
   );

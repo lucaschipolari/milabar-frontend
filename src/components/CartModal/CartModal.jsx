@@ -94,7 +94,7 @@ const CartModal = ({ visible, onHide }) => {
 
   const isOrderButtonDisabled =
     !tableNumber ||
-    parseInt(tableNumber) === 0 ||
+    parseInt(tableNumber) <= 0 ||
     parseInt(tableNumber) > 20 ||
     !!errors.tableNumber;
 
@@ -102,7 +102,7 @@ const CartModal = ({ visible, onHide }) => {
     <Dialog
       header="Milabar"
       visible={visible}
-      className="cart-dialog p-3"
+      className="cart-dialog"
       onHide={onHide}
       draggable={false}
       position="TopRight"
@@ -121,7 +121,7 @@ const CartModal = ({ visible, onHide }) => {
                 className="cart-product d-flex align-item-center m-3"
               >
                 <img
-                  src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ6_VVHpq1t0kCF1wc6SreFBvWGKEYXAayevA&s"
+                  src={product.image}
                   alt={product.name}
                   className="product-image"
                 />
@@ -218,7 +218,7 @@ const CartModal = ({ visible, onHide }) => {
           <p className="error-text">{errors.tableNumber.message}</p>
         )}
       </div>
-      <div className="cart-total d-flex justify-content-between m-3 price-text">
+      <div className="cart-total d-flex justify-content-between m-3 price-text fw-bold">
         <h4>Total:</h4>${totalPrice.toFixed(2)}
       </div>
       <div className="cart-actions m-3 d-flex justify-content-between">

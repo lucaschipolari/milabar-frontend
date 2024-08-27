@@ -1,12 +1,12 @@
 const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
 
 export const postProductoFn = async (data) => {
-  //const token = sessionStorage.getItem('token');
+  const token = sessionStorage.getItem("token");
   const res = await fetch(`${BACKEND_URL}/productos/agregar-producto`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
-      //Authorization: `Bearer ${token}`,
+      Authorization: `Bearer ${token}`,
     },
     body: JSON.stringify(data),
   });
@@ -41,12 +41,12 @@ export const getProductoFn = async (productoId) => {
 };
 
 export const deleteProductoFn = async (productoId) => {
-  //const token = sessionStorage.getItem('token');
+  const token = sessionStorage.getItem("token");
 
   const res = await fetch(`${BACKEND_URL}/productos/${productoId}`, {
     method: "DELETE",
     headers: {
-      //Authorization: `Bearer ${token}`,
+      Authorization: `Bearer ${token}`,
     },
   });
 
@@ -58,13 +58,13 @@ export const deleteProductoFn = async (productoId) => {
 };
 
 export const putProductoFn = async ({ productoId, data }) => {
-  //const token = sessionStorage.getItem('token');
+  const token = sessionStorage.getItem("token");
 
   const res = await fetch(`${BACKEND_URL}/productos/detalle/${productoId}`, {
     method: "PUT",
     headers: {
       "Content-Type": "application/json",
-      //Authorization: `Bearer ${token}`,
+      Authorization: `Bearer ${token}`,
     },
     body: JSON.stringify(data),
   });
