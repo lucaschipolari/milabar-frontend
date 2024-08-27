@@ -55,8 +55,8 @@ export const router = createBrowserRouter([
         element: <PrincipalProductoView />,
       },
       {
-        path: "/detalle/:id",
-        element: <ProductDetailView />,
+        path: "/modificar-producto/:id",
+        element: <DetalleProductoView />,
       },
       {
         path: "/agregar-producto",

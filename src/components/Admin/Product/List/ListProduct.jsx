@@ -11,6 +11,7 @@ import { getProductosFn, deleteProductoFn } from "../../../../api/productos";
 import ProductCard from "../CardProducto/ProductCard";
 
 const ListProduct = () => {
+  const {setProductoToEdit}=useProducto();
   const {
     data: productos,
     isLoading,

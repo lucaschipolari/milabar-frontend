@@ -99,9 +99,6 @@ export const postRegisterFn = async (data) => {
 
 export const getUserFn = async (userId) => {
   const token = sessionStorage.getItem("token"); 
-  if (!token) {
-    throw new Error("No se encontró el token");
-  }
 
   const res = await fetch(`${BACKEND_URL}/profile/${userId}`, {
     headers: {
@@ -114,7 +111,7 @@ export const getUserFn = async (userId) => {
     throw new Error("Ocurrió un error leyendo la entrada del usuario");
   }
 
-  return await res.json(); // Retorna directamente el JSON
+  return await res.json(); 
 };
 
 export const putUsersFn = async ({ userId, data }) => {

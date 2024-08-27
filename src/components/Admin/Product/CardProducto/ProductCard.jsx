@@ -48,7 +48,7 @@ const ProductCard = (props) => {
             </Button>
             <Link
               className="btn btn-warning col-auto"
-              to={`/detalle/${producto.id}`}
+              to={`/modificar-producto/${producto.id}`}
               onClick={handleEdit}
             >
               <FontAwesomeIcon icon={faPencil} />
