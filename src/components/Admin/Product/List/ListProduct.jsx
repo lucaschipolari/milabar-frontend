@@ -9,10 +9,10 @@ import { Carousel } from "primereact/carousel";
 
 import { getProductosFn, deleteProductoFn } from "../../../../api/productos";
 import ProductCard from "../CardProducto/ProductCard";
-import IsLoanding from "../../../Common/IsLoading/isLoading.jsx";
+import IsLoading from "../../../Common/IsLoading/IsLoading.jsx";
 
 const ListProduct = () => {
-  const {setProductoToEdit}=useProducto();
+  const { setProductoToEdit } = useProducto();
   const {
     data: productos,
     isLoading,
@@ -50,7 +50,7 @@ const ListProduct = () => {
     ) || [];
 
   if (isLoading) {
-    return <IsLoanding />;
+    return <IsLoading />;
   }
 
   if (isError) {

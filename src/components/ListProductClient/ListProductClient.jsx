@@ -4,7 +4,7 @@ import "./style.css";
 import { getProductosFn } from "../../api/productos";
 import PropTypes from "prop-types";
 import ProductCardClient from "./CardProductClient";
-import IsLoading from "../Common/IsLoading/isLoading";
+import IsLoading from "../Common/IsLoading/IsLoading";
 
 const categorias = [
   { id: "SANGUCHE", title: "Sanguches" },

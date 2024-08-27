@@ -7,7 +7,7 @@ import "../components/Admin/Users/styles/userCard.css";
 import { Link } from "react-router-dom";
 import { toast } from "sonner";
 import { getUsersFn } from "../api/usersApi"; // Asegúrate de importar la función correctamente
-import IsLoanding from "../components/Common/IsLoading/isLoading";
+import IsLoading from "../components/Common/IsLoading/IsLoading";
 
 const UserManagement = () => {
   const [searchTerm, setSearchTerm] = useState("");
@@ -39,7 +39,7 @@ const UserManagement = () => {
   });
 
   if (isLoading) {
-    return <IsLoanding />;
+    return <div>Cargando</div>;
   }
 
   if (isError) {

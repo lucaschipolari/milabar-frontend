@@ -3,7 +3,7 @@ import { useState } from "react";
 
 import { getProductosFn } from "../../../../api/productos";
 import TablaFilaProductos from "./TablaFilaProductos";
-import IsLoanding from "../../../Common/IsLoading/isLoading";
+import IsLoading from "../../../Common/IsLoading/IsLoading";
 
 const TablaProductos = () => {
   const {
@@ -22,7 +22,7 @@ const TablaProductos = () => {
     ) || [];
 
   if (isLoading) {
-    return <IsLoanding />;
+    return <IsLoading />;
   }
 
   if (isError) {

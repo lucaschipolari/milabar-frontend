@@ -89,11 +89,6 @@
   }
   
   /* Nombre del miembro */
-  h4 {
-    font-size: 1.2em;
-    font-weight: 600;
-    margin-bottom: 0.5em;
-  }
   .social-icons a{
     border: 1px solid black;
     color: black;

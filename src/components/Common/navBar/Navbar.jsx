@@ -11,7 +11,7 @@ import { useLocation } from "react-router-dom"; // Importa useLocation
 import NavItem from "./NavItem";
 import "./style.css";
 
-const Navbar = () => {
+const NavBar = () => {
   const [activeIndex, setActiveIndex] = useState(0);
   const [cartCount, setCartCount] = useState(0);
 
@@ -59,4 +59,4 @@ const Navbar = () => {
   );
 };
 
-export default Navbar;
+export default NavBar;
