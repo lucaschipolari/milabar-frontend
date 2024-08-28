@@ -6,12 +6,16 @@ import { useNavigate } from "react-router-dom";
 import Input from "../ui/input/Input"; // Asegúrate de que la ruta sea correcta
 import SocialIcons from "./SocialIcons";
 import { validateName, validateEmail, validatePassword } from "./validators";
+import { useMutation } from "@tanstack/react-query";
+import { useSession } from "../../stores/useSession";
 
 const RegisterPage = () => {
+  const { login } = useSession();
   const {
     register,
     handleSubmit: onSubmitRHF,
     formState: { errors },
+    reset,
   } = useForm({
     mode: "onBlur",
     reValidateMode: "onSubmit",
@@ -23,12 +27,27 @@ const RegisterPage = () => {
     },
   });
 
-  const navigate = useNavigate();
+  const { mutate: postRegister } = useMutation({
+    mutationFn: () => {},
+    onSuccess: (userData) => {
+      toast.dismiss(); // Cerrar cualquier toast de carga
+      toast.success(`¡Registro exitoso, ${userData.username}!`);
+      reset();
+      login(userData);
+      setTimeout(() => navigate("/"), 1500);
+    },
+    onError: (e) => {
+      toast.dismiss(); // Cerrar cualquier toast de carga
+      toast.warning(e.message || "Error en el registro");
+    },
+  });
 
   const handleSubmitForm = (data) => {
     toast.loading("Cargando...");
-    // Lógica para enviar el formulario
+    postRegister(data);
   };
+
+  const navigate = useNavigate();
 
   const passwordPopover = (
     <Popover id="password-popover">
