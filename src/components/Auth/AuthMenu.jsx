@@ -16,7 +16,7 @@ const AuthMenu = ({ onTabChange }) => {
 
   return (
     <TabMenu
-      className="auth-tab-menu custom-tab-menu"
+      className="auth-tab-menu custom-tab-menu "
       model={items}
       activeIndex={activeIndex}
       onTabChange={handleTabChange}
