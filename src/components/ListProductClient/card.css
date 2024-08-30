@@ -1,4 +1,10 @@
-
+:root{
+    --bordo:#780000;
+    --rojo:#C1121F;
+    --fondo:#FDF0D5;
+    --azul-oscuro:#003049;
+    --azul-clarito:#669BBC;
+}
 .card-container-sup{
     position: relative;
     width: 300px;
@@ -6,6 +12,8 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    background-color: var(--azul-oscuro);
+    border-radius:50%
 }
 .card-container{
     width: 300px;
@@ -23,6 +31,9 @@
     object-fit: cover;
     z-index: 1;
 }
+.img-producto{
+    border-radius: 20px;
+}
 
 .card-body-producto{
     position: absolute;
@@ -32,7 +43,7 @@
     min-height: 300px;
     top: 42%;
     border-radius: 12px;
-    box-shadow: 2px 2px 2px black;
+    box-shadow: 2px 2px 2px var(--azul-oscuro);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     display: flex;
     justify-content: space-between;
@@ -42,7 +53,7 @@
 }
 .card-body-producto:hover{
     background-color: rgb(244, 244, 244);
-    box-shadow: 2px 2px 4px black;
+    box-shadow: 2px 2px 4px var(--azul-oscuro);
     transform: scale(1.01);
 }
 
@@ -107,14 +118,14 @@
 
 
 .card-btn-info{
-    background-color: rgb(255, 0, 0);
+    background-color: var(--rojo);
 }
 .card-btn-info:hover{
-    background-color: rgb(207, 3, 3);
+    background-color: rgb(255, 0, 0);
 }
 
 .card-btn-add-cart{
-    background-color: rgb(0, 123, 255);
+    background-color: var(--azul-oscuro);
 }
 .card-btn-add-cart:hover{
     background-color: rgb(0, 79, 163);

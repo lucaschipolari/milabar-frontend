@@ -50,7 +50,7 @@ const ProductCardClient = (props) => {
           <img
             src={producto.imagen}
             alt={producto.nombre}
-            className="h-100 w-100 img-fluid object-fit-cover"
+            className="h-100 w-100 img-fluid object-fit-cover img-producto"
           />
         </div>
         <div className="card-body-producto">
