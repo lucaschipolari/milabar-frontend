@@ -1,19 +1,15 @@
 import { useQuery } from "@tanstack/react-query";
-import { Carousel } from "primereact/carousel";
 import "./card.css";
+import "./swiper.css";
 import { getProductosFn } from "../../api/productos";
-import PropTypes from "prop-types";
 import ProductCardClient from "./CardProductClient";
 import IsLoading from "../Common/IsLoading/IsLoading";
-
-const categorias = [
-  { id: "SANGUCHE", title: "Sanguches" },
-  { id: "MILANESA", title: "Milanesas" },
-  { id: "HAMBURGUESA", title: "Hamburguesas" },
-  { id: "PIZZA", title: "Pizzas" },
-  { id: "PAPA", title: "Papas" },
-  { id: "GASEOSA", title: "Gaseosas" },
-];
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
+import "swiper/css/scrollbar";
+import { Navigation, Pagination, Scrollbar, A11y } from "swiper/modules";
 
 const ListProductClient = () => {
   const {
@@ -24,29 +20,6 @@ const ListProductClient = () => {
     queryKey: ["productos"],
     queryFn: getProductosFn,
   });
-
-  const responsiveOptions = [
-    {
-      breakpoint: "2400px",
-      numVisible: 6,
-      numScroll: 1,
-    },
-    {
-      breakpoint: "1024px",
-      numVisible: 4,
-      numScroll: 1,
-    },
-    {
-      breakpoint: "768px",
-      numVisible: 3,
-      numScroll: 1,
-    },
-    {
-      breakpoint: "560px",
-      numVisible: 1,
-      numScroll: 1,
-    },
-  ];
 
   if (isLoading) {
     return <IsLoading />;
@@ -70,41 +43,48 @@ const ListProductClient = () => {
 
   // Filtrar y renderizar productos según categoría
   return (
-    <div className="mt-5">
-      {categorias.map((categoria) => {
-        const productosFiltrados = productos.data.filter(
-          (producto) =>
-            producto.categoria === categoria.id &&
-            producto.agregado === "false" &&
-            producto.habilitado === "true"
-        );
-
-        // Solo renderizar el Carousel si hay productos filtrados
-        return productosFiltrados.length > 0 ? (
-          <div key={categoria.id} className="text-center mt-5">
-            <h2 id={categoria.id} className="text-light">
-              {categoria.title}
-            </h2>
-            <div className="col-12">
-              <Carousel
-                value={productosFiltrados}
-                className="col-12"
-                numVisible={3}
-                numScroll={1}
-                orientation="horizontal"
-                verticalViewPortHeight="auto"
-                itemTemplate={(producto) => (
-                  <div className="col-12 p-3">
-                    <ProductCardClient producto={producto} key={producto.id} />
-                  </div>
-                )}
-                responsiveOptions={responsiveOptions}
-              />
-            </div>
-          </div>
-        ) : null;
-      })}
-    </div>
+    <Swiper
+      spaceBetween={25}
+      slidesPerView={3}
+      modules={[Navigation, Pagination, Scrollbar, A11y]}
+      navigation
+      pagination={{ clickable: true }}
+      scrollbar={{ draggable: true }}
+      onSlideChange={() => console.log("slide change")}
+      onSwiper={(swiper) => console.log(swiper)}
+      breakpoints={{
+        300: {
+          slidesPerView: 1,
+          spaceBetween: 10,
+        },
+        580: {
+          slidesPerView: 1,
+          spaceBetween: 20,
+        },
+        581: {
+          slidesPerView: 2,
+          spaceBetween: 20,
+        },
+        870: {
+          slidesPerView: 3,
+          spaceBetween: 20,
+        },
+        1024: {
+          slidesPerView: 3,
+          spaceBetween: 20,
+        },
+        1200: {
+          slidesPerView: 4,
+          spaceBetween: 20,
+        },
+      }}
+    >
+      {productos.data.map((producto) => (
+        <SwiperSlide key={producto.id}>
+          <ProductCardClient producto={producto} />
+        </SwiperSlide>
+      ))}
+    </Swiper>
   );
 };
 
