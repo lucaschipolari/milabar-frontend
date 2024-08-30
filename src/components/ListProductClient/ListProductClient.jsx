@@ -1,6 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import { Carousel } from "primereact/carousel";
-import "./style.css";
+import "./card.css";
 import { getProductosFn } from "../../api/productos";
 import PropTypes from "prop-types";
 import ProductCardClient from "./CardProductClient";
@@ -74,7 +74,9 @@ const ListProductClient = () => {
       {categorias.map((categoria) => {
         const productosFiltrados = productos.data.filter(
           (producto) =>
-            producto.categoria === categoria.id && producto.agregado === "false" && producto.habilitado === "true"
+            producto.categoria === categoria.id &&
+            producto.agregado === "false" &&
+            producto.habilitado === "true"
         );
 
         // Solo renderizar el Carousel si hay productos filtrados

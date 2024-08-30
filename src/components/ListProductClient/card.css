@@ -1,0 +1,114 @@
+
+.card-container-sup{
+    position: relative;
+    width: 300px;
+    padding-top: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.card-container{
+    width: 300px;
+    height: 300px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+}
+
+.card-img-producto{
+    z-index: 1;
+}
+
+.card-body-producto{
+    position: absolute;
+    background-color: rgb(255, 255, 255);
+    padding: 10px;
+    max-width: 250px;
+    top: 42%;
+    border-radius: 12px;
+    box-shadow: 2px 2px 2px black;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+}
+.card-body-producto:hover{
+    background-color: rgb(244, 244, 244);
+    box-shadow: 2px 2px 4px black;
+    transform: scale(1.01);
+}
+
+.heart-container {
+    position: absolute;
+    font-size: 1.5rem;
+    color: rgb(120, 120, 120);
+    right: 28px;
+    top: -15px;
+    padding: 5px;
+    border-radius: 10%;
+    cursor: pointer;
+    border: 1px solid rgb(255, 255, 255);
+    background-color: rgb(255, 255, 255);
+    z-index: 1000;
+    box-shadow: 1px 1px 2px black;
+}
+
+.heart-container.active {
+    color: red; /* Fondo cuando está activo */
+}
+
+/* .heart-icon {
+    font-size: 24px;
+    color: rgb(120, 120, 120);
+    cursor: pointer;
+    transition: color 0.2s ease-in-out;
+    z-index: 22;
+}
+.heart-icon.active{
+    font-size: 24px;
+    color: rgb(255, 0, 0);
+    cursor: pointer;
+} */
+
+
+.card-content-producto{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: column;
+}
+.card-product-price{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+.card-options{
+    display: flex;
+    justify-content:space-around;
+    align-items: center;
+}
+
+.card-btn{
+    padding: 5px 10px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out;
+    color: white;
+}
+
+
+
+.card-btn-info{
+    background-color: rgb(255, 0, 0);
+}
+.card-btn-info:hover{
+    background-color: rgb(207, 3, 3);
+}
+
+.card-btn-add-cart{
+    background-color: rgb(0, 123, 255);
+}
+.card-btn-add-cart:hover{
+    background-color: rgb(0, 79, 163);
+}
+
