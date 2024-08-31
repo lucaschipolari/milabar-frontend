@@ -1,15 +1,6 @@
 import PropTypes from "prop-types";
-import { Link } from "react-router-dom";
-import { Button } from "primereact/button";
 
-import {
-  faCartShopping,
-  faHeart,
-  faPencil,
-  faTrash,
-  faPlus,
-  faInfo,
-} from "@fortawesome/free-solid-svg-icons";
+import { faHeart } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import "../../components/Admin/Product/styles/producto.css";
@@ -18,7 +9,7 @@ import { toast } from "sonner";
 import { useState } from "react";
 
 const ProductCardClient = (props) => {
-  const { producto, esAdmin = false, handleLike, handleAddCart } = props;
+  const { producto } = props;
   const [isHearted, setIsHearted] = useState(false);
 
   const { addProduct } = useCartStore();
