@@ -61,33 +61,28 @@
     position: absolute;
     font-size: 1.5rem;
     color: rgb(120, 120, 120);
-    right: 28px;
+    right: 47px;
     top: -15px;
     padding: 5px;
-    border-radius: 10%;
+    width: 50px;
+    border-radius: 50%;
     cursor: pointer;
     border: 1px solid rgb(255, 255, 255);
     background-color: rgb(255, 255, 255);
     z-index: 1000;
     box-shadow: 1px 1px 2px black;
+    transition: transform 0.2s ease;
 }
 
 .heart-container.active {
     color: red; /* Fondo cuando está activo */
+    transform: scale(0.9); /* Achicar el icono */
 }
 
-/* .heart-icon {
-    font-size: 24px;
-    color: rgb(120, 120, 120);
-    cursor: pointer;
-    transition: color 0.2s ease-in-out;
-    z-index: 22;
+.heart-container.active-reset {
+    transform: scale(1); /* Volver al tamaño normal */
 }
-.heart-icon.active{
-    font-size: 24px;
-    color: rgb(255, 0, 0);
-    cursor: pointer;
-} */
+
 
 
 .card-content-producto{
