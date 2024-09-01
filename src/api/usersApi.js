@@ -78,7 +78,7 @@ export const postLoginFn = async (data) => {
   const token = resData.data;
 
   if (!token) {
-    console.log("hola")
+    console.log("hola");
     throw new Error(resData.message || "Ocurrió un error");
   }
 
@@ -119,7 +119,6 @@ export const postRegisterFn = async (data) => {
 };
 
 export const getUserFn = async (userId) => {
-
   const token = sessionStorage.getItem("token");
   if (!token) {
     throw new Error("No se encontró el token");
@@ -135,8 +134,7 @@ export const getUserFn = async (userId) => {
   if (!res.ok) {
     throw new Error("Ocurrió un error leyendo la entrada del usuario");
   }
-
-  return await res.json(); 
+  return await res.json();
 };
 
 export const putUsersFn = async ({ userId, data }) => {
