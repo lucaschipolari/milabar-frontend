@@ -1,5 +1,5 @@
 import { useForm } from "react-hook-form";
-// import Input from "../ui/input/Input";
+import Input from "../ui/input/Input";
 import { useState } from "react";
 import {
   sendEmailToClient,
@@ -7,7 +7,7 @@ import {
 } from "../../utilities/sendEmail";
 import Swal from "sweetalert2";
 import { sendContactData } from "../../api/contact";
-import Input from "../ui/input/InputReal";
+// import Input from "../ui/input/InputReal";
 import "./map.css";
 
 const ContactForm = () => {
@@ -136,6 +136,7 @@ const ContactForm = () => {
           },
         }}
         register={register}
+        placeholder=""
       />
       <Input
         className="m-3"
@@ -169,6 +170,7 @@ const ContactForm = () => {
           },
         }}
         register={register}
+        placeholder=""
       />
       <Input
         className="m-3"
@@ -191,6 +193,7 @@ const ContactForm = () => {
         }}
         register={register}
         type="email"
+        placeholder=""
       />
       <Input
         className="m-3"
@@ -226,6 +229,7 @@ const ContactForm = () => {
         }}
         register={register}
         textarea
+        placeholder=""
         maxLength={500}
         resetCount={resetCount}
       />
