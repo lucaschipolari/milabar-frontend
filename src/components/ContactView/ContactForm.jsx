@@ -66,7 +66,7 @@ const ContactForm = () => {
   return (
     <form
       onSubmit={onSubmitRHF(handleSumbit)}
-      className="bg-contacto shadow m-5 text-center"
+      className="shadow m-5 text-center"
     >
       <h1 className="my-2 text-light">Contactanos!</h1>
       <Input
