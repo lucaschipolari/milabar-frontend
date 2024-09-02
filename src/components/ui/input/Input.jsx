@@ -97,28 +97,31 @@ const Input = (props) => {
       <label className="me-2 form-label" htmlFor={`${name}-input`}>
         {label}
       </label>
-      <div className="flex-grow-1">
-        {textarea ? (
-          <textarea
-            className={`form-control ${error ? "is-invalid" : ""}`}
-            id={`${name}-input`}
-            type={type}
-            {...register(name, options)}
-            placeholder={placeholder}
-            maxLength={maxLength}
-            onChange={handleChange}
-          />
-        ) : (
-          <input
-            className={`form-control ${error ? "is-invalid" : ""}`}
-            id={`${name}-input`}
-            type={type}
-            {...register(name, options)}
-            placeholder={placeholder}
-          />
-        )}
-        <div className="invalid-feedback">{error?.message}</div>
-      </div>
+      {textarea ? (
+        <textarea
+          className={`form-control ${error ? "is-invalid" : ""}`}
+          id={`${name}-input`}
+          type={type}
+          {...register(name, options)}
+          placeholder={placeholder}
+          maxLength={maxLength}
+          onChange={handleChange}
+        />
+      ) : (
+        <input
+          className={`form-control ${error ? "is-invalid" : ""}`}
+          id={`${name}-input`}
+          type={type}
+          {...register(name, options)}
+          placeholder={placeholder}
+        />
+      )}
+      {textarea && maxLength && (
+        <div className="text-muted text-right">
+          {internalCharCount}/{maxLength}
+        </div>
+      )}
+      <div className="invalid-feedback">{error?.message}</div>
     </div>
   );
 };
