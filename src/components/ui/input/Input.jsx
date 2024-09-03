@@ -126,43 +126,6 @@ const Input = (props) => {
   );
 };
 
-// if (textarea) {
-//   return (
-//     <fieldset className={`form-floating ${className}`}>
-//       <textarea
-//         className={`form-control ${error ? "is-invalid" : ""}`}
-//         id={`${name}-input`}
-//         type={type}
-//         {...register(name, options)}
-//         placeholder={placeholder}
-//         maxLength={maxLength}
-//         onChange={handleChange}
-//       />
-//       <label htmlFor={`${name}-input`}>{label}</label>
-//       {maxLength && (
-//         <div className="text-muted text-right">
-//           {internalCharCount}/{maxLength}
-//         </div>
-//       )}
-//       <div className="invalid-feedback">{error?.message}</div>
-//     </fieldset>
-//   );
-// }
-
-//   return (
-//     <fieldset className={`form-floating ${className}`}>
-//       <input
-//         className={`form-control ${error ? "is-invalid" : ""}`}
-//         id={`${name}-input`}
-//         type={type}
-//         {...register(name, options)}
-//         placeholder={placeholder}
-//       />
-//       <label htmlFor={`${name}-input`}>{label}</label>
-//       <div className="invalid-feedback">{error?.message}</div>
-//     </fieldset>
-//   );
-// };
 export default Input;
 
 Input.propTypes = {

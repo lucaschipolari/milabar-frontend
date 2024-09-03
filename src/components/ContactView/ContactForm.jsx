@@ -8,9 +8,7 @@ import {
 import Swal from "sweetalert2";
 import { sendContactData } from "../../api/contact";
 
-import "./form.css"
-
-
+import "./form.css";
 
 const ContactForm = () => {
   const {
@@ -18,7 +16,7 @@ const ContactForm = () => {
     handleSubmit: onSubmitRHF,
     formState: { errors },
     reset,
-  } = useForm();
+  } = useForm({ mode: "onChange" });
 
   const [resetCount, setResetCount] = useState(false);
 
@@ -75,7 +73,7 @@ const ContactForm = () => {
           <Input
             className="m-3"
             error={errors.name}
-            label={<span className="required-label">Nombre</span>}
+            label={<span className="required-label">Nombre </span>}
             name="name"
             options={{
               required: {
@@ -83,11 +81,11 @@ const ContactForm = () => {
                 message: "El nombre es requerido",
               },
               minLength: {
-                minLength: 2,
+                value: 2,
                 message: "El nombre debe tener al menos 2 caracteres",
               },
               maxLength: {
-                maxLength: 30,
+                value: 30,
                 message: "El nombre debe tener un maximo de 30 caracteres",
               },
               pattern: {
@@ -120,11 +118,11 @@ const ContactForm = () => {
                 message: "El apellido es requerido",
               },
               minLength: {
-                minLength: 2,
+                value: 2,
                 message: "El apellido debe tener al menos 2 caracteres",
               },
               maxLength: {
-                maxLength: 30,
+                value: 30,
                 message: "El apellido debe tener un maximo de 30 caracteres",
               },
               pattern: {

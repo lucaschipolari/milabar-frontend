@@ -7,7 +7,7 @@ import "../styles/contactView.css"
 
 const ContactView = () => {
   return (
-    <div className="bg-contact">
+    <div className="bg-contact mb-3">
       <div className="container d-flex flex-column align-items-center text-center px-3">
         <Logo />
         <div className="justify-content-center w-100">

@@ -36,3 +36,40 @@
     height: 300px !important; 
   }
 }
+
+.p-tabview-nav{
+  margin: 0;
+  padding: 0;
+}
+
+.p-tabview-panels{
+  padding: 0;
+}
+
+.nav-container {
+  background-color: #003049;
+  --bs-border-color:  #003049;
+  
+}
+
+.button-nav{
+  --bs-nav-tabs-link-active-bg:var(--bs-border-color);
+  --bs-nav-tabs-link-active-border-color:var(--bs-border-color);
+  border: 1px solid transparent !important;
+  color: #888888 !important; 
+}
+
+.button-nav:hover {
+  color: #aaaaaa !important; 
+}
+
+.button-nav.active {
+  color: #ffffff !important;
+  border-bottom: 2px solid #ffffff !important; 
+}
+
+.button-nav:focus {
+  color: #ffffff !important; /* Mantiene el color blanco cuando está enfocado */
+}
+
+
