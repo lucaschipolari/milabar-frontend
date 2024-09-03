@@ -7,8 +7,10 @@ import {
 } from "../../utilities/sendEmail";
 import Swal from "sweetalert2";
 import { sendContactData } from "../../api/contact";
-// import Input from "../ui/input/InputReal";
-import "./map.css";
+
+import "./form.css"
+
+
 
 const ContactForm = () => {
   const {
@@ -73,7 +75,7 @@ const ContactForm = () => {
           <Input
             className="m-3"
             error={errors.name}
-            label="Nombre*"
+            label={<span className="required-label">Nombre</span>}
             name="name"
             options={{
               required: {
@@ -110,7 +112,7 @@ const ContactForm = () => {
           <Input
             className="m-3"
             error={errors.lastname}
-            label="Apellido*"
+            label={<span className="required-label">Apellido</span>}
             name="lastname"
             options={{
               required: {
@@ -149,7 +151,7 @@ const ContactForm = () => {
           <Input
             className="m-3"
             error={errors.issue}
-            label="Asunto*"
+            label={<span className="required-label">Asunto</span>}
             name="issue"
             options={{
               required: {
@@ -188,7 +190,7 @@ const ContactForm = () => {
           <Input
             className="m-3"
             error={errors.email}
-            label="Email*"
+            label={<span className="required-label">Email</span>}
             name="email"
             options={{
               required: {
@@ -216,7 +218,7 @@ const ContactForm = () => {
           <Input
             className="m-3"
             error={errors.message}
-            label="Mensaje*"
+            label={<span className="required-label">Mensaje</span>}
             name="message"
             options={{
               required: {
