@@ -2,46 +2,47 @@ import { Link, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { useMutation } from "@tanstack/react-query";
 import { toast } from "sonner";
-import {useSession}  from "../../stores/useSession";
+import { useSession } from "../../stores/useSession";
 import SocialIcons from "./SocialIcons";
 import { postLoginFn } from "../../api/usersApi";
 import Input from "../ui/input/Input";
 import Swal from "sweetalert2";
 import "./auth.css";
 
-const LoginPage = () => {
-  const { login, isLoggedIn } = useSession();
+const LoginPage = (props) => {
+  const {toggleView}=props;
+  const { login } = useSession();
   const navigate = useNavigate();
 
   const {
     register,
     handleSubmit,
     formState: { errors },
-    reset
+    reset,
   } = useForm();
 
   const { mutate: postLogin } = useMutation({
     mutationFn: postLoginFn,
     onSuccess: (userData) => {
-      toast.dismiss(); 
+      toast.dismiss();
       toast.success(`¡Bienvenido, ${userData.username}!`);
       login(userData, userData.token);
-      reset(); 
+      reset();
       setTimeout(() => navigate("/menu"), 0);
     },
     onError: (e) => {
-      toast.dismiss(); // Cerramos el toast de carga
+      toast.dismiss();
 
       if (e.message === "El mail no está registrado") {
         Swal.fire({
           title: "Parece que no estás registrado",
           text: "Dirigete a la opción: Crear cuenta",
-          icon: "warning"
+          icon: "warning",
         });
       } else {
         toast.warning(e.message || "Error en el inicio de sesión");
       }
-      reset(); // Limpia el formulario en caso de error
+      reset();
     },
   });
 
@@ -51,52 +52,66 @@ const LoginPage = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit(handleSubmitForm)} className="form-user-auth bg-black">
-      <h1 className="text-center mt-3 color-red">Iniciar sesión</h1>
-      <div className="form-group">
-        <Input
-          className="mb-2"
-          error={errors.email}
-          label="Email"
-          name="email"
-          options={{
-            required: "Este campo es requerido",
-            minLength: {
-              value: 5,
-              message: "El email debe tener al menos 5 caracteres",
-            },
-            maxLength: {
-              value: 100,
-              message: "El email debe tener como mucho 100 caracteres",
-            },
-          }}
-          placeholder="Milanesa"
-          register={register}
-        />
-
-        <Input
-          error={errors.password}
-          label="Contraseña"
-          name="password"
-          options={{
-            required: {
-              value: true,
-              message: "Este campo es requerido",
-            },
-            minLength: 3,
-            maxLength: 20,
-          }}
-          register={register}
-          type="password"
-        />
+    <form onSubmit={handleSubmit(handleSubmitForm)} className="bg-blue-color form-custom">
+      <h1 className="text-center all-text-color mt-2 fw-bold">
+        ¡Bienvenido otra vez!
+      </h1>
+      <h4 className="text-center all-text-color mt-2">Inicio de sesión</h4>
+      <div className="form-content pt-3 all-bg-color">
+        <div className="form-group mx-5">
+          <Input
+            className="mb-2 all-bg-color border-primary blue-color"
+            error={errors.email}
+            label="Email"
+            name="email"
+            options={{
+              required: "Este campo es requerido",
+            }}
+            placeholder="Milanesa"
+            register={register}
+          />
+          <Input
+          className="mb-2 all-bg-color border-primary blue-color"
+            error={errors.password}
+            label="Contraseña"
+            name="password"
+            options={{
+              required: {
+                value: true,
+                message: "Este campo es requerido",
+              },
+              maxLength: 15,
+            }}
+            register={register}
+            type="password"
+          />
+        </div>
+        <div className="row mt-2 mx-5">
+          <Link
+            to="/forgot-password"
+            className="col-12 red-color mt-2 text-decoration-none text-center"
+          >
+            ¿Olvidaste tu contraseña?
+          </Link>
+          <div className="col-12 text-center">
+            <button type="submit" className="btn btn-primary">
+              Iniciar sesión
+            </button>
+          <p className="text-center blue-color mt-3">O ingresa con</p>
+          <SocialIcons />
+          </div>
+        </div>
+        <p className="text-center blue-color mt-2 mb-0 p-3">
+          Si aún no tenes una cuenta,
+          <span
+            className="all-text-color red-color text-decoration-none fw-bold"
+            onClick={toggleView}
+          >
+            {" "}
+            registrate aquí
+          </span>
+        </p>
       </div>
-      <Link to="/forgot-password" className="container-auth-a color-red">
-        ¿Olvidaste tu contraseña?
-      </Link>
-      <button type="submit" className="btn btn-danger">
-        Iniciar sesión
-      </button>
-      <SocialIcons />
     </form>
   );
 };

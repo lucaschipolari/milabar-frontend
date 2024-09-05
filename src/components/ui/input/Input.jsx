@@ -84,7 +84,7 @@ const Input = (props) => {
   return (
     <fieldset className={`form-floating ${className}`}>
       <input
-        className={`form-control ${error ? "is-invalid" : ""}`}
+        className={`form-control ${error ? "is-invalid" : ""} ${className}`}
         id={`${name}-input`}
         type={type}
         {...register(name, options)}

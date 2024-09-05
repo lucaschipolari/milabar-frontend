@@ -48,10 +48,10 @@ const Header = (props) => {
           <div className="">
             {!isLoggedIn && (
               <div>
-                <Link to="/user/login" className="btn btn-red mx-1">
+                <Link to="/users/login" className="btn btn-red mx-1">
                   Iniciar Sesion
                 </Link>
-                <Link to="/user/register" className="btn btn-gray">
+                <Link to="/users/register" className="btn btn-gray">
                   Registrarse
                 </Link>
               </div>
@@ -75,7 +75,7 @@ const Header = (props) => {
               </div>
             )}
             {user && user.data.isAdmin && (
-              <Link to="/admin" className="btn btn-secondary">
+              <Link to="/agregar-producto" className="btn btn-secondary">
                 Administración
               </Link>
             )}

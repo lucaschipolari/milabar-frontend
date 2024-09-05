@@ -32,7 +32,7 @@ export const validateName = (value) => {
   
   export const validatePassword = (value) => {
     if (value.trim() === "") {
-      return "El campo 'password' es requerido";
+      return "El campo 'Contraseña' es requerido";
     }
   
     if (value.trim().length < 8) {
@@ -46,9 +46,17 @@ export const validateName = (value) => {
     const regex =
       /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,15}$/;
     if (!regex.test(value)) {
-      return "El campo 'password' debe tener una minúscula, una mayúscula, un dígito, y un caracter especial, entre 8 y 15 caracteres";
+      return "El campo 'Contraseña' debe tener una minúscula, una mayúscula, un dígito, y un caracter especial, entre 8 y 15 caracteres";
     }
   
+    return true;
+  };
+
+  export const validateRepeatPassword = (repeatPassword, getValues) => {
+    const password = getValues("password");
+    if (repeatPassword !== password) {
+      return "Las contraseñas no coinciden";
+    }
     return true;
   };
   
