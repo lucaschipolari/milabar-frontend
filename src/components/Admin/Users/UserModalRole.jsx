@@ -1,17 +1,48 @@
+import { useQuery } from "@tanstack/react-query";
 import PropTypes from "prop-types";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { getRolesFn } from "../../../api/roles";
+import { useUser } from "../../../stores/useUser";
 
 const UserModalRole = (props) => {
-  const { isOpen, onClose, user, roles, onSave } = props;
+  const { isOpen, onClose, onSave } = props;
+  const [selectedRoles, setSelectedRoles] = useState([]);
 
-  const [selectedRoles, setSelectedRoles] = useState(user.role || []);
+  const {
+    data: roles,
+    isLoading,
+    isError,
+  } = useQuery({
+    queryKey: ["roles"],
+    queryFn: getRolesFn,
+  });
+
+  const { userToEdit } = useUser();
+  console.log(userToEdit);
+  console.log(roles);
+
+  useEffect(() => {
+    if (isOpen && userToEdit) {
+      setSelectedRoles(
+        Array.isArray(userToEdit.roles)
+          ? userToEdit.roles.map((role) => role.name)
+          : [userToEdit.roles.name]
+      );
+    }
+  }, [isOpen, userToEdit]);
 
   const handleRoleChange = (e) => {
     const { value, checked } = e.target;
-    if (checked) {
-      setSelectedRoles([...selectedRoles, value]);
-    } else {
-      setSelectedRoles(selectedRoles.filter((role) => role !== value));
+    setSelectedRoles((prev) =>
+      checked ? [...prev, value] : prev.filter((role) => role !== value)
+    );
+  };
+
+  const handleName = (roleName) => {
+    if (roleName === "admin") {
+      return "Administrador";
+    } else if (roleName === "moderator") {
+      return "Moderador";
     }
   };
 
@@ -32,7 +63,7 @@ const UserModalRole = (props) => {
         <div className="modal-content">
           <div className="modal-header">
             <h1 className="modal-title fs-5" id="exampleModalLabel">
-              Editar Roles para {user.username}
+              Editar Roles para {userToEdit?.username}
             </h1>
             <button
               type="button"
@@ -42,24 +73,33 @@ const UserModalRole = (props) => {
             ></button>
           </div>
           <div className="modal-body">
-            <form>
-              <h6>Selecciona los roles:</h6>
-              {roles.map((role) => (
-                <div key={role} className="form-check">
-                  <input
-                    className="form-check-input"
-                    type="checkbox"
-                    value={role}
-                    id={`role-${role}`}
-                    checked={selectedRoles.includes(role)}
-                    onChange={handleRoleChange}
-                  />
-                  <label className="form-check-label" htmlFor={`role-${role}`}>
-                    {role}
-                  </label>
-                </div>
-              ))}
-            </form>
+            {isLoading ? (
+              <div>Cargando roles...</div>
+            ) : isError ? (
+              <div>Error al cargar los roles.</div>
+            ) : (
+              <form>
+                <h6>Selecciona los roles:</h6>
+                {roles?.data.map((role) => (
+                  <div key={role._id} className="form-check">
+                    <input
+                      className="form-check-input"
+                      type="checkbox"
+                      value={role.name}
+                      id={`role-${role._id}`}
+                      checked={selectedRoles.includes(role.name)}
+                      onChange={handleRoleChange}
+                    />
+                    <label
+                      className="form-check-label"
+                      htmlFor={`role-${role._id}`}
+                    >
+                      {handleName(role.name)}
+                    </label>
+                  </div>
+                ))}
+              </form>
+            )}
           </div>
           <div className="modal-footer">
             <button
@@ -88,9 +128,11 @@ UserModalRole.propTypes = {
   onClose: PropTypes.func.isRequired,
   user: PropTypes.shape({
     username: PropTypes.string.isRequired,
-    role: PropTypes.arrayOf(PropTypes.string),
+    role: PropTypes.oneOfType([
+      PropTypes.string,
+      PropTypes.arrayOf(PropTypes.string),
+    ]),
   }).isRequired,
-  roles: PropTypes.arrayOf(PropTypes.string).isRequired,
   onSave: PropTypes.func,
 };
 
