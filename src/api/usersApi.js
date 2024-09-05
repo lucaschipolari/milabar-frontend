@@ -161,3 +161,28 @@ export const putUsersFn = async ({ userId, data }) => {
 
   return await res.json(); // Asegúrate de retornar el JSON de la respuesta
 };
+
+export const putRoleUserFn = async ({ userId, data }) => {
+  const token = sessionStorage.getItem("token");
+
+  if (!token) {
+    throw new Error("No se encontró el token");
+  }
+
+  const res = await fetch(`${BACKEND_URL}/roles/${userId}`, {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`, // Agrega el token en la cabecera de autorización
+    },
+    body: JSON.stringify({ roles: data }),
+  });
+
+  if (!res.ok) {
+    throw new Error(
+      "Ocurrió un error intentando editar el usuario seleccionado"
+    );
+  }
+
+  return await res.json(); // Asegúrate de retornar el JSON de la respuesta
+};
