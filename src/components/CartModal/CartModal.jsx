@@ -30,7 +30,7 @@ const CartModal = ({ visible, onHide }) => {
     register,
     formState: { errors },
     watch,
-  } = useForm();
+  } = useForm({ mode: "onChange" });
 
   const tableNumber = watch("tableNumber", "");
   const details = watch("details", "");
@@ -214,9 +214,6 @@ const CartModal = ({ visible, onHide }) => {
           placeholder=""
           isNumber={true}
         />
-        {errors.tableNumber && (
-          <p className="error-text">{errors.tableNumber.message}</p>
-        )}
       </div>
       <div className="cart-total d-flex justify-content-between m-3 price-text fw-bold">
         <h4>Total:</h4>${totalPrice.toFixed(2)}
