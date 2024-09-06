@@ -13,7 +13,7 @@ import {
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import "../../components/Admin/Product/styles/producto.css";
-import { useCartStore } from "../../stores/useCartStore";
+import { useCartStore } from "../../stores/useCartStore.js";
 import { toast } from "sonner";
 
 const ProductCardClient = (props) => {
