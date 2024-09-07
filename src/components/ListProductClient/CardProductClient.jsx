@@ -31,20 +31,23 @@ const ProductCardClient = (props) => {
   return (
     <div className="card-container-sup">
       <div className="card-container">
-        <div
-          className={`heart-container ${isHearted ? "active" : ""}`}
-          onClick={toggleHeart}
-        >
-          <FontAwesomeIcon icon={faHeart} className={`heart-icon`} />
-        </div>
-        <div className="card-img-producto">
+        {/* <div className="card-img-producto"></div> */}
+        <div className="card-body-producto">
+          <div className="add-button" onClick={addToCart}>
+            +
+            {/* <button className="card-btn-remove card-btn">Remover</button> */}
+          </div>
+          <div
+            className={`heart-container ${isHearted ? "active" : ""}`}
+            onClick={toggleHeart}
+          >
+            <FontAwesomeIcon icon={faHeart} className={`heart-icon`} />
+          </div>
           <img
             src={producto.imagen}
             alt={producto.nombre}
             className="h-100 w-100 img-fluid object-fit-cover img-producto"
           />
-        </div>
-        <div className="card-body-producto">
           <div className="card-content-producto">
             <h2 className="mt-3 card-title">{producto.nombre}</h2>
             <p>{producto.descripcion}</p>

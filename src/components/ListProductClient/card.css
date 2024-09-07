@@ -12,17 +12,18 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: var(--azul-oscuro);
+    /* background-color: var(--azul-oscuro); */
     border-radius:50%
 }
 .card-container{
     width: 300px;
-    height: 300px;
+    height:300px;
     display: flex;
     align-items: center;
     flex-direction: column;
     justify-content: space-between;
     position: relative;
+    border-top-right-radius:50px ;
 }
 
 .card-img-producto{
@@ -32,17 +33,17 @@
     z-index: 1;
 }
 .img-producto{
-    border-radius: 20px;
+    border-top-right-radius: 50px;
 }
 
 .card-body-producto{
     position: absolute;
     background-color: rgb(255, 255, 255);
-    padding: 10px;
+    /* padding: 10px; */
     max-width: 250px;
     min-height: 300px;
-    top: 42%;
-    border-radius: 12px;
+    /* top: 42%; */
+    border-radius: 25px;
     box-shadow: 2px 2px 2px var(--azul-oscuro);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     display: flex;
@@ -61,8 +62,8 @@
     position: absolute;
     font-size: 1.5rem;
     color: rgb(120, 120, 120);
-    right: 47px;
-    top: -15px;
+    right: 10px;
+    top: 275px;
     padding: 5px;
     width: 50px;
     border-radius: 50%;
@@ -77,6 +78,23 @@
 .heart-container.active {
     color: red; /* Fondo cuando está activo */
     transform: scale(0.9); /* Achicar el icono */
+}
+.add-button{
+    position: absolute;
+    font-size: 1.5rem;
+    color: rgb(120, 120, 120);
+    right: 0px;
+    top: 0px;
+    padding: 5px;
+    width: 50px;
+    border-bottom-left-radius: 50%;
+    border-top-right-radius: 50%;
+    cursor: pointer;
+    border: 1px solid rgb(255, 255, 255);
+    background-color: rgb(255, 255, 255);
+    z-index: 1000;
+    box-shadow: 1px 1px 2px black;
+    transition: transform 0.2s ease;
 }
 
 .heart-container.active-reset {
