@@ -66,15 +66,15 @@ const ProductCardClient = (props) => {
             <h2 className="mt-3 card-title">{producto.nombre}</h2>
             <p>{producto.descripcion}</p>
           </div>
-          <div className="card-product-price">
-            <p>
+          <div className="card-product-price my-2">
+            <p className="m-0">
               <span className="product-price">$ {producto.preciounitario}</span>
             </p>
             <button
               className="card-btn-info card-btn"
               to={`/detalle/${producto.id}`}
             >
-              <FontAwesomeIcon icon={faInfo} />
+              <FontAwesomeIcon icon={faInfo} className="" />
             </button>
           </div>
           <div className="card-options"></div>

@@ -152,8 +152,8 @@
 }
 
 .card-btn{
-    padding: 5px 10px;
-    border-radius: 10px;
+    padding: 5px 15px;
+    border-radius: 100%;
     cursor: pointer;
     transition: background-color 0.2s ease-in-out;
     color: white;
