@@ -49,7 +49,7 @@
     display: flex;
     justify-content: space-between;
     flex-direction: column;
-    min-width: 300px;
+    min-width: 280px;
 
 }
 .card-body-producto:hover{
@@ -63,7 +63,7 @@
     font-size: 1.5rem;
     color: rgb(120, 120, 120);
     right: 10px;
-    top: 275px;
+    top: 255px;
     padding: 5px;
     width: 50px;
     border-radius: 50%;
@@ -82,7 +82,7 @@
 .add-button{
     position: absolute;
     font-size: 1.5rem;
-    color: rgb(120, 120, 120);
+    color: rgb(0, 0, 0);
     right: 0px;
     top: 0px;
     padding: 5px;
@@ -90,18 +90,42 @@
     border-bottom-left-radius: 50%;
     border-top-right-radius: 50%;
     cursor: pointer;
-    border: 1px solid rgb(255, 255, 255);
+    border: 5px solid rgb(0, 0, 0);
     background-color: rgb(255, 255, 255);
     z-index: 1000;
     box-shadow: 1px 1px 2px black;
     transition: transform 0.2s ease;
 }
+/* .added-to-cart-animation {
+    animation: scale-up 0.5s ease-in-out;
+  }
+  
+  @keyframes scale-up {
+    0% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.1);
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
+   */
+  .added-to-cart-color {
+    background-color: #6f6f6f; /* Verde */
+    color: white;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+  
+
+.add-button.active {
+    transform: scale(0.9); /* Achicar el icono */
+}
 
 .heart-container.active-reset {
     transform: scale(1); /* Volver al tamaño normal */
 }
-
-
 
 .card-content-producto{
     display: flex;
@@ -111,8 +135,15 @@
 }
 .card-product-price{
     display: flex;
-    justify-content: flex-end;
+    justify-content: space-between;
     align-items: center;
+    padding-right: 15px;
+    padding-left: 15px;
+}
+.product-price{
+    font-weight: bold !important;
+    font-size: 1.5rem !important;
+    color: rgb(255, 0, 0) !important;
 }
 .card-options{
     display: flex;
