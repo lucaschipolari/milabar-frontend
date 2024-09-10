@@ -484,6 +484,9 @@ body {
 .color-red{
     color:red;
 }
+.p-menuitem-link{
+  padding: 20px;
+}
 
   .custom-tab-menu .p-tabmenu-nav .p-tabmenuitem .p-menuitem-link {
     color: red !important;

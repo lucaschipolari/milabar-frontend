@@ -1,0 +1,128 @@
+:root{
+    --bordo:#780000;
+    --rojo:#C1121F;
+    --fondo:#FDF0D5;
+    --azul-oscuro:#003049;
+    --azul-clarito:#669BBC;
+}
+.card-container-sup{
+    position: relative;
+    width: 300px;
+    padding-top: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--azul-oscuro);
+    border-radius:50%
+}
+.card-container{
+    width: 300px;
+    height: 300px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+}
+
+.card-img-producto{
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    z-index: 1;
+}
+.img-producto{
+    border-radius: 20px;
+}
+
+.card-body-producto{
+    position: absolute;
+    background-color: rgb(255, 255, 255);
+    padding: 10px;
+    max-width: 250px;
+    min-height: 300px;
+    top: 42%;
+    border-radius: 12px;
+    box-shadow: 2px 2px 2px var(--azul-oscuro);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    min-width: 300px;
+
+}
+.card-body-producto:hover{
+    background-color: rgb(244, 244, 244);
+    box-shadow: 2px 2px 4px var(--azul-oscuro);
+    transform: scale(1.01);
+}
+
+.heart-container {
+    position: absolute;
+    font-size: 1.5rem;
+    color: rgb(120, 120, 120);
+    right: 47px;
+    top: -15px;
+    padding: 5px;
+    width: 50px;
+    border-radius: 50%;
+    cursor: pointer;
+    border: 1px solid rgb(255, 255, 255);
+    background-color: rgb(255, 255, 255);
+    z-index: 1000;
+    box-shadow: 1px 1px 2px black;
+    transition: transform 0.2s ease;
+}
+
+.heart-container.active {
+    color: red; /* Fondo cuando está activo */
+    transform: scale(0.9); /* Achicar el icono */
+}
+
+.heart-container.active-reset {
+    transform: scale(1); /* Volver al tamaño normal */
+}
+
+
+
+.card-content-producto{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: column;
+}
+.card-product-price{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+.card-options{
+    display: flex;
+    justify-content:space-around;
+    align-items: center;
+}
+
+.card-btn{
+    padding: 5px 10px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out;
+    color: white;
+}
+
+
+
+.card-btn-info{
+    background-color: var(--rojo);
+}
+.card-btn-info:hover{
+    background-color: rgb(255, 0, 0);
+}
+
+.card-btn-add-cart{
+    background-color: var(--azul-oscuro);
+}
+.card-btn-add-cart:hover{
+    background-color: rgb(0, 79, 163);
+}
+
