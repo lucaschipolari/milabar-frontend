@@ -1,26 +1,26 @@
 /* Estilo global para reiniciar márgenes y paddings */
-* {
+/* * {
     padding: 0;
     margin: 0;
     box-sizing: border-box;
     font-family: "Poppins", sans-serif;
-  }
+  } */
 
   /* Fondo del cuerpo */
 
-  body{
+  /* body{
     background-color: black !important;
-  }
+  } */
   /* Contenedor del título principal */
   .title-container {
     text-align: center;
     margin-bottom: 2em;
     background-color: #333;
   }
-  
+/*   
   .title {
     color: #333;
-  }
+  } */
   
   /* Contenedor de la descripción */
   .company-description {
@@ -96,11 +96,11 @@
   /* Posición del miembro */
   
   /* Contenedor de íconos sociales */
-  .icons {
+  /* .icons {
     display: flex;
     justify-content: center;
     gap: 10px;
-  }
+  } */
   
   /* Estilo para los enlaces de íconos */
   .social-icon  {
@@ -127,10 +127,6 @@
       box-sizing: border-box; /* Asegura que el padding y margen no desborden */
     }
   
-    .title {
-      font-size: 3em; /* Ajusta el tamaño del título */
-    }
-  
     .company-description {
       padding: 0 100px; /* Ajusta el padding para pantallas grandes */
     }
@@ -154,10 +150,7 @@
   /* Estilos responsivos para pantallas pequeñas */
   @media (max-width: 767px) {
     /* Asegura que el contenido permita desplazarse en móviles */
-    html, body {
-      height: 100%; /* Asegura que el contenido ocupe toda la altura */
-      overflow-y: auto !important; /* Forza el scroll vertical solo en móviles */
-    }
+
   
     .team-member {
       flex: 1 1 100%; /* Tarjetas ocupan todo el ancho en móviles */
@@ -187,10 +180,7 @@
       flex: 1 1 1 1%; /* Cuatro tarjetas por fila en pantallas grandes */
       max-width: 22%; /* Asegura que las 4 tarjetas ocupen una fila completa */
     }
-  
-    .title {
-      font-size: 3em; /* Aumenta el tamaño del título en pantallas grandes */
-    }
+
   
     .company-description {
       padding: 0 100px; /* Más espacio en pantallas grandes */

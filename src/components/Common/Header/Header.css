@@ -11,13 +11,18 @@
   top: 0;
   left: 0;
   right: 0;
-  background-color: #ff0000;
+  background-color: #003049;
   z-index: 999; /* Asegura que esté por encima de otros elementos */
   box-shadow: 0 2px 4px #0000001a; /* Añade sombra para diferenciarlo del contenido */
   padding: 10px; /* Añade algo de padding si es necesario */
 
 }
-
+.container-title-header{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
 .icons {
   display: flex;
   justify-content: space-between;
@@ -50,20 +55,83 @@
 .basket-icon {
   height: 30px;
 }
-
-h1 {
-  font-size: 24px;
-  margin: 10px 0;
+.bread-top{
+  width: 200px;
+  height: 40px;
+  border-radius: 50% 50% 0 0;
+  background: linear-gradient(#bc581e,#e27b36);
+  position : relative;
 }
+.seed{
+  position : absolute;
+  width: 5px;
+  height: 10px;
+  border-radius: 50%;
+  background: white;
+  transform:rotate(-20deg);
+}
+.seed-0{
+  left: 20%;
+  top: 20%;
+}
+.seed-1{
+  left: 40%;
+  top: 20%;
+}
+
+.seed-2{
+  left: 60%;
+  top: 20%;
+}
+.seed-3{
+  left: 80%;
+  top: 20%;
+}
+
+.bread-bottom{
+  margin-top: 2px;
+  width: 200px;
+  height: 30px;
+  border-radius: 0 0 30% 30%;
+  background: linear-gradient(#bc581e,#e27b36);
+}
+
+.salad{
+  width: 190px;
+  height: 10px;
+  background: linear-gradient(#228c1d,#91ce58);
+  border-radius: 10px;
+}
+.tomato{
+  width: 180px;
+  height: 10px;
+  background: linear-gradient(#e73c27,#ff6f31);
+}
+.chesse{
+  width: 200px;
+  height: 10px;
+  border-radius: 15px;
+  background: linear-gradient(#f4d004,#d6bb22);
+}
+.title-back{
+  margin-top: 1px;
+  background-color: #003049;
+  width: 200px;
+  height: 70px;
+  border-radius:10% 5%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
 
 .title {
   font-family: "New Amsterdam", sans-serif;
   font-weight: 400;
   font-size: 52px;
-  margin-top: 50px;
   color: #000000;
   text-align: center;
-  background-color: #040404;
 }
 
 
@@ -73,8 +141,8 @@ h1 {
 
 @keyframes glow {
   0%, 100% {
-      color: rgb(255, 0, 0);
-      text-shadow: 0 0 12px rgb(255, 0, 0), 0 0 50px rgb(255, 0, 0), 0 0 100px rgb(255, 0, 0);
+      color:#ffffff;
+      text-shadow: 0 0 12px #003049, 0 0 50px #003049, 0 0 100px #003049;
   }
   10%, 90% {
       color: #ffffff;
@@ -193,4 +261,3 @@ h1 {
     justify-content: center;
   }
 }
-

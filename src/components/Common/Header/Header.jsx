@@ -71,31 +71,38 @@ const Header = ({ userData }) => {
 
   return (
     <header className="header">
-      <div className="icons">
-        {renderAuthButtons}
-        <div className="basket-icon">
-          <button
-            type="button"
-            className="btn btn-light cart-button position-relative"
-            onClick={() => setCartModalVisible(true)}
-          >
-            <span className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
-              {cartCount}
-              <span className="visually-hidden">items en el carrito</span>
-            </span>
-            <FontAwesomeIcon icon={faCartShopping} />
-          </button>
+      <div>
+        <div className="icons">
+          <div className="">{renderAuthButtons}</div>
+          <div className="basket-icon">
+            <button
+              type="button"
+              className="btn btn-light cart-button"
+              onClick={() => setCartModalVisible(true)}
+            >
+              <span className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                {cartCount}
+                <span className="visually-hidden">items en el carrito</span>
+              </span>
+              <FontAwesomeIcon icon={faCartShopping} />
+            </button>
+          </div>
         </div>
       </div>
-      <h1>
-        <div className="title">
-          {"MILABAR".split("").map((letter, index) => (
-            <span key={index}>{letter}</span>
-          ))}
-        </div>
-        <br />
-        <span className="subtitle">Milanesas enserio.</span>
-      </h1>
+      <div className="container-title-header">
+        <h1>
+          <div className="title-back">
+            <div className="title">
+              {"MILABAR".split("").map((letter, index) => (
+                <span key={index}>{letter}</span>
+              ))}
+            </div>
+          </div>
+
+          <br />
+          <span className="subtitle">Milanesas enserio.</span>
+        </h1>
+      </div>
       <CartModal
         visible={isCartModalVisible}
         onHide={() => setCartModalVisible(false)}
