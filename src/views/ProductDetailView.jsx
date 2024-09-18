@@ -63,20 +63,19 @@ const ProductDetailPage = () => {
     <div className="product-detail-container">
     <div className="product-detail-page">
       {/* Botón de retroceso */}
-      <div className="button-container">
+      <div className="button-container d-flex justify-content-between">
         <button className="back-button" onClick={() => navigate(-1)}>
           Volver
         </button>
-
         <button className="heart-button" onClick={toggleLiked}>
           {liked ? "❤️" : "🤍"}
         </button>
       </div>
 
       {/* Imagen del producto */}
-      <div className="product-image-container">
+      
         <ProductImage imageUrl={product.imagen} alt={product.nombre} />
-      </div>
+      
 
       {/* Información del producto */}
       <div className="product-info">

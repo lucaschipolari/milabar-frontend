@@ -1,9 +1,3 @@
-
-
-body {
-    font-family: 'Poppins', sans-serif;
-}
-
 /* Contenedor principal de los detalles del producto */
 .product-detail-container {
     display: flex;
@@ -11,18 +5,19 @@ body {
     justify-content: center;
     align-items: center;
     padding: 20px;
-    max-width: 1200px;
-    margin: 0 auto;
+    max-width: 100%;
+    overflow-x: hidden;
+    background-color: #FDF0D5;
 }
 
 /* Imagen del producto */
 .product-image-container {
     width: 100%;
     max-width: 500px;
-    margin-bottom: 20px;
     display: flex;
     justify-content: center;
     align-items: center;
+    margin: 0 auto;
 }
 
 .producto-imagen {
@@ -34,9 +29,9 @@ body {
 /* Información del producto */
 .product-info {
     text-align: center;
-    margin-bottom: 20px;
     width: 100%;
     max-width: 600px;
+    margin: 0 auto;
 }
 
 .product-title {
@@ -98,14 +93,23 @@ body {
     border-radius: 5px;
     cursor: pointer;
     font-size: 16px;
+    max-width: 200px;
 }
 
 .add-to-cart-button:hover {
     background-color: #d45a0c;
 }
 
-/* Botón de volver */
-.back-button {
+/* Botón de volver y corazón */
+.button-container {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 600px;
+    margin-bottom: 20px;
+}
+
+.back-button, .heart-button {
     padding: 10px 20px;
     background-color: #f97316;
     color: white;
@@ -113,30 +117,20 @@ body {
     border-radius: 5px;
     cursor: pointer;
     font-size: 16px;
-    margin-bottom: 20px;
 }
 
-.back-button:hover {
+.back-button:hover, .heart-button:hover {
     background-color: #d45a0c;
 }
 
 .heart-button {
     background-color: #f97316;
-    color: white;
-    border: none;
-    border-radius: 5%;
     padding: 10px;
-    cursor: pointer;
-    position: relative;
-    top: -50px;
-    left: -50px;
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
-
-.heart-button:hover {
-    background-color: #d45a0c;
-}
-
-
 
 /* Estilos para pantallas grandes */
 @media (min-width: 1024px) {
@@ -147,7 +141,6 @@ body {
 
     .product-image-container {
         width: 100%;
-        margin-right: 20px;
     }
 
     .product-info {
@@ -158,13 +151,8 @@ body {
     .add-to-cart-button {
         justify-content: flex-start;
     }
-
-    .heart-button {
-        top: 5px;
-        left: 355px;
-        right: 20px;
-    }
 }
+
 /* Ajustes para pantallas entre 768px y 1023px */
 @media (max-width: 1023px) {
     /* Ajustes generales */
@@ -174,35 +162,31 @@ body {
         align-items: center;
     }
 
-    /* Imagen del producto */
     .product-image-container {
         width: 100%;
-        max-width: 400px; /* Reducir el tamaño máximo de la imagen */
+        max-width: 400px;
         margin-bottom: 20px;
     }
 
-    /* Información del producto */
     .product-info {
         max-width: 90%;
-        text-align: center; /* Centrar el texto en pantallas más pequeñas */
+        text-align: center;
     }
 
     .product-title {
-        font-size: 32px; /* Ajustar el tamaño del título */
+        font-size: 32px;
     }
 
     .product-price {
-        font-size: 28px; /* Ajustar el tamaño del precio */
+        font-size: 28px;
         margin-bottom: 15px;
     }
 
-    /* Descripción del producto */
     .product-description p {
         font-size: 16px;
         margin-bottom: 20px;
     }
 
-    /* Acciones del producto (cantidad y botón de agregar al carrito) */
     .product-actions {
         width: 100%;
         justify-content: center;
@@ -215,7 +199,7 @@ body {
     }
 
     .quantity-button {
-        width: 35px; /* Reducir el tamaño de los botones de cantidad */
+        width: 35px;
         height: 35px;
         font-size: 18px;
     }
@@ -223,28 +207,16 @@ body {
     .add-to-cart-button {
         width: 100%;
         padding: 12px;
-        font-size: 16px; /* Ajustar el tamaño del texto */
+        font-size: 16px;
     }
 
-    /* Botón de volver */
     .back-button {
-        top: 10px;
-        left: 10px;
-        font-size: 14px; /* Ajustar el tamaño del texto */
+        font-size: 14px;
         padding: 8px 15px;
     }
 
-    /* Botón de corazón */
     .heart-button {
-        top: 2px;
-        left: 270px;
         padding: 10px;
-    }
-
-    /* Oferta especial */
-    .special-offer {
-        font-size: 14px; /* Ajustar el tamaño del texto */
-        padding: 8px;
     }
 }
 
@@ -262,14 +234,36 @@ body {
         font-size: 16px;
     }
 
-    .add-to-cart-button {
-        width: 100%;
-    }
-    
-    /* Botón de corazón */
-    .heart-button {
-        left: 250px;
+
+}
+
+/* Ajustes para pantallas pequeñas (menores de 400px) */
+@media (max-width: 400px) {
+    .product-detail-container {
         padding: 10px;
+        max-width: 100%;
+        margin: 0;
     }
 
+    .product-title {
+        font-size: 24px;
+    }
+
+    .product-price {
+        font-size: 20px;
+    }
+
+    .product-description p {
+        font-size: 14px;
+    }
+
+    .quantity-button {
+        width: 30px;
+        height: 30px;
+    }
+
+    .add-to-cart-button {
+        
+        padding: 8px;
+    }
 }
