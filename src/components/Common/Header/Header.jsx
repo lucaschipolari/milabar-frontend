@@ -36,10 +36,10 @@ const Header = ({ userData }) => {
     if (!isLoggedIn) {
       return (
         <div>
-          <Link to="/user/login" className="btn btn-red mx-1">
+          <Link to="/user/login" className="btn btn-login mx-1">
             Iniciar Sesión
           </Link>
-          <Link to="/user/register" className="btn btn-gray">
+          <Link to="/user/register" className="btn btn-register">
             Registrarse
           </Link>
         </div>
@@ -89,19 +89,21 @@ const Header = ({ userData }) => {
           </div>
         </div>
       </div>
-      <div className="container-title-header">
-        <h1>
-          <div className="title-back">
-            <div className="title">
-              {"MILABAR".split("").map((letter, index) => (
-                <span key={index}>{letter}</span>
-              ))}
+      <div className="container h-100 d-flex justify-content-center align-content-center">
+        <div className="container-title-header">
+          <h1>
+            <div className="title-back">
+              <div className="title">
+                {"MILABAR".split("").map((letter, index) => (
+                  <span key={index}>{letter}</span>
+                ))}
+              </div>
             </div>
-          </div>
 
-          <br />
-          <span className="subtitle">Milanesas enserio.</span>
-        </h1>
+            <br />
+            <span className="subtitle">Milanesas enserio.</span>
+          </h1>
+        </div>
       </div>
       <CartModal
         visible={isCartModalVisible}

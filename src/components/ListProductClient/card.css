@@ -41,7 +41,7 @@
     background-color: rgb(255, 255, 255);
     /* padding: 10px; */
     max-width: 250px;
-    min-height: 300px;
+    min-height: 450px;
     /* top: 42%; */
     border-radius: 25px;
     box-shadow: 2px 2px 2px var(--azul-oscuro);
@@ -61,7 +61,7 @@
 .heart-container {
     position: absolute;
     font-size: 1.5rem;
-    color: rgb(120, 120, 120);
+    color: rgb(204, 204, 204);
     right: 10px;
     top: 255px;
     padding: 5px;
@@ -69,7 +69,7 @@
     border-radius: 50%;
     cursor: pointer;
     border: 1px solid rgb(255, 255, 255);
-    background-color: rgb(255, 255, 255);
+    background-color: white;
     z-index: 1000;
     box-shadow: 1px 1px 2px black;
     transition: transform 0.2s ease;
@@ -90,28 +90,13 @@
     border-bottom-left-radius: 50%;
     border-top-right-radius: 50%;
     cursor: pointer;
-    border: 5px solid rgb(0, 0, 0);
+    border: 0.5px solid rgb(0, 0, 0);
     background-color: rgb(255, 255, 255);
     z-index: 1000;
     box-shadow: 1px 1px 2px black;
     transition: transform 0.2s ease;
 }
-/* .added-to-cart-animation {
-    animation: scale-up 0.5s ease-in-out;
-  }
-  
-  @keyframes scale-up {
-    0% {
-      transform: scale(1);
-    }
-    50% {
-      transform: scale(1.1);
-    }
-    100% {
-      transform: scale(1);
-    }
-  }
-   */
+
   .added-to-cart-color {
     background-color: #6f6f6f; /* Verde */
     color: white;
@@ -162,10 +147,13 @@
 
 
 .card-btn-info{
-    background-color: var(--rojo);
+    background-color:white;
+    color: black;
+    border: 1px solid black;
 }
 .card-btn-info:hover{
-    background-color: rgb(255, 0, 0);
+    background-color: rgb(150, 150, 150);
+    color: white;
 }
 
 .card-btn-add-cart{

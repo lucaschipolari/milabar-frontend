@@ -32,6 +32,7 @@ const PrincipalPage = () => {
     queryFn: () => getUserFn(userId),
     enabled: !!userId,
   });
+  const categorias = ["SANGUCHE", "GASEOSA", "PIZZA", "HAMBURGUESA"];
   if (isLoading) return <IsLoading />;
   if (isError) return <p>Error al cargar los datos del usuario.</p>;
   console.log(user);
@@ -82,8 +83,9 @@ const PrincipalPage = () => {
             </a>
           </div>
         </div>
-
-        <ListProductClient />
+        {categorias.map((categoria, index) => {
+          return <ListProductClient key={index} title={categoria} />;
+        })}
       </div>
     </>
   );

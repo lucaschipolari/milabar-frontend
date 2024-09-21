@@ -72,9 +72,9 @@
     position: absolute;
     width: 70px;
     height: 70px;
-    background: #ff0000;
+    background: #669BBC;
     border-radius: 50%;
-    border: 6px solid var(--clr);
+    border: 6px solid white;
     transition: 0.5s;
     top: -50%;
     z-index: 1;

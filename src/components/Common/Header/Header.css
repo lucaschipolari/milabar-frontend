@@ -2,8 +2,38 @@
 .header {
   background-color: #fdfdfd;
   padding: 20px;
+  background-attachment: fixed;
+  background-image:linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)), url("https://mascontenidos.net/download/multimedia.normal.87bb0c3a94463163.73616e776963682d6d696c616e657361312d65643134653433343139373131345f6e6f726d616c2e6a7067.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
   text-align: center;
   box-shadow: 0 2px 4px #0000001a;
+  height: 700px;
+}
+.btn-register{
+  background-color: #ffffff !important;
+  color: #000000 !important;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 1s ease-in-out;
+}
+.btn-register:hover{
+  background-color: #a5a5a5  !important;
+}
+.btn-login{
+  background-color: #0f8fda !important;
+  color: #ffffff!important;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.btn-login:hover{
+  background-color: #085cdb !important;
 }
 
 .container-options {
@@ -12,16 +42,21 @@
   left: 0;
   right: 0;
   background-color: #003049;
-  z-index: 999; /* Asegura que esté por encima de otros elementos */
-  box-shadow: 0 2px 4px #0000001a; /* Añade sombra para diferenciarlo del contenido */
-  padding: 10px; /* Añade algo de padding si es necesario */
+  z-index: 999;
+  box-shadow: 0 2px 4px #0000001a;
+  padding: 10px; 
 
 }
+
 .container-title-header{
+
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
+  padding: 25px;
+  width: 50%;
+
 }
 .icons {
   display: flex;
@@ -199,9 +234,12 @@
 }
 
 .subtitle {
+
+  font-family: "Montserrat", sans-serif;
   font-size: 18px;
-  color: gray;
-  margin-bottom: 10px;
+  color: rgb(255, 255, 255);
+  font-weight: bold;
+  border-radius: 10px;
 }
 
 .container-input {
