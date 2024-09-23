@@ -99,7 +99,7 @@ const ProductDetailPage = () => {
         </div>
 
         {/* Botón de agregar al carrito */}
-        <AddToCartButton product={product} quantity={quantity} />
+        <AddToCartButton producto={product} quantity={quantity} />
       </div>
     </div>
     </div>
