@@ -26,6 +26,7 @@ const ProductCardClient = (props) => {
       name: producto.nombre,
       image: producto.imagen,
       price: producto.preciounitario,
+      quantity: 1,
     });
     toast.success(`${producto.nombre} añadido al carrito.`);
   };

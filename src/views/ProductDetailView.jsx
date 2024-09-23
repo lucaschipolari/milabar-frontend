@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { getProductoFn } from "../api/productos"; // Importa la función de la API para obtener el producto
 import ProductImage from "../components/DetailPage/ProductImage";

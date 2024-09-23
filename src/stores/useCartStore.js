@@ -13,12 +13,12 @@ export const useCartStore = create((set) => ({
         const updateProducts = [...state.products];
         updateProducts[existingProductIndex] = {
           ...updateProducts[existingProductIndex],
-          quantity: updateProducts[existingProductIndex].quantity + 1,
+          quantity: updateProducts[existingProductIndex].quantity + product.quantity,
         };
         return { products: updateProducts };
       } else {
         return {
-          products: [...state.products, { ...product, quantity: 1 }],
+          products: [...state.products, { ...product, quantity: product.quantity }],
         };
       }
     }),
