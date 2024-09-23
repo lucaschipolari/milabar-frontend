@@ -12,17 +12,18 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: var(--azul-oscuro);
+    /* background-color: var(--azul-oscuro); */
     border-radius:50%
 }
 .card-container{
     width: 300px;
-    height: 300px;
+    height:300px;
     display: flex;
     align-items: center;
     flex-direction: column;
     justify-content: space-between;
     position: relative;
+    border-top-right-radius:50px ;
 }
 
 .card-img-producto{
@@ -32,23 +33,23 @@
     z-index: 1;
 }
 .img-producto{
-    border-radius: 20px;
+    border-top-right-radius: 50px;
 }
 
 .card-body-producto{
     position: absolute;
     background-color: rgb(255, 255, 255);
-    padding: 10px;
+    /* padding: 10px; */
     max-width: 250px;
-    min-height: 300px;
-    top: 42%;
-    border-radius: 12px;
+    min-height: 450px;
+    /* top: 42%; */
+    border-radius: 25px;
     box-shadow: 2px 2px 2px var(--azul-oscuro);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     display: flex;
     justify-content: space-between;
     flex-direction: column;
-    min-width: 300px;
+    min-width: 280px;
 
 }
 .card-body-producto:hover{
@@ -60,15 +61,15 @@
 .heart-container {
     position: absolute;
     font-size: 1.5rem;
-    color: rgb(120, 120, 120);
-    right: 47px;
-    top: -15px;
+    color: rgb(204, 204, 204);
+    right: 10px;
+    top: 255px;
     padding: 5px;
     width: 50px;
     border-radius: 50%;
     cursor: pointer;
     border: 1px solid rgb(255, 255, 255);
-    background-color: rgb(255, 255, 255);
+    background-color: white;
     z-index: 1000;
     box-shadow: 1px 1px 2px black;
     transition: transform 0.2s ease;
@@ -78,12 +79,38 @@
     color: red; /* Fondo cuando está activo */
     transform: scale(0.9); /* Achicar el icono */
 }
+.add-button{
+    position: absolute;
+    font-size: 1.5rem;
+    color: rgb(0, 0, 0);
+    right: 0px;
+    top: 0px;
+    padding: 5px;
+    width: 50px;
+    border-bottom-left-radius: 50%;
+    border-top-right-radius: 50%;
+    cursor: pointer;
+    border: 0.5px solid rgb(0, 0, 0);
+    background-color: rgb(255, 255, 255);
+    z-index: 1000;
+    box-shadow: 1px 1px 2px black;
+    transition: transform 0.2s ease;
+}
+
+  .added-to-cart-color {
+    background-color: #6f6f6f; /* Verde */
+    color: white;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+  
+
+.add-button.active {
+    transform: scale(0.9); /* Achicar el icono */
+}
 
 .heart-container.active-reset {
     transform: scale(1); /* Volver al tamaño normal */
 }
-
-
 
 .card-content-producto{
     display: flex;
@@ -93,8 +120,15 @@
 }
 .card-product-price{
     display: flex;
-    justify-content: flex-end;
+    justify-content: space-between;
     align-items: center;
+    padding-right: 15px;
+    padding-left: 15px;
+}
+.product-price{
+    font-weight: bold !important;
+    font-size: 1.5rem !important;
+    color: rgb(255, 0, 0) !important;
 }
 .card-options{
     display: flex;
@@ -103,8 +137,8 @@
 }
 
 .card-btn{
-    padding: 5px 10px;
-    border-radius: 10px;
+    padding: 5px 15px;
+    border-radius: 100%;
     cursor: pointer;
     transition: background-color 0.2s ease-in-out;
     color: white;
@@ -113,10 +147,13 @@
 
 
 .card-btn-info{
-    background-color: var(--rojo);
+    background-color:white;
+    color: black;
+    border: 1px solid black;
 }
 .card-btn-info:hover{
-    background-color: rgb(255, 0, 0);
+    background-color: rgb(150, 150, 150);
+    color: white;
 }
 
 .card-btn-add-cart{

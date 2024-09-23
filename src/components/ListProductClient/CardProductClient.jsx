@@ -1,16 +1,16 @@
+import { useState } from "react";
 import PropTypes from "prop-types";
-
-import { faHeart } from "@fortawesome/free-solid-svg-icons";
+import { faHeart, faInfo, faPlus } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-
 import "../../components/Admin/Product/styles/producto.css";
 import { useCartStore } from "../../stores/useCartStore";
 import { toast } from "sonner";
-import { useState } from "react";
 
 const ProductCardClient = (props) => {
   const { producto } = props;
   const [isHearted, setIsHearted] = useState(false);
+  const [isAdded, setIsAdded] = useState(false); // Estado para la animación de la tarjeta
+  const [isButtonColored, setIsButtonColored] = useState(false); // Estado para el cambio de color del botón
 
   const { addProduct } = useCartStore();
 
@@ -21,7 +21,16 @@ const ProductCardClient = (props) => {
       image: producto.imagen,
       price: producto.preciounitario,
     });
+
     toast.success(`${producto.nombre} añadido al carrito.`);
+
+    // Activa la clase de color en el botón
+    setIsButtonColored(true);
+
+    // Remueve el color después de un corto período
+    setTimeout(() => {
+      setIsButtonColored(false);
+    }, 1000); // El color cambia durante 1 segundo
   };
 
   const toggleHeart = () => {
@@ -30,48 +39,50 @@ const ProductCardClient = (props) => {
 
   return (
     <div className="card-container-sup">
-      <div className="card-container">
-        <div
-          className={`heart-container ${isHearted ? "active" : ""}`}
-          onClick={toggleHeart}
-        >
-          <FontAwesomeIcon icon={faHeart} className={`heart-icon`} />
-        </div>
-        <div className="card-img-producto">
+      <div
+        className={`card-container ${isAdded ? "added-to-cart-animation" : ""}`}
+      >
+        <div className="card-body-producto">
+          <div
+            className={`add-button ${
+              isButtonColored ? "added-to-cart-color" : ""
+            }`}
+            onClick={addToCart}
+          >
+            +
+          </div>
+          <div
+            className={`heart-container ${isHearted ? "active" : ""}`}
+            onClick={toggleHeart}
+          >
+            <FontAwesomeIcon icon={faHeart} className="heart-icon" />
+          </div>
           <img
             src={producto.imagen}
             alt={producto.nombre}
             className="h-100 w-100 img-fluid object-fit-cover img-producto"
           />
-        </div>
-        <div className="card-body-producto">
           <div className="card-content-producto">
             <h2 className="mt-3 card-title">{producto.nombre}</h2>
             <p>{producto.descripcion}</p>
           </div>
-          <div className="card-product-price">
-            <p>
-              Precio: <span>{producto.preciounitario}</span>
+          <div className="card-product-price my-2">
+            <p className="m-0">
+              <span className="product-price">$ {producto.preciounitario}</span>
             </p>
-          </div>
-          <div className="card-options">
             <button
               className="card-btn-info card-btn"
               to={`/detalle/${producto.id}`}
             >
-              Más info
-            </button>
-            <button className="card-btn-add-cart card-btn" onClick={addToCart}>
-              Agregar
+              <FontAwesomeIcon icon={faInfo} className="" />
             </button>
           </div>
+          <div className="card-options"></div>
         </div>
       </div>
     </div>
   );
 };
-
-export default ProductCardClient;
 
 ProductCardClient.propTypes = {
   producto: PropTypes.shape({
@@ -85,3 +96,5 @@ ProductCardClient.propTypes = {
   handleLike: PropTypes.func,
   handleAddCart: PropTypes.func,
 };
+
+export default ProductCardClient;

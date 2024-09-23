@@ -75,3 +75,8 @@ export const putProductoFn = async ({ productoId, data }) => {
     );
   }
 };
+
+// export const getCategory = async (req, res) => {
+//   const res = await fetch(`${BACKEND_URL}/categorias`);
+//   const data = await res.json();
+// };
