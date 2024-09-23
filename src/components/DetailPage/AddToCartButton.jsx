@@ -3,7 +3,7 @@ import { useCartStore } from "../../stores/useCartStore";
 import { toast } from "sonner";
 
 const AddToCartButton = (props) => {
-  const { producto } = props;
+  const { producto, quantity } = props;
   const { addProduct } = useCartStore();
 
   const addToCart = () => {
@@ -12,6 +12,7 @@ const AddToCartButton = (props) => {
       name: producto.nombre,
       image: producto.imagen,
       price: producto.preciounitario,
+      quantity,
     });
     toast.success(`${producto.nombre} añadido al carrito.`, {
       duration: 1000,
@@ -35,4 +36,5 @@ AddToCartButton.propTypes = {
     descripcion: PropTypes.string.isRequired,
     preciounitario: PropTypes.number.isRequired,
   }).isRequired,
+  quantity: PropTypes.number.isRequired,
 };
