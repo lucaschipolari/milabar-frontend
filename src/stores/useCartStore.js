@@ -7,25 +7,43 @@ export const useCartStore = create(
   persist(
     (set) => ({
       products: [],
+  addProduct: (product) =>
+    set((state) => {
+      const existingProductIndex = state.products.findIndex(
+        (p) => p.id === product.id
+      );
+      if (existingProductIndex >= 0) {
+        const updateProducts = [...state.products];
+        updateProducts[existingProductIndex] = {
+          ...updateProducts[existingProductIndex],
+          quantity: updateProducts[existingProductIndex].quantity + product.quantity,
+        };
+        return { products: updateProducts };
+      } else {
+        return {
+          products: [...state.products, { ...product, quantity: product.quantity }],
+        };
+      }
+    }),
 
-      addProduct: (product) =>
-        set((state) => {
-          const existingProductIndex = state.products.findIndex(
-            (p) => p.id === product.id
-          );
-          if (existingProductIndex >= 0) {
-            const updateProducts = [...state.products];
-            updateProducts[existingProductIndex] = {
-              ...updateProducts[existingProductIndex],
-              quantity: updateProducts[existingProductIndex].quantity + 1,
-            };
-            return { products: updateProducts };
-          } else {
-            return {
-              products: [...state.products, { ...product, quantity: 1 }],
-            };
-          }
-        }),
+      // addProduct: (product) =>
+      //   set((state) => {
+      //     const existingProductIndex = state.products.findIndex(
+      //       (p) => p.id === product.id
+      //     );
+      //     if (existingProductIndex >= 0) {
+      //       const updateProducts = [...state.products];
+      //       updateProducts[existingProductIndex] = {
+      //         ...updateProducts[existingProductIndex],
+      //         quantity: updateProducts[existingProductIndex].quantity + 1,
+      //       };
+      //       return { products: updateProducts };
+      //     } else {
+      //       return {
+      //         products: [...state.products, { ...product, quantity: 1 }],
+      //       };
+      //     }
+      //   }),
 
       updateQuantity: (id, increment) =>
         set((state) => {

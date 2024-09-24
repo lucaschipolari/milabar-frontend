@@ -153,7 +153,7 @@ const CartModal = ({ visible, onHide }) => {
       </div>
       <div className="detail-container">
         <Input
-          className="m-3"
+          className="m-3 text-detail"
           error={errors.details}
           label="Detalles del pedido"
           name="details"
@@ -223,7 +223,7 @@ const CartModal = ({ visible, onHide }) => {
           Vaciar carrito
         </button>
         <button
-          className="btn btn-success btn-sm p-1"
+          className="btn btn-success btn-sm p-1 confirm-button"
           onClick={handleOrder}
           disabled={isOrderButtonDisabled}
         >

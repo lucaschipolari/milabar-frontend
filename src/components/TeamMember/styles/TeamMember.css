@@ -1,27 +1,11 @@
 /* 
-* {
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
-    font-family: "Poppins", sans-serif;
-  }
 
-
-
-  body{
-    background-color: black !important;
-  }
-  
   .title-container {
     text-align: center;
     margin-bottom: 2em;
     background-color: #333;
   }
-  
-  .title {
-    color: #333;
-  }
-  
+
  
   .company-description {
     text-align: center;
@@ -94,14 +78,7 @@
     color: black;
   }
   
-  
- 
-  .icons {
-    display: flex;
-    justify-content: center;
-    gap: 10px;
-  }
-  
+
   
   .social-icon  {
     font-size: 1.5em;
@@ -126,11 +103,7 @@
       max-width: calc(25% - 20px); 
       box-sizing: border-box;
     }
-  
-    .title {
-      font-size: 3em; 
-    }
-  
+
     .company-description {
       padding: 0 100px;
     }
@@ -153,13 +126,10 @@
    
  Estilos responsivos para pantallas pequeñas 
   @media (max-width: 767px) {
-   Asegura que el contenido permita desplazarse en móviles 
-    html, body {
-      height: 100%;Asegura que el contenido ocupe toda la altura 
-      overflow-y: auto !important;Forza el scroll vertical solo en móviles 
-    }
+    /* Asegura que el contenido permita desplazarse en móviles */
+
   
-    .team-member {
+    /* .team-member {
       flex: 1 1 100%;Tarjetas ocupan todo el ancho en móviles 
       max-width: 100%;
     }
@@ -173,27 +143,22 @@
     }
   }
   
- Estilos responsivos para pantallas medianas 
   @media (min-width: 768px) and (max-width: 991px) {
     .team-member {
       flex: 1 1 48%;Dos tarjetas por fila en pantallas medianas 
     }
   }
   
- Estilos responsivos para pantallas grandes (4 tarjetas por fila) 
   @media (min-width: 992px) {
 
     .team-member {
       flex: 1 1 1 1%;Cuatro tarjetas por fila en pantallas grandes 
       max-width: 22%;Asegura que las 4 tarjetas ocupen una fila completa 
     }
-  
-    .title {
-      font-size: 3em;Aumenta el tamaño del título en pantallas grandes 
-    }
+
   
     .company-description {
       padding: 0 100px;Más espacio en pantallas grandes 
     }
   }
-   */
+   */ 

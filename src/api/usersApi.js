@@ -78,7 +78,7 @@ export const postLoginFn = async (data) => {
   const token = resData.data;
 
   if (!token) {
-    console.log("hola")
+    console.log("hola");
     throw new Error(resData.message || "Ocurrió un error");
   }
 
@@ -119,7 +119,6 @@ export const postRegisterFn = async (data) => {
 };
 
 export const getUserFn = async (userId) => {
-
   const token = sessionStorage.getItem("token");
   if (!token) {
     throw new Error("No se encontró el token");
@@ -135,8 +134,7 @@ export const getUserFn = async (userId) => {
   if (!res.ok) {
     throw new Error("Ocurrió un error leyendo la entrada del usuario");
   }
-
-  return await res.json(); 
+  return await res.json();
 };
 
 export const putUsersFn = async ({ userId, data }) => {
@@ -153,6 +151,31 @@ export const putUsersFn = async ({ userId, data }) => {
       Authorization: `Bearer ${token}`, // Agrega el token en la cabecera de autorización
     },
     body: JSON.stringify(data),
+  });
+
+  if (!res.ok) {
+    throw new Error(
+      "Ocurrió un error intentando editar el usuario seleccionado"
+    );
+  }
+
+  return await res.json(); // Asegúrate de retornar el JSON de la respuesta
+};
+
+export const putRoleUserFn = async ({ userId, data }) => {
+  const token = sessionStorage.getItem("token");
+
+  if (!token) {
+    throw new Error("No se encontró el token");
+  }
+
+  const res = await fetch(`${BACKEND_URL}/roles/${userId}`, {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`, // Agrega el token en la cabecera de autorización
+    },
+    body: JSON.stringify({ roles: data }),
   });
 
   if (!res.ok) {

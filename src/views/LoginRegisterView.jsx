@@ -11,10 +11,10 @@ const LoginRegisterView = () => {
     setActiveTab(index);
   };
   return (
-      <div className="rounded-4 p-5">
-        <AuthMenu onTabChange={handleTabChange} />
-        {activeTab === 0 ? <LoginPage /> : <RegisterPage />}
-      </div>
+    <div className="container mt-5 rounded-4 col col-md-6 mx-auto">
+      <AuthMenu onTabChange={handleTabChange} />
+      {activeTab === 0 ? <LoginPage /> : <RegisterPage />}
+    </div>
   );
 };
 

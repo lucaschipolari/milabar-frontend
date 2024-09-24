@@ -70,7 +70,7 @@ export const router = createBrowserRouter([
                 element: <LoginPage />,
               },
               {
-                path: "login",
+                path: "Register",
                 element: <RegisterPage />,
               },
             ],
@@ -92,6 +92,10 @@ export const router = createBrowserRouter([
           },
           {
             path: "modificar-producto/:id",
+            element: <DetalleProductoView />,
+          },
+          {
+            path: "agregar-producto",
             element: <DetalleProductoView />,
           },
           {

@@ -5,7 +5,8 @@ html, body {
     padding-bottom: 120px; /* Ajusta este valor según la altura de tu navbar */
 }
 #root {
-    background: #1b1b1b;
+
+    background: #FDf0d5;
     min-height: 100vh;
     display: flex;
     flex-direction: column;
