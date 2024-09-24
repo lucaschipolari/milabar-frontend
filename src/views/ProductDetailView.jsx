@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { getProductoFn } from "../api/productos"; // Importa la función de la API para obtener el producto
 import ProductImage from "../components/DetailPage/ProductImage";
@@ -63,20 +63,19 @@ const ProductDetailPage = () => {
     <div className="product-detail-container">
     <div className="product-detail-page">
       {/* Botón de retroceso */}
-      <div className="button-container">
+      <div className="button-container d-flex justify-content-between">
         <button className="back-button" onClick={() => navigate(-1)}>
           Volver
         </button>
-
         <button className="heart-button" onClick={toggleLiked}>
           {liked ? "❤️" : "🤍"}
         </button>
       </div>
 
       {/* Imagen del producto */}
-      <div className="product-image-container">
+      
         <ProductImage imageUrl={product.imagen} alt={product.nombre} />
-      </div>
+      
 
       {/* Información del producto */}
       <div className="product-info">
@@ -100,7 +99,7 @@ const ProductDetailPage = () => {
         </div>
 
         {/* Botón de agregar al carrito */}
-        <AddToCartButton product={product} quantity={quantity} />
+        <AddToCartButton producto={product} quantity={quantity} />
       </div>
     </div>
     </div>

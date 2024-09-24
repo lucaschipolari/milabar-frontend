@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import { faHeart, faInfo, faPlus } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "../../components/Admin/Product/styles/producto.css";
-import { useCartStore } from "../../stores/useCartStore";
+import { useCartStore } from "../../stores/useCartStore.js";
 import { toast } from "sonner";
 
 const ProductCardClient = (props) => {
@@ -20,6 +20,7 @@ const ProductCardClient = (props) => {
       name: producto.nombre,
       image: producto.imagen,
       price: producto.preciounitario,
+      quantity: 1,
     });
 
     toast.success(`${producto.nombre} añadido al carrito.`);

@@ -24,7 +24,7 @@
 
 .cart-dialog .p-dialog-header .p-dialog-title {
   margin: 0;
-  padding: 0 10px 0; /* Asegúrate de que no haya márgenes adicionales */
+  padding: 0 10px 0; 
 }
 
 .cart-product {
