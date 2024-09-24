@@ -23,8 +23,6 @@ const AdminOptions = () => {
   if (isLoading) return <IsLoading />;
   if (isError) return <p>Error al cargar los datos del usuario.</p>;
 
-  console.log(userData);
-
   return (
     <div className="d-flex flex-column align-items-center justify-content-center min-vh-100 gap-3">
       <div className="d-flex flex-column align-items-center gap-2">
@@ -38,13 +36,13 @@ const AdminOptions = () => {
         </div>
         <span className="fs-4 fw-medium">admin</span>
       </div>
-      <Link className="btn btn-danger w-50 " to="/productos-admin">
+      <Link className="btn btn-primary w-50 " to="/productos-admin">
         ABM PRODUCTOS
       </Link>
-      <Link className="btn btn-danger w-50 " to="/users">
+      <Link className="btn btn-primary w-50 " to="/users">
         ABM CLIENTES
       </Link>
-      <Link className="btn btn-danger w-50 " to="/404">
+      <Link className="btn btn-primary w-50 " to="/404">
         Estadísticas
       </Link>
     </div>

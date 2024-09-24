@@ -1,28 +1,12 @@
-/* Estilo global para reiniciar márgenes y paddings */
-* {
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
-    font-family: "Poppins", sans-serif;
-  }
 
-  /* Fondo del cuerpo */
 
-  body{
-    background-color: black !important;
-  }
-  /* Contenedor del título principal */
   .title-container {
     text-align: center;
     margin-bottom: 2em;
     background-color: #333;
   }
-  
-  .title {
-    color: #333;
-  }
-  
-  /* Contenedor de la descripción */
+
+ 
   .company-description {
     text-align: center;
     margin-bottom: 3em;
@@ -31,48 +15,48 @@
     padding: 0 20px;
   }
   
-  /* Contenedor general de las tarjetas */
+ 
   .container {
     width: 100%;
     max-width: 1200px;
     margin: 0 auto;
   }
   
-  /* Fila que contiene las tarjetas */
+
   .row {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between; /* Asegura que las 4 tarjetas ocupen el espacio disponible */
-    gap: 15px; /* Espaciado entre tarjetas */
+    justify-content: space-between; 
+    gap: 15px; 
   }
   
-  /* Estilos de la tarjeta individual */
+  
   .team-member {
     flex: 1 1 100%;
-    max-width: 300px; /* Tamaño máximo de las tarjetas */
+    max-width: 300px;
   }
   
-  /* Estilo de la tarjeta con degradado */
+
   .card-member {
     color: white;
-    background: linear-gradient(145deg, #ff000099, #f03d3d); /* Degradado gris más definido */
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra suave */
+    background: linear-gradient(145deg, #ff000099, #f03d3d); 
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
     padding: 2em 1em;
-    border-radius: 10px; /* Bordes redondeados */
+    border-radius: 10px; 
     text-align: center;
     transition: transform 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
     cursor: pointer;
-    border: none; /* Elimina los bordes */
+    border: none; 
   }
   
-  /* Efecto hover */
+ 
   .card-member:hover {
     background: linear-gradient(145deg, #b81f1f, #a91f1f);
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
-    transform: translateY(-10px); /* Movimiento más visible */
+    transform: translateY(-10px); 
   }
   
-  /* Contenedor de imagen */
+  
   .img-container {
     width: 100px;
     height: 100px;
@@ -88,21 +72,14 @@
     object-fit: cover;
   }
   
-  /* Nombre del miembro */
+ 
   .social-icons a{
     border: 1px solid black;
     color: black;
   }
-  /* Posición del miembro */
   
-  /* Contenedor de íconos sociales */
-  .icons {
-    display: flex;
-    justify-content: center;
-    gap: 10px;
-  }
+
   
-  /* Estilo para los enlaces de íconos */
   .social-icon  {
     font-size: 1.5em;
     color: black;
@@ -110,90 +87,78 @@
   }
   
   .social-icon:hover {
-    color: #6045ea; /* Cambia de color en hover */
+    color: #6045ea; 
   }
-/* Estilos para pantallas a partir de 1400px */
+
 @media (min-width: 1400px) {
     .row {
       display: flex;
       flex-wrap: wrap;
-      justify-content: space-between; /* Distribuye las tarjetas equitativamente */
-      gap: 20px; /* Añade espacio entre tarjetas */
+      justify-content: space-between;
+      gap: 20px; 
     }
   
     .team-member {
-      flex: 1 1 calc(25% - 20px); /* Ocupa el 25% menos el gap */
-      max-width: calc(25% - 20px); /* Limita el tamaño máximo de las tarjetas */
-      box-sizing: border-box; /* Asegura que el padding y margen no desborden */
+      flex: 1 1 calc(25% - 20px);
+      max-width: calc(25% - 20px); 
+      box-sizing: border-box;
     }
-  
-    .title {
-      font-size: 3em; /* Ajusta el tamaño del título */
-    }
-  
+
     .company-description {
-      padding: 0 100px; /* Ajusta el padding para pantallas grandes */
+      padding: 0 100px;
     }
   }  
-/* Media query para pantallas entre 993px y 1399px */
+
 @media (min-width: 994px) and (max-width: 1399px) {
     .row {
       display: flex;
       flex-wrap: wrap;
-      justify-content: space-between; /* Distribuye las tarjetas equitativamente */
-      gap: 20px; /* Añade espacio entre tarjetas */
+      justify-content: space-between; 
+      gap: 20px; 
     }
   
     .team-member {
-      flex: 1 1 calc(50% - 20px); /* Cada tarjeta ocupa el 50% menos el gap */
-      max-width: calc(50% - 20px); /* Asegura que las tarjetas no superen el 50% */
-      box-sizing: border-box; /* Asegura que el padding y margen no desborden */
+      flex: 1 1 calc(50% - 20px); 
+      max-width: calc(50% - 20px); 
+      box-sizing: border-box; 
     }
   }
    
-  /* Estilos responsivos para pantallas pequeñas */
+ Estilos responsivos para pantallas pequeñas 
   @media (max-width: 767px) {
     /* Asegura que el contenido permita desplazarse en móviles */
-    html, body {
-      height: 100%; /* Asegura que el contenido ocupe toda la altura */
-      overflow-y: auto !important; /* Forza el scroll vertical solo en móviles */
-    }
+
   
     .team-member {
-      flex: 1 1 100%; /* Tarjetas ocupan todo el ancho en móviles */
+      flex: 1 1 100%;Tarjetas ocupan todo el ancho en móviles 
       max-width: 100%;
     }
   
     .company-description {
-      padding: 0 10px; /* Reduce el padding en móviles */
+      padding: 0 10px;Reduce el padding en móviles 
     }
   
     .row {
-      flex-direction: column; /* Coloca las tarjetas una debajo de otra en móviles */
+      flex-direction: column;Coloca las tarjetas una debajo de otra en móviles 
     }
   }
   
-  /* Estilos responsivos para pantallas medianas */
   @media (min-width: 768px) and (max-width: 991px) {
     .team-member {
-      flex: 1 1 48%; /* Dos tarjetas por fila en pantallas medianas */
+      flex: 1 1 48%;Dos tarjetas por fila en pantallas medianas 
     }
   }
   
-  /* Estilos responsivos para pantallas grandes (4 tarjetas por fila) */
   @media (min-width: 992px) {
 
     .team-member {
-      flex: 1 1 1 1%; /* Cuatro tarjetas por fila en pantallas grandes */
-      max-width: 22%; /* Asegura que las 4 tarjetas ocupen una fila completa */
+      flex: 1 1 1 1%;Cuatro tarjetas por fila en pantallas grandes 
+      max-width: 22%;Asegura que las 4 tarjetas ocupen una fila completa 
     }
-  
-    .title {
-      font-size: 3em; /* Aumenta el tamaño del título en pantallas grandes */
-    }
+
   
     .company-description {
-      padding: 0 100px; /* Más espacio en pantallas grandes */
+      padding: 0 100px;Más espacio en pantallas grandes 
     }
   }
-  
+   */
