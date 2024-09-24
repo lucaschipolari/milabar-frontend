@@ -7,7 +7,6 @@ import "../components/Admin/Users/styles/userCard.css";
 import { Link } from "react-router-dom";
 import { toast } from "sonner";
 import { getUsersFn } from "../api/usersApi"; // Asegúrate de importar la función correctamente
-import IsLoading from "../components/Common/IsLoading/IsLoading";
 
 const UserManagement = () => {
   const [searchTerm, setSearchTerm] = useState("");

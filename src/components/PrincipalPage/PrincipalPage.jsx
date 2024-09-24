@@ -19,12 +19,12 @@ import { useQuery } from "@tanstack/react-query";
 import IsLoading from "../Common/IsLoading/IsLoading";
 
 const PrincipalPage = () => {
-  const { isLoggedIn } = useSession();
+  const { user, isLoggedIn } = useSession();
   const token = sessionStorage.getItem("token");
   const userId = token ? decodeJWT(token).user.id : null;
 
   const {
-    data: user,
+    data: userData,
     isLoading,
     isError,
   } = useQuery({
@@ -32,11 +32,13 @@ const PrincipalPage = () => {
     queryFn: () => getUserFn(userId),
     enabled: !!userId,
   });
+  const categorias = ["SANGUCHE", "GASEOSA", "PIZZA", "HAMBURGUESA"];
   if (isLoading) return <IsLoading />;
   if (isError) return <p>Error al cargar los datos del usuario.</p>;
+  console.log(user);
   return (
     <>
-      <Header user={user} />
+      <Header userData={userData} />
       <div className="mb-5">
         <div className="container-options">
           <div className="container-input-search mt-2">
@@ -81,8 +83,9 @@ const PrincipalPage = () => {
             </a>
           </div>
         </div>
-
-        <ListProductClient />
+        {categorias.map((categoria, index) => {
+          return <ListProductClient key={index} title={categoria} />;
+        })}
       </div>
     </>
   );
