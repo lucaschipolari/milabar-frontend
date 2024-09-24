@@ -33,6 +33,8 @@
     z-index: 1;
 }
 .img-producto{
+    min-height: 280px;
+    object-fit: cover;
     border-top-right-radius: 50px;
 }
 

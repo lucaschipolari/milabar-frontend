@@ -60,23 +60,23 @@ const UserManagement = () => {
   return (
     <>
       <Link to={-1}>
-        <button className="btn btn-danger m-3">
+        <button className="btn btn-primary m-3">
           <i className="fas fa-arrow-left"></i> Regresar
         </button>
       </Link>
       <div className="user-management">
         <header>
-          <h1 className="text-light">Alta y baja de usuarios</h1>
+          <h1 className="text-dark mb-5">Alta y baja de usuarios</h1>
         </header>
 
-        <div className="search-bar text-center">
+        <div className="search-bar d-flex">
           <input
             type="text"
             placeholder="Buscar usuario..."
             value={searchTerm}
             onChange={handleSearchChange}
           />
-          <button>
+          <button className="btn btn-secondary mr-5">
             <FontAwesomeIcon icon={faSearch} />
           </button>
           <button className="btn btn-danger mx-1" onClick={handleSort}>
