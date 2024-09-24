@@ -5,6 +5,8 @@ import { getProductosFn } from "../../../../api/productos";
 import TablaFilaProductos from "./TablaFilaProductos";
 import IsLoading from "../../../Common/IsLoading/IsLoading";
 
+import '../styles/producto.css';
+
 const TablaProductos = () => {
   const {
     data: productos,
@@ -42,8 +44,8 @@ const TablaProductos = () => {
   }
 
   return (
-    <div className="table-responsive mt-4 shadow-sm rounded-4 p-3">
-      <h3 className="d-flex justify-content-center align-items-center">
+    <div className="table-responsive mt-4 shadow-sm rounded-4 p-3 bg-light">
+      <h3 className="d-flex justify-content-center align-items-center blue-color">
         Productos
       </h3>
       <div className="mb-3">
@@ -59,14 +61,14 @@ const TablaProductos = () => {
       <table className="table">
         <thead>
           <tr>
-            <th>#</th>
-            <th>Imagen</th>
-            <th>Nombre</th>
-            <th>Habilitado</th>
-            <th className="text-end">Acciones</th>
+            <th className="border-primary blue-color">#</th>
+            <th className="border-primary blue-color">Imagen</th>
+            <th className="border-primary blue-color">Nombre</th>
+            <th className="border-primary blue-color">Habilitado</th>
+            <th className="text-end border-primary blue-color">Acciones</th>
           </tr>
         </thead>
-        <tbody>
+        <tbody className="border-primary">
           {filteredProducts.map((producto, index) => (
             <TablaFilaProductos
               producto={producto}

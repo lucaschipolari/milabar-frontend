@@ -96,6 +96,17 @@ const Input = (props) => {
   }
 
   return (
+<<<<<<< HEAD
+    <fieldset className={`form-floating ${className}`}>
+      <input
+        className={`form-control ${error ? "is-invalid" : ""} ${className}`}
+        id={`${name}-input`}
+        type={type}
+        {...register(name, options)}
+        placeholder={placeholder}
+      />
+      <label htmlFor={`${name}-input`}>{label}</label>
+=======
     <div className={`${className}`}>
       <label className="me-2 form-label" htmlFor={`${name}-input`}>
         {label}
@@ -124,6 +135,7 @@ const Input = (props) => {
           {internalCharCount}/{maxLength}
         </div>
       )}
+>>>>>>> 64370b25e3a83e5a662785319d15318460160499
       <div className="invalid-feedback">{error?.message}</div>
     </div>
   );

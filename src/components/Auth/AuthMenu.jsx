@@ -1,26 +1,32 @@
-import React, { useState } from "react";
-import { TabMenu } from "primereact/tabmenu";
+import React from "react";
+import { useNavigate } from "react-router-dom";
 import "./auth.css";
 
-const AuthMenu = ({ onTabChange }) => {
-  const [activeIndex, setActiveIndex] = useState(0);
+const AuthMenu = (props) => {
+  const {onLoginChange, onRegisterChange}=props;
+  const navigate = useNavigate();
 
-  const items = [{ label: "Iniciar sesión" }, { label: "Crear cuenta" }];
+  const handleLogin = () => {
+    onLoginChange(true);
+    onRegisterChange(false);
+    navigate("/user/login");
+  };
 
-  const handleTabChange = (e) => {
-    setActiveIndex(e.index);
-    if (onTabChange) {
-      onTabChange(e.index);
-    }
+  const handleRegister = () => {
+    onLoginChange(false);
+    onRegisterChange(true);
+    navigate("/user/register");
   };
 
   return (
-    <TabMenu
-      className="auth-tab-menu custom-tab-menu "
-      model={items}
-      activeIndex={activeIndex}
-      onTabChange={handleTabChange}
-    />
+    <div className="bg-red-color d-flex justify-content-center align-items-center">
+      <button className="btn w-50 all-text-color" onClick={handleLogin}>
+        Iniciar sesión
+      </button>
+      <button className="btn w-50 all-text-color" onClick={handleRegister}>
+        Crear cuenta
+      </button>
+    </div>
   );
 };
 

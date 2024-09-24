@@ -73,7 +73,45 @@ const Header = ({ userData }) => {
     <header className="header">
       <div>
         <div className="icons">
+<<<<<<< HEAD
+          <div className="">
+            {!isLoggedIn && (
+              <div>
+                <Link to="/users/login" className="btn btn-red mx-1">
+                  Iniciar Sesion
+                </Link>
+                <Link to="/users/register" className="btn btn-gray">
+                  Registrarse
+                </Link>
+              </div>
+            )}
+            {isLoggedIn && user && (
+              <div className="d-flex align-content-center justify-content-center">
+                {" "}
+                <div className="avatar-icon">
+                  <img
+                    src={user.data.avatar}
+                    alt={user.data.nombre}
+                    className="avatar-icon-user"
+                  />{" "}
+                </div>
+                <button
+                  className="btn btn-light mx-1 rounded "
+                  onClick={handleLogout}
+                >
+                  <FontAwesomeIcon icon={faSignOut} />
+                </button>
+              </div>
+            )}
+            {user && user.data.isAdmin && (
+              <Link to="/agregar-producto" className="btn btn-secondary">
+                Administración
+              </Link>
+            )}
+          </div>
+=======
           <div className="">{renderAuthButtons}</div>
+>>>>>>> 64370b25e3a83e5a662785319d15318460160499
           <div className="basket-icon">
             <button
               type="button"
