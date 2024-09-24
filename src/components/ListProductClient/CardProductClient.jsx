@@ -61,7 +61,7 @@ const ProductCardClient = (props) => {
           <img
             src={producto.imagen}
             alt={producto.nombre}
-            className="h-100 w-100 img-fluid object-fit-cover img-producto"
+            className="img-producto"
           />
           <div className="card-content-producto">
             <h2 className="mt-3 card-title">{producto.nombre}</h2>
@@ -78,7 +78,6 @@ const ProductCardClient = (props) => {
               <FontAwesomeIcon icon={faInfo} className="" />
             </button>
           </div>
-          <div className="card-options"></div>
         </div>
       </div>
     </div>
