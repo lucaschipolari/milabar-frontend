@@ -1,12 +1,13 @@
 const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
 
 export const sendProduct = async (data) => {
-    console.log(data)
   try {
+    const token = sessionStorage.getItem("token");
     const res = await fetch(`${BACKEND_URL}/shoppingCart`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`, 
       },
       body: JSON.stringify(data),
     });
