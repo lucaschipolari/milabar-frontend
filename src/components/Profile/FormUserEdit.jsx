@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import { putUsersFn } from "../../api/usersApi";
 import { useUser } from "../../stores/useUser.js";
-import InputProducto from "../ui/InputProducto";
+import Input from "../ui/input/Input";
 
 const FormUserEdit = () => {
   const navigate = useNavigate();
@@ -79,18 +79,18 @@ const FormUserEdit = () => {
 
   return (
     <form
-      className="container my-3 bg-light form-size"
+      className="container bg-white"
       onSubmit={onSubmitRHF(handleSubmit)}
     >
-      <h1 className="text-center">
+      <h1 className="text-center mt-3">
         Editar usuario
       </h1>
-      <hr />
+      <hr/>
       <div className="alert alert-warning">
         Atención: Estás modificando la entrada con nombre{" "}
         <b>{userToEdit?.data.username}</b>
       </div>
-      <InputProducto
+      <Input
         className="mb-2"
         error={errors.username}
         label="Username"
@@ -109,7 +109,7 @@ const FormUserEdit = () => {
         placeholder="Pepe"
         register={register}
       />
-      <InputProducto
+      <Input
         textarea
         className="mb-3"
         error={errors.email}
@@ -129,7 +129,7 @@ const FormUserEdit = () => {
         placeholder="example@mail.com"
         register={register}
       />
-      <InputProducto
+      <Input
         className="mb-2"
         error={errors.avatar}
         label="Avatar"
@@ -151,8 +151,8 @@ const FormUserEdit = () => {
         register={register}
       />
       <hr />
-      <div className="text-end">
-        <button className="btn" type="button" onClick={handleCancelEdit}>
+      <div className="text-end my-3">
+        <button className="btn btn-warning me-2" type="button" onClick={handleCancelEdit}>
           Cancelar edición
         </button>
         <button className="btn btn-danger" type="submit">

@@ -1,69 +1,54 @@
-.custom-card{
-    background-color: red !important;
+.bg-blue-color {
+  background-color: #003049;
 }
 
-.custom-button{
-    min-height: 70px;
-    border: 2px solid red;
-    box-shadow: 0 4px 8px rgba(255, 0, 0, 0.6);
+.all-bg-color {
+  background-color: #fdf0d5 !important;
+}
+.all-text-color {
+  color: #fdf0d5 !important;
+}
+.red-color {
+  color: #c1121f !important;
 }
 
-.custom-button-show-data{
-    background-color: black;
-    color:red;
+.custom-button {
+  min-height: 70px;
+  border: 2px solid #c1121f;
+  box-shadow: 0 4px 8px rgba(248, 46, 46, 0.6);
 }
-.custom-button-show-data:hover{
-    background-color: red;
-    color:black;
-    box-shadow: none;
-    transition: all 0.2s ease-in-out;
+
+.custom-button-show-data {
+  background-color: #fdf0d5;
+  color: #c1121f;
 }
-.custom-button-logout{
-    background-color: red;
-    color:black;
-    box-shadow: 0 4px 8px rgba(255, 0, 0, 0.6);
+.custom-button-show-data:hover {
+  background-color: #c1121f;
+  color: #fdf0d5;
+  box-shadow: none;
+  transition: all 0.2s ease-in-out;
 }
-.custom-button-logout:hover{
-    background-color: black;
-    color:red;
-    box-shadow: none;
-    transition: all 0.2s ease-in-out;
+.custom-button-logout {
+  background-color: #c1121f;
+  color: #fdf0d5;
+  box-shadow: 0 4px 8px rgba(219, 170, 170, 0.6);
 }
-.custom-card-edit{
-    background-color: black;
-    color:red;
-    border: 2px solid red;
+.custom-button-logout:hover {
+  background-color: #fdf0d5;
+  color: #c1121f;
+  box-shadow: none;
+  transition: all 0.2s ease-in-out;
+}
+.custom-card-edit {
+  color: #003049;
+  border: 2px solid #003049;
 }
 .content-img {
-    max-height: 240px;
-    width: 100%;
-    overflow: hidden; 
-  }
-  .btn-color-red{
-    color: white !important;
-    background-color: red !important;
-  }
-  
-  .btn-color-red:hover{
-    color: white !important;
-    background-color: rgb(157, 2, 2) !important;
-    transition: background-color 0.5s ease;
-  }
-  .color-red{
-    color:red;
-  }
-.content-img-data{
-    max-height: 200px;
-    overflow: hidden;
+  max-height: 240px;
+  width: 100%;
+  overflow: hidden;
 }
-
-.alert {
-    border-radius: 15px;
-    background-color: rgba(255, 255, 255, 0.8); /* Fondo blanco con opacidad */
-    padding: 20px;
-    backdrop-filter: blur(10px); /* Efecto de desenfoque */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra sutil */
-    color: #333; /* Color del texto */
-  }
-  
-  
+.content-img-data {
+  max-height: 200px;
+  overflow: hidden;
+}
