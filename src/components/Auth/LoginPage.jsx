@@ -64,10 +64,10 @@ const LoginPage = (props) => {
             error={errors.email}
             label="Email"
             name="email"
+            placeholder="mail@mail.com"
             options={{
               required: "Este campo es requerido",
             }}
-            placeholder="Milanesa"
             register={register}
           />
           <Input
@@ -75,6 +75,7 @@ const LoginPage = (props) => {
             error={errors.password}
             label="Contraseña"
             name="password"
+            placeholder="Contraseña"
             options={{
               required: {
                 value: true,

@@ -73,7 +73,6 @@ const Header = ({ userData }) => {
     <header className="header">
       <div>
         <div className="icons">
-<<<<<<< HEAD
           <div className="">
             {!isLoggedIn && (
               <div>
@@ -85,13 +84,13 @@ const Header = ({ userData }) => {
                 </Link>
               </div>
             )}
-            {isLoggedIn && user && (
+            {isLoggedIn && userData && (
               <div className="d-flex align-content-center justify-content-center">
                 {" "}
                 <div className="avatar-icon">
                   <img
-                    src={user.data.avatar}
-                    alt={user.data.nombre}
+                    src={userData.data.avatar}
+                    alt={userData.data.nombre}
                     className="avatar-icon-user"
                   />{" "}
                 </div>
@@ -103,15 +102,12 @@ const Header = ({ userData }) => {
                 </button>
               </div>
             )}
-            {user && user.data.isAdmin && (
+            {userData && userData.data.isAdmin && (
               <Link to="/agregar-producto" className="btn btn-secondary">
                 Administración
               </Link>
             )}
           </div>
-=======
-          <div className="">{renderAuthButtons}</div>
->>>>>>> 64370b25e3a83e5a662785319d15318460160499
           <div className="basket-icon">
             <button
               type="button"
