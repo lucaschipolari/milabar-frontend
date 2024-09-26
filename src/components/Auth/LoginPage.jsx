@@ -104,13 +104,14 @@ const LoginPage = (props) => {
         </div>
         <p className="text-center blue-color mt-2 mb-0 p-3">
           Si aún no tenes una cuenta,
-          <span
-            className="all-text-color red-color text-decoration-none fw-bold"
+          <Link
+            className="all-text-color red-color fw-bold text-decoration-none"
             onClick={toggleView}
+            to="register"
           >
             {" "}
             registrate aquí
-          </span>
+          </Link>
         </p>
       </div>
     </form>

@@ -156,7 +156,7 @@ const FormularioProductos = () => {
       <h1 className="text-center all-text-color py-2">
         {productoToEdit ? "Editar producto" : "Crear producto"}
       </h1>
-      <div className="form-content pt-3 all-bg-color">
+      <div className="form-content pt-3 bg-white">
         {productoToEdit && (
           <div className="alert alert-warning">
             Atención: Estás modificando la entrada con nombre{" "}
@@ -164,9 +164,9 @@ const FormularioProductos = () => {
           </div>
         )}
         <div className="row ps-4 pe-4 gap-0">
-          <div className="col-6">
+          <div className="col-12 col-md-6">
             <Input
-              className=" all-bg-color border-primary blue-color"
+              className=" border-primary blue-color"
               error={errors.nombre}
               label="Nombre"
               name="nombre"
@@ -186,9 +186,9 @@ const FormularioProductos = () => {
               maxLength={30}
             />
           </div>
-          <div className="col-6">
+          <div className="col-12 col-md-6">
             <SelectProducto
-              className="mb-3"
+              className="mt-3 mb-2"
               error={errors.categoria}
               name="categoria"
               label="Categoria del producto"
@@ -208,7 +208,7 @@ const FormularioProductos = () => {
           </div>
           <Input
             textarea
-            className="mb-3 all-bg-color border-primary blue-color"
+            className="mb-3 border-primary blue-color"
             error={errors.descripcion}
             label="Descripcion"
             name="descripcion"
@@ -227,9 +227,8 @@ const FormularioProductos = () => {
             register={register}
             maxLength={200}
           />
-
           <Input
-            className="mb-3 all-bg-color border-primary blue-color"
+            className="mb-3 border-primary blue-color"
             type="number"
             error={errors.preciounitario}
             label="Precio unitario"
@@ -249,9 +248,8 @@ const FormularioProductos = () => {
             register={register}
             min={1}
           />
-
           <Input
-            className="mb-2 pb-2 all-bg-color border-primary blue-color"
+            className="mb-2 pb-2 border-primary blue-color"
             error={errors.imagen}
             label="Imagen"
             name="imagen"
@@ -272,41 +270,45 @@ const FormularioProductos = () => {
             placeholder="https://google.com"
             register={register}
           />
-          <InputProducto
-            className="mb-3 custom-select"
-            type="radio"
-            error={errors.habilitado}
-            label="¿Está habilitado?"
-            name="habilitado"
-            options={{
-              required: "Este campo es requerido",
-            }}
-            radioOptions={[
-              { value: "true", label: "Sí" },
-              { value: "false", label: "No" },
-            ]}
-            register={register}
-            onChange={(name, value) => {}}
-          />
-
-          <InputProducto
-            className="mb-3custom-select "
-            type="radio"
-            error={errors.agregado}
-            label="¿Es un agregado?"
-            name="agregado"
-            options={{
-              required: "Este campo es requerido",
-            }}
-            radioOptions={[
-              { value: "true", label: "Sí" },
-              { value: "false", label: "No" },
-            ]}
-            register={register}
-          />
-
+          <div className="row">
+            <div className="col-12 col-md-6 mb-3">
+              <Input
+                className="mb-3 custom-select border border-secondary"
+                type="radio"
+                error={errors.habilitado}
+                label="¿Está habilitado?"
+                name="habilitado"
+                options={{
+                  required: "Este campo es requerido",
+                }}
+                radioOptions={[
+                  { value: "true", label: "Sí" },
+                  { value: "false", label: "No" },
+                ]}
+                register={register}
+                onChange={(name, value) => {}}
+              />
+            </div>
+            <div className="col-12 col-md-6 mb-3">
+              <Input
+                className="mb-3 custom-select border border-secondary"
+                type="radio"
+                error={errors.agregado}
+                label="¿Es un agregado?"
+                name="agregado"
+                options={{
+                  required: "Este campo es requerido",
+                }}
+                radioOptions={[
+                  { value: "true", label: "Sí" },
+                  { value: "false", label: "No" },
+                ]}
+                register={register}
+              />
+            </div>
+          </div>
           <hr />
-          <div className="text-end">
+          <div className="text-end mb-2">
             {productoToEdit && (
               <button
                 className="btn btn-secondary mx-1"
@@ -316,7 +318,7 @@ const FormularioProductos = () => {
                 Cancelar edición
               </button>
             )}
-            <button className="btn btn-danger" type="submit">
+            <button className="btn btn-primary" type="submit">
               Guardar
             </button>
           </div>

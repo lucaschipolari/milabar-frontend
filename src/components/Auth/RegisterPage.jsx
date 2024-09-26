@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { toast } from "sonner";
 import { OverlayTrigger, Popover } from "react-bootstrap";
@@ -138,13 +139,14 @@ const RegisterPage = (props) => {
         </div>
         <p className="text-center blue-color mb-0 p-3">
           Si ya tenes una cuenta,
-          <span
-            className="all-text-color red-color text-decoration-none fw-bold"
+          <Link
+            className="all-text-color red-color fw-bold text-decoration-none"
             onClick={toggleView}
+            to="login"
           >
             {" "}
             inicia sesión aquí
-          </span>
+          </Link>
         </p>
       </div>
     </form>

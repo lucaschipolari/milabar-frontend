@@ -20,7 +20,8 @@
 
 }
 .custom-select{
-  height: 60px;
+  min-height: 60px;
+  padding-left:10px;
   font-size: 15px;
   border-radius: 9px;
 }

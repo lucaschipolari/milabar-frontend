@@ -102,8 +102,10 @@ const Header = ({ userData }) => {
                 </button>
               </div>
             )}
-            {userData && userData.data.isAdmin && (
-              <Link to="/agregar-producto" className="btn btn-secondary">
+            {user?.roles.some(
+              (role) => role.name === "admin" || role.name === "superadmin"
+            ) && (
+              <Link to="/admin" className="btn btn-secondary">
                 Administración
               </Link>
             )}
