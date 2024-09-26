@@ -18,6 +18,7 @@ const TablaFilaProductos = (props) => {
   const { setProductoToEdit } = useProducto();
 
   const [modalData, setModalData] = useState(null);
+  const [visible, setVisible] = useState(false);
 
   const queryClient = useQueryClient();
 
@@ -38,8 +39,8 @@ const TablaFilaProductos = (props) => {
   });
 
   const handleMoreInfo = () => {
-    setModalData(producto); // Set the current product data
-    setVisible(true);       // Show the modal
+    setModalData(producto); 
+    setVisible(true);      
   };
 
   const handleEdit = () => {
@@ -64,24 +65,24 @@ const TablaFilaProductos = (props) => {
 
   return (
     <>
-      <tr className="row-height">
-        <td className="h-100">{index + 1}</td>
-        <td>
+      <tr className="row-height p-3">
+        <td className="h-100 ">{index + 1}</td>
+        <td className=" blue-light-color">
           <img
             alt={producto.nombre}
             className="productos-tabla-imagen img-fluid"
             src={producto.imagen}
           />
         </td>
-        <td>{producto.nombre}</td>
-        <td>
+        <td className=" blue-color">{producto.nombre}</td>
+        <td className="">
           {producto.habilitado === "true" ? (
             <i className="bi bi-check-circle-fill text-success"></i>
           ) : (
             <i className="bi bi-x-circle-fill text-danger"></i>
           )}
         </td>
-        <td className="row-height text-end row row-size gap-2">
+        <td className="row-height text-end row row-size mx-0 ">
           <Button icon="pi pi-external-link"
             className="btn btn-primary col-auto"
             to="#"
@@ -94,7 +95,7 @@ const TablaFilaProductos = (props) => {
           </Button>
           <Link
             className="btn btn-warning col-auto"
-            to={`/detalle/${producto.id}`}
+            to={`/modificar-producto/${producto.id}`}
             onClick={handleEdit}
           >
             <i className="bi bi-pencil-square tamaño-icono"></i>
@@ -105,7 +106,8 @@ const TablaFilaProductos = (props) => {
         </td>
       </tr>
       {modalData && (
-        <ModalProductos values={modalData} onClose={() => setModalData(null)} />
+        <ModalProductos values={modalData} visible={visible}
+        onHide={() => setVisible(false)}/>
       )}
     </>
   );

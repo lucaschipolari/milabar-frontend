@@ -73,7 +73,43 @@ const Header = ({ userData }) => {
     <header className="header">
       <div>
         <div className="icons">
-          <div className="">{renderAuthButtons}</div>
+          <div className="">
+            {!isLoggedIn && (
+              <div>
+                <Link to="/users/login" className="btn btn-red mx-1">
+                  Iniciar Sesion
+                </Link>
+                <Link to="/users/register" className="btn btn-gray">
+                  Registrarse
+                </Link>
+              </div>
+            )}
+            {isLoggedIn && userData && (
+              <div className="d-flex align-content-center justify-content-center">
+                {" "}
+                <div className="avatar-icon">
+                  <img
+                    src={userData.data.avatar}
+                    alt={userData.data.nombre}
+                    className="avatar-icon-user"
+                  />{" "}
+                </div>
+                <button
+                  className="btn btn-light mx-1 rounded "
+                  onClick={handleLogout}
+                >
+                  <FontAwesomeIcon icon={faSignOut} />
+                </button>
+              </div>
+            )}
+            {user?.roles.some(
+              (role) => role.name === "admin" || role.name === "superadmin"
+            ) && (
+              <Link to="/admin" className="btn btn-secondary">
+                Administración
+              </Link>
+            )}
+          </div>
           <div className="basket-icon">
             <button
               type="button"

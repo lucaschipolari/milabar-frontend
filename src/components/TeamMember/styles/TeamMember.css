@@ -123,42 +123,41 @@
       box-sizing: border-box; 
     }
   }
-   
- Estilos responsivos para pantallas pequeñas 
   @media (max-width: 767px) {
     /* Asegura que el contenido permita desplazarse en móviles */
-
+/* 
   
     /* .team-member {
       flex: 1 1 100%;Tarjetas ocupan todo el ancho en móviles 
+
       max-width: 100%;
     }
   
     .company-description {
-      padding: 0 10px;Reduce el padding en móviles 
+      padding: 0 10px;
     }
   
     .row {
-      flex-direction: column;Coloca las tarjetas una debajo de otra en móviles 
+      flex-direction: column;
     }
-  }
+  
   
   @media (min-width: 768px) and (max-width: 991px) {
     .team-member {
-      flex: 1 1 48%;Dos tarjetas por fila en pantallas medianas 
+      flex: 1 1 48%;
     }
   }
   
   @media (min-width: 992px) {
 
     .team-member {
-      flex: 1 1 1 1%;Cuatro tarjetas por fila en pantallas grandes 
-      max-width: 22%;Asegura que las 4 tarjetas ocupen una fila completa 
+      flex: 1 1 1 1%; 
+      max-width: 22%;
     }
 
   
     .company-description {
-      padding: 0 100px;Más espacio en pantallas grandes 
+      padding: 0 100px;
     }
   }
    */ 

@@ -41,12 +41,6 @@ export const router = createBrowserRouter([
         path: "/acerca-de-nosotros",
         element: <AboutUsView />,
       },
-
-      // {
-      //   path: "productos/:id",
-      //   element: <PrincipalProductoView />,
-      // },
-
       {
         path: "detalle/:id",
         element: <ProductDetailView />,
@@ -62,7 +56,7 @@ export const router = createBrowserRouter([
         element: <AuthView />,
         children: [
           {
-            path: "user",
+            path: "users",
             element: <LoginRegisterView />,
             children: [
               {
@@ -70,7 +64,7 @@ export const router = createBrowserRouter([
                 element: <LoginPage />,
               },
               {
-                path: "Register",
+                path: "register",
                 element: <RegisterPage />,
               },
             ],

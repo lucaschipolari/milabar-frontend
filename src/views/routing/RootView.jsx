@@ -6,7 +6,6 @@ import "../../styles/principalStyles.css";
 const RootView = () => {
   const location = useLocation();
 
-  // Mostrar el Header solo si no estamos en la página principal
   const showHeader = location.pathname !== "/";
 
   return (

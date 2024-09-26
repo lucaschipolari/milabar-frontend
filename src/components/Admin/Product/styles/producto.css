@@ -6,6 +6,15 @@
   color: black;    
   width: 300px;   
 }
+.all-bg-color{
+  background-color: #FDF0D5 !important;
+}
+.blue-color{
+  color:#003049 !important;
+}
+.blue-light-color{
+  color:#669BBC !important;
+}
 .color-red{
   color:red
 

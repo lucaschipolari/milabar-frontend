@@ -23,7 +23,7 @@ const Input = (props) => {
 
   const handleChange = (e) => {
     const value = e.target.value;
-    
+
     setInternalCharCount(value.length);
     if (onChange) {
       onChange(e);
@@ -53,7 +53,6 @@ const Input = (props) => {
           type={type}
           {...register(name, options)}
           placeholder={placeholder}
-
           min="0"
         />
         <label htmlFor={`${name}-input`}>{label}</label>
