@@ -66,7 +66,7 @@ const ContactForm = () => {
   return (
     <form
       onSubmit={onSubmitRHF(handleSumbit)}
-      className="shadow m-5 text-center"
+      className="shadow-lg m-5 text-center form-contact rounded"
     >
       <div className="row">
         <div className="col-md-6">
