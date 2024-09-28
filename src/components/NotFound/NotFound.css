@@ -1,5 +1,5 @@
 .link-container .volver-inicio {
-    background-color: #ff0015;
+    background-color: #0400ff;
     color: rgb(249, 249, 249);
     padding: 12px 24px;
     border: none;
@@ -63,7 +63,7 @@
     display: inline-block;
     line-height: 0.7;
     position: relative;
-    color: #ff0000; /* Rojo suave */
+    color: #0091ff; /* Rojo suave */
   }
   
   .error-container > span > span {

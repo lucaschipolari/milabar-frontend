@@ -6,7 +6,7 @@
   color: #ced4da;
   border: 1px solid #013048;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-  z-index: 1000;
+  z-index: 1800;
 }
 
 .cart-dialog .p-dialog-header {
