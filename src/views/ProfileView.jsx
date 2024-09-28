@@ -29,8 +29,8 @@ const ProfileView = () => {
   if (!isLoggedIn)
     return (
       <div className="container d-flex flex-column mt-5 justify-content-center align-items-center">
-        <h1 className="color-red text-center">¡Oh no!</h1>
-        <h5 className="color-red text-center">
+        <h1 className="text-dark text-center fw-bold">¡Oh no!</h1>
+        <h5 className="text-dark text-center">
           Parece que aún no has iniciado sesión
         </h5>
         <NavigationProfile />
