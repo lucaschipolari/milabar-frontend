@@ -9,14 +9,15 @@ import "./swiperStyle.css";
 import { Autoplay, EffectFade, Navigation, Pagination } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 
-import chambuchito from "../../assets/chambuchito.jpg";
+import banner from "../../assets/banner.png";
+import bannerredes from "../../assets/bannerredes.png";
 
 const SwiperContact = () => {
   return (
     <>
       <Swiper
         autoplay={{
-          delay: 3000,
+          delay: 6000,
           disableOnInteraction: false,
         }}
         spaceBetween={30}
@@ -29,15 +30,15 @@ const SwiperContact = () => {
         className="customSwiper"
       >
         <SwiperSlide className="customSwiperSlide">
-          <img src={chambuchito} className="customSwiperImage" />
+          <img src={banner} className="customSwiperImage" />
         </SwiperSlide>
-        <SwiperSlide>
+        <SwiperSlide className="customSwiperSlide">
           <img
-            src="https://swiperjs.com/demos/images/nature-2.jpg"
+            src={bannerredes}
             className="customSwiperImage"
           />
         </SwiperSlide>
-        <SwiperSlide className="customSwiperSlide">
+        {/* <SwiperSlide className="customSwiperSlide">
           <img
             src="https://swiperjs.com/demos/images/nature-3.jpg"
             className="customSwiperImage"
@@ -49,9 +50,7 @@ const SwiperContact = () => {
             className="customSwiperImage"
           />
         </SwiperSlide>
-        <div className="customOverlay">
-          <h1 className="text-white fs-1 fw-bold">CONTACTO</h1>
-        </div>
+       */}
       </Swiper>
     </>
   );
