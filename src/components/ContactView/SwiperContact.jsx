@@ -38,19 +38,7 @@ const SwiperContact = () => {
             className="customSwiperImage"
           />
         </SwiperSlide>
-        {/* <SwiperSlide className="customSwiperSlide">
-          <img
-            src="https://swiperjs.com/demos/images/nature-3.jpg"
-            className="customSwiperImage"
-          />
-        </SwiperSlide>
-        <SwiperSlide className="customSwiperSlide">
-          <img
-            src="https://swiperjs.com/demos/images/nature-4.jpg"
-            className="customSwiperImage"
-          />
-        </SwiperSlide>
-       */}
+
       </Swiper>
     </>
   );

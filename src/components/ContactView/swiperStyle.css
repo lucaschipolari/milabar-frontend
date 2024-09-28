@@ -13,8 +13,8 @@
 
 .customSwiperImage {
   width: 100%;
-  height: auto; /* Ajusta la imagen para ocupar el ancho completo */
-  max-height: 100vh; /* Limita la altura máxima para que no sobrepase la pantalla */
+  height: auto; 
+  max-height: 100vh; 
   object-fit: cover; 
 }
 
