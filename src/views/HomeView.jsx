@@ -7,7 +7,7 @@ const HomeView = () => {
     <div className="">
       <BackgroundImage>
         <Logo />
-        <h1 className="text-danger font-weight-bold">Bienvenidos!</h1>
+        <h1 className="text-primary font-weight-bold">Bienvenidos!</h1>
         <NavigationButtons />
       </BackgroundImage>
     </div>

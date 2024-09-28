@@ -1,4 +1,3 @@
-/* 
 
   .title-container {
     text-align: center;
@@ -10,12 +9,72 @@
   .company-description {
     text-align: center;
     margin-bottom: 3em;
-    color: #f3f3f3;
+    color: #0235ff;
     line-height: 1.6;
     padding: 0 20px;
   }
+  .team-member {
+    flex: 1 1 100%;
+    max-width: 300px;
+  }
   
- 
+  .card-member {
+    color: white;
+    background: linear-gradient(145deg, #006efff5, #00ddff); 
+    padding: 2em 1em;
+    border-radius: 10px; 
+    text-align: center;
+    transition: transform 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+    border: none; 
+  }
+   
+  .card-member:hover {
+    background: linear-gradient(145deg, #0d00ff, #00b3ff);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+    transform: translateY(-10px); 
+  }
+    
+  .img-team-container {
+    width: 100px;
+    height: 100px;
+    margin: 0 auto 1em auto;
+    border-radius: 50%;
+    background-color: #f3f3f3;
+    overflow: hidden;
+  }
+  
+
+  
+  .img-team-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  .social-icons a{
+    border: 1px solid black;
+    color: black;
+    margin: 5px;
+    padding: 5px;
+    padding-left: 15px;
+    padding-right: 15px;
+    border-radius: 50%;
+
+  }
+  
+  
+  .social-icon  {
+    font-size: 1.5em;
+    color: black;
+    transition: color 0.3s ease;
+
+  }
+  .social-icon:hover {
+    color: rgb(252, 252, 252); 
+  }
+
+ /*
   .container {
     width: 100%;
     max-width: 1200px;
@@ -31,64 +90,16 @@
   }
   
   
-  .team-member {
-    flex: 1 1 100%;
-    max-width: 300px;
-  }
-  
 
-  .card-member {
-    color: white;
-    background: linear-gradient(145deg, #ff000099, #f03d3d); 
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
-    padding: 2em 1em;
-    border-radius: 10px; 
-    text-align: center;
-    transition: transform 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
-    cursor: pointer;
-    border: none; 
-  }
-  
- 
-  .card-member:hover {
-    background: linear-gradient(145deg, #b81f1f, #a91f1f);
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
-    transform: translateY(-10px); 
-  }
-  
-  
-  .img-container {
-    width: 100px;
-    height: 100px;
-    margin: 0 auto 1em auto;
-    border-radius: 50%;
-    background-color: #f3f3f3;
-    overflow: hidden;
-  }
-  
-  .img-container img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
-  
- 
-  .social-icons a{
-    border: 1px solid black;
-    color: black;
-  }
   
 
   
-  .social-icon  {
-    font-size: 1.5em;
-    color: black;
-    transition: color 0.3s ease;
-  }
+
   
-  .social-icon:hover {
-    color: #6045ea; 
-  }
+ 
+
+  
+
 
 @media (min-width: 1400px) {
     .row {
