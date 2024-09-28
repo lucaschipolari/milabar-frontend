@@ -3,9 +3,9 @@ import TeamMemberSocialIcons from "./TeamMemberSocialIcons";
 
 const TeamMember = ({ member }) => {
   return (
-    <div className="team-member">
+    <div className="team-member col-12 col-md-6 g-5">
       <div className="card-member">
-        <div className="img-container">
+        <div className="img-team-container">
           <img src={member.imageUrl} alt={member.name} />
         </div>
         <h4>{member.name}</h4>
