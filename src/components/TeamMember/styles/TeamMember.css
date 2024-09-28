@@ -138,8 +138,9 @@
     /* Asegura que el contenido permita desplazarse en móviles */
 /* 
   
-    .team-member {
-      flex: 1 1 100%; 
+    /* .team-member {
+      flex: 1 1 100%;Tarjetas ocupan todo el ancho en móviles 
+
       max-width: 100%;
     }
   
@@ -170,4 +171,4 @@
       padding: 0 100px;
     }
   }
-    */
+   */ 
