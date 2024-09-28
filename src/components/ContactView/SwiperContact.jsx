@@ -9,8 +9,8 @@ import "./swiperStyle.css";
 import { Autoplay, EffectFade, Navigation, Pagination } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 
-import banner from "../../assets/banner.png";
-import bannerredes from "../../assets/bannerredes.png";
+import banner from "../../assets/bannerContacto.png";
+import bannerredes from "../../assets/bannerRedes2.png";
 
 const SwiperContact = () => {
   return (
