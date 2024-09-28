@@ -5,6 +5,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "../../components/Admin/Product/styles/producto.css";
 import { useCartStore } from "../../stores/useCartStore.js";
 import { toast } from "sonner";
+import { useSession } from "../../stores/useSession.js";
+import Swal from "sweetalert2";
 
 const ProductCardClient = (props) => {
   const { producto } = props;
@@ -13,8 +15,19 @@ const ProductCardClient = (props) => {
   const [isButtonColored, setIsButtonColored] = useState(false); // Estado para el cambio de color del botón
 
   const { addProduct } = useCartStore();
+  const { isLoggedIn } = useSession()
 
   const addToCart = () => {
+
+    if(!isLoggedIn) {
+      Swal.fire({
+        icon: "warning",
+        title: "Debes iniciar sesión",
+        text:"Por favor, inicia sesión para añadir productos al carrito",
+        confirmButtonText: "Ok",
+      });
+      return;
+    }
     addProduct({
       id: producto.id,
       name: producto.nombre,
@@ -23,7 +36,9 @@ const ProductCardClient = (props) => {
       quantity: 1,
     });
 
-    toast.success(`${producto.nombre} añadido al carrito.`);
+    toast.success(`${producto.nombre} añadido al carrito.`, {
+      duration: 1000,
+    });
 
     // Activa la clase de color en el botón
     setIsButtonColored(true);
