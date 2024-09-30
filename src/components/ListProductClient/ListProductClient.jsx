@@ -41,7 +41,6 @@ const ListProductClient = ({ title, searchTerm }) => {
     );
   }
 
-  // Filtrar productos por categoría y por término de búsqueda
   const productosFiltrados = productos.data.filter(
     (p) =>
       p.categoria.includes(title) &&
