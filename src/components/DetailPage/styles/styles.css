@@ -1,4 +1,3 @@
-/* Contenedor principal de los detalles del producto */
 .product-detail-container {
   display: flex;
   flex-direction: column;
@@ -11,7 +10,6 @@
   height: 100vh;
 }
 
-/* Imagen del producto */
 .product-image-container {
   width: 100%;
   max-width: 500px;
@@ -27,7 +25,6 @@
   object-fit: cover;
 }
 
-/* Información del producto */
 .product-info {
   text-align: center;
   width: 100%;
@@ -49,14 +46,12 @@
   margin-bottom: 20px;
 }
 
-/* Descripción del producto */
 .product-description p {
   font-size: 18px;
   color: #003049;
   margin: 15px 0;
 }
 
-/* Acciones del producto (cantidad y botón de agregar al carrito) */
 .product-actions {
   display: flex;
   flex-direction: column;
@@ -115,7 +110,6 @@
   background-color: #540000;
 }
 
-/* Botón de volver y corazón */
 .button-container {
   display: flex;
   justify-content: space-between;
@@ -138,14 +132,14 @@
 
 .back-button:hover,
 .heart-button:hover {
-    background-color: #780000;
-    transform: scale(1.05);
+  background-color: #780000;
+  transform: scale(1.05);
 }
 
 .back-button:active,
-.heart-button:active{
-    transform: scale(0.95);
-    background-color: #540000;
+.heart-button:active {
+  transform: scale(0.95);
+  background-color: #540000;
 }
 
 .heart-button {
@@ -158,7 +152,6 @@
   transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
-/* Estilos para pantallas grandes */
 @media (min-width: 1024px) {
   .product-detail-container {
     flex-direction: row;
@@ -179,9 +172,7 @@
   }
 }
 
-/* Ajustes para pantallas entre 768px y 1023px */
 @media (max-width: 1023px) {
-  /* Ajustes generales */
   .product-detail-container {
     flex-direction: column;
     justify-content: center;
@@ -246,7 +237,6 @@
   }
 }
 
-/* Ajustes para pantallas pequeñas */
 @media (max-width: 768px) {
   .product-title {
     font-size: 28px;
@@ -261,7 +251,6 @@
   }
 }
 
-/* Ajustes para pantallas pequeñas (menores de 400px) */
 @media (max-width: 400px) {
   .product-detail-container {
     padding: 10px;
