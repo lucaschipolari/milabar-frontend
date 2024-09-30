@@ -11,7 +11,7 @@ const LoginRegisterView = () => {
   const [showLogin, setShowLogin] = useState(true); 
 
   useEffect(() => {
-    // Cambiar el estado en función de la URL actual
+    
     if (location.pathname === "/users/register") {
       setShowLogin(false);
     } else {
