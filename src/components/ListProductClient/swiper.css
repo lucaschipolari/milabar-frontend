@@ -1,0 +1,27 @@
+.swiper{
+  min-height: 520px;
+}
+.swiper-img{
+    max-width: 300px;
+    max-height: 300px
+  }
+  
+  .swiper-slide {
+    text-align: center;
+    font-size: 18px;
+    background: none;
+    display: flex !important;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 180px;
+  }
+  
+  .swiper-button-prev{
+    color: #000 !important;
+  }
+  .swiper-button-next{
+    color: #000 !important;
+  }
+  .swiper-pagination-bullet-active{
+    background-color: #000 !important;
+  }

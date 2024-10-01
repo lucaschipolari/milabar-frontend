@@ -5,7 +5,7 @@ html, body {
     padding-bottom: 120px; /* Ajusta este valor según la altura de tu navbar */
 }
 #root {
-    background: #1b1b1b;
+    background: #FDf0d5;
     min-height: 100vh;
     display: flex;
     flex-direction: column;
@@ -17,10 +17,10 @@ html, body {
   padding-bottom: 120px;
     /* margin-bottom: 60px; Asegura que el contenido principal no quede cubierto */
 }
-.bg-contacto {
+/* .bg-contacto {
   overflow: hidden;
   background-size: cover;
   background-image: url("https://static.vecteezy.com/system/resources/previews/002/911/729/large_2x/weathered-grey-brick-wall-for-texture-and-background-photo.jpg");
-  background-color: rgba(0, 0, 0, 0.782); /* Negro semitransparente */
+  background-color: rgba(0, 0, 0, 0.782); 
   background-blend-mode: darken;
-}
+} */

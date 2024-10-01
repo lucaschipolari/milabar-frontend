@@ -7,11 +7,13 @@ import { useState } from "react";
 
 import InputProducto from "../../ui/InputProducto";
 import SelectProducto from "../../ui/SelectProducto";
+import Input from "../../ui/input/Input";
 
 import { postProductoFn, putProductoFn } from "../../../api/productos.js";
 import { useProducto } from "../../../stores/useProducto.js";
 
 import "./styles/producto.css";
+import "../../Auth/auth.css";
 
 const FormularioProductos = () => {
   const [isDisabled, setIsDisabled] = useState(false);
@@ -148,168 +150,178 @@ const FormularioProductos = () => {
 
   return (
     <form
-      className="container my-5 p-3 form-size"
+      className="container px-0 bg-blue-color form-custom"
       onSubmit={onSubmitRHF(handleSubmit)}
     >
-      <h1 className="text-center color-red">
+      <h1 className="text-center all-text-color py-2">
         {productoToEdit ? "Editar producto" : "Crear producto"}
       </h1>
-      <hr className="color-red" />
-      {productoToEdit && (
-        <div className="alert alert-warning">
-          Atención: Estás modificando la entrada con nombre{" "}
-          <b>{productoToEdit.nombre}</b>
-        </div>
-      )}
-      <InputProducto
-        className="mb-2"
-        error={errors.nombre}
-        label="Nombre"
-        name="nombre"
-        options={{
-          required: "Este campo es requerido",
-          minLength: {
-            value: 3,
-            message: "El nombre debe tener al menos 3 caracteres",
-          },
-          maxLength: {
-            value: 30,
-            message: "El nombre debe tener como mucho 30 caracteres",
-          },
-        }}
-        placeholder="Milanesa"
-        register={register}
-        maxLength={30}
-      />
-      <InputProducto
-        textarea
-        className="mb-3"
-        error={errors.descripcion}
-        label="Descripcion"
-        name="descripcion"
-        options={{
-          required: "Este campo es requerido",
-          minLength: {
-            value: 3,
-            message: "La descripción debe tener al menos 3 caracteres",
-          },
-          maxLength: {
-            value: 200,
-            message: "La descripción debe tener como mucho 200 caracteres",
-          },
-        }}
-        placeholder="Descripción del producto"
-        register={register}
-        maxLength={200}
-      />
-      <SelectProducto
-        className="mb-3"
-        error={errors.categoria}
-        name="categoria"
-        label="Categoria del producto"
-        categories={[
-          "SANGUCHE",
-          "GASEOSA",
-          "ADEREZO",
-          "VERDURA",
-          "PIZZA",
-          "HAMBURGUESA",
-        ]}
-        options={{
-          required: "Este campo es requerido",
-        }}
-        register={register}
-      />
-      <InputProducto
-        className="mb-3"
-        type="number"
-        error={errors.preciounitario}
-        label="Precio unitario"
-        name="preciounitario"
-        options={{
-          required: "Este campo es requerido",
-          min: {
-            value: 1,
-            message: "El precio unitario debe ser mayor que 0",
-          },
-          validate: {
-            greaterThanZero: (value) =>
-              parseFloat(value) > 0 ||
-              "El precio unitario debe ser mayor que 0",
-          },
-        }}
-        register={register}
-        min={1}
-      />
-
-      <InputProducto
-        className="mb-2 pb-2"
-        error={errors.imagen}
-        label="Imagen"
-        name="imagen"
-        options={{
-          required: "Este campo es requerido",
-          minLength: {
-            value: 5,
-            message: "El enlace a la imagen debe tener al menos 5 caracteres",
-          },
-          pattern: {
-            value:
-              /https?:\/\/(www\.)?[-a-zA-Z0-9@:%._+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_+.~#?&//=]*)/,
-            message:
-              "El enlace ingresado no es válido, debe ser una URL válida",
-          },
-        }}
-        placeholder="https://google.com"
-        register={register}
-      />
-      <InputProducto
-        className="mb-3 custom-select"
-        type="radio"
-        error={errors.habilitado}
-        label="¿Está habilitado?"
-        name="habilitado"
-        options={{
-          required: "Este campo es requerido",
-        }}
-        radioOptions={[
-          { value: "true", label: "Sí" },
-          { value: "false", label: "No" },
-        ]}
-        register={register}
-        onChange={(name, value) => {}}
-      />
-
-      <InputProducto
-        className="mb-3custom-select "
-        type="radio"
-        error={errors.agregado}
-        label="¿Es un agregado?"
-        name="agregado"
-        options={{
-          required: "Este campo es requerido",
-        }}
-        radioOptions={[
-          { value: "true", label: "Sí" },
-          { value: "false", label: "No" },
-        ]}
-        register={register}
-      />
-
-      <hr />
-      <div className="text-end">
+      <div className="form-content pt-3 bg-white">
         {productoToEdit && (
-          <button
-            className="btn btn-secondary mx-1"
-            type="button"
-            onClick={handleCancelEdit}
-          >
-            Cancelar edición
-          </button>
+          <div className="alert alert-warning">
+            Atención: Estás modificando la entrada con nombre{" "}
+            <b>{productoToEdit.nombre}</b>
+          </div>
         )}
-        <button className="btn btn-danger" type="submit">
-          Guardar
-        </button>
+        <div className="row ps-4 pe-4 gap-0">
+          <div className="col-12 col-md-6">
+            <Input
+              className=" border-primary blue-color"
+              error={errors.nombre}
+              label="Nombre"
+              name="nombre"
+              options={{
+                required: "Este campo es requerido",
+                minLength: {
+                  value: 3,
+                  message: "El nombre debe tener al menos 3 caracteres",
+                },
+                maxLength: {
+                  value: 30,
+                  message: "El nombre debe tener como mucho 30 caracteres",
+                },
+              }}
+              placeholder="Milanesa"
+              register={register}
+              maxLength={30}
+            />
+          </div>
+          <div className="col-12 col-md-6">
+            <SelectProducto
+              className="mt-3 mb-2"
+              error={errors.categoria}
+              name="categoria"
+              label="Categoria del producto"
+              categories={[
+                "SANGUCHE",
+                "GASEOSA",
+                "ADEREZO",
+                "VERDURA",
+                "PIZZA",
+                "HAMBURGUESA",
+              ]}
+              options={{
+                required: "Este campo es requerido",
+              }}
+              register={register}
+            />
+          </div>
+          <Input
+            textarea
+            className="mb-3 border-primary blue-color"
+            error={errors.descripcion}
+            label="Descripcion"
+            name="descripcion"
+            options={{
+              required: "Este campo es requerido",
+              minLength: {
+                value: 3,
+                message: "La descripción debe tener al menos 3 caracteres",
+              },
+              maxLength: {
+                value: 200,
+                message: "La descripción debe tener como mucho 200 caracteres",
+              },
+            }}
+            placeholder="Descripción del producto"
+            register={register}
+            maxLength={200}
+          />
+          <Input
+            className="mb-3 border-primary blue-color"
+            type="number"
+            error={errors.preciounitario}
+            label="Precio unitario"
+            name="preciounitario"
+            options={{
+              required: "Este campo es requerido",
+              min: {
+                value: 1,
+                message: "El precio unitario debe ser mayor que 0",
+              },
+              validate: {
+                greaterThanZero: (value) =>
+                  parseFloat(value) > 0 ||
+                  "El precio unitario debe ser mayor que 0",
+              },
+            }}
+            register={register}
+            min={1}
+          />
+          <Input
+            className="mb-2 pb-2 border-primary blue-color"
+            error={errors.imagen}
+            label="Imagen"
+            name="imagen"
+            options={{
+              required: "Este campo es requerido",
+              minLength: {
+                value: 5,
+                message:
+                  "El enlace a la imagen debe tener al menos 5 caracteres",
+              },
+              pattern: {
+                value:
+                  /https?:\/\/(www\.)?[-a-zA-Z0-9@:%._+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_+.~#?&//=]*)/,
+                message:
+                  "El enlace ingresado no es válido, debe ser una URL válida",
+              },
+            }}
+            placeholder="https://google.com"
+            register={register}
+          />
+          <div className="row">
+            <div className="col-12 col-md-6 mb-3">
+              <Input
+                className="mb-3 custom-select border border-secondary"
+                type="radio"
+                error={errors.habilitado}
+                label="¿Está habilitado?"
+                name="habilitado"
+                options={{
+                  required: "Este campo es requerido",
+                }}
+                radioOptions={[
+                  { value: "true", label: "Sí" },
+                  { value: "false", label: "No" },
+                ]}
+                register={register}
+              />
+            </div>
+            <div className="col-12 col-md-6 mb-3">
+              <Input
+                className="mb-3 custom-select border border-secondary"
+                type="radio"
+                error={errors.agregado}
+                label="¿Es un agregado?"
+                name="agregado"
+                options={{
+                  required: "Este campo es requerido",
+                }}
+                radioOptions={[
+                  { value: "true", label: "Sí" },
+                  { value: "false", label: "No" },
+                ]}
+                register={register}
+              />
+            </div>
+          </div>
+          <hr />
+          <div className="text-end mb-2">
+            {productoToEdit && (
+              <button
+                className="btn btn-secondary mx-1"
+                type="button"
+                onClick={handleCancelEdit}
+              >
+                Cancelar edición
+              </button>
+            )}
+            <button className="btn btn-primary" type="submit">
+              Guardar
+            </button>
+          </div>
+        </div>
       </div>
     </form>
   );

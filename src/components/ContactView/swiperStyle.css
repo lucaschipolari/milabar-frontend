@@ -1,0 +1,20 @@
+.customSwiper {
+  width: 100%;
+  height: auto;
+}
+
+.customSwiperSlide {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #f5f5f5;
+  padding: 0 !important;
+}
+
+.customSwiperImage {
+  width: 100%;
+  height: auto; 
+  max-height: 100vh; 
+  object-fit: cover; 
+}
+

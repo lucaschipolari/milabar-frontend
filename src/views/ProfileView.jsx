@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import CardWelcome from "../components/Profile/CardWelcome";
-import Menu from "../components/Profile/Menu";
 import { getUserFn } from "../api/usersApi.js";
 import { decodeJWT } from "../utilities/decodeJWT";
 import { useSession } from "../stores/useSession.js";
@@ -13,8 +12,6 @@ const ProfileView = () => {
   const { isLoggedIn } = useSession();
   const token = sessionStorage.getItem("token");
   const userId = token ? decodeJWT(token).user.id : null;
-
-  const [selectedSection, setSelectedSection] = useState(null);
 
   const {
     data: userData,
@@ -32,8 +29,8 @@ const ProfileView = () => {
   if (!isLoggedIn)
     return (
       <div className="container d-flex flex-column mt-5 justify-content-center align-items-center">
-        <h1 className="color-red text-center">¡Oh no!</h1>
-        <h5 className="color-red text-center">
+        <h1 className="text-dark text-center fw-bold">¡Oh no!</h1>
+        <h5 className="text-dark text-center">
           Parece que aún no has iniciado sesión
         </h5>
         <NavigationProfile />
@@ -44,7 +41,6 @@ const ProfileView = () => {
       {userData ? (
         <>
           <CardWelcome user={userData} />
-          <Menu onSelectSection={setSelectedSection} user={userData} />
         </>
       ) : (
         <p>No se encontró la información del usuario.</p>

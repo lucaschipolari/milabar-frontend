@@ -17,14 +17,18 @@ import { decodeJWT } from "../../utilities/decodeJWT";
 import { getUserFn } from "../../api/usersApi";
 import { useQuery } from "@tanstack/react-query";
 import IsLoading from "../Common/IsLoading/IsLoading";
+import { useState } from "react";
 
 const PrincipalPage = () => {
-  const { isLoggedIn } = useSession();
+  const { user, isLoggedIn } = useSession();
   const token = sessionStorage.getItem("token");
   const userId = token ? decodeJWT(token).user.id : null;
 
+  // Estado para el término de búsqueda
+  const [searchTerm, setSearchTerm] = useState("");
+
   const {
-    data: user,
+    data: userData,
     isLoading,
     isError,
   } = useQuery({
@@ -32,11 +36,19 @@ const PrincipalPage = () => {
     queryFn: () => getUserFn(userId),
     enabled: !!userId,
   });
+
+  const categorias = ["SANGUCHE", "GASEOSA", "PIZZA", "HAMBURGUESA"];
+
   if (isLoading) return <IsLoading />;
   if (isError) return <p>Error al cargar los datos del usuario.</p>;
+
+  const handleSearchChange = (e) => {
+    setSearchTerm(e.target.value);
+  };
+
   return (
     <>
-      <Header user={user} />
+      <Header userData={userData} />
       <div className="mb-5">
         <div className="container-options">
           <div className="container-input-search mt-2">
@@ -48,6 +60,8 @@ const PrincipalPage = () => {
                   placeholder="Buscar..."
                   aria-label="Buscar"
                   aria-describedby="button-addon2"
+                  value={searchTerm}
+                  onChange={handleSearchChange} // Actualiza el estado de búsqueda
                 />
                 <button
                   className="btn btn-outline-secondary"
@@ -61,28 +75,29 @@ const PrincipalPage = () => {
           </div>
 
           <div className="mt-4 d-flex flex-wrap gap-1 justify-content-center ">
-            <a className=" btn btn-light" href="#SANGUCHES">
+            <a className="btn btn-light" href="#SANGUCHE">
               Sandwiches
             </a>
-            <a className=" btn btn-light" href="#MILANESAS">
-              Milanesas
-            </a>
-            <a className=" btn btn-light" href="#HAMBURGUESAS">
+            <a className="btn btn-light" href="#HAMBURGUESA">
               Hamburguesas
             </a>
-            <a className=" btn btn-light" href="#PIZZAS">
+            <a className="btn btn-light" href="#PIZZA">
               Pizzas
             </a>
-            <a className=" btn btn-light" href="#PAPAS">
-              Papas
-            </a>
-            <a className=" btn btn-light" href="#BEBIDAS">
+            <a className="btn btn-light" href="#GASEOSA">
               Bebidas
             </a>
           </div>
         </div>
 
-        <ListProductClient />
+        {categorias.map((categoria, index) => (
+          <ListProductClient
+            key={index}
+            title={categoria}
+            id={categoria}
+            searchTerm={searchTerm} // Pasar el término de búsqueda
+          />
+        ))}
       </div>
     </>
   );

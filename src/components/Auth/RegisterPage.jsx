@@ -1,44 +1,43 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { toast } from "sonner";
 import { OverlayTrigger, Popover } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
-import Input from "../ui/input/Input"; // Asegúrate de que la ruta sea correcta
+import Input from "../ui/input/Input";
 import SocialIcons from "./SocialIcons";
-import { validateName, validateEmail, validatePassword } from "./validators";
+import {
+  validateName,
+  validateEmail,
+  validatePassword,
+  validateRepeatPassword,
+} from "./validators";
 import { useMutation } from "@tanstack/react-query";
 import { useSession } from "../../stores/useSession";
 import { postRegisterFn } from "../../api/usersApi";
 
-const RegisterPage = () => {
+const RegisterPage = (props) => {
+  const { toggleView } = props;
   const { login } = useSession();
   const {
     register,
-    handleSubmit: onSubmitRHF,
+    handleSubmit,
     formState: { errors },
     reset,
-  } = useForm({
-    mode: "onBlur",
-    reValidateMode: "onSubmit",
-    criteriaMode: "all",
-    defaultValues: {
-      username: "",
-      email: "",
-      password: "",
-    },
-  });
+    getValues,
+  } = useForm();
 
   const { mutate: postRegister } = useMutation({
     mutationFn: postRegisterFn,
     onSuccess: (userData) => {
-      toast.dismiss(); // Cerrar cualquier toast de carga
-      // toast.success(`¡Registro exitoso, ${userData.username}!`);
+      toast.dismiss();
+      toast.success(`¡Registro exitoso, ${userData.username}!`);
       reset();
       login(userData);
-      setTimeout(() => navigate("/"), 1500);
+      setTimeout(() => navigate("/menu"), 0);
     },
     onError: (e) => {
-      toast.dismiss(); // Cerrar cualquier toast de carga
+      toast.dismiss();
       toast.warning(e.message || "Error en el registro");
     },
   });
@@ -68,63 +67,88 @@ const RegisterPage = () => {
   );
 
   return (
-    <form
-      onSubmit={onSubmitRHF(handleSubmitForm)}
-      className="form-user-auth bg-black"
-    >
-      <h1 className="color-red mt-3">Crear cuenta</h1>
-      <div className="form-group">
-        <Input
-          name="username"
-          type="text"
-          label="Nombre"
-          placeholder="Nombre"
-          error={errors.username}
-          register={register}
-          options={{
-            required: "El nombre es obligatorio",
-            validate: validateName,
-          }}
-        />
-        <Input
-          name="email"
-          type="email"
-          label="Email"
-          placeholder="Email"
-          error={errors.email}
-          register={register}
-          options={{
-            required: "El mail es obligatorio",
-            validate: validateEmail,
-          }}
-        />
-        <div className="password-container">
-          <OverlayTrigger
-            trigger="click"
-            placement="top"
-            overlay={passwordPopover}
-          >
-            <span className="d-inline-block">
-              <Input
-                name="password"
-                type="password"
-                label="Contraseña"
-                placeholder="Contraseña"
-                error={errors.password}
-                register={register}
-                options={{
-                  required: "La contraseña es obligatoria",
-                  validate: validatePassword,
-                }}
-              />
-            </span>
-          </OverlayTrigger>
+    <form onSubmit={handleSubmit(handleSubmitForm)} className="bg-blue-color form-custom">
+      <h1 className="text-center all-text-color m-2 fw-bold">
+        ¡Bienvenido!
+      </h1>
+      <h4 className="text-center all-text-color mt-2">Crear cuenta</h4>
+      <div className="form-content pt-3 all-bg-color">
+        <div className="form-group mx-5">
+          <Input
+            className="mb-2 all-bg-color border-primary blue-color"
+            name="username"
+            type="text"
+            label="Nombre de usuario"
+            placeholder="Nombre"
+            error={errors.username}
+            register={register}
+            options={{
+              required: "El nombre es obligatorio",
+              validate: validateName,
+            }}
+          />
+          <Input
+            className="mb-2 all-bg-color all-bg-color border-primary blue-color"
+            name="email"
+            type="email"
+            label="Email"
+            placeholder="Email"
+            error={errors.email}
+            register={register}
+            options={{
+              required: "El mail es obligatorio",
+              validate: validateEmail,
+            }}
+          />
+          <Input
+            className="mb-2 all-bg-color border-primary blue-color"
+            name="password"
+            type="password"
+            label="Contraseña"
+            placeholder="Contraseña"
+            error={errors.password}
+            register={register}
+            options={{
+              required: "La contraseña es obligatoria",
+              validate: validatePassword,
+            }}
+          />
+          <Input
+            className="mb-2 all-bg-color border-primary blue-color"
+            name="repeatPassword"
+            type="password"
+            label="Repetir contraseña"
+            placeholder="Repetir contraseña"
+            error={errors.repeatPassword}
+            register={register}
+            options={{
+              required: "La confirmación de la contraseña es obligatoria",
+              validate: (repeatPassword) =>
+                validateRepeatPassword(repeatPassword, getValues),
+            }}
+          />
         </div>
+        <div className="d-flex justify-content-center align-items-center my-3">
+          <button type="submit" className="btn btn-primary text-center">
+            Crear cuenta
+          </button>
+        </div>
+        <div className="mx-5 pb-2">
+          <p className="text-center blue-color">O create una cuenta con</p>
+          <SocialIcons />
+        </div>
+        <p className="text-center blue-color mb-0 p-3">
+          Si ya tenes una cuenta,
+          <Link
+            className="all-text-color red-color fw-bold text-decoration-none"
+            onClick={toggleView}
+            to="login"
+          >
+            {" "}
+            inicia sesión aquí
+          </Link>
+        </p>
       </div>
-      <button type="submit" className="btn btn-danger">
-        Crear cuenta
-      </button>
-      <SocialIcons />
     </form>
   );
 };

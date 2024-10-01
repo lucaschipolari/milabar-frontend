@@ -8,13 +8,13 @@ const NavigationButtons = () => {
     <div className="d-flex flex-column align-items-center mt-4 container">
       {!isLoggedIn && (
         <>
-          <p className="color-red">Si ya tenes una cuenta</p>
-          <Link className="btn btn-color-red mb-3 w-100" to="/users/login">
+          <p className="text-dark">Si ya tenes una cuenta</p>
+          <Link className="btn btn-primary mb-3" to="/users/login">
             Inicia Sesión
           </Link>
-          <p className="color-red">O si no tenes una, </p>
-          <Link className="btn btn-color-red mb-3 w-100" to="/users/login">
-            Create una cuenta
+          <p className="text-dark">O si no tenes una, </p>
+          <Link className="btn btn-primary mb-3" to="/users/register">
+            Crear cuenta
           </Link>
         </>
       )}

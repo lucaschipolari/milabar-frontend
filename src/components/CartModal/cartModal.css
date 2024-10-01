@@ -1,30 +1,30 @@
 .cart-dialog {
   width: 60%;
   max-width: 500px;
-  background-color: #2b2b2b;
+  background-color: #013048;
   border-radius: 15px;
   color: #ced4da;
-  border: 1px solid #2b2b2b;
+  border: 1px solid #013048;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-  z-index: 1000;
+  z-index: 1800;
 }
 
 .cart-dialog .p-dialog-header {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #2b2b2b;
+  background-color: #013048;
   color: #ced4da;
 }
 
 .cart-dialog .p-dialog-content {
-  background-color: #2b2b2b;
+  background-color: #013048;
   padding: 0;
 }
 
 .cart-dialog .p-dialog-header .p-dialog-title {
   margin: 0;
-  padding: 0 10px 0; /* Asegúrate de que no haya márgenes adicionales */
+  padding: 0 10px 0; 
 }
 
 .cart-product {
@@ -77,16 +77,16 @@
   margin-top: 20px;
   border-radius: 20px;
   padding: 10px;
-  background-color: #555555;
+  background-color: #669BBC;
 }
 
 .cart-total h4 {
   margin: 0;
-  color: #ced4da;
+  color: #ffffff;
 }
 
 .price-text {
-  color: #ced4da;
+  color: #ffffff;
 }
 
 .cart-actions {
@@ -109,16 +109,16 @@
   border: 1px;
   width: 30px;
   height: 30px;
-  background-color: #f84f4f;
+  background-color: #669BBC;
 
   transition: background-color 0.25s ease-in-out, transform 0.1s ease-in-out;
 
   &:hover {
-    background-color: #fa3d3d;
+    background-color: #7FB1D4;
   }
   &:active {
     transform: scale(0.95);
-    background-color: #fc2c11;
+    background-color: #4B7C99;
   }
 }
 
@@ -127,16 +127,16 @@
   border: 1px;
   width: 30px;
   height: 30px;
-  background-color: #f84f4f;
+  background-color: #669BBC;
 
   transition: background-color 0.25s ease-in-out, transform 0.1s ease-in-out;
 
   &:hover {
-    background-color: #fa3d3d;
+    background-color: #7FB1D4;
   }
   &:active {
     transform: scale(0.95);
-    background-color: #fc2c11;
+    background-color: #4B7C99;
   }
 }
 
@@ -190,13 +190,13 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #f84f4f;
+  color: #669BBC;
 }
 
 .cart-dialog-header .header-text {
   margin-left: 10px;
   font-size: 1rem;
-  color: #f84f4f;
+  color: #669BBC;
 }
 
 .input-table-number {
@@ -229,3 +229,8 @@
 .table-number-container {
   color: #ced4da;
 }
+
+.text-detail {
+  color: #ced4da;
+}
+

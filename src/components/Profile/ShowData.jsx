@@ -14,13 +14,13 @@ const UserCard = (props) => {
   };
 
   return (
-    <div className=" container p-2 custom-card-edit">
+    <div className="custom-card-edit rounded-4 bg-white">
       {userToEdit ? (
         <FormUserEdit />
       ) : (
         <>
-          <div className="row">
-            <div className="col-12 col-md-3 content-img-data">
+          <div className="row border-5">
+            <div className="col-12 col-md-3 content-img-data mt-2">
               <p className="text-center">
                 <strong>Avatar</strong>
               </p>
@@ -30,7 +30,7 @@ const UserCard = (props) => {
                 className="w-100 h-auto object-fit-cover"
               />
             </div>
-            <div className="col-9">
+            <div className="col-12 col-md-8">
               <p className="text-start my-2">
                 <strong>Nombre de usuario:</strong> {user.data.username}
               </p>
@@ -40,12 +40,16 @@ const UserCard = (props) => {
             </div>
           </div>
           <hr />
-          <button
-            className="btn btn-warning col-auto mb-2 w-100"
-            onClick={() => handleEdit(user)}
-          >
-            <FontAwesomeIcon icon={faPencil} />
-          </button>
+          <div className="row ">
+            <div className="col-12 text-center">
+              <button
+                className="btn btn-warning mb-2 w-50"
+                onClick={() => handleEdit(user)}
+              >
+                <FontAwesomeIcon icon={faPencil} />
+              </button>
+            </div>
+          </div>
         </>
       )}
     </div>
