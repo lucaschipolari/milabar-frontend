@@ -286,7 +286,6 @@ const FormularioProductos = () => {
                   { value: "false", label: "No" },
                 ]}
                 register={register}
-                onChange={(name, value) => {}}
               />
             </div>
             <div className="col-12 col-md-6 mb-3">
