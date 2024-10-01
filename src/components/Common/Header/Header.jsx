@@ -76,7 +76,7 @@ const Header = ({ userData }) => {
           <div className="">
             {!isLoggedIn && (
               <div>
-                <Link to="/users/login" className="btn btn-red mx-1">
+                <Link to="/users/login" className="btn btn-primary mx-1">
                   Iniciar Sesion
                 </Link>
                 <Link to="/users/register" className="btn btn-gray">

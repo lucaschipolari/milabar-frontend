@@ -42,7 +42,6 @@ const PrincipalPage = () => {
   if (isLoading) return <IsLoading />;
   if (isError) return <p>Error al cargar los datos del usuario.</p>;
 
-  // Función para manejar el cambio en el input de búsqueda
   const handleSearchChange = (e) => {
     setSearchTerm(e.target.value);
   };
