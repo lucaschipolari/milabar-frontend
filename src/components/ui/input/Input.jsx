@@ -13,6 +13,7 @@ const Input = (props) => {
     placeholder = "Ingrese un texto",
     textarea = false,
     maxLength,
+    radioOptions,
     onChange,
     resetCount,
     isNumber = false,
@@ -27,6 +28,11 @@ const Input = (props) => {
     setInternalCharCount(value.length);
     if (onChange) {
       onChange(e);
+    }
+    if (type === "radio" && (value === "true" || value === "false")) {
+      onChange && onChange(name, value === "true"); 
+    } else {
+      onChange && onChange(name, value);
     }
   };
 
@@ -58,6 +64,35 @@ const Input = (props) => {
         <label htmlFor={`${name}-input`}>{label}</label>
         <div className="invalid-feedback">{error?.message}</div>
       </div>
+    );
+  }
+
+  if (type === "radio" && radioOptions) {
+    return (
+      <fieldset
+        className={`bg-white rounded-4 ${className}`}
+      >
+        <legend className="fs-5">{label}</legend>
+        {radioOptions.map((option, index) => (
+          <div key={index} className="form-check form-check-inline">
+            <input
+              className={`form-check-input ${error ? "is-invalid" : ""}`}
+              type="radio"
+              id={`${name}-${option.value}`}
+              value={option.value}
+              {...register(name, options)}
+              onChange={handleChange}
+            />
+            <label
+              className="form-check-label"
+              htmlFor={`${name}-${option.value}`}
+            >
+              {option.label}
+            </label>
+          </div>
+        ))}
+        <div className="invalid-feedback">{error?.message}</div>
+      </fieldset>
     );
   }
 
