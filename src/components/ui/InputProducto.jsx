@@ -21,7 +21,7 @@ const InputProducto = (props) => {
   const handleChange = (event) => {
     const { value } = event.target;
     if (type === "radio" && (value === "true" || value === "false")) {
-      onChange && onChange(name, value === "true"); // Convierte "true"/"false" a booleano
+      onChange && onChange(name, value === "true"); 
     } else {
       onChange && onChange(name, value);
     }
@@ -61,7 +61,7 @@ const InputProducto = (props) => {
               value={option.value}
               {...register(name, options)}
               disabled={disabled}
-              onChange={handleChange} // Usa la función personalizada
+              onChange={handleChange} 
             />
             <label
               className="form-check-label"

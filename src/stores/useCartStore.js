@@ -7,43 +7,29 @@ export const useCartStore = create(
   persist(
     (set) => ({
       products: [],
-  addProduct: (product) =>
-    set((state) => {
-      const existingProductIndex = state.products.findIndex(
-        (p) => p.id === product.id
-      );
-      if (existingProductIndex >= 0) {
-        const updateProducts = [...state.products];
-        updateProducts[existingProductIndex] = {
-          ...updateProducts[existingProductIndex],
-          quantity: updateProducts[existingProductIndex].quantity + product.quantity,
-        };
-        return { products: updateProducts };
-      } else {
-        return {
-          products: [...state.products, { ...product, quantity: product.quantity }],
-        };
-      }
-    }),
-
-      // addProduct: (product) =>
-      //   set((state) => {
-      //     const existingProductIndex = state.products.findIndex(
-      //       (p) => p.id === product.id
-      //     );
-      //     if (existingProductIndex >= 0) {
-      //       const updateProducts = [...state.products];
-      //       updateProducts[existingProductIndex] = {
-      //         ...updateProducts[existingProductIndex],
-      //         quantity: updateProducts[existingProductIndex].quantity + 1,
-      //       };
-      //       return { products: updateProducts };
-      //     } else {
-      //       return {
-      //         products: [...state.products, { ...product, quantity: 1 }],
-      //       };
-      //     }
-      //   }),
+      addProduct: (product) =>
+        set((state) => {
+          const existingProductIndex = state.products.findIndex(
+            (p) => p.id === product.id
+          );
+          if (existingProductIndex >= 0) {
+            const updateProducts = [...state.products];
+            updateProducts[existingProductIndex] = {
+              ...updateProducts[existingProductIndex],
+              quantity:
+                updateProducts[existingProductIndex].quantity +
+                product.quantity,
+            };
+            return { products: updateProducts };
+          } else {
+            return {
+              products: [
+                ...state.products,
+                { ...product, quantity: product.quantity },
+              ],
+            };
+          }
+        }),
 
       updateQuantity: (id, increment) =>
         set((state) => {
@@ -82,14 +68,6 @@ export const useCartStore = create(
           };
         }),
 
-      // set((state) => ({
-      //   products: state.products.map((product) =>
-      //     product.id === id
-      //       ? { ...product, quantity: Math.max(0, product.quantity + increment) }
-      //       : product
-      //   ),
-      // })),
-
       clearCart: () =>
         set((state) => ({
           products: state.products.map((product) => ({
@@ -99,8 +77,8 @@ export const useCartStore = create(
         })),
     }),
     {
-      name: "cart-storage", // Nombre de la clave del localStorage
-      getStorage: () => localStorage, // Usar localStorage
+      name: "cart-storage",
+      getStorage: () => localStorage,
     }
   )
 );

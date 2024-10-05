@@ -8,7 +8,6 @@ import Header from "../Common/Header/Header";
 import ListProductClient from "../ListProductClient/ListProductClient";
 import "../Common/Header/Header.css";
 import "./styles.css";
-// import sandwichImage from "../../assets/sandwich.svg";
 import papasImg from "../../assets/papasfritas.svg";
 import pizzaImg from "../../assets/pizza.svg";
 import sangucheImg from "../../assets/sandwichImg.png";
@@ -24,7 +23,6 @@ const PrincipalPage = () => {
   const token = sessionStorage.getItem("token");
   const userId = token ? decodeJWT(token).user.id : null;
 
-  // Estado para el término de búsqueda
   const [searchTerm, setSearchTerm] = useState("");
 
   const {
@@ -61,7 +59,7 @@ const PrincipalPage = () => {
                   aria-label="Buscar"
                   aria-describedby="button-addon2"
                   value={searchTerm}
-                  onChange={handleSearchChange} // Actualiza el estado de búsqueda
+                  onChange={handleSearchChange}
                 />
                 <button
                   className="btn btn-outline-secondary"
@@ -95,7 +93,7 @@ const PrincipalPage = () => {
             key={index}
             title={categoria}
             id={categoria}
-            searchTerm={searchTerm} // Pasar el término de búsqueda
+            searchTerm={searchTerm}
           />
         ))}
       </div>

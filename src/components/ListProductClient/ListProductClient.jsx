@@ -41,7 +41,6 @@ const ListProductClient = ({ title, searchTerm }) => {
     );
   }
 
-  // Filtrar productos por categoría y por término de búsqueda
   const productosFiltrados = productos.data.filter(
     (p) =>
       p.categoria.includes(title) &&
@@ -56,6 +55,7 @@ const ListProductClient = ({ title, searchTerm }) => {
         <div>
           <h1>{title}</h1>
           <Swiper
+            className="principal-swiper"
             spaceBetween={25}
             slidesPerView={3}
             modules={[Navigation, Pagination, Scrollbar, A11y]}

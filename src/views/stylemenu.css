@@ -1,19 +1,16 @@
+.main-container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
 
-  /* Estilo para el contenedor principal */
-  .main-container {
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-  }
-  
-  /* Estilo para el header (y navbar si están juntos) */
-  .header-navbar {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    z-index: 1000;
-    background-color: #2b2b2b;
-    padding: 20px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  }
+.header-navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  background-color: #2b2b2b;
+  padding: 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}

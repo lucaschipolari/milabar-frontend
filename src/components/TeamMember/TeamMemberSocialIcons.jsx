@@ -5,7 +5,7 @@ import {
   faInstagram,
   faGoogle,
 } from "@fortawesome/free-brands-svg-icons";
-import "../Auth/auth.css"; // Reutiliza el CSS existente
+import "../Auth/auth.css"; 
 
 const TeamMemberSocialIcons = ({ github, instagram, facebook, google }) => {
   return (
