@@ -56,6 +56,7 @@ const ListProductClient = ({ title, searchTerm }) => {
         <div>
           <h1>{title}</h1>
           <Swiper
+            className="principal-swiper"
             spaceBetween={25}
             slidesPerView={3}
             modules={[Navigation, Pagination, Scrollbar, A11y]}
