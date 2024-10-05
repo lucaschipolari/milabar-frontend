@@ -82,7 +82,7 @@ const TablaFilaProductos = (props) => {
             <i className="bi bi-x-circle-fill text-danger"></i>
           )}
         </td>
-        <td className="row-height text-end row row-size mx-0 ">
+        <td className="row-height text-end row row-size mx-0 gap-2">
           <Button icon="pi pi-external-link"
             className="btn btn-primary col-auto"
             to="#"

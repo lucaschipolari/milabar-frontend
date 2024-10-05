@@ -7,6 +7,7 @@ import { useCartStore } from "../../stores/useCartStore.js";
 import { toast } from "sonner";
 import { useSession } from "../../stores/useSession.js";
 import Swal from "sweetalert2";
+import { Link } from "react-router-dom";
 
 const ProductCardClient = (props) => {
   const { producto } = props;
@@ -83,12 +84,12 @@ const ProductCardClient = (props) => {
             <p className="m-0">
               <span className="product-price">$ {producto.preciounitario}</span>
             </p>
-            <button
+            <Link
               className="card-btn-info card-btn"
               to={`/detalle/${producto.id}`}
             >
               <FontAwesomeIcon icon={faInfo} className="" />
-            </button>
+            </Link>
           </div>
         </div>
       </div>

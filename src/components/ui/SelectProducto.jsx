@@ -27,9 +27,7 @@ const Select = (props) => {
         ))}
       </select>
       <label htmlFor={`${name}-select`}>{label}</label>
-      <div className='invalid-feedback'>
-        <span className='badge text-bg-danger'>{error?.message}</span>
-      </div>
+      <div className="invalid-feedback">{error?.message}</div>
     </fieldset>
   );
 };

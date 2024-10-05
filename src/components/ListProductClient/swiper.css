@@ -1,6 +1,9 @@
 .swiper{
   min-height: 520px;
 }
+.principal-swiper{
+  min-height: 620px;
+}
 .swiper-img{
     max-width: 300px;
     max-height: 300px
