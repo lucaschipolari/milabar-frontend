@@ -278,8 +278,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 100%; /* Todos los campos ocupan el 100% del ancho */
-  height: 45px; /* Todos los campos tienen la misma altura */
+  width: 100%; 
+  height: 45px; 
 }
 
 @media (max-width: 768px) {
@@ -287,10 +287,10 @@
     display: flex;
     justify-content: start;
     align-items: start;
-      width: 80%; /* En pantallas pequeñas, ocupa el 100% del ancho */
+      width: 80%; 
   }
   .input-group {
-    width: 50%; /* Todos los campos ocupan el 100% del ancho */
+    width: 50%; 
   }
 }
 @media (min-width: 768px) {

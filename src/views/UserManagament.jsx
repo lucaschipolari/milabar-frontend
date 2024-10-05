@@ -6,11 +6,10 @@ import { useQuery } from "@tanstack/react-query";
 import "../components/Admin/Users/styles/userCard.css";
 import { Link } from "react-router-dom";
 import { toast } from "sonner";
-import { getUsersFn } from "../api/usersApi"; // Asegúrate de importar la función correctamente
-
+import { getUsersFn } from "../api/usersApi"; 
 const UserManagement = () => {
   const [searchTerm, setSearchTerm] = useState("");
-  const [filter, setFilter] = useState("enabled"); // puede ser 'enabled' o 'disabled'
+  const [filter, setFilter] = useState("enabled"); 
   const [isAscending, setIsAscending] = useState(true);
 
   const {
@@ -18,15 +17,15 @@ const UserManagement = () => {
     isLoading,
     isError,
   } = useQuery({
-    queryKey: ["users", filter], // La clave de la consulta incluye el filtro
-    queryFn: () => getUsersFn(filter), // Pasar el filtro a la función `getUsersFn`
+    queryKey: ["users", filter], 
+    queryFn: () => getUsersFn(filter), 
     onError: (e) => {
       toast.error(`Error fetching users: ${e.message}`);
     },
   });
 
   const handleSort = () => {
-    setIsAscending(!isAscending); // Cambiar la dirección del orden
+    setIsAscending(!isAscending); 
   };
 
   const sortedUsers = [...dataUsers.data].sort((a, b) => {

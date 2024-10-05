@@ -12,8 +12,8 @@ import { Link } from "react-router-dom";
 const ProductCardClient = (props) => {
   const { producto } = props;
   const [isHearted, setIsHearted] = useState(false);
-  const [isAdded, setIsAdded] = useState(false); // Estado para la animación de la tarjeta
-  const [isButtonColored, setIsButtonColored] = useState(false); // Estado para el cambio de color del botón
+  const [isAdded, setIsAdded] = useState(false);
+  const [isButtonColored, setIsButtonColored] = useState(false);
 
   const { addProduct } = useCartStore();
   const { isLoggedIn } = useSession();
@@ -40,13 +40,11 @@ const ProductCardClient = (props) => {
       duration: 1000,
     });
 
-    // Activa la clase de color en el botón
     setIsButtonColored(true);
 
-    // Remueve el color después de un corto período
     setTimeout(() => {
       setIsButtonColored(false);
-    }, 1000); // El color cambia durante 1 segundo
+    }, 1000);
   };
 
   const toggleHeart = () => {

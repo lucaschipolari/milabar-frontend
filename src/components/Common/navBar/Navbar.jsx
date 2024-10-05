@@ -7,7 +7,7 @@ import {
   faUser,
 } from "@fortawesome/free-solid-svg-icons";
 import { useState, useEffect, useMemo } from "react";
-import { useLocation } from "react-router-dom"; // Importa useLocation
+import { useLocation } from "react-router-dom";
 import NavItem from "./NavItem";
 import "./style.css";
 
@@ -15,10 +15,9 @@ const NavBar = () => {
   const [activeIndex, setActiveIndex] = useState(0);
   const [cartCount, setCartCount] = useState(0);
 
-  const location = useLocation(); // Obtén la ruta actual
-  const currentPath = location.pathname; // Ruta actual
+  const location = useLocation();
+  const currentPath = location.pathname;
 
-  // Memoiza navItems para evitar recreaciones innecesarias
   const navItems = useMemo(
     () => [
       { icon: faHouse, text: "Home", to: "menu" },

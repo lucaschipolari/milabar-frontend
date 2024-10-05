@@ -27,11 +27,10 @@ export const getUsersFn = async (filter) => {
   const res = await fetch(`${BACKEND_URL}/user-info/status/${filter}`, {
     headers: {
       "Content-Type": "application/json",
-      Authorization: `Bearer ${token}`, // Agrega el token en la cabecera de autorización si es necesario
+      Authorization: `Bearer ${token}`,
     },
   });
 
-  // Revisa el tipo de contenido de la respuesta
   const user = await res.json();
 
   if (!res.ok) {
@@ -127,7 +126,7 @@ export const getUserFn = async (userId) => {
   const res = await fetch(`${BACKEND_URL}/profile/${userId}`, {
     headers: {
       "Content-Type": "application/json",
-      Authorization: `Bearer ${token}`, // Agrega el token en la cabecera de autorización si es necesario
+      Authorization: `Bearer ${token}`,
     },
   });
 
@@ -148,7 +147,7 @@ export const putUsersFn = async ({ userId, data }) => {
     method: "PUT",
     headers: {
       "Content-Type": "application/json",
-      Authorization: `Bearer ${token}`, // Agrega el token en la cabecera de autorización
+      Authorization: `Bearer ${token}`,
     },
     body: JSON.stringify(data),
   });
@@ -159,7 +158,7 @@ export const putUsersFn = async ({ userId, data }) => {
     );
   }
 
-  return await res.json(); // Asegúrate de retornar el JSON de la respuesta
+  return await res.json();
 };
 
 export const putRoleUserFn = async ({ userId, data }) => {
@@ -173,7 +172,7 @@ export const putRoleUserFn = async ({ userId, data }) => {
     method: "PUT",
     headers: {
       "Content-Type": "application/json",
-      Authorization: `Bearer ${token}`, // Agrega el token en la cabecera de autorización
+      Authorization: `Bearer ${token}`,
     },
     body: JSON.stringify({ roles: data }),
   });
@@ -184,5 +183,5 @@ export const putRoleUserFn = async ({ userId, data }) => {
     );
   }
 
-  return await res.json(); // Asegúrate de retornar el JSON de la respuesta
+  return await res.json();
 };

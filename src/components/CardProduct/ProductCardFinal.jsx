@@ -55,7 +55,6 @@ const ProductCard = (props) => {
       </div>
 
       {isAdminPage ? (
-        // Vista para la página de administración
         <div className="product__content mb-1">
           <hr />
           <div className="d-flex justify-content-around align-items-center m-2">
@@ -75,7 +74,6 @@ const ProductCard = (props) => {
           </div>
         </div>
       ) : (
-        // Vista para clientes y para el administrador en la página del menú
         <div className="product__content">
           <div className="d-flex justify-content-around align-items-center m-2">
             <button className="btn btn-danger col-auto" onClick={handleLike}>
