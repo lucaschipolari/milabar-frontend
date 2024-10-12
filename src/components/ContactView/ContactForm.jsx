@@ -21,8 +21,6 @@ const ContactForm = () => {
   const [resetCount, setResetCount] = useState(false);
 
   const handleSumbit = (data) => {
-    console.log(data);
-
     Swal.fire({
       title: "Estas a punto de enviar un email",
       text: "¿Estás seguro de enviarlo?",
