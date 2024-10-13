@@ -1,5 +1,7 @@
 import emailjs from "emailjs-com";
 
+import Swal from "sweetalert2";
+
 export const sendEmailToClient = (data) => {
   return emailjs
     .send(
@@ -17,10 +19,10 @@ export const sendEmailToClient = (data) => {
     )
     .then(
       (response) => {
-        console.log("Corre enviado con exito", response.status, response.text);
+        Swal.fire("Success", "Correo enviado con exito", "success");
       },
       (error) => {
-        console.log("fallo al enviar el mail", error);
+        Swal.fire("Error", "Fallo al enviar el correo", "error");
       }
     );
 };
@@ -42,10 +44,10 @@ export const sendEmailToRestaurant = (data) => {
     )
     .then(
       (response) => {
-        console.log("Corre enviado con exito", response.status, response.text);
+        Swal.fire("Success", "Correo enviado con exito", "success");
       },
       (error) => {
-        console.log("fallo al enviar el mail", error);
+        Swal.fire("Error", "Fallo al enviar el correo", "error");
       }
     );
 };
