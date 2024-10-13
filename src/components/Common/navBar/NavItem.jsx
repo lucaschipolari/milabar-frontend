@@ -3,19 +3,10 @@ import { NavLink } from "react-router-dom";
 import PropTypes from "prop-types";
 
 const NavItem = (props) => {
-  const {
-    item,
-    index,
-    activeIndex,
-    setActiveIndex,
-    cartCount,
-    incrementCartCount,
-    handleNavItemClick,
-  } = props;
+  const { item, index, activeIndex, setActiveIndex, cartCount } = props;
+
   const handleClick = () => {
     setActiveIndex(index);
-    handleNavItemClick(index, item.to);
-    if (item.text === "Carrito") incrementCartCount();
   };
 
   return (
@@ -45,9 +36,7 @@ NavItem.propTypes = {
   index: PropTypes.number.isRequired,
   activeIndex: PropTypes.number.isRequired,
   setActiveIndex: PropTypes.func.isRequired,
-  handleNavItemClick: PropTypes.func,
   cartCount: PropTypes.number.isRequired,
-  incrementCartCount: PropTypes.func.isRequired,
 };
 
 export default NavItem;
