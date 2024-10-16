@@ -71,7 +71,7 @@ const ContactForm = () => {
           <Input
             className="m-3"
             error={errors.name}
-            label={<span className="required-label">Nombre </span>}
+            label="Nombre"
             name="name"
             options={{
               required: {
@@ -101,6 +101,7 @@ const ContactForm = () => {
             }}
             register={register}
             placeholder=""
+            redAsterik={true}
           />
         </div>
 
@@ -108,7 +109,7 @@ const ContactForm = () => {
           <Input
             className="m-3"
             error={errors.lastname}
-            label={<span className="required-label">Apellido</span>}
+            label="Apellido"
             name="lastname"
             options={{
               required: {
@@ -138,6 +139,7 @@ const ContactForm = () => {
             }}
             register={register}
             placeholder=""
+            redAsterik={true}
           />
         </div>
       </div>
@@ -147,7 +149,7 @@ const ContactForm = () => {
           <Input
             className="m-3"
             error={errors.issue}
-            label={<span className="required-label">Asunto</span>}
+            label="Asunto"
             name="issue"
             options={{
               required: {
@@ -179,6 +181,7 @@ const ContactForm = () => {
             }}
             placeholder=""
             register={register}
+            redAsterik={true}
           />
         </div>
 
@@ -186,7 +189,7 @@ const ContactForm = () => {
           <Input
             className="m-3"
             error={errors.email}
-            label={<span className="required-label">Email</span>}
+            label="Email"
             name="email"
             options={{
               required: {
@@ -205,6 +208,7 @@ const ContactForm = () => {
             register={register}
             type="email"
             placeholder=""
+            redAsterik={true}
           />
         </div>
       </div>
@@ -214,7 +218,7 @@ const ContactForm = () => {
           <Input
             className="m-3"
             error={errors.message}
-            label={<span className="required-label">Mensaje</span>}
+            label="Mensaje"
             name="message"
             options={{
               required: {
@@ -249,6 +253,7 @@ const ContactForm = () => {
             placeholder=""
             maxLength={500}
             resetCount={resetCount}
+            redAsterik={true}
           />
         </div>
       </div>

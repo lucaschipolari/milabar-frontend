@@ -18,6 +18,7 @@ const Input = (props) => {
     resetCount,
     isNumber = false,
     floatingLabel = false,
+    redAsterik = false,
   } = props;
 
   const [internalCharCount, setInternalCharCount] = useState(0);
@@ -133,6 +134,7 @@ const Input = (props) => {
     <div className={`${className}`}>
       <label className="me-2 form-label" htmlFor={`${name}-input`}>
         {label}
+        {redAsterik && <span className="text-danger"> *</span>}
       </label>
       {textarea ? (
         <textarea
@@ -182,4 +184,5 @@ Input.propTypes = {
   resetCount: PropTypes.bool,
   isNumber: PropTypes.bool,
   floatingLabel: PropTypes.bool,
+  redAsterik: PropTypes.bool,
 };
